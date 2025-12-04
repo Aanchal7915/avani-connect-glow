@@ -140,7 +140,7 @@ const ThankYou = () => {
               transition={{ delay: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button variant="hero" size="lg" asChild>
+              {/* <Button variant="hero" size="lg" asChild>
                 <Link to="/" className="group">
                   <Home className="w-5 h-5" />
                   Back to Home
@@ -151,7 +151,7 @@ const ThankYou = () => {
                   Explore Portfolio
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </Button>
+              </Button> */}
             </motion.div>
           </motion.div>
 
