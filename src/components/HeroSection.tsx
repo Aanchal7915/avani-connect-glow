@@ -55,10 +55,10 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+              className="capitalize font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
             >
-              Transform Your Brand with{" "}
-              <span className="text-gradient">Strategic Digital Solutions</span>
+              Boost your brand’s impact using smart and customized{" "}
+              <span className="text-gradient">digital approaches</span>
             </motion.h1>
 
             <motion.p
@@ -67,9 +67,7 @@ const HeroSection = () => {
               transition={{ delay: 0.4 }}
               className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
             >
-              We help entrepreneurs and businesses achieve exponential growth through 
-              data-driven digital marketing, innovative technology solutions, and 
-              strategic brand transformation.
+              We guide business owners and organizations toward strong, accelerated progress with research-backed marketing, creative tech innovations, and impactful brand renewal.
             </motion.p>
 
             <motion.div
