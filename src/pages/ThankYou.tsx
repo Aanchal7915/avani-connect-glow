@@ -20,7 +20,7 @@ const ThankYou = () => {
   }, [name, navigate]);
 
   return (
-    <main className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <main className="min-h-screen flex items-center justify-center relative overflow-hidden pb-3">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-slow delay-1000" />
@@ -117,7 +117,7 @@ const ThankYou = () => {
                 className="flex items-center justify-center gap-2 text-muted-foreground hover:text-accent transition-colors"
               >
                 <Mail className="w-5 h-5" />
-                <span>contact@avanienterprises.com</span>
+                <span>kp@avanienterprises.in</span>
               </a>
               <a
                 href="tel:+919253625099"
