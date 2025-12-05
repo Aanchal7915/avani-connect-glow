@@ -145,7 +145,7 @@ const ThankYou = () => {
             {/* ✅ ADDED LOGO + WHATSAPP BUTTON */}
             <div className="flex items-center justify-center gap-6 mb-4">
               <img
-                src={avaniLogo}
+                src="./avani-logo.jpg"
                 alt="Avani Enterprises Logo"
                 className="w-20 h-20 object-contain rounded-md shadow-sm"
               />
