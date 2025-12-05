@@ -50,9 +50,8 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-24 relative bg-white">
+    <section id="services" className="py-24 relative">
       <div className="container mx-auto px-4 lg:px-8">
-        
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -61,20 +60,16 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          {/* <span className="inline-block px-4 py-2 rounded-full glass text-accent text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 rounded-full glass text-accent text-sm font-medium mb-4">
             Our Services
-          </span> */}
-          <span className="inline-block px-4 py-2 rounded-full bg-black text-white text-sm font-semibold mb-4">
-  Our Services
-</span>
-
-
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-gray-900">
-            Smart Digital <span className="text-gradient">Experiences</span>
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            Comprehensive Digital{" "}
+            <span className="text-gradient">Solutions</span>
           </h2>
-
-          <p className="text-gray-600 text-lg font-medium leading-relaxed">
-           From modern websites to intelligent AI systems, we create powerful digital solutions that drive real business results.
+          <p className="text-muted-foreground text-lg">
+            From web development to AI integration, we provide end-to-end digital 
+            solutions that drive growth and deliver measurable results.
           </p>
         </motion.div>
 
@@ -88,49 +83,40 @@ const ServicesSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group relative p-8 rounded-2xl bg-white border border-gray-200 hover:border-primary/50 transition-all duration-300 shadow-sm"
+              className="group relative p-8 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/50 transition-all duration-300"
             >
-              
               {/* Icon */}
               <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} p-[2px] mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <div className="w-full h-full rounded-xl bg-white flex items-center justify-center">
+                <div className="w-full h-full rounded-xl bg-card flex items-center justify-center">
                   <service.icon className="w-6 h-6 text-primary" />
                 </div>
               </div>
 
               {/* Content */}
-              <h3 className="font-display text-xl font-bold text-gray-900 mb-3 group-hover:text-accent transition-colors">
+              <h3 className="font-display text-xl font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
                 {service.title}
               </h3>
-
-              <p className="text-gray-600 leading-relaxed mb-4 font-medium">
+              <p className="text-muted-foreground leading-relaxed mb-4">
                 {service.description}
               </p>
 
               {/* Link */}
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 text-accent font-semibold text-sm group-hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 text-accent font-medium text-sm group-hover:gap-3 transition-all"
               >
                 Learn More
                 <ArrowUpRight className="w-4 h-4" />
               </a>
 
-              {/* Hover Glow */}
+              {/* Hover Glow Effect */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
 };
-
-
-
-
-
 
 export default ServicesSection;

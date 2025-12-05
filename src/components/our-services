@@ -1,0 +1,121 @@
+// PortfolioGallery.jsx
+// React + Tailwind component that recreates the UI you showed:
+// - Narrow centered column
+// - Left-aligned title and right-aligned description
+// - 2-column responsive grid of image cards
+// - Click to open lightbox modal
+// 
+// Usage:
+// 1) Ensure your React app has Tailwind CSS configured (Tailwind CLI, CRA+Tailwind, Vite+Tailwind, or Next.js).
+// 2) Drop this file into your src/components folder.
+// 3) Import and use: <PortfolioGallery images={images} />
+//    where `images` is an array of { src, alt, title, subtitle }
+
+import React, { useState } from 'react';
+
+export default function PortfolioGallery({
+  images = [
+    { src: '/images/example1.jpg', alt: 'Screenshot 1', title: 'Project One', subtitle: 'E-commerce dashboard' },
+    { src: '/images/example2.jpg', alt: 'Screenshot 2', title: 'Project Two', subtitle: 'Marketplace UI' },
+    { src: '/images/example3.jpg', alt: 'Screenshot 3', title: 'Project Three', subtitle: 'Booking system' },
+    { src: '/images/example4.jpg', alt: 'Screenshot 4', title: 'Project Four', subtitle: 'Analytics dashboard' },
+  ],
+}) {
+  const [open, setOpen] = useState(false);
+  const [current, setCurrent] = useState(null);
+
+  function openLightbox(img) {
+    setCurrent(img);
+    setOpen(true);
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    setOpen(false);
+    setCurrent(null);
+    document.body.style.overflow = '';
+  }
+
+  return (
+    <main className="min-h-screen bg-gray-50 text-slate-900 py-12">
+      <div className="mx-auto w-full max-w-3xl px-4">
+        {/* header */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start mb-8">
+          <div>
+            <span className="inline-block text-sm font-semibold text-red-600 uppercase tracking-wider">Portfolio</span>
+            <h1 className="mt-3 text-2xl lg:text-3xl font-extrabold leading-tight">
+              See what we delivered using our unique methodology
+            </h1>
+          </div>
+
+          <div className="text-sm text-slate-600 lg:text-right">
+            <p>
+              Our portfolio consists primarily of robust systems for managing tasks, bookings and marketplaces. Replace these example
+              screenshots with your own images. Click any thumbnail to preview it larger.
+            </p>
+          </div>
+        </section>
+
+        {/* gallery */}
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-7">
+          {images.map((img, i) => (
+            <article
+              key={i}
+              className="bg-white rounded-lg shadow-md border border-slate-100 overflow-hidden cursor-pointer"
+              onClick={() => openLightbox(img)}
+            >
+              <div className="w-full aspect-[16/10] bg-gradient-to-b from-gray-100 to-white">
+                {/* Use object-cover to crop to same ratio like screenshot */}
+                <img
+                  src={img.src}
+                  alt={img.alt || img.title || `image-${i}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="px-4 py-3">
+                <div className="text-sm font-semibold text-slate-900">{img.title}</div>
+                <div className="text-xs text-slate-500 mt-1">{img.subtitle}</div>
+              </div>
+            </article>
+          ))}
+        </section>
+      </div>
+
+      {/* Lightbox Modal */}
+      {open && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-6"
+          role="dialog"
+          aria-modal="true"
+          onClick={(e) => { if (e.target === e.currentTarget) closeLightbox(); }}
+        >
+          <div className="max-w-[95%] max-h-[95%] bg-white rounded-lg overflow-hidden shadow-2xl">
+            <div className="relative">
+              <button
+                onClick={closeLightbox}
+                className="absolute top-3 right-3 bg-white/90 rounded-full w-9 h-9 flex items-center justify-center text-slate-800 shadow"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+
+              <img
+                src={current?.src}
+                alt={current?.alt}
+                className="w-full h-[70vh] md:h-[80vh] object-contain bg-white"
+              />
+
+              {current?.title && (
+                <div className="p-3 border-t border-slate-100">
+                  <div className="text-sm font-semibold">{current.title}</div>
+                  {current.subtitle && <div className="text-xs text-slate-500 mt-1">{current.subtitle}</div>}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </main>
+  );
+}
