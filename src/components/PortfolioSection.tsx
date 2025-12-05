@@ -187,7 +187,7 @@ const portfolioItems = [
     category: "Web Development",
     description:
       "Scalable e-commerce platform with AI product recommendations, speedy checkout, and a conversion-focused UI.",
-    image: "src/assets/s4.jpg",
+    image: "./s4.jpg",
     stats: { growth: "+180%", metric: "Sales Growth" },
   },
   {
@@ -195,7 +195,7 @@ const portfolioItems = [
     category: "Web Development",
     description:
       "Menu-first restaurant site featuring clear item listings, easy ordering flow, and appetizing visuals to drive sales.",
-    image: "src/assets/s1.jpg",
+    image: "./s1.jpg",
     stats: { growth: "+250%", metric: "User Engagement" },
   },
   {
@@ -203,7 +203,7 @@ const portfolioItems = [
     category: "Web Development",
     description:
       "Accessible hospital site with services overview, doctor profiles, appointment booking and patient resources.",
-    image: "src/assets/s2.jpg",
+    image: "./s2.jpg",
     stats: { growth: "+320%", metric: "Lead Generation" },
   },
   {
@@ -211,7 +211,7 @@ const portfolioItems = [
     category: "Web Development",
     description:
       "Responsive footwear catalogue with category filters, size guides, and a streamlined purchase experience.",
-    image: "src/assets/s3.jpg",
+    image: "./s3.jpg",
     stats: { growth: "+95%", metric: "App Downloads" },
   },
   {
@@ -219,7 +219,7 @@ const portfolioItems = [
     category: "Web Development",
     description:
       "Professional property management portal with listings, lead capture, and admin tools for efficient operations.",
-    image: "src/assets/s6.jpg",
+    image: "./s6.jpg",
     stats: { growth: "-60%", metric: "Support Tickets" },
   },
   {
@@ -227,7 +227,7 @@ const portfolioItems = [
     category: "Web Development",
     description:
       "Clear plan comparison, quick quote requests, and secure policy management designed for trust and clarity.",
-    image: "src/assets/s5.jpg",
+    image: "./s5.jpg",
     stats: { growth: "+500K", metric: "Monthly Leads" },
   },
 ];
