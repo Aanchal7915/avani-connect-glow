@@ -236,6 +236,7 @@ export default function RegistrationForm() {
                 {/* Form: mobile/tablet scrollable both directions; desktop unaffected */}
                 <form
                   onSubmit={handleSubmit}
+                  // **यहां बदलाव हुआ है**
                   className="space-y-4 md:space-y-5 max-h-[70vh] md:max-h-none overflow-y-auto overflow-x-auto touch-pan-x touch-pan-y md:overflow-visible md:touch-none px-0"
                   ref={formRef}
                 >
