@@ -274,8 +274,11 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
+interface RegistrationFormProps {
+  uniqueConsentId: string; 
+}
 
-export default function RegistrationForm({uniqueConsentId}) {
+export default function RegistrationForm({ uniqueConsentId }: RegistrationFormProps) {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);

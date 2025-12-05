@@ -59,8 +59,9 @@ const Index = () => {
           <HeroSection />
           <ServicesSection />
           <PortfolioSection />
-          <FAQSection/>
+          
           <RegistrationForm uniqueConsentId={"registrationForm2"}/>
+          <FAQSection/>
         </main>
         <Footer />
       </div>
