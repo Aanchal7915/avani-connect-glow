@@ -95,10 +95,8 @@ export default function HeroSection() {
 
             {/* Mobile-only wrapped card */}
             <div className="md:hidden w-full mt-4 sm:mt-6">
-              <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden max-h-[80vh] flex flex-col">
-                <div className="overflow-y-auto overflow-x-hidden touch-auto flex-1 p-3 sm:p-4">
-                  <RegistrationForm />
-                </div>
+              <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden">
+                <RegistrationForm />
               </div>
 
               <div className="mt-3 sm:mt-4 text-center">

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, ArrowUpRight } from "lucide-react";
-import Logo from "@/assets/avani-logo.jpg"; // <-- your logo file
+import Logo from "@/assets/avani-logo.jpg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -68,6 +68,13 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.querySelector(link.href);
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }
+                    }}
                     className="text-muted-foreground hover:text-accent transition-all flex items-center gap-1 group"
                   >
                     {link.name}
@@ -94,6 +101,13 @@ const Footer = () => {
                 <li key={service}>
                   <a
                     href="#services"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.querySelector("#services");
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }
+                    }}
                     className="text-muted-foreground hover:text-accent transition-all flex items-center gap-1 group"
                   >
                     {service}

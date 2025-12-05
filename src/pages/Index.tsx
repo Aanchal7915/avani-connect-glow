@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import Navbar from "@/components/Navbar";
+import PageHeader from "@/components/PageHeader";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";
@@ -16,10 +16,29 @@ const Index = () => {
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }, 100);
     }
+
+    // Add smooth scroll behavior to all anchor links
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest("a[href^='#']");
+      if (anchor) {
+        const href = anchor.getAttribute("href");
+        if (href && href.startsWith("#")) {
+          e.preventDefault();
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      }
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
   }, []);
 
   return (
@@ -35,14 +54,13 @@ const Index = () => {
       </Helmet>
 
       <div className="min-h-screen">
-        {/* <Navbar /> */}
-        <main>
+        <PageHeader />
+        <main className="pt-20">
           <HeroSection />
           <ServicesSection />
           <PortfolioSection />
           <FAQSection/>
           <RegistrationForm />
-         
         </main>
         <Footer />
       </div>
