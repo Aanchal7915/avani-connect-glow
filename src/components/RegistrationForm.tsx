@@ -63,7 +63,9 @@ export default function RegistrationForm() {
 
   const validateField = (field: keyof FormData, value: unknown) => {
     try {
-      const fieldSchema = formSchema.shape[field];
+      // zod's shape typing; access the schema for the specific field
+      // @ts-ignore - tactical access to shape
+      const fieldSchema = (formSchema as any).shape[field];
       fieldSchema.parse(value);
       setErrors((prev) => ({ ...prev, [field]: undefined }));
       return true;
@@ -143,17 +145,20 @@ export default function RegistrationForm() {
     }
   };
 
-  const toggleService = (serviceName: string) => {
+  // Robust toggleService: accepts optional `force` boolean to explicitly set/unset.
+  const toggleService = (serviceName: string, force?: boolean) => {
     const current = (formData.service as string[]) ?? [];
-    if (current.includes(serviceName)) {
-      const next = current.filter((s) => s !== serviceName);
-      setFormData({ ...formData, service: next });
-      validateField("service", next);
+    const includes = current.includes(serviceName);
+
+    let next: string[];
+    if (typeof force === "boolean") {
+      next = force ? (includes ? current : [...current, serviceName]) : current.filter((s) => s !== serviceName);
     } else {
-      const next = [...current, serviceName];
-      setFormData({ ...formData, service: next });
-      validateField("service", next);
+      next = includes ? current.filter((s) => s !== serviceName) : [...current, serviceName];
     }
+
+    setFormData({ ...formData, service: next });
+    validateField("service", next);
   };
 
   // When an input receives focus, scroll it into view (helps on mobile with keyboard)
@@ -169,14 +174,14 @@ export default function RegistrationForm() {
     const el = containerRef.current;
     if (!el) return;
     const onTouchStart = (ev: TouchEvent) => {
-      // allow default touch
+      // allow default touch — left here intentionally for passive behavior
     };
     el.addEventListener("touchstart", onTouchStart, { passive: true });
     return () => el.removeEventListener("touchstart", onTouchStart);
   }, []);
 
   return (
-    <section id="contact" className="py-16 relative">
+    <section id="contact" className="py-16 relative text-sm md:text-base">
       {/* decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-primary/10 rounded-full blur-3xl" />
@@ -333,10 +338,9 @@ export default function RegistrationForm() {
                         {services.map((svc) => {
                           const checked = ((formData.service as string[]) ?? []).includes(svc);
                           return (
-                            <label
+                            <div
                               key={svc}
                               className="flex items-center gap-3 cursor-pointer select-none rounded-md p-3 hover:bg-background/60 min-w-[200px]"
-                              aria-pressed={checked}
                               role="button"
                               tabIndex={0}
                               onKeyDown={(e) => {
@@ -345,11 +349,14 @@ export default function RegistrationForm() {
                                   toggleService(svc);
                                 }
                               }}
-                              onClick={() => toggleService(svc)}
+                              // NOTE: no onClick here — Checkbox handles the toggle to avoid double toggle
                             >
-                              <Checkbox checked={checked} onCheckedChange={() => toggleService(svc)} />
+                              <Checkbox
+                                checked={checked}
+                                onCheckedChange={(val) => toggleService(svc, Boolean(val))}
+                              />
                               <span className="text-sm">{svc}</span>
-                            </label>
+                            </div>
                           );
                         })}
                       </div>
