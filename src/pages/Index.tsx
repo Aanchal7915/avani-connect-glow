@@ -60,7 +60,7 @@ const Index = () => {
           <ServicesSection />
           <PortfolioSection />
           <FAQSection/>
-          <RegistrationForm />
+          <RegistrationForm uniqueConsentId={"registrationForm2"}/>
         </main>
         <Footer />
       </div>

@@ -275,7 +275,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export default function RegistrationForm() {
+export default function RegistrationForm({uniqueConsentId}) {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -590,7 +590,7 @@ export default function RegistrationForm() {
                   {/* Consent */}
                   <div className="flex items-start gap-2 sm:gap-3 w-full">
                     <Checkbox
-                      id="consent"
+                      id={uniqueConsentId}
                       checked={formData.consent}
                       onCheckedChange={(checked) => {
                         setFormData({ ...formData, consent: checked as boolean });
@@ -599,7 +599,7 @@ export default function RegistrationForm() {
                       className="mt-0.5 sm:mt-1 border-border data-[state=checked]:bg-accent data-[state=checked]:border-accent flex-shrink-0"
                       aria-describedby="consent-desc"
                     />
-                    <label htmlFor="consent" className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer">
+                    <label htmlFor={uniqueConsentId}  className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer">
                       I agree to receive information regarding my submitted application and updates from Avani Enterprises *
                     </label>
                   </div>

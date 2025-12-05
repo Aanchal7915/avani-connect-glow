@@ -96,7 +96,7 @@ export default function HeroSection() {
             {/* Mobile-only wrapped card */}
             <div className="md:hidden w-full mt-4 sm:mt-6">
               <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden">
-                <RegistrationForm />
+                <RegistrationForm uniqueConsentId={"registrationForm1"} />
               </div>
 
               <div className="mt-3 sm:mt-4 text-center">
@@ -112,7 +112,7 @@ export default function HeroSection() {
             {/* Desktop/laptop: exact original render (no wrapper) */}
             <div className="hidden md:block w-full">
               <div className="p-0">{/* keep spacing identical to original desktop layout */}
-                <RegistrationForm />
+                <RegistrationForm uniqueConsentId={"registrationForm1"}/>
               </div>
             </div>
 
