@@ -136,7 +136,7 @@ const Footer = () => {
                   className="flex items-start gap-3 text-muted-foreground hover:text-accent group transition"
                 >
                   <Mail className="w-5 h-5 mt-0.5" />
-                  <span>contact@avanienterprises.com</span>
+                  <span>kp@avanienterprises.in</span>
                 </a>
               </li>
 
