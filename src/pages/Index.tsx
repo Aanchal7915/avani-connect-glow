@@ -6,6 +6,7 @@ import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import RegistrationForm from "@/components/RegistrationForm";
 import Footer from "@/components/Footer";
+import FAQSection from "@/components/FaqSection";
 
 const Index = () => {
   useEffect(() => {
@@ -39,7 +40,9 @@ const Index = () => {
           <HeroSection />
           <ServicesSection />
           <PortfolioSection />
+          <FAQSection/>
           <RegistrationForm />
+         
         </main>
         <Footer />
       </div>
