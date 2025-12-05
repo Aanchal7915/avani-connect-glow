@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -16,19 +17,22 @@ import { useToast } from "@/hooks/use-toast";
 import { Send, User, Mail, Phone, Briefcase } from "lucide-react";
 
 const services = [
-  "Web & App Development",
-  "SEO & Content Marketing",
-  "Social Media Marketing",
-  "AI Solutions",
-  "Podcast Production",
-  "Financial Consulting",
+  "Web Development",
+  "Social Media Management",
+  "AI Automation",
+  "Google Ads & Meta Ads",
 ];
 
 const formSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
   email: z.string().trim().email("Please enter a valid email address").max(255),
   phone: z.string().trim().min(10, "Please enter a valid phone number").max(15),
-  service: z.string().min(1, "Please select a service"),
+  // service is now an array of strings (multiple selection). Require at least one.
+  service: z
+    .array(z.string())
+    .min(1, "Please select at least one service"),
+  // optional business category / notes
+  businessCategory: z.string().max(1000).optional(),
   consent: z.boolean().refine((val) => val === true, "You must agree to continue"),
 });
 
@@ -44,15 +48,19 @@ const RegistrationForm = () => {
     name: "",
     email: "",
     phone: "",
-    service: "",
+    service: [], // array for multiple services
+    businessCategory: "",
     consent: false,
   });
 
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
+    {}
+  );
 
   const validateField = (field: keyof FormData, value: unknown) => {
     try {
       const fieldSchema = formSchema.shape[field];
+      // For zod optional fields, parse will accept undefined as valid
       fieldSchema.parse(value);
       setErrors((prev) => ({ ...prev, [field]: undefined }));
       return true;
@@ -72,8 +80,16 @@ const RegistrationForm = () => {
     setIsLoading(true);
     setApiError(null);
 
-    try{
-      const validatedData = formSchema.parse(formData);
+    try {
+      // Ensure formData has proper types for parsing
+      const validatedData = formSchema.parse({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service ?? [],
+        businessCategory: formData.businessCategory,
+        consent: formData.consent,
+      });
 
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/submit-form`,
@@ -126,6 +142,20 @@ const RegistrationForm = () => {
       }
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  // helper to toggle a service in the service array
+  const toggleService = (serviceName: string) => {
+    const current = (formData.service as string[]) ?? [];
+    if (current.includes(serviceName)) {
+      const next = current.filter((s) => s !== serviceName);
+      setFormData({ ...formData, service: next });
+      validateField("service", next);
+    } else {
+      const next = [...current, serviceName];
+      setFormData({ ...formData, service: next });
+      validateField("service", next);
     }
   };
 
@@ -246,31 +276,59 @@ const RegistrationForm = () => {
                     <p className="text-destructive text-sm -mt-3">{errors.phone}</p>
                   )}
 
-                  {/* Service */}
+                  {/* Services (MULTI-SELECT via checkboxes) */}
                   <div className="relative">
                     <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground z-10 pointer-events-none">
                       <Briefcase className="w-5 h-5" />
                     </div>
-                    <Select
-                      value={formData.service}
-                      onValueChange={(value) => {
-                        setFormData({ ...formData, service: value });
-                        validateField("service", value);
+
+                    <div className="pl-12">
+                      <p className="text-sm mb-2 text-muted-foreground">
+                        Select Service(s) of Interest *
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {services.map((svc) => {
+                          const checked = ((formData.service as string[]) ?? []).includes(
+                            svc
+                          );
+                          return (
+                            <label
+                              key={svc}
+                              className="flex items-center gap-3 cursor-pointer select-none"
+                            >
+                              <Checkbox
+                                checked={checked}
+                                onCheckedChange={() => toggleService(svc)}
+                              />
+                              <span className="text-sm">{svc}</span>
+                            </label>
+                          );
+                        })}
+                      </div>
+                      {errors.service && (
+                        <p className="text-destructive text-sm mt-1">{errors.service}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Business Category (optional notes) */}
+                  <div className="relative">
+                    <label className="text-sm text-muted-foreground mb-2 block">
+                      Business Category / Notes (optional)
+                    </label>
+                    <textarea
+                      placeholder="Describe your business category or add notes (optional)"
+                      value={formData.businessCategory}
+                      onChange={(e) => {
+                        setFormData({ ...formData, businessCategory: e.target.value });
+                        validateField("businessCategory", e.target.value);
                       }}
-                    >
-                      <SelectTrigger className="pl-12 bg-background/80 border-border/60 h-12">
-                        <SelectValue placeholder="Select Service of Interest *" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {services.map((service) => (
-                          <SelectItem key={service} value={service}>
-                            {service}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    {errors.service && (
-                      <p className="text-destructive text-sm mt-1">{errors.service}</p>
+                      className="w-full min-h-[110px] resize-none p-3 rounded-md bg-background/80 border border-border/60 focus:border-primary text-sm"
+                    />
+                    {errors.businessCategory && (
+                      <p className="text-destructive text-sm mt-1">
+                        {errors.businessCategory}
+                      </p>
                     )}
                   </div>
 
@@ -335,3 +393,4 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
+
