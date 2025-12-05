@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, ArrowUpRight } from "lucide-react";
-import Logo from "@/assets/avani-logo.jpg";
+// import Logo from "@/assets/avani-logo.jpg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -37,7 +37,7 @@ const Footer = () => {
           >
             <div className="flex items-center gap-4 mb-6">
               <img
-                src={Logo}
+                src="./avani-logo.jpg"
                 alt="Avani Enterprises Logo"
                 className="w-20 h-20 rounded-xl object-cover shadow-md border border-border/50"
               />
