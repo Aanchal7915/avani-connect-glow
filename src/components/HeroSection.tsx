@@ -59,12 +59,12 @@ export default function HeroSection() {
               <span className="text-xs sm:text-sm font-medium text-slate-600">Transforming Brands Since 2016</span>
             </div>
 
-            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900 mb-4">
+            <h1 className="font-display text-base sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900 mb-4">
               Build high-performing websites & accelerate digital
               <span className="block text-slate-900">growth with smart marketing</span>
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-xl mb-6">
+            <p className="text-xs sm:text-base md:text-lg text-slate-600 max-w-xl mb-6">
               We create high-converting websites and amplify them with strategic social media management, AI-driven automation, and high-ROI Google & Meta ad campaigns.
             </p>
 
