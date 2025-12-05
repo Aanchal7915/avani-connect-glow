@@ -39,9 +39,9 @@ const Index = () => {
           <HeroSection />
           <ServicesSection />
           <PortfolioSection />
-          {/* <RegistrationForm /> */}
+          <RegistrationForm />
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   );
