@@ -76,15 +76,21 @@ const ThankYou = () => {
                   className="w-20 h-20 object-contain rounded-md shadow-sm"
                 />
 
+                {/* ✅ UPDATED STYLING ONLY – same functionality */}
                 <a
                   href="https://wa.me/919311967319"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Get consultation on WhatsApp"
-                  className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-green-600/10 hover:bg-green-600/20 backdrop-blur-sm border border-green-600/40 text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow-md"
+                  className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full
+                             bg-primary text-primary-foreground
+                             shadow-lg shadow-primary/30
+                             hover:bg-primary/90 hover:shadow-primary/50
+                             backdrop-blur-sm border border-primary/60
+                             text-sm font-semibold tracking-wide transition-all"
                 >
-                  <span className="text-green-700">Get Consultation</span>
-                  <ArrowRight className="w-4 h-4 text-green-700" />
+                  <span>Get Consultation</span>
+                  <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </motion.div>
@@ -147,14 +153,15 @@ const ThankYou = () => {
               className="flex flex-col sm:flex-row justify-center gap-6 mb-8"
             >
               <a
-                href="mailto:contact@avanienterprises.com"
+                href="mailto:kp@avanienterprises.in"
                 className="flex items-center justify-center gap-2 text-muted-foreground hover:text-accent transition-colors"
               >
                 <Mail className="w-5 h-5" />
                 <span>kp@avanienterprises.in</span>
               </a>
+              {/* ✅ PHONE NUMBER UNIFIED TO +919311967319 */}
               <a
-                href="tel:+919253625099"
+                href="tel:+919311967319"
                 className="flex items-center justify-center gap-2 text-muted-foreground hover:text-accent transition-colors"
               >
                 <Phone className="w-5 h-5" />

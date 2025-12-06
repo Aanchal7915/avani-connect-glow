@@ -294,9 +294,7 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
-
-  // ⬇️ sirf yahan change: by default mobile me services band
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(true); // mobile ke liye services toggle state
 
   // input refs
   const nameRef = useRef<HTMLInputElement | null>(null);
@@ -536,129 +534,129 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                   )}
 
                   {/* Services */}
+   {/* Services */}
+<div className="relative w-full">
+  <div className="absolute left-3 top-4 text-muted-foreground z-10 pointer-events-none">
+    <Briefcase className="w-4 h-4 sm:w-5 sm:h-5" />
+  </div>
+
+  <div className="pl-10 sm:pl-12">
+    {/* Heading + Mobile Arrow */}
+    <button
+      type="button"
+      className="flex w-full items-center justify-between mb-2"
+      onClick={() => setIsServicesOpen((prev) => !prev)}
+    >
+      <p className="text-xs sm:text-sm text-muted-foreground text-left">
+        Select Service(s) of Interest *
+      </p>
+
+      {/* Arrow sirf mobile pe */}
+      <ChevronDown
+        className={`w-4 h-4 sm:hidden transition-transform ${
+          isServicesOpen ? "rotate-180" : ""
+        }`}
+      />
+    </button>
+
+    {/* Services List */}
+    <div
+      className={`grid grid-cols-1 sm:grid-cols-2 gap-2 ${
+        !isServicesOpen ? "hidden sm:grid" : ""
+      }`}
+    >
+      {services.map((svc) => {
+        const checked = ((formData.service as string[]) ?? []).includes(svc);
+
+        return (
+          <div
+            key={svc}
+            className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none rounded-md p-2.5 sm:p-3 hover:bg-background/60 w-full"
+            role="button"
+            tabIndex={0}
+            onClick={() => toggleService(svc)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggleService(svc);
+              }
+            }}
+          >
+            {/* Checkbox click parent ko trigger na kare */}
+            <div onClick={(e) => e.stopPropagation()}>
+              <Checkbox
+                checked={checked}
+                onCheckedChange={(val) => toggleService(svc, Boolean(val))}
+              />
+            </div>
+
+            <span className="text-xs sm:text-sm">{svc}</span>
+          </div>
+        );
+      })}
+    </div>
+
+    {errors.service && (
+      <p className="text-destructive text-xs sm:text-sm mt-1">
+        {errors.service}
+      </p>
+    )}
+  </div>
+</div>
+
+
+
+                  {/* Business Category */}
                   <div className="relative w-full">
-                    <div className="absolute left-3 top-4 text-muted-foreground z-10 pointer-events-none hidden sm:block">
-  <Briefcase className="w-4 h-4 sm:w-5 sm:h-5" />
-</div>
-
-
-                    <div className="pl-10 sm:pl-12">
-                      {/* Heading + Mobile Arrow */}
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between mb-2"
-                        onClick={() => setIsServicesOpen((prev) => !prev)}
-                      >
-                        <p className="text-xs sm:text-sm text-muted-foreground text-left">
-                          Select Service(s) of Interest *
-                        </p>
-
-                        {/* sirf mobile pe arrow */}
-                        <ChevronDown
-                          className={`w-4 h-4 sm:hidden transition-transform ${
-                            isServicesOpen ? "" : "rotate-180"
-                          }`}
-                        />
-                      </button>
-
-                      <div
-                        className={`grid grid-cols-1 sm:grid-cols-2 gap-2 ${
-                          !isServicesOpen ? "hidden sm:grid" : ""
-                        }`}
-                      >
-                        {services.map((svc) => {
-                          const checked = ((formData.service as string[]) ?? []).includes(svc);
-                          return (
-                            <div
-                              key={svc}
-                              className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none rounded-md p-2.5 sm:p-3 hover:bg-background/60 w-full"
-                              role="button"
-                              tabIndex={0}
-                              onClick={() => toggleService(svc)}
-                              onKeyDown={(e) => {
-                                if (e.key === "Enter" || e.key === " ") {
-                                  e.preventDefault();
-                                  toggleService(svc);
-                                }
-                              }}
-                            >
-                              <div
-                                onClick={(e) => e.stopPropagation()}
-                                className="flex items-center"
-                              >
-                                <Checkbox
-                                  checked={checked}
-                                  onCheckedChange={(val) => toggleService(svc, Boolean(val))}
-                                />
-                              </div>
-                              <span className="text-xs sm:text-sm">{svc}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      {errors.service && (
-                        <p className="text-destructive text-xs sm:text-sm mt-1">
-                          {errors.service}
-                        </p>
-                      )}
-                    </div>
+                    <label className="text-xs sm:text-sm text-muted-foreground mb-2 block">Business Category / Notes (optional)</label>
+                    <textarea
+                      ref={notesRef}
+                      placeholder="Describe your business or add any notes (optional)"
+                      value={formData.businessCategory}
+                      onChange={(e) => {
+                        setFormData({ ...formData, businessCategory: e.target.value });
+                        validateField("businessCategory", e.target.value);
+                      }}
+                      className="w-full min-h-[100px] sm:min-h-[120px] resize-none p-3 rounded-md bg-background/80 border border-border/60 focus:border-primary text-sm"
+                      aria-label="Business category or notes"
+                    />
+                    {errors.businessCategory && (
+                      <p className="text-destructive text-xs sm:text-sm mt-1">{errors.businessCategory}</p>
+                    )}
                   </div>
-
-                  {/* Business Category */}
-                  {/* Business Category */}
-{/* Business Category */}
-<div className="relative w-full mt-4 sm:mt-5">
-
-
-  <label className="text-xs sm:text-sm text-muted-foreground mb-2 block">
-    Business Category / Notes (optional)
-  </label>
-  <textarea
-    ref={notesRef}
-    placeholder="Describe your business or add any notes (optional)"
-    value={formData.businessCategory}
-    onChange={(e) => {
-      setFormData({ ...formData, businessCategory: e.target.value });
-      validateField("businessCategory", e.target.value);
-    }}
-    className="w-full min-h-[100px] sm:min-h-[120px] resize-none p-3 rounded-md bg-background/80 border border-border/60 focus:border-primary text-sm"
-    aria-label="Business category or notes"
-  />
-</div>
-
 
                   {/* Consent */}
-                  <div className="flex items-start gap-2 sm:gap-3 w-full">
-                    <Checkbox
-                      id={uniqueConsentId}
-                      checked={formData.consent}
-                      onCheckedChange={(checked) => {
-                        setFormData({ ...formData, consent: checked as boolean });
-                        validateField("consent", checked);
-                      }}
-                      className="mt-0.5 sm:mt-1 border-border data-[state=checked]:bg-accent data-[state=checked]:border-accent flex-shrink-0"
-                      aria-describedby="consent-desc"
-                    />
+                {/* Consent */}
+<div className="flex items-start gap-2 sm:gap-3 w-full">
+  <Checkbox
+    id={uniqueConsentId}
+    checked={formData.consent}
+    onCheckedChange={(checked) => {
+      setFormData({ ...formData, consent: checked as boolean });
+      validateField("consent", checked);
+    }}
+    className="mt-0.5 sm:mt-1 border-border data-[state=checked]:bg-accent data-[state=checked]:border-accent flex-shrink-0"
+    aria-describedby="consent-desc"
+  />
 
-                    <label
-                      htmlFor={uniqueConsentId}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const next = !formData.consent;
-                        setFormData({ ...formData, consent: next });
-                        validateField("consent", next);
-                      }}
-                      className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer"
-                    >
-                      I agree to receive information regarding my submitted application and updates from Avani Enterprises *
-                    </label>
-                  </div>
-                  {errors.consent && (
-                    <p className="text-destructive text-xs sm:text-sm -mt-3">
-                      {errors.consent}
-                    </p>
-                  )}
+  {/* YAHAN CHANGE HAI */}
+  <label
+    htmlFor={uniqueConsentId}
+    onClick={(e) => {
+      e.preventDefault();          // ⬅️ default label behaviour rok diya
+      const next = !formData.consent; // ⬅️ current se ulta state
+      setFormData({ ...formData, consent: next });
+      validateField("consent", next);
+    }}
+    className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer"
+  >
+    I agree to receive information regarding my submitted application and updates from Avani Enterprises *
+  </label>
+</div>
+{errors.consent && (
+  <p className="text-destructive text-xs sm:text-sm -mt-3">{errors.consent}</p>
+)}
+
 
                   {/* API ERROR */}
                   {apiError && (
