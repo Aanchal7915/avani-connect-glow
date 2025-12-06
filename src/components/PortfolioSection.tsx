@@ -5,42 +5,43 @@ import { Button } from "@/components/ui/button";
 
 const portfolioItems = [
   {
-    title: "E-Commerce Platform",
+    title: "School Management (ERP)",
     category: "Web Development",
     description:
-      "Scalable e-commerce platform with AI product recommendations, speedy checkout, and a conversion-focused UI.",
-    image: "./s4.jpg",
+      "A full-featured web application designed to modernize school operations and administration. It automates core tasks, including digital attendance tracking, seamless timetable generation, and secure online fee management. The system features dedicated, role-based access for Admin, Teacher, and Parent users. This setup allows for real-time data analytics to significantly boost institutional efficiency and stakeholder communication.",
+    image: "./h-sm.jpg",
     stats: { growth: "+180%", metric: "Sales Growth" },
   },
   {
-    title: "Balaji Shakewala",
+    title: "Shoe E-Commerce",
     category: "Web Development",
     description:
-      "Menu-first restaurant site featuring clear item listings, easy ordering flow, and appetizing visuals to drive sales.",
-    image: "./s1.jpg",
-    stats: { growth: "+250%", metric: "User Engagement" },
+      "Developed a feature-rich footwear e-commerce platform optimized for a modern shopping experience. Key functionalities include stunning 3D product previews and a smooth, secure cart-to-checkout process. The system also features smart inventory management and dedicated admin/delivery dashboards. It allows for advanced features like order rescheduling, refund tracking, and analytics-driven business insights.",
+    image: "./s-shoe.jpg",
+    stats: { growth: "+210%", metric: "Online Sales" },
   },
+  {
+    title: "HR Portal (ERP Software)",
+    category: "Web Development",
+    description:
+      "A comprehensive HR management system built to streamline and automate workforce operations. It includes robust features for attendance tracking, efficient leave management, and automated payroll processing. The platform provides employee performance analytics, secure document handling, and internal communication tools. All functions are governed by dedicated role-based access dashboards for a centralized, efficient HR workflow.",
+    image: "./s-hr.jpg",
+    stats: { growth: "+70%", metric: "Operational Efficiency" },
+  },
+ 
   {
     title: "Hospital Website",
     category: "Web Development",
-    description:
-      "Accessible hospital site with services overview, doctor profiles, appointment booking and patient resources.",
+    description:"Developed a comprehensive web platform for Holy Heart Hospital, specializing in advanced cardiac care services. The system integrates an AI Chatbot ('HealthBot') for instant support and efficient appointment booking for patients. Key features include secure online OPD and test booking, fully integrated with a secure payment gateway (Razorpay). Additionally, it provides a robust Admin analytics dashboard and patient portals for managing orders and accessing downloadable invoices.",
     image: "./s2.jpg",
     stats: { growth: "+320%", metric: "Lead Generation" },
   },
-  {
-    title: "Shoe Website",
-    category: "Web Development",
-    description:
-      "Responsive footwear catalogue with category filters, size guides, and a streamlined purchase experience.",
-    image: "./s3.jpg",
-    stats: { growth: "+95%", metric: "App Downloads" },
-  },
+  
   {
     title: "Hi-tech Property",
     category: "Web Development",
     description:
-      "Professional property management portal with listings, lead capture, and admin tools for efficient operations.",
+      "A professional, full-service property management portal designed to centralize real estate operations. The platform features an extensive listing module for showcasing available properties with high-quality media. It includes robust lead capture tools to streamline client inquiries and follow-ups effectively. Dedicated admin tools are provided to ensure efficient management of all listings, client data, and operational workflows.",
     image: "./s6.jpg",
     stats: { growth: "-60%", metric: "Support Tickets" },
   },
@@ -48,30 +49,10 @@ const portfolioItems = [
     title: "Insurance Website",
     category: "Web Development",
     description:
-      "Clear plan comparison, quick quote requests, and secure policy management designed for trust and clarity.",
+      "A specialized platform focused on simplifying the insurance selection and management process for users. It offers clear, intuitive plan comparison tools, making it easy for customers to choose the right coverage. The system facilitates quick and accurate quote requests directly through the site for instant service delivery. All processes are designed around secure policy management, building customer trust and providing clarity in every interaction.",
     image: "./s5.jpg",
     stats: { growth: "+500K", metric: "Monthly Leads" },
   },
-
-  {
-    title: "HR Portal (ERP Software)",
-    category: "Enterprise Web Application",
-    description:
-      "Comprehensive HR management system featuring attendance tracking, leave management, payroll processing, employee performance analytics, document handling, internal communication, and role-based access dashboards for streamlined workforce operations.",
-    image: "./s-hr.jpg",
-    stats: { growth: "+70%", metric: "Operational Efficiency" },
-  },
-  {
-    title: "Shoe E-Commerce",
-    category: "E-Commerce Platform",
-    description:
-      "Feature-rich footwear e-commerce platform with 3D product previews, smart inventory management, admin and delivery dashboards, order rescheduling, refund tracking, analytics-driven insights, and a smooth cart-to-checkout experience.",
-    image: "./s-shoe.jpg",
-    stats: { growth: "+210%", metric: "Online Sales" },
-  },
-  
-  
-  
 ];
 
 
@@ -122,7 +103,7 @@ const PortfolioSection = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full  transition-transform duration-500 group-hover:scale-110"
                 />
                 {/* <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" /> */}
                 
