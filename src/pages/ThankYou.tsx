@@ -1,12 +1,15 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CheckCircle, ArrowRight, Home, Mail, Phone } from "lucide-react";
+import { CheckCircle, ArrowRight, Mail, Phone } from "lucide-react";
 
 const ThankYou = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { name, service } = (location.state as { name?: string; service?: string }) || {};
+  const { name, service } =
+    (location.state as { name?: string; service?: string | string[] }) || {};
+
+  const formattedService = Array.isArray(service) ? service.join(", ") : service;
 
   useEffect(() => {
     if (!name) {
@@ -19,7 +22,6 @@ const ThankYou = () => {
 
   return (
     <main className="min-h-screen flex items-center justify-center relative overflow-hidden pb-3">
-      
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-slow delay-1000" />
@@ -59,51 +61,33 @@ const ThankYou = () => {
             >
               Thank You{name ? `, ${name}` : ""}!
             </motion.h1>
-            
+
             <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="mt-12"
-          >
-            {/* ✅ ADDED LOGO + WHATSAPP BUTTON */}
-            <div className="flex items-center justify-center gap-6 mb-4">
-              <img
-                src="./avani-logo.jpg"
-                alt="Avani Enterprises Logo"
-                className="w-20 h-20 object-contain rounded-md shadow-sm"
-              />
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mt-12"
+            >
+              {/* Logo + Get Consultation Button */}
+              <div className="flex items-center justify-center gap-6 mb-4">
+                <img
+                  src="./avani-logo.jpg"
+                  alt="Avani Enterprises Logo"
+                  className="w-20 h-20 object-contain rounded-md shadow-sm"
+                />
 
-              <a
-                href="https://wa.me/919253625099"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Chat on WhatsApp"
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-green-600/10 hover:bg-green-600/20 transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-green-600"
+                <a
+                  href="https://wa.me/919311967319"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Get consultation on WhatsApp"
+                  className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-green-600/10 hover:bg-green-600/20 backdrop-blur-sm border border-green-600/40 text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow-md"
                 >
-                  <path d="M21.05 2.95a11 11 0 0 0-15.56 15.56L2 22l3.49-1.49A11 11 0 1 0 21.05 2.95z" />
-                  <path d="M17.5 14.5c-.3-.15-1.73-.85-2-.95-.27-.1-.47-.15-.67.15s-.77.95-.95 1.15c-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.77-1.49-1.72-1.66-2.02-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.28.3-.47.1-.18.05-.35-.02-.5-.07-.15-.67-1.6-.92-2.2-.24-.57-.48-.5-.67-.51-.17-.01-.36-.01-.55-.01s-.5.07-.76.35c-.26.28-1 1-1 2.43s1.03 2.83 1.17 3.03c.14.2 2.02 3.08 4.9 4.31 2.88 1.24 3.3.87 3.89.82.59-.05 1.9-.77 2.17-1.52.27-.75.27-1.39.19-1.52-.08-.13-.27-.18-.57-.33z" />
-                </svg>
-
-                
-              </a>
-            </div>
-
-           
-          </motion.div>
-            
+                  <span className="text-green-700">Get Consultation</span>
+                  <ArrowRight className="w-4 h-4 text-green-700" />
+                </a>
+              </div>
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -111,16 +95,19 @@ const ThankYou = () => {
               transition={{ delay: 0.5 }}
               className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto"
             >
-              {service ? (
+              {formattedService ? (
                 <>
-                  Your inquiry for <span className="text-accent font-semibold">{service}</span> has been
-                  received. Our team will contact you within 24 hours to discuss how we can help
-                  transform your business.
+                  Your inquiry for{" "}
+                  <span className="text-accent font-semibold">
+                    {formattedService}
+                  </span>{" "}
+                  has been received. Our team will contact you within 24 hours
+                  to discuss how we can help transform your business.
                 </>
               ) : (
                 <>
-                  Your submission has been received successfully. Our team will reach out to you
-                  shortly with the next steps.
+                  Your submission has been received successfully. Our team will
+                  reach out to you shortly with the next steps.
                 </>
               )}
             </motion.p>
@@ -144,7 +131,9 @@ const ThankYou = () => {
                     <div className="w-10 h-10 mx-auto rounded-full bg-accent/20 flex items-center justify-center mb-2">
                       <span className="text-accent font-bold">{item.step}</span>
                     </div>
-                    <h4 className="font-semibold text-foreground text-sm">{item.title}</h4>
+                    <h4 className="font-semibold text-foreground text-sm">
+                      {item.title}
+                    </h4>
                     <p className="text-xs text-muted-foreground">{item.desc}</p>
                   </div>
                 ))}
@@ -187,7 +176,6 @@ const ThankYou = () => {
             transition={{ delay: 1 }}
             className="mt-12"
           >
-           
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Avani Enterprises. All rights reserved.
             </p>

@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
-import { Send, User, Mail, Phone, Briefcase } from "lucide-react";
+import { Send, User, Mail, Phone, Briefcase, ChevronDown } from "lucide-react";
 
 const services = [
   "Web Development",
@@ -25,7 +25,7 @@ const services = [
 
 // Country codes array - सभी major countries के codes
 const countryCodes = [
-   { value: "+93", label: "+93 (Afghanistan)" },
+  { value: "+93", label: "+93 (Afghanistan)" },
   { value: "+355", label: "+355 (Albania)" },
   { value: "+213", label: "+213 (Algeria)" },
   { value: "+376", label: "+376 (Andorra)" },
@@ -275,7 +275,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 interface RegistrationFormProps {
-  uniqueConsentId: string; 
+  uniqueConsentId: string;
 }
 
 export default function RegistrationForm({ uniqueConsentId }: RegistrationFormProps) {
@@ -294,6 +294,7 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [isServicesOpen, setIsServicesOpen] = useState(true); // mobile ke liye services toggle state
 
   // input refs
   const nameRef = useRef<HTMLInputElement | null>(null);
@@ -539,8 +540,28 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                     </div>
 
                     <div className="pl-10 sm:pl-12">
-                      <p className="text-xs sm:text-sm mb-2 text-muted-foreground">Select Service(s) of Interest *</p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {/* Heading + Mobile Arrow */}
+                      <button
+                        type="button"
+                        className="flex w-full items-center justify-between mb-2"
+                        onClick={() => setIsServicesOpen((prev) => !prev)}
+                      >
+                        <p className="text-xs sm:text-sm text-muted-foreground text-left">
+                          Select Service(s) of Interest *
+                        </p>
+                        {/* sirf mobile pe arrow dikhega */}
+                        <ChevronDown
+                          className={`w-4 h-4 sm:hidden transition-transform ${
+                            isServicesOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      <div
+                        className={`grid grid-cols-1 sm:grid-cols-2 gap-2 ${
+                          !isServicesOpen ? "hidden sm:grid" : ""
+                        }`}
+                      >
                         {services.map((svc) => {
                           const checked = ((formData.service as string[]) ?? []).includes(svc);
                           return (
@@ -549,6 +570,7 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                               className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none rounded-md p-2.5 sm:p-3 hover:bg-background/60 w-full"
                               role="button"
                               tabIndex={0}
+                              onClick={() => toggleService(svc)} // card pe click se select / unselect
                               onKeyDown={(e) => {
                                 if (e.key === "Enter" || e.key === " ") {
                                   e.preventDefault();
@@ -556,10 +578,16 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                                 }
                               }}
                             >
-                              <Checkbox
-                                checked={checked}
-                                onCheckedChange={(val) => toggleService(svc, Boolean(val))}
-                              />
+                              {/* Checkbox click parent ke onClick ko trigger na kare */}
+                              <div
+                                onClick={(e) => e.stopPropagation()}
+                                className="flex items-center"
+                              >
+                                <Checkbox
+                                  checked={checked}
+                                  onCheckedChange={(val) => toggleService(svc, Boolean(val))}
+                                />
+                              </div>
                               <span className="text-xs sm:text-sm">{svc}</span>
                             </div>
                           );
@@ -591,24 +619,37 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                   </div>
 
                   {/* Consent */}
-                  <div className="flex items-start gap-2 sm:gap-3 w-full">
-                    <Checkbox
-                      id={uniqueConsentId}
-                      checked={formData.consent}
-                      onCheckedChange={(checked) => {
-                        setFormData({ ...formData, consent: checked as boolean });
-                        validateField("consent", checked);
-                      }}
-                      className="mt-0.5 sm:mt-1 border-border data-[state=checked]:bg-accent data-[state=checked]:border-accent flex-shrink-0"
-                      aria-describedby="consent-desc"
-                    />
-                    <label htmlFor={uniqueConsentId}  className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer">
-                      I agree to receive information regarding my submitted application and updates from Avani Enterprises *
-                    </label>
-                  </div>
-                  {errors.consent && (
-                    <p className="text-destructive text-xs sm:text-sm -mt-3">{errors.consent}</p>
-                  )}
+                {/* Consent */}
+<div className="flex items-start gap-2 sm:gap-3 w-full">
+  <Checkbox
+    id={uniqueConsentId}
+    checked={formData.consent}
+    onCheckedChange={(checked) => {
+      setFormData({ ...formData, consent: checked as boolean });
+      validateField("consent", checked);
+    }}
+    className="mt-0.5 sm:mt-1 border-border data-[state=checked]:bg-accent data-[state=checked]:border-accent flex-shrink-0"
+    aria-describedby="consent-desc"
+  />
+
+  {/* YAHAN CHANGE HAI */}
+  <label
+    htmlFor={uniqueConsentId}
+    onClick={(e) => {
+      e.preventDefault();          // ⬅️ default label behaviour rok diya
+      const next = !formData.consent; // ⬅️ current se ulta state
+      setFormData({ ...formData, consent: next });
+      validateField("consent", next);
+    }}
+    className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer"
+  >
+    I agree to receive information regarding my submitted application and updates from Avani Enterprises *
+  </label>
+</div>
+{errors.consent && (
+  <p className="text-destructive text-xs sm:text-sm -mt-3">{errors.consent}</p>
+)}
+
 
                   {/* API ERROR */}
                   {apiError && (
