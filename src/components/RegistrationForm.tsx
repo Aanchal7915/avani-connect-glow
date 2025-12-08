@@ -1,5 +1,5 @@
 // src/components/RegistrationForm.tsx
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -12,11 +12,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Checkbox } from "@/components/ui/checkbox"; // unused but kept as-is
 import { useToast } from "@/hooks/use-toast";
-// import { Send, User, Mail, Phone, Briefcase, ChevronDown } from "lucide-react";
 import { Send, User, Mail, Phone, Briefcase, ChevronDown, FileText } from "lucide-react";
-
 
 const services = [
   "Web Development",
@@ -276,6 +274,8 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
+const fieldSchemas = formSchema.shape;
+
 interface RegistrationFormProps {
   uniqueConsentId: string;
 }
@@ -297,12 +297,9 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
-  // ⬇️ sirf yahan change: by default mobile me services band
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isBusinessOpen, setIsBusinessOpen] = useState(false); // collapsed by default
+  const [isBusinessOpen, setIsBusinessOpen] = useState(false);
 
-
-  // input refs
   const nameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const phoneRef = useRef<HTMLInputElement | null>(null);
@@ -310,7 +307,7 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
 
   const validateField = (field: keyof FormData, value: unknown) => {
     try {
-      const fieldSchema = (formSchema as any).shape[field];
+      const fieldSchema = fieldSchemas[field] as z.ZodTypeAny;
       fieldSchema.parse(value);
       setErrors((prev) => ({ ...prev, [field]: undefined }));
       return true;
@@ -396,12 +393,16 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
 
     let next: string[];
     if (typeof force === "boolean") {
-      next = force ? (includes ? current : [...current, serviceName]) : current.filter((s) => s !== serviceName);
+      next = force
+        ? includes
+          ? current
+          : [...current, serviceName]
+        : current.filter((s) => s !== serviceName);
     } else {
       next = includes ? current.filter((s) => s !== serviceName) : [...current, serviceName];
     }
 
-    setFormData({ ...formData, service: next });
+    setFormData((prev) => ({ ...prev, service: next }));
     validateField("service", next);
   };
 
@@ -447,12 +448,9 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                 </motion.p>
               </div>
 
-              {/* Form Container - NO SCROLL, just normal flow */}
+              {/* Form Container */}
               <div className="bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8">
-                <form
-                  onSubmit={handleSubmit}
-                  className="space-y-3 sm:space-y-4 md:space-y-5"
-                >
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-5">
                   {/* Name */}
                   <div className="relative w-full">
                     <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
@@ -463,8 +461,9 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                       placeholder="Enter name"
                       value={formData.name}
                       onChange={(e) => {
-                        setFormData({ ...formData, name: e.target.value });
-                        validateField("name", e.target.value);
+                        const val = e.target.value;
+                        setFormData((prev) => ({ ...prev, name: val }));
+                        validateField("name", val);
                       }}
                       className="pl-10 sm:pl-12 bg-background/80 border-border/60 focus:border-primary py-2.5 sm:py-3 text-sm sm:text-base w-full"
                       aria-label="Full name"
@@ -487,8 +486,9 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                       placeholder="Enter email address"
                       value={formData.email}
                       onChange={(e) => {
-                        setFormData({ ...formData, email: e.target.value });
-                        validateField("email", e.target.value);
+                        const val = e.target.value;
+                        setFormData((prev) => ({ ...prev, email: val }));
+                        validateField("email", val);
                       }}
                       className="pl-10 sm:pl-12 bg-background/80 border-border/60 focus:border-primary py-2.5 sm:py-3 text-sm sm:text-base w-full"
                       aria-label="Email address"
@@ -508,7 +508,7 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                         </SelectTrigger>
                         <SelectContent>
                           {countryCodes.map((code) => (
-                            <SelectItem key={code.value} value={code.value}>
+                            <SelectItem key={code.value + code.label} value={code.value}>
                               {code.label}
                             </SelectItem>
                           ))}
@@ -526,8 +526,9 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                         placeholder="Mobile no."
                         value={formData.phone}
                         onChange={(e) => {
-                          setFormData({ ...formData, phone: e.target.value });
-                          validateField("phone", e.target.value);
+                          const val = e.target.value;
+                          setFormData((prev) => ({ ...prev, phone: val }));
+                          validateField("phone", val);
                         }}
                         className="pl-10 sm:pl-12 bg-background/80 border-border/60 focus:border-primary py-2.5 sm:py-3 text-sm sm:text-base w-full"
                         aria-label="Phone number"
@@ -540,139 +541,126 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                   )}
 
                   {/* Services */}
- {/* Services */}
-<div className="w-full">
-  {/* Input-style header */}
-  <button
-    type="button"
-    onClick={() => setIsServicesOpen((prev) => !prev)}
-    className="relative flex w-full items-center justify-between rounded-md bg-background/80 border border-border/60 focus:border-primary px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-background/80"
-  >
-    <div className="flex items-center gap-2 sm:gap-3">
-      <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
-      <span className="text-sm sm:text-base text-muted-foreground">
-        Select Service(s) of Interest *
-      </span>
-    </div>
+                  <div className="w-full">
+                    <button
+                      type="button"
+                      onClick={() => setIsServicesOpen((prev) => !prev)}
+                      className="relative flex w-full items-center justify-between rounded-md bg-background/80 border border-border/60 focus:border-primary px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-background/80"
+                    >
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
+                        <span className="text-sm sm:text-base text-muted-foreground">
+                          Select Service(s) of Interest *
+                        </span>
+                      </div>
 
-    <ChevronDown
-      className={`w-4 h-4 text-muted-foreground transition-transform ${
-        isServicesOpen ? "rotate-180" : ""
-      }`}
-    />
-  </button>
+                      <ChevronDown
+                        className={`w-4 h-4 text-muted-foreground transition-transform ${
+                          isServicesOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
 
-  {/* Services list */}
-  <div
-    className={`mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 ${
-      isServicesOpen ? "" : "hidden"
-    }`}
-  >
-    {services.map((svc) => {
-      const checked = ((formData.service as string[]) ?? []).includes(svc);
-      return (
-        <div
-          key={svc}
-          className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none rounded-md p-2.5 sm:p-3 hover:bg-background/60 w-full"
-          onClick={() => toggleService(svc)}
-        >
-          <Checkbox
-            checked={checked}
-            onCheckedChange={(val) => toggleService(svc, Boolean(val))}
-          />
-          <span className="text-sm sm:text-base">{svc}</span>
-        </div>
-      );
-    })}
-  </div>
+                    {isServicesOpen && (
+                      <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {services.map((svc) => {
+                          const checked = ((formData.service as string[]) ?? []).includes(svc);
 
-  {errors.service && (
-    <p className="text-destructive text-xs sm:text-sm mt-1">
-      {errors.service}
-    </p>
-  )}
-</div>
+                          return (
+                            <label
+                              key={svc}
+                              className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none rounded-md p-2.5 sm:p-3 hover:bg-background/60 w-full"
+                            >
+                              <input
+                                type="checkbox"
+                                className="h-4 w-4 rounded border border-border/60"
+                                checked={checked}
+                                onChange={() => toggleService(svc)}
+                              />
+                              <span className="text-sm sm:text-base">{svc}</span>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    )}
 
-
-
-
+                    {errors.service && (
+                      <p className="text-destructive text-xs sm:text-sm mt-1">
+                        {errors.service}
+                      </p>
+                    )}
+                  </div>
 
                   {/* Business Category */}
-{/* Business Category */}
-{/* Business Category */}
-<div className="relative w-full mt-4 sm:mt-5">
-  {/* Header – Enter name jaisa look + icon + arrow */}
-  <button
-    type="button"
-    onClick={() => setIsBusinessOpen((prev) => !prev)}
-    className="flex w-full items-center justify-between rounded-md bg-background/80 border border-border/60 px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-background/80"
-  >
-    <div className="flex items-center gap-2 sm:gap-3">
-      <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
-      <span className="text-sm md:text-base text-muted-foreground">
-        Business Category / Notes (optional)
-      </span>
-    </div>
+                  <div className="relative w-full mt-4 sm:mt-5">
+                    <button
+                      type="button"
+                      onClick={() => setIsBusinessOpen((prev) => !prev)}
+                      className="flex w-full items-center justify-between rounded-md bg-background/80 border border-border/60 px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-background/80"
+                    >
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
+                        <span className="text-sm md:text-base text-muted-foreground">
+                          Business Category / Notes (optional)
+                        </span>
+                      </div>
 
-    <ChevronDown
-      className={`w-4 h-4 text-muted-foreground transition-transform ${
-        isBusinessOpen ? "rotate-180" : ""
-      }`}
-    />
-  </button>
+                      <ChevronDown
+                        className={`w-4 h-4 text-muted-foreground transition-transform ${
+                          isBusinessOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
 
-  {/* Textarea – click par show/hide (mobile + desktop) */}
-  {isBusinessOpen && (
-    <div className="mt-2">
-      <textarea
-        ref={notesRef}
-        placeholder="Describe your business or add any notes (optional)"
-        value={formData.businessCategory}
-        onChange={(e) => {
-          setFormData({ ...formData, businessCategory: e.target.value });
-          validateField("businessCategory", e.target.value);
-        }}
-        className="w-full min-h-[100px] sm:min-h-[120px] resize-none p-3 rounded-md bg-background/80 border border-border/60 focus:border-primary text-sm md:text-base"
-        aria-label="Business category or notes"
-      />
-    </div>
-  )}
-</div>
-
-
-
+                    {isBusinessOpen && (
+                      <div className="mt-2">
+                        <textarea
+                          ref={notesRef}
+                          placeholder="Describe your business or add any notes (optional)"
+                          value={formData.businessCategory}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            setFormData((prev) => ({ ...prev, businessCategory: val }));
+                            validateField("businessCategory", val);
+                          }}
+                          className="w-full min-h-[100px] sm:min-h-[120px] resize-none p-3 rounded-md bg-background/80 border border-border/60 focus:border-primary text-sm md:text-base"
+                          aria-label="Business category or notes"
+                        />
+                      </div>
+                    )}
+                  </div>
 
                   {/* Consent */}
-                  <div className="flex items-start gap-2 sm:gap-3 w-full">
-                    <Checkbox
-                      id={uniqueConsentId}
-                      checked={formData.consent}
-                      onCheckedChange={(checked) => {
-                        setFormData({ ...formData, consent: checked as boolean });
-                        validateField("consent", checked);
-                      }}
-                      className="mt-0.5 sm:mt-1 border-border data-[state=checked]:bg-accent data-[state=checked]:border-accent flex-shrink-0"
-                      aria-describedby="consent-desc"
-                    />
+              {/* Consent */}
+<label
+  htmlFor={uniqueConsentId}
+  className="flex items-start gap-2 sm:gap-3 w-full cursor-pointer"
+  onClick={() => {
+    const boolVal = !Boolean(formData.consent);
+    setFormData((prev) => ({ ...prev, consent: boolVal }));
+    validateField("consent", boolVal);
+  }}
+>
+  <input
+    id={uniqueConsentId}
+    type="checkbox"
+    className="mt-0.5 sm:mt-1 h-4 w-4 rounded border border-border/60 flex-shrink-0"
+    checked={Boolean(formData.consent)}
+    readOnly
+    aria-describedby="consent-desc"
+  />
 
-                    <label
-                      htmlFor={uniqueConsentId}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const next = !formData.consent;
-                        setFormData({ ...formData, consent: next });
-                        validateField("consent", next);
-                      }}
-                      className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer"
-                    >
-                      I agree to receive information regarding my submitted application and updates from Avani Enterprises *
-                    </label>
-                  </div>
-                  {errors.consent && (
-                    <p className="text-destructive text-xs sm:text-sm -mt-3">
-                      {errors.consent}
-                    </p>
-                  )}
+  <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+    I agree to receive information regarding my submitted application and updates
+    from Avani Enterprises *
+  </span>
+</label>
+{errors.consent && (
+  <p className="text-destructive text-xs sm:text-sm -mt-3">
+    {errors.consent}
+  </p>
+)}
+
 
                   {/* API ERROR */}
                   {apiError && (
