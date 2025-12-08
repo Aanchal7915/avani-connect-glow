@@ -14,7 +14,9 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
-import { Send, User, Mail, Phone, Briefcase, ChevronDown } from "lucide-react";
+// import { Send, User, Mail, Phone, Briefcase, ChevronDown } from "lucide-react";
+import { Send, User, Mail, Phone, Briefcase, ChevronDown, FileText } from "lucide-react";
+
 
 const services = [
   "Web Development",
@@ -297,6 +299,8 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
 
   // ⬇️ sirf yahan change: by default mobile me services band
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isBusinessOpen, setIsBusinessOpen] = useState(false); // collapsed by default
+
 
   // input refs
   const nameRef = useRef<HTMLInputElement | null>(null);
@@ -536,96 +540,106 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                   )}
 
                   {/* Services */}
-                  <div className="relative w-full">
-                    <div className="absolute left-3 top-4 text-muted-foreground z-10 pointer-events-none hidden sm:block">
-  <Briefcase className="w-4 h-4 sm:w-5 sm:h-5" />
+ {/* Services */}
+<div className="w-full">
+  {/* Input-style header */}
+  <button
+    type="button"
+    onClick={() => setIsServicesOpen((prev) => !prev)}
+    className="relative flex w-full items-center justify-between rounded-md bg-background/80 border border-border/60 focus:border-primary px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-background/80"
+  >
+    <div className="flex items-center gap-2 sm:gap-3">
+      <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
+      <span className="text-sm sm:text-base text-muted-foreground">
+        Select Service(s) of Interest *
+      </span>
+    </div>
+
+    <ChevronDown
+      className={`w-4 h-4 text-muted-foreground transition-transform ${
+        isServicesOpen ? "rotate-180" : ""
+      }`}
+    />
+  </button>
+
+  {/* Services list */}
+  <div
+    className={`mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 ${
+      isServicesOpen ? "" : "hidden"
+    }`}
+  >
+    {services.map((svc) => {
+      const checked = ((formData.service as string[]) ?? []).includes(svc);
+      return (
+        <div
+          key={svc}
+          className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none rounded-md p-2.5 sm:p-3 hover:bg-background/60 w-full"
+          onClick={() => toggleService(svc)}
+        >
+          <Checkbox
+            checked={checked}
+            onCheckedChange={(val) => toggleService(svc, Boolean(val))}
+          />
+          <span className="text-sm sm:text-base">{svc}</span>
+        </div>
+      );
+    })}
+  </div>
+
+  {errors.service && (
+    <p className="text-destructive text-xs sm:text-sm mt-1">
+      {errors.service}
+    </p>
+  )}
 </div>
 
 
-                    <div className="pl-10 sm:pl-12">
-                      {/* Heading + Mobile Arrow */}
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between mb-2"
-                        onClick={() => setIsServicesOpen((prev) => !prev)}
-                      >
-                        <p className="text-xs sm:text-sm text-muted-foreground text-left">
-                          Select Service(s) of Interest *
-                        </p>
 
-                        {/* sirf mobile pe arrow */}
-                        <ChevronDown
-                          className={`w-4 h-4 sm:hidden transition-transform ${
-                            isServicesOpen ? "" : "rotate-180"
-                          }`}
-                        />
-                      </button>
 
-                      <div
-                        className={`grid grid-cols-1 sm:grid-cols-2 gap-2 ${
-                          !isServicesOpen ? "hidden sm:grid" : ""
-                        }`}
-                      >
-                        {services.map((svc) => {
-                          const checked = ((formData.service as string[]) ?? []).includes(svc);
-                          return (
-                            <div
-                              key={svc}
-                              className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none rounded-md p-2.5 sm:p-3 hover:bg-background/60 w-full"
-                              role="button"
-                              tabIndex={0}
-                              onClick={() => toggleService(svc)}
-                              onKeyDown={(e) => {
-                                if (e.key === "Enter" || e.key === " ") {
-                                  e.preventDefault();
-                                  toggleService(svc);
-                                }
-                              }}
-                            >
-                              <div
-                                onClick={(e) => e.stopPropagation()}
-                                className="flex items-center"
-                              >
-                                <Checkbox
-                                  checked={checked}
-                                  onCheckedChange={(val) => toggleService(svc, Boolean(val))}
-                                />
-                              </div>
-                              <span className="text-xs sm:text-sm">{svc}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
 
-                      {errors.service && (
-                        <p className="text-destructive text-xs sm:text-sm mt-1">
-                          {errors.service}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Business Category */}
                   {/* Business Category */}
 {/* Business Category */}
+{/* Business Category */}
 <div className="relative w-full mt-4 sm:mt-5">
+  {/* Header – Enter name jaisa look + icon + arrow */}
+  <button
+    type="button"
+    onClick={() => setIsBusinessOpen((prev) => !prev)}
+    className="flex w-full items-center justify-between rounded-md bg-background/80 border border-border/60 px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-background/80"
+  >
+    <div className="flex items-center gap-2 sm:gap-3">
+      <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
+      <span className="text-sm md:text-base text-muted-foreground">
+        Business Category / Notes (optional)
+      </span>
+    </div>
 
+    <ChevronDown
+      className={`w-4 h-4 text-muted-foreground transition-transform ${
+        isBusinessOpen ? "rotate-180" : ""
+      }`}
+    />
+  </button>
 
-  <label className="text-xs sm:text-sm text-muted-foreground mb-2 block">
-    Business Category / Notes (optional)
-  </label>
-  <textarea
-    ref={notesRef}
-    placeholder="Describe your business or add any notes (optional)"
-    value={formData.businessCategory}
-    onChange={(e) => {
-      setFormData({ ...formData, businessCategory: e.target.value });
-      validateField("businessCategory", e.target.value);
-    }}
-    className="w-full min-h-[100px] sm:min-h-[120px] resize-none p-3 rounded-md bg-background/80 border border-border/60 focus:border-primary text-sm"
-    aria-label="Business category or notes"
-  />
+  {/* Textarea – click par show/hide (mobile + desktop) */}
+  {isBusinessOpen && (
+    <div className="mt-2">
+      <textarea
+        ref={notesRef}
+        placeholder="Describe your business or add any notes (optional)"
+        value={formData.businessCategory}
+        onChange={(e) => {
+          setFormData({ ...formData, businessCategory: e.target.value });
+          validateField("businessCategory", e.target.value);
+        }}
+        className="w-full min-h-[100px] sm:min-h-[120px] resize-none p-3 rounded-md bg-background/80 border border-border/60 focus:border-primary text-sm md:text-base"
+        aria-label="Business category or notes"
+      />
+    </div>
+  )}
 </div>
+
+
 
 
                   {/* Consent */}
