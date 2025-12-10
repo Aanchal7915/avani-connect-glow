@@ -160,14 +160,7 @@ const Footer = () => {
               © {currentYear} Avani Enterprises. All rights reserved.
             </p>
 
-            <div className="flex gap-6 text-sm">
-              <a href="#" className="text-muted-foreground hover:text-accent transition">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-accent transition">
-                Terms of Service
-              </a>
-            </div>
+           
           </div>
         </div>
       </div>
