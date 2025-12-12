@@ -1,6 +1,7 @@
+import "../App.css";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import PageHeader from "@/components/PageHeader";
+// import PageHeader from "@/components/PageHeader";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";
@@ -53,8 +54,8 @@ const Index = () => {
         <link rel="canonical" href="https://avani-enterprises.vercel.app" />
       </Helmet>
 
-      <div className="min-h-screen">
-        <PageHeader />
+      <div className="min-h-screen index-page-wrapper">
+        {/* <PageHeader /> */}
         <main className="">
           <HeroSection />
           <ServicesSection />
@@ -63,7 +64,6 @@ const Index = () => {
           <RegistrationForm uniqueConsentId={"registrationForm2"}/>
           <FAQSection/>
         </main>
-        <Footer />
       </div>
     </>
   );
