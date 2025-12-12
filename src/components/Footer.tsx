@@ -11,16 +11,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-6">
-              <img 
-                src="/logo0.jpg" 
-                alt="Avani Enterprises" 
-                className="h-[70px] w-[70px] rounded-full"
+            <div className="flex items-center space-x-1 mb-6">
+              <img
+                src="/logo0.jpg"
+                alt="Avani Enterprises"
+                className="h-[70px] w-[70px] rounded-md"
               />
-              {/* <span className="text-xl font-bold">Avani Enterprises</span> */}
+              <span className="ml-2 text-xl font-bold text-white">Avani Enterprises</span>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              We transform brands through strategic digital marketing, innovative technology solutions, 
+              We transform brands through strategic digital marketing, innovative technology solutions,
               and data-driven growth strategies that deliver measurable ROI.
             </p>
             <div className="flex space-x-4">
@@ -100,17 +100,17 @@ const Footer = () => {
                   Contact
                 </Link>
               </li>
-               <li>
-    <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
-      Privacy Policy
-    </Link>
-  </li>
-  <li>
-    <Link to="/terms-and-conditions" className="text-gray-300 hover:text-white transition-colors">
-      Terms & Conditions
-    </Link>
-  </li>
-  {/* <li>
+              <li>
+                <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms-and-conditions" className="text-gray-300 hover:text-white transition-colors">
+                  Terms & Conditions
+                </Link>
+              </li>
+              {/* <li>
     <a 
       href="https://avani-enterprises-admin-frontend.vercel.app/" 
       target="_blank" 
@@ -174,5 +174,5 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;
 

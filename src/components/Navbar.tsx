@@ -26,19 +26,18 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-    } bg-white`} style={{ border: 'none' }}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      } bg-white`} style={{ border: 'none' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-1">
-            <img 
-              src="/logo0.jpg" 
-              alt="Avani Enterprises" 
-              className=" h-[70px] w-[70px] rounded-full"
+            <img
+              src="/logo0.jpg"
+              alt="Avani Enterprises"
+              className="h-[70px] w-[70px] rounded-md"
             />
-            {/* <span className="text-xl font-bold text-gray-900">Avani Enterprises</span> */}
+            <span className="ml-2 text-xl font-bold text-gray-900">Avani Enterprises</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -47,11 +46,10 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-sm font-medium transition-all duration-200 ${
-                  location.pathname === link.path
+                className={`text-sm font-medium transition-all duration-200 ${location.pathname === link.path
                     ? 'text-blue-600'
                     : 'text-gray-700 hover:text-blue-600'
-                }`}
+                  }`}
               >
                 {link.name}
               </Link>
@@ -94,11 +92,10 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
-                    location.pathname === link.path
+                  className={`block px-3 py-2 rounded-md text-base font-medium ${location.pathname === link.path
                       ? 'text-blue-600 bg-blue-50'
                       : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                  }`}
+                    }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
