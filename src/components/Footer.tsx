@@ -33,7 +33,7 @@ const Footer = () => {
               <a href="https://twitter.com/avanienterprises" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="https://www.facebook.com/avanienterprises" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/share/1DKFWQiBe4/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook size={20} />
               </a>
             </div>
@@ -90,11 +90,11 @@ const Footer = () => {
                   Case Studies
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/blog" className="text-gray-300 hover:text-white transition-colors">
                   Blog
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
                   Contact

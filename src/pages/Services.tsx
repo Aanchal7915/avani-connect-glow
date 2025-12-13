@@ -33,7 +33,7 @@ const Services = () => {
         "API integration",
         "Performance optimization"
       ],
-      price: "₹50,000 - ₹5,00,000",
+      price: "₹15,000 - ₹5,00,000",
       duration: "4-12 weeks",
       color: "from-blue-500 to-blue-600"
     },
@@ -51,7 +51,7 @@ const Services = () => {
         "Local SEO optimization",
         "Performance tracking"
       ],
-      price: "₹25,000 - ₹2,00,000",
+      price: "₹10,000 - ₹2,00,000",
       duration: "3-6 months",
       color: "from-green-500 to-green-600"
     },
@@ -87,7 +87,7 @@ const Services = () => {
         "Machine learning models",
         "AI-powered tools"
       ],
-      price: "₹1,00,000 - ₹10,00,000",
+      price: "₹30,000 - ₹10,00,000",
       duration: "6-16 weeks",
       color: "from-orange-500 to-orange-600"
     },
@@ -105,7 +105,7 @@ const Services = () => {
         "Distribution & promotion",
         "Analytics & optimization"
       ],
-      price: "₹30,000 - ₹3,00,000",
+      price: "₹20,000 - ₹3,00,000",
       duration: "Ongoing",
       color: "from-red-500 to-red-600"
     },
@@ -123,7 +123,7 @@ const Services = () => {
         "Funding guidance",
         "Performance analysis"
       ],
-      price: "₹50,000 - ₹5,00,000",
+      price: "₹10,000 - ₹5,00,000",
       duration: "Ongoing",
       color: "from-indigo-500 to-indigo-600"
     }

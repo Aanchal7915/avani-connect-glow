@@ -88,37 +88,43 @@ const Home = () => {
       icon: <Globe className="w-8 h-8" />,
       title: "Web & App Development",
       description: "Custom websites and mobile apps that drive conversions and user engagement.",
-      color: "from-blue-500 to-blue-600"
+      color: "from-blue-500 to-blue-600",
+      bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
     },
     {
       icon: <Search className="w-8 h-8" />,
       title: "SEO & Content Marketing",
       description: "Data-driven SEO strategies and compelling content that ranks and converts.",
-      color: "from-green-500 to-green-600"
+      color: "from-green-500 to-green-600",
+      bgImage: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&h=400&fit=crop"
     },
     {
       icon: <Share2 className="w-8 h-8" />,
       title: "Social Media Marketing",
       description: "Strategic SMM campaigns that build brand awareness and drive engagement.",
-      color: "from-purple-500 to-purple-600"
+      color: "from-purple-500 to-purple-600",
+      bgImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop"
     },
     {
       icon: <Brain className="w-8 h-8" />,
       title: "AI Solutions",
       description: "Cutting-edge AI integration for automation and intelligent decision-making.",
-      color: "from-orange-500 to-orange-600"
+      color: "from-orange-500 to-orange-600",
+      bgImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop"
     },
     {
       icon: <Mic className="w-8 h-8" />,
       title: "Podcast Production",
       description: "Professional podcast creation and distribution to amplify your brand voice.",
-      color: "from-red-500 to-red-600"
+      color: "from-red-500 to-red-600",
+      bgImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=400&fit=crop"
     },
     {
       icon: <Calculator className="w-8 h-8" />,
       title: "Financial Consulting",
       description: "Strategic financial planning and investment guidance for business growth.",
-      color: "from-indigo-500 to-indigo-600"
+      color: "from-indigo-500 to-indigo-600",
+      bgImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop"
     }
   ];
 
@@ -337,26 +343,39 @@ const Home = () => {
               </p>
             </div>
           </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <AnimatedSection
                 key={index}
                 animation="fadeInUp"
                 delay={0.1 * (index + 1)}
               >
-                <div className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    {service.icon}
+                <div
+                  className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full"
+                >
+                  {/* Background Image */}
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                    style={{ backgroundImage: `url(${service.bgImage})` }}
+                  />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 group-hover:from-black/95 group-hover:via-black/70 transition-all duration-300" />
+
+                  {/* Content */}
+                  <div className="relative z-10 p-4 sm:p-6 lg:p-8 flex flex-col h-full min-h-[200px] sm:min-h-[260px]">
+                    <div className={`w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center text-white mb-3 sm:mb-4 lg:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                      <span className="scale-75 sm:scale-90 lg:scale-100">{service.icon}</span>
+                    </div>
+                    <h3 className="text-sm sm:text-lg lg:text-xl font-semibold text-white mb-2 sm:mb-3 lg:mb-4">{service.title}</h3>
+                    <p className="text-gray-300 text-xs sm:text-sm lg:text-base mb-3 sm:mb-4 lg:mb-6 flex-grow line-clamp-3 sm:line-clamp-none">{service.description}</p>
+                    <Link
+                      to="/services"
+                      className="inline-flex items-center text-blue-400 hover:text-blue-500 font-medium group-hover:translate-x-1 transition-transform duration-300 text-xs sm:text-sm lg:text-base"
+                    >
+                      Learn More
+                      <ChevronRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4" />
+                    </Link>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
-                  <Link
-                    to="/services"
-                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
-                  >
-                    Learn More
-                    <ChevronRight className="ml-1 w-4 h-4" />
-                  </Link>
                 </div>
               </AnimatedSection>
             ))}
@@ -364,8 +383,11 @@ const Home = () => {
         </div>
       </section>
 
+
+
+
       {/* Work Process Section */}
-      <section className="py-20 bg-gray-50">
+      {/* <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -392,7 +414,64 @@ const Home = () => {
             ))}
           </div>
         </div>
+      </section> */}
+
+
+      <section className="py-16 bg-gradient-to-b from-slate-50 via-white to-gray-100">
+
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Our 6-D Process
+            </h2>
+            <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              A proven methodology that ensures successful project delivery and measurable results.
+            </p>
+          </div>
+
+          {/* GRID */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {processSteps.map((step, index) => (
+              <div key={index} className="relative">
+
+                {/* CARD */}
+                <div className="
+            bg-white 
+            rounded-2xl 
+            p-5 sm:p-6 lg:p-8
+            shadow-md 
+            border border-gray-100
+            h-full
+          ">
+                  <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-3">
+                    {step.step}
+                  </div>
+
+                  <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-2">
+                    {step.title}
+                  </h3>
+
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* ARROW (Desktop only) */}
+                {index < processSteps.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 -translate-y-1/2">
+                    <ArrowRight className="w-8 h-8 text-blue-400" />
+                  </div>
+                )}
+
+              </div>
+            ))}
+          </div>
+
+        </div>
       </section>
+
+
 
       {/* Testimonials Section */}
       <section className="py-20 bg-white">
@@ -459,7 +538,7 @@ const Home = () => {
           </div>
         </div>
       </section> */}
-      <section className="py-20 bg-slate-100">
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Heading */}
@@ -467,36 +546,37 @@ const Home = () => {
             <h3 className="text-2xl font-bold text-slate-900 mb-3">
               Trusted By Industry Leaders
             </h3>
-            <p className="text-slate-700">
+            <p className="text-slate-600">
               Companies that trust us with their digital transformation
             </p>
           </div>
 
-          {/* Center Grid */}
-          <div className="flex justify-center">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
-
-              {clientLogos.map((logo, index) => (
-                <div
-                  key={index}
-                  className="
-              w-36 h-20
-              sm:w-40 sm:h-22
-              md:w-48 md:h-24
-              flex items-center justify-center
-              rounded-2xl
-              border border-slate-200
-              bg-white
-              shadow-sm
-            "
-                >
-                  <span className="text-slate-900 font-semibold text-sm text-center">
-                    {logo}
-                  </span>
-                </div>
-              ))}
-
-            </div>
+          {/* Centered Flex Layout */}
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-10">
+            {clientLogos.map((logo, index) => (
+              <div
+                key={index}
+                className="
+                  w-36 h-20
+                  sm:w-40 sm:h-22
+                  md:w-48 md:h-24
+                  flex items-center justify-center
+                  rounded-2xl
+                  border-2 border-dashed border-blue-300
+                  bg-white/80 backdrop-blur-sm
+                  shadow-sm
+                  hover:shadow-lg hover:border-blue-500 hover:scale-105
+                  hover:bg-white
+                  transition-all duration-300 ease-in-out
+                  cursor-pointer
+                  group
+                "
+              >
+                <span className="text-slate-800 font-semibold text-sm text-center px-3 group-hover:text-blue-600 transition-colors duration-300">
+                  {logo}
+                </span>
+              </div>
+            ))}
           </div>
 
         </div>

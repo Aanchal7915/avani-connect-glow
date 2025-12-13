@@ -107,7 +107,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import CaseStudies from "./pages/CaseStudies";
 import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
+// import Blog from "./pages/Blog";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
 import GetConsultation from "./pages/GetConsultation";
@@ -146,7 +146,7 @@ const App = () => {
                   <Route path="/services" element={<Services />} />
                   <Route path="/case-studies" element={<CaseStudies />} />
                   <Route path="/contact" element={<Contact />} />
-                  <Route path="/blog" element={<Blog />} />
+                  {/* <Route path="/blog" element={<Blog />} /> */}
                   <Route path="/courses" element={<Courses />} />
                   <Route path="/courses/:id" element={<CourseDetail />} />
                   <Route path="/get-consultation" element={<GetConsultation />} />
