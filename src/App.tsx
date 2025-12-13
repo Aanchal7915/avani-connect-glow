@@ -98,6 +98,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 // Layout
 import Navbar from "./components/Navbar";
+import Navbar1 from "./components/ui/navbar1";
 import Footer from "./components/Footer";
 import Footer1 from "./components/Footer1";
 import ScrollToTop from "./components/ScrollToTop";
@@ -137,8 +138,11 @@ const AppLayout = () => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  // Pages where Navbar should be hidden
-  const hideNavbar = pathname === "/web-dev" || pathname === "/thank-you";
+  // Pages where Navbar should be hidden completely
+  const hideNavbar = pathname === "/thank-you";
+
+  // Pages where Navbar1 should be used instead of default Navbar
+  const useNavbar1 = pathname === "/web-dev";
 
   // Pages where Footer should be hidden completely
   const hideFooter = pathname === "/thank-you";
@@ -148,7 +152,7 @@ const AppLayout = () => {
 
   return (
     <div className="min-h-screen">
-      {!hideNavbar && <Navbar />}
+      {!hideNavbar && (useNavbar1 ? <Navbar1 /> : <Navbar />)}
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
