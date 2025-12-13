@@ -99,7 +99,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 // Layout
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Footer1 from "./components/Footer1";
 import ScrollToTop from "./components/ScrollToTop";
+
+// Router hook for conditional rendering
+import { useLocation } from "react-router-dom";
 
 // Pages
 import Home from "./pages/Home";
@@ -128,6 +132,53 @@ const AdminRedirect = () => {
   return null;
 };
 
+// Layout wrapper component for conditional Navbar/Footer rendering
+const AppLayout = () => {
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  // Pages where Navbar should be hidden
+  const hideNavbar = pathname === "/web-dev" || pathname === "/thank-you";
+
+  // Pages where Footer should be hidden completely
+  const hideFooter = pathname === "/thank-you";
+
+  // Pages where Footer1 should be used instead of default Footer
+  const useFooter1 = pathname === "/web-dev";
+
+  return (
+    <div className="min-h-screen">
+      {!hideNavbar && <Navbar />}
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* <Route path="/blog" element={<Blog />} /> */}
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:id" element={<CourseDetail />} />
+          <Route path="/get-consultation" element={<GetConsultation />} />
+
+          {/* ये नया route जोड़ा है */}
+          <Route path="/thank-you" element={<ThankYou />} />
+
+          <Route path="/not-found" element={<NotFound />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsConditions />} />
+          <Route path="/web-dev" element={<Index />} />
+          <Route path="/admin" element={<AdminRedirect />} />
+
+          {/* Catch-all */}
+          <Route path="*" element={<Navigate to="/not-found" replace />} />
+        </Routes>
+      </main>
+      {!hideFooter && (useFooter1 ? <Footer1 /> : <Footer />)}
+    </div>
+  );
+};
+
 const App = () => {
   return (
     <HelmetProvider>
@@ -137,35 +188,7 @@ const App = () => {
           <Sonner />
           <Router>
             <ScrollToTop />
-            <div className="min-h-screen">
-              <Navbar />
-              <main>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/services" element={<Services />} />
-                  <Route path="/case-studies" element={<CaseStudies />} />
-                  <Route path="/contact" element={<Contact />} />
-                  {/* <Route path="/blog" element={<Blog />} /> */}
-                  <Route path="/courses" element={<Courses />} />
-                  <Route path="/courses/:id" element={<CourseDetail />} />
-                  <Route path="/get-consultation" element={<GetConsultation />} />
-
-                  {/* ये नया route जोड़ा है */}
-                  <Route path="/thank-you" element={<ThankYou />} />
-
-                  <Route path="/not-found" element={<NotFound />} />
-                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                  <Route path="/terms-and-conditions" element={<TermsConditions />} />
-                  <Route path="/web-dev" element={<Index />} />
-                  <Route path="/admin" element={<AdminRedirect />} />
-
-                  {/* Catch-all */}
-                  <Route path="*" element={<Navigate to="/not-found" replace />} />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
+            <AppLayout />
           </Router>
         </TooltipProvider>
       </QueryClientProvider>
