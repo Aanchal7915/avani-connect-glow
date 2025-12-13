@@ -1698,9 +1698,8 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
 
                   {/* Consent */}
                   {/* Consent */}
-                  <label
-                    htmlFor={uniqueConsentId}
-                    className="flex items-start gap-2 sm:gap-3 w-full cursor-pointer"
+                  <div
+                    className="flex items-start gap-2 sm:gap-3 w-full cursor-pointer select-none"
                     onClick={() => {
                       const boolVal = !Boolean(formData.consent);
                       setFormData((prev) => ({ ...prev, consent: boolVal }));
@@ -1710,17 +1709,21 @@ export default function RegistrationForm({ uniqueConsentId }: RegistrationFormPr
                     <input
                       id={uniqueConsentId}
                       type="checkbox"
-                      className="mt-0.5 sm:mt-1 h-4 w-4 rounded border border-border/60 flex-shrink-0"
+                      className="mt-0.5 sm:mt-1 h-4 w-4 rounded border border-border/60 flex-shrink-0 cursor-pointer"
                       checked={Boolean(formData.consent)}
-                      readOnly
+                      onChange={() => {
+                        const boolVal = !Boolean(formData.consent);
+                        setFormData((prev) => ({ ...prev, consent: boolVal }));
+                        validateField("consent", boolVal);
+                      }}
                       aria-describedby="consent-desc"
                     />
 
-                    <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer">
                       I agree to receive information regarding my submitted application and updates
                       from Avani Enterprises *
                     </span>
-                  </label>
+                  </div>
                   {errors.consent && (
                     <p className="text-destructive text-xs sm:text-sm -mt-3">
                       {errors.consent}
