@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, 
+import {
+  ArrowRight,
   Play,
   Globe,
   Search,
@@ -155,37 +155,66 @@ const Home = () => {
     }
   ];
 
+  // const testimonials = [
+  //   {
+  //     name: "Priya Sharma",
+  //     position: "CEO, TechStart India",
+  //     content: "Avani Enterprises transformed our digital presence completely. Our website traffic increased by 300% and conversions by 150% within 6 months.",
+  //     rating: 5,
+  //     image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face"
+  //   },
+  //   {
+  //     name: "Rajesh Kumar",
+  //     position: "Founder, EcoSolutions",
+  //     content: "The team's expertise in SEO and content marketing helped us rank #1 for our target keywords. ROI exceeded our expectations by 200%.",
+  //     rating: 5,
+  //     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+  //   },
+  //   {
+  //     name: "Anita Patel",
+  //     position: "Marketing Director, HealthTech",
+  //     content: "Their AI solutions automated 70% of our customer service, saving us ₹50L annually while improving customer satisfaction.",
+  //     rating: 5,
+  //     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+  //   }
+  // ];
+
   const testimonials = [
     {
       name: "Priya Sharma",
       position: "CEO, TechStart India",
-      content: "Avani Enterprises transformed our digital presence completely. Our website traffic increased by 300% and conversions by 150% within 6 months.",
+      content:
+        "Avani Enterprises transformed our digital presence completely. Our website traffic increased by 300% and conversions by 150% within 6 months.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face"
+      image:
+        "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=150&h=150&fit=crop&crop=face"
     },
     {
       name: "Rajesh Kumar",
       position: "Founder, EcoSolutions",
-      content: "The team's expertise in SEO and content marketing helped us rank #1 for our target keywords. ROI exceeded our expectations by 200%.",
+      content:
+        "The team's expertise in SEO and content marketing helped us rank #1 for our target keywords. ROI exceeded our expectations by 200%.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+      image:
+        "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=150&h=150&fit=crop&crop=face"
     },
     {
       name: "Anita Patel",
       position: "Marketing Director, HealthTech",
-      content: "Their AI solutions automated 70% of our customer service, saving us ₹50L annually while improving customer satisfaction.",
+      content:
+        "Their AI solutions automated 70% of our customer service, saving us ₹50L annually while improving customer satisfaction.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+      image:
+        "https://images.unsplash.com/photo-1610276198568-eb6d0ff53e48?w=150&h=150&fit=crop&crop=face"
     }
   ];
 
   const clientLogos = [
-    "TechStart India",
-    "EcoSolutions",
-    "HealthTech",
-    "FinServe",
-    "EduTech",
-    "RetailPlus"
+    "Indus group of Institution",
+    "Policicue",
+    "Frd Nutrition",
+    "Hi-tech Homes",
+    "Sanjeevni Hospital",
   ];
 
   return (
@@ -205,8 +234,8 @@ const Home = () => {
                 </h1>
                 <AnimatedSection animation="fadeInUp" delay={0.4}>
                   <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                    We help entrepreneurs and businesses achieve exponential growth through 
-                    data-driven digital marketing, innovative technology solutions, and 
+                    We help entrepreneurs and businesses achieve exponential growth through
+                    data-driven digital marketing, innovative technology solutions, and
                     strategic brand transformation.
                   </p>
                 </AnimatedSection>
@@ -303,16 +332,16 @@ const Home = () => {
                 Comprehensive Digital Solutions
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                From web development to AI integration, we provide end-to-end digital solutions 
+                From web development to AI integration, we provide end-to-end digital solutions
                 that drive growth and deliver measurable results.
               </p>
             </div>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <AnimatedSection 
-                key={index} 
-                animation="fadeInUp" 
+              <AnimatedSection
+                key={index}
+                animation="fadeInUp"
                 delay={0.1 * (index + 1)}
               >
                 <div className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
@@ -403,9 +432,8 @@ const Home = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentTestimonial ? 'bg-blue-600' : 'bg-gray-300'
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-colors ${index === currentTestimonial ? 'bg-blue-600' : 'bg-gray-300'
+                    }`}
                 />
               ))}
             </div>
@@ -414,7 +442,7 @@ const Home = () => {
       </section>
 
       {/* Client Logos Section */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h3 className="text-xl font-semibold text-gray-900 mb-2">Trusted By Industry Leaders</h3>
@@ -430,7 +458,54 @@ const Home = () => {
             ))}
           </div>
         </div>
+      </section> */}
+      <section className="py-20 bg-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Heading */}
+          <div className="text-center mb-14">
+            <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              Trusted By Industry Leaders
+            </h3>
+            <p className="text-slate-700">
+              Companies that trust us with their digital transformation
+            </p>
+          </div>
+
+          {/* Center Grid */}
+          <div className="flex justify-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
+
+              {clientLogos.map((logo, index) => (
+                <div
+                  key={index}
+                  className="
+              w-36 h-20
+              sm:w-40 sm:h-22
+              md:w-48 md:h-24
+              flex items-center justify-center
+              rounded-2xl
+              border border-slate-200
+              bg-white
+              shadow-sm
+            "
+                >
+                  <span className="text-slate-900 font-semibold text-sm text-center">
+                    {logo}
+                  </span>
+                </div>
+              ))}
+
+            </div>
+          </div>
+
+        </div>
       </section>
+
+
+
+
+
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
