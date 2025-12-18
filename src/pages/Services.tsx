@@ -197,7 +197,7 @@
 //                     <h3 className="text-xl font-bold mb-2">{service.title}</h3>
 //                     <p className="text-white/90 text-sm">{service.description}</p>
 //                   </div>
-                  
+
 //                   <div className="p-6">
 //                     <div className="flex items-center justify-between mb-4">
 //                       <div className="flex items-center text-gray-600">
@@ -209,7 +209,7 @@
 //                         <span className="text-sm">Team of 3-5</span>
 //                       </div>
 //                     </div>
-                    
+
 //                     <div className="mb-6">
 //                       <h4 className="font-semibold text-gray-900 mb-3">What's Included:</h4>
 //                       <ul className="space-y-2">
@@ -221,7 +221,7 @@
 //                         ))}
 //                       </ul>
 //                     </div>
-                    
+
 //                     <Link
 //                       to={`/contact?service=${service.id}`}
 //                       className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center"
@@ -248,7 +248,7 @@
 //               Our proven process ensures successful project delivery and exceptional results.
 //             </p>
 //           </div>
-          
+
 //           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 //             <div className="text-center">
 //               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">
@@ -301,7 +301,7 @@
 //               Real feedback from businesses we've helped transform.
 //             </p>
 //           </div>
-          
+
 //           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 //             <div className="bg-gray-50 rounded-xl p-8">
 //               <div className="flex items-center mb-4">
@@ -325,7 +325,7 @@
 //                 </div>
 //               </div>
 //             </div>
-            
+
 //             <div className="bg-gray-50 rounded-xl p-8">
 //               <div className="flex items-center mb-4">
 //                 {[...Array(5)].map((_, i) => (
@@ -348,7 +348,7 @@
 //                 </div>
 //               </div>
 //             </div>
-            
+
 //             <div className="bg-gray-50 rounded-xl p-8">
 //               <div className="flex items-center mb-4">
 //                 {[...Array(5)].map((_, i) => (
@@ -431,13 +431,13 @@
 
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  Globe, 
-  Search, 
-  Share2, 
-  Brain, 
-  Mic, 
+import { Link, useLocation } from 'react-router-dom';
+import {
+  Globe,
+  Search,
+  Share2,
+  Brain,
+  Mic,
   Calculator,
   CheckCircle,
   ArrowRight,
@@ -449,6 +449,26 @@ import AnimatedSection from '../components/AnimatedSection';
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState('all');
+  const location = useLocation();
+
+  React.useEffect(() => {
+    if (location.state && location.state.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) {
+        // Add timeout to ensure DOM is fully ready
+        setTimeout(() => {
+          const navbarHeight = 100; // Approx 80px navbar + 20px padding
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - navbarHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   const services = [
     {
@@ -570,8 +590,8 @@ const Services = () => {
     { id: 'consulting', name: 'Consulting' }
   ];
 
-  const filteredServices = activeTab === 'all' 
-    ? services 
+  const filteredServices = activeTab === 'all'
+    ? services
     : services.filter(service => service.category === activeTab);
 
   return (
@@ -585,7 +605,7 @@ const Services = () => {
                 Our Services
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Comprehensive digital solutions designed to drive growth, enhance brand presence, 
+                Comprehensive digital solutions designed to drive growth, enhance brand presence,
                 and deliver measurable results for your business.
               </p>
             </div>
@@ -601,11 +621,10 @@ const Services = () => {
               <button
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                  activeTab === category.id
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${activeTab === category.id
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 {category.name}
               </button>
@@ -615,7 +634,7 @@ const Services = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredServices.map((service) => (
               <AnimatedSection key={service.id} animation="fadeInUp" delay={0.4 + (filteredServices.indexOf(service) * 0.1)}>
-                <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden">
+                <div id={service.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden">
                   <div className={`bg-gradient-to-r ${service.color} p-6 text-white`}>
                     <div className="flex items-center justify-between mb-4">
                       <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center">
@@ -629,7 +648,7 @@ const Services = () => {
                     <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                     <p className="text-white/90 text-sm">{service.description}</p>
                   </div>
-                  
+
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center text-gray-600">
@@ -641,7 +660,7 @@ const Services = () => {
                         <span className="text-sm">Team of 3-5</span>
                       </div>
                     </div>
-                    
+
                     <div className="mb-6">
                       <h4 className="font-semibold text-gray-900 mb-3">What's Included:</h4>
                       <ul className="space-y-2">
@@ -653,7 +672,7 @@ const Services = () => {
                         ))}
                       </ul>
                     </div>
-                    
+
                     <Link
                       to={`/contact?service=${service.id}`}
                       className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center"
@@ -680,7 +699,7 @@ const Services = () => {
               Our proven process ensures successful project delivery and exceptional results.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">
@@ -733,7 +752,7 @@ const Services = () => {
               Real feedback from businesses we've helped transform.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-gray-50 rounded-xl p-8">
               <div className="flex items-center mb-4">
@@ -742,7 +761,7 @@ const Services = () => {
                 ))}
               </div>
               <p className="text-gray-700 mb-6 italic">
-                "Avani Enterprises transformed our digital presence completely. Their SEO and content 
+                "Avani Enterprises transformed our digital presence completely. Their SEO and content
                 marketing strategies helped us achieve 300% increase in organic traffic."
               </p>
               <div className="flex items-center">
@@ -757,7 +776,7 @@ const Services = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-gray-50 rounded-xl p-8">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -765,7 +784,7 @@ const Services = () => {
                 ))}
               </div>
               <p className="text-gray-700 mb-6 italic">
-                "The team's expertise in web development and AI solutions helped us automate 
+                "The team's expertise in web development and AI solutions helped us automate
                 70% of our customer service operations."
               </p>
               <div className="flex items-center">
@@ -780,7 +799,7 @@ const Services = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-gray-50 rounded-xl p-8">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -788,7 +807,7 @@ const Services = () => {
                 ))}
               </div>
               <p className="text-gray-700 mb-6 italic">
-                "Their social media marketing campaigns increased our brand awareness by 200% 
+                "Their social media marketing campaigns increased our brand awareness by 200%
                 and generated 150% more leads for our business."
               </p>
               <div className="flex items-center">
@@ -818,7 +837,7 @@ const Services = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-             to="/get-consultation"
+              to="/get-consultation"
               className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
             >
               Get Consultation

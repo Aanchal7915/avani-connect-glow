@@ -123,6 +123,7 @@ import Index from "./pages/Index";
 
 // नई लाइन: ThankYou page import
 import ThankYou from "./pages/ThankYou";
+import Chatbot from "./components/Chatbot";
 
 const queryClient = new QueryClient();
 
@@ -179,6 +180,7 @@ const AppLayout = () => {
         </Routes>
       </main>
       {!hideFooter && (useFooter1 ? <Footer1 /> : <Footer />)}
+      <Chatbot />
     </div>
   );
 };

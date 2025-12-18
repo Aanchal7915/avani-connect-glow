@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
   Send,
-  MessageSquare
+  MessageSquare,
+  ChevronUp
 } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 
@@ -16,9 +17,11 @@ const Contact = () => {
     email: '',
     phone: '',
     company: '',
-    service: '',
+    service: [],
     message: ''
   });
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   // const [isSubmitted, setIsSubmitted] = useState(false);
   // const [isLoading, setIsLoading] = useState(false);
 
@@ -30,6 +33,15 @@ const Contact = () => {
     }));
   };
 
+  const handleServiceToggle = (service) => {
+    setFormData(prev => {
+      const services = prev.service.includes(service)
+        ? prev.service.filter(s => s !== service)
+        : [...prev.service, service];
+      return { ...prev, service: services };
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -39,11 +51,11 @@ const Contact = () => {
       `Email: ${formData.email}\n` +
       (formData.phone ? `Phone: ${formData.phone}\n` : '') +
       (formData.company ? `Company: ${formData.company}\n` : '') +
-      (formData.service ? `Service Interested In: ${formData.service}\n` : '') +
+      (formData.service.length > 0 ? `Services Interested In: ${formData.service.join(', ')}\n` : '') +
       `Project Details: ${formData.message}`;
 
     // WhatsApp number (replace with your business number if needed)
-     // without + sign
+    // without + sign
 
     // Encode the message for URL
     const encodedMessage = encodeURIComponent(message);
@@ -57,26 +69,52 @@ const Contact = () => {
 
   const services = [
     "Web & App Development",
-    "SEO & Content Marketing",
+    "SEO and Content Marketing",
     "Social Media Marketing",
     "AI Solutions",
     "Podcast Production",
-    "Financial Consulting",
-    "Other"
+    "Financial Consulting"
+  ];
+
+  const faqs = [
+    {
+      question: "What is your typical project timeline?",
+      answer: "Project timelines vary based on scope and complexity. Web development projects typically take 4-12 weeks, while marketing campaigns are ongoing. We'll provide a detailed timeline during our initial consultation."
+    },
+    {
+      question: "Do you provide ongoing support after project completion?",
+      answer: "Yes, we offer various support and maintenance packages to ensure your digital assets continue to perform optimally. We also provide training and documentation for your team."
+    },
+    {
+      question: "What makes Avani Enterprises different from other agencies?",
+      answer: "We combine technical expertise with strategic business understanding. Our team includes IIT/IIM alumni with proven track records in digital transformation. We focus on measurable ROI and long-term partnerships."
+    },
+    {
+      question: "How do you measure success for marketing campaigns?",
+      answer: "We establish clear KPIs at the beginning of each project, including traffic growth, conversion rates, lead generation, and ROI. We provide regular reports and optimize based on performance data."
+    }
   ];
 
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-purple-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1747889461984-ecf42eab7d80?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW5kaWFuJTIwcHJvZmVzc2lvbmFsc3xlbnwwfHwwfHx8MA%3D%3D"
+            alt="Indian Office Team"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-200 via-white to-purple-200 bg-clip-text text-transparent">
                 Get In Touch
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Ready to transform your business? Let's discuss your project requirements 
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                Ready to transform your business? Let's discuss your project requirements
                 and create a custom solution that drives results.
               </p>
             </div>
@@ -90,8 +128,8 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              
-              <div>
+
+              <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-8">
                   Send Us a Message
                 </h2>
@@ -128,7 +166,7 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
@@ -159,27 +197,53 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                      Service Interested In
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Services Interested In
                     </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      <option value="">Select a service</option>
-                      {services.map((service) => (
-                        <option key={service} value={service}>
-                          {service}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-left flex justify-between items-center"
+                      >
+                        <span className={`block truncate ${formData.service.length === 0 ? 'text-gray-400' : 'text-gray-900'}`}>
+                          {formData.service.length === 0
+                            ? "Select services"
+                            : `${formData.service.length} selected`}
+                        </span>
+                        <ChevronUp className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDropdownOpen ? 'transform rotate-180' : ''}`} />
+                      </button>
+
+                      {isDropdownOpen && (
+                        <div className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+                          {services.map((service) => (
+                            <div
+                              key={service}
+                              className="relative flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                              onClick={() => handleServiceToggle(service)}
+                            >
+                              <div className="flex items-center h-5">
+                                <input
+                                  type="checkbox"
+                                  className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
+                                  checked={formData.service.includes(service)}
+                                  readOnly
+                                />
+                              </div>
+                              <div className="ml-3 text-sm">
+                                <span className={`font-medium ${formData.service.includes(service) ? 'text-gray-900' : 'text-gray-700'}`}>
+                                  {service}
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                       Project Details *
@@ -195,7 +259,7 @@ const Contact = () => {
                       placeholder="Tell us about your project requirements, goals, and timeline..."
                     />
                   </div>
-                  
+
                   <button
                     type="submit"
                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center"
@@ -212,7 +276,7 @@ const Contact = () => {
               <h2 className="text-3xl font-bold text-gray-900 mb-8">
                 Contact Information
               </h2>
-              
+
               <div className="space-y-8">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
@@ -227,7 +291,7 @@ const Contact = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
                     <Phone className="w-6 h-6" />
@@ -241,7 +305,7 @@ const Contact = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
                     <Mail className="w-6 h-6" />
@@ -250,12 +314,12 @@ const Contact = () => {
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Address</h3>
                     <p className="text-gray-600">
                       <a href="mailto:kapilatavanienterprises@gmail.com" className="hover:text-blue-600 transition-colors">
-                        kapilatavanienterprises@gmail.com
+                        kp@avanienterprises.in
                       </a>
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
                     <Clock className="w-6 h-6" />
@@ -270,7 +334,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Quick Contact */}
               <div className="mt-12 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
@@ -314,7 +378,7 @@ const Contact = () => {
               Visit our office or schedule a meeting to discuss your project.
             </p>
           </div>
-          
+
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="h-96">
               <iframe
@@ -352,47 +416,40 @@ const Contact = () => {
               Common questions about our services and process.
             </p>
           </div>
-          
-          <div className="space-y-6">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                What is your typical project timeline?
-              </h3>
-              <p className="text-gray-600">
-                Project timelines vary based on scope and complexity. Web development projects typically take 4-12 weeks, 
-                while marketing campaigns are ongoing. We'll provide a detailed timeline during our initial consultation.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Do you provide ongoing support after project completion?
-              </h3>
-              <p className="text-gray-600">
-                Yes, we offer various support and maintenance packages to ensure your digital assets continue to perform optimally. 
-                We also provide training and documentation for your team.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                What makes Avani Enterprises different from other agencies?
-              </h3>
-              <p className="text-gray-600">
-                We combine technical expertise with strategic business understanding. Our team includes IIT/IIM alumni with 
-                proven track records in digital transformation. We focus on measurable ROI and long-term partnerships.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                How do you measure success for marketing campaigns?
-              </h3>
-              <p className="text-gray-600">
-                We establish clear KPIs at the beginning of each project, including traffic growth, conversion rates, 
-                lead generation, and ROI. We provide regular reports and optimize based on performance data.
-              </p>
-            </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className={`bg-white rounded-xl transition-all duration-300 border-2 ${openFaq === index
+                    ? 'border-blue-500 shadow-md ring-1 ring-blue-100'
+                    : 'border-gray-100 hover:border-blue-200'
+                  }`}
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                >
+                  <span className={`text-lg font-semibold transition-colors duration-200 ${openFaq === index ? 'text-blue-700' : 'text-gray-900'
+                    }`}>
+                    {faq.question}
+                  </span>
+                  <ChevronUp
+                    className={`w-5 h-5 text-blue-500 transition-transform duration-300 ${openFaq === index ? 'transform rotate-0' : 'transform rotate-180'
+                      }`}
+                  />
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                >
+                  <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-dashed border-gray-100 mt-2">
+                    {faq.answer}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
