@@ -1,10 +1,10 @@
 import React from 'react';
-import { 
-  Target, 
-  Users, 
-  Award, 
-  TrendingUp, 
-  CheckCircle, 
+import {
+  Target,
+  Users,
+  Award,
+  TrendingUp,
+  CheckCircle,
   Globe,
   Lightbulb,
   Heart,
@@ -63,15 +63,16 @@ const About = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-purple-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80")' }}>
+        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 About Avani Enterprises
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                We are a team of passionate professionals dedicated to transforming businesses 
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                We are a team of passionate professionals dedicated to transforming businesses
                 through strategic digital solutions and innovative technology.
               </p>
             </div>
@@ -107,12 +108,12 @@ const About = () => {
                       CEO - Avani Enterprises
                     </p>
                     <p className="text-gray-600 mb-6 leading-relaxed">
-                      Kapil Khandelwal is a distinguished Business and Startup Consultant with over a decade of experience 
-                      in transforming businesses and nurturing startups to success. As the CEO of Avani Enterprises, 
-                      he leads a team of professionals dedicated to delivering innovative digital solutions and strategic 
+                      Kapil Khandelwal is a distinguished Business and Startup Consultant with over a decade of experience
+                      in transforming businesses and nurturing startups to success. As the CEO of Avani Enterprises,
+                      he leads a team of professionals dedicated to delivering innovative digital solutions and strategic
                       growth strategies.
                     </p>
-                    
+
                     <div className="space-y-4 mb-6">
                       <div className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
@@ -123,7 +124,7 @@ const About = () => {
                           </p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                         <div>
@@ -133,7 +134,7 @@ const About = () => {
                           </p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                         <div>
@@ -144,7 +145,7 @@ const About = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                       <div className="text-center p-4 bg-gray-50 rounded-lg">
                         <div className="text-2xl font-bold text-blue-600 mb-1">10+</div>
@@ -159,7 +160,7 @@ const About = () => {
                         <div className="text-sm text-gray-600">Active Investments</div>
                       </div>
                     </div>
-                    
+
                     <div className="flex flex-wrap gap-2">
                       <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                         Business Strategy
@@ -195,12 +196,12 @@ const About = () => {
                   Our Mission
                 </h2>
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  To empower businesses with cutting-edge digital solutions that drive growth, 
-                  enhance brand presence, and deliver measurable ROI. We believe in building 
+                  To empower businesses with cutting-edge digital solutions that drive growth,
+                  enhance brand presence, and deliver measurable ROI. We believe in building
                   long-term partnerships based on trust, innovation, and results.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Our approach combines data-driven insights with creative excellence to create 
+                  Our approach combines data-driven insights with creative excellence to create
                   digital experiences that not only look great but also perform exceptionally well.
                 </p>
               </div>
@@ -209,7 +210,7 @@ const About = () => {
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
                 <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
                 <p className="text-lg leading-relaxed">
-                  To be the leading digital transformation partner for businesses across India, 
+                  To be the leading digital transformation partner for businesses across India,
                   known for our innovative solutions, exceptional service, and proven results.
                 </p>
                 <div className="mt-6 flex items-center">
@@ -256,7 +257,7 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      
+
 
       {/* Achievements Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
@@ -305,7 +306,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Proven Track Record</h3>
               <p className="text-gray-600">
-                With 8+ years of experience and 300+ successful projects, we have the expertise 
+                With 8+ years of experience and 300+ successful projects, we have the expertise
                 to handle any digital challenge.
               </p>
             </div>
@@ -315,7 +316,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Innovation-Driven</h3>
               <p className="text-gray-600">
-                We stay ahead of industry trends and leverage cutting-edge technologies to 
+                We stay ahead of industry trends and leverage cutting-edge technologies to
                 deliver innovative solutions.
               </p>
             </div>
@@ -325,7 +326,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Client-Centric Approach</h3>
               <p className="text-gray-600">
-                Your success is our priority. We build long-term partnerships based on trust, 
+                Your success is our priority. We build long-term partnerships based on trust,
                 transparency, and results.
               </p>
             </div>

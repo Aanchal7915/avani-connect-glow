@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { 
-  TrendingUp, 
-  Users, 
-  Globe, 
+import {
+  TrendingUp,
+  Users,
+  Globe,
   Search,
   Share2,
   Brain,
@@ -89,7 +89,7 @@ const CaseStudies = () => {
       },
       duration: "4 months",
       team: "3 AI developers, 1 UX designer",
-      image:  "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=300&fit=crop",
       technologies: ["Python", "TensorFlow", "NLP", "AWS", "Dialogflow"]
     },
     {
@@ -142,8 +142,8 @@ const CaseStudies = () => {
     { id: 'financial-consulting', name: 'Financial Consulting' }
   ];
 
-  const filteredCaseStudies = activeFilter === 'all' 
-    ? caseStudies 
+  const filteredCaseStudies = activeFilter === 'all'
+    ? caseStudies
     : caseStudies.filter(study => study.category === activeFilter);
 
   const getCategoryIcon = (category) => {
@@ -161,14 +161,15 @@ const CaseStudies = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-purple-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80")' }}>
+        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Case Studies
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Real results from real businesses. Discover how we've helped companies across 
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+              Real results from real businesses. Discover how we've helped companies across
               industries achieve their digital transformation goals.
             </p>
           </div>
@@ -183,11 +184,10 @@ const CaseStudies = () => {
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                  activeFilter === filter.id
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${activeFilter === filter.id
                     ? 'bg-blue-600 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 {filter.name}
               </button>
@@ -214,7 +214,7 @@ const CaseStudies = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="p-8">
                   <div className="flex items-center mb-4">
                     {getCategoryIcon(study.category)}
@@ -222,14 +222,14 @@ const CaseStudies = () => {
                       {study.category.replace('-', ' ')}
                     </span>
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     {study.title}
                   </h3>
                   <p className="text-gray-600 mb-6">
                     {study.challenge}
                   </p>
-                  
+
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="flex items-center text-sm text-gray-600">
                       <Calendar className="w-4 h-4 mr-2" />
@@ -240,7 +240,7 @@ const CaseStudies = () => {
                       {study.team}
                     </div>
                   </div>
-                  
+
                   <div className="mb-6">
                     <h4 className="font-semibold text-gray-900 mb-2">Key Results:</h4>
                     <div className="space-y-2">
@@ -252,7 +252,7 @@ const CaseStudies = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="mb-6">
                     <h4 className="font-semibold text-gray-900 mb-2">Technologies Used:</h4>
                     <div className="flex flex-wrap gap-2">
@@ -266,7 +266,7 @@ const CaseStudies = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   {/* <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center">
                     View Full Case Study
                     <ArrowRight className="ml-2 w-4 h-4" />
@@ -289,7 +289,7 @@ const CaseStudies = () => {
               Numbers that demonstrate our commitment to delivering exceptional results.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold text-blue-600 mb-2">150+</div>
@@ -322,7 +322,7 @@ const CaseStudies = () => {
               What our clients say about working with us.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl p-8 shadow-lg">
               <div className="flex items-center mb-4">
@@ -331,7 +331,7 @@ const CaseStudies = () => {
                 ))}
               </div>
               <p className="text-gray-700 mb-6 italic">
-                "Avani Enterprises transformed our digital presence completely. Their expertise in web development 
+                "Avani Enterprises transformed our digital presence completely. Their expertise in web development
                 and SEO helped us achieve 300% increase in traffic and 150% improvement in conversions."
               </p>
               <div className="flex items-center">
@@ -346,7 +346,7 @@ const CaseStudies = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-xl p-8 shadow-lg">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -354,7 +354,7 @@ const CaseStudies = () => {
                 ))}
               </div>
               <p className="text-gray-700 mb-6 italic">
-                "The team's AI solutions helped us automate 70% of our customer service operations, 
+                "The team's AI solutions helped us automate 70% of our customer service operations,
                 saving us ₹50L annually while improving customer satisfaction."
               </p>
               <div className="flex items-center">
@@ -369,7 +369,7 @@ const CaseStudies = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-xl p-8 shadow-lg">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -377,7 +377,7 @@ const CaseStudies = () => {
                 ))}
               </div>
               <p className="text-gray-700 mb-6 italic">
-                "Their financial consulting expertise helped us secure ₹10Cr in funding and scale 
+                "Their financial consulting expertise helped us secure ₹10Cr in funding and scale
                 our operations across 5 new cities. Exceptional strategic guidance."
               </p>
               <div className="flex items-center">

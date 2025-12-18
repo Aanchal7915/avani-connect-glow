@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
+import {
   //  GraduationCap, 
   //  Certificate, 
-  Users, 
-  Clock, 
+  Users,
+  Clock,
   Star,
   ArrowRight,
   CheckCircle,
@@ -251,7 +251,7 @@ const Courses = () => {
       originalPrice: "₹50,000",
       rating: 4.9,
       students: 1650,
-      image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
       features: [
         "Certificate after completion",
         "Free AI tool assistance (Hindi & English)",
@@ -315,22 +315,23 @@ const Courses = () => {
   const filteredCourses = courses.filter(course => {
     const matchesCategory = activeCategory === 'all' || course.category === activeCategory;
     const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         course.description.toLowerCase().includes(searchQuery.toLowerCase());
+      course.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-purple-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80")' }}>
+        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Our Premium Courses
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Premium courses made with love for you! Master in-demand skills with our comprehensive 
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                Premium courses made with love for you! Master in-demand skills with our comprehensive
                 training programs and secure your future with assured job placements.
               </p>
             </div>
@@ -357,11 +358,10 @@ const Courses = () => {
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                    activeCategory === category.id
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${activeCategory === category.id
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
                 >
                   {category.icon}
                   <span>{category.name}</span>
@@ -397,7 +397,7 @@ const Courses = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                       {course.title}
@@ -405,7 +405,7 @@ const Courses = () => {
                     <p className="text-gray-600 mb-4 leading-relaxed">
                       {course.description}
                     </p>
-                    
+
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center text-sm text-gray-500">
                         <Clock className="w-4 h-4 mr-1" />
@@ -416,7 +416,7 @@ const Courses = () => {
                         {course.students} students
                       </div>
                     </div>
-                    
+
                     <div className="mb-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center">
@@ -428,7 +428,7 @@ const Courses = () => {
                         </span>
                       </div>
                     </div>
-                    
+
                     <div className="mb-6">
                       <h4 className="font-semibold text-gray-900 mb-3">Course Features:</h4>
                       <div className="space-y-2">
@@ -440,7 +440,7 @@ const Courses = () => {
                         ))}
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center justify-between">
                       <div className="text-sm text-gray-500">
                         <div>Instructor: {course.instructor}</div>
@@ -470,7 +470,7 @@ const Courses = () => {
               </AnimatedSection>
             ))}
           </div>
-          
+
           {filteredCourses.length === 0 && (
             <div className="text-center py-12">
               <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
@@ -493,7 +493,7 @@ const Courses = () => {
               We provide comprehensive training with guaranteed job placement and industry-recognized certifications.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
@@ -504,7 +504,7 @@ const Courses = () => {
                 Industry-recognized certificates upon completion of all courses.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
                 <Users className="w-8 h-8" />
@@ -514,7 +514,7 @@ const Courses = () => {
                 Assured job placement in reputed firms after course completion.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
                 <Briefcase className="w-8 h-8" />
@@ -524,7 +524,7 @@ const Courses = () => {
                 30-day paid internship with real-world project experience.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
                 <Brain className="w-8 h-8" />
@@ -570,6 +570,7 @@ const Courses = () => {
           isOpen={isPaymentModalOpen}
           onClose={() => setIsPaymentModalOpen(false)}
           course={selectedCourse}
+          onSuccess={(data: any) => console.log('Payment successful', data)}
         />
       )}
     </div>
