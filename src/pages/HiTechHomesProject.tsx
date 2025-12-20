@@ -19,9 +19,9 @@ const HiTechHomesProject = () => {
               Back to Home
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
-              <img 
-                src="/hitech.jpeg" 
-                alt="Hi-tech Homes Logo" 
+              <img
+                src="/hitech.jpeg"
+                alt="Hi-tech Homes Logo"
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
               <h1 className="text-4xl md:text-6xl font-bold">
@@ -45,16 +45,16 @@ const HiTechHomesProject = () => {
                   Project Overview
                 </h2>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  Hi-tech Property is a professional, full-service property management portal designed to centralize real estate operations. 
-                  The platform features an extensive listing module for showcasing available properties with high-quality media, making it 
+                  Hi-tech Property is a professional, full-service property management portal designed to centralize real estate operations.
+                  The platform features an extensive listing module for showcasing available properties with high-quality media, making it
                   easy for potential buyers and renters to explore options.
                 </p>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  The system includes robust lead capture tools to streamline client inquiries and follow-ups effectively. Dedicated admin 
+                  The system includes robust lead capture tools to streamline client inquiries and follow-ups effectively. Dedicated admin
                   tools are provided to ensure efficient management of all listings, client data, and operational workflows.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Built with modern web technologies, the platform offers an optimized layout for branding and business presentation, 
+                  Built with modern web technologies, the platform offers an optimized layout for branding and business presentation,
                   creating a professional and trustworthy digital presence in the real estate industry.
                 </p>
               </div>

@@ -19,9 +19,9 @@ const FrdNutritionProject = () => {
               Back to Home
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
-              <img 
-                src="/frd.jpeg" 
-                alt="Frd Nutrition Logo" 
+              <img
+                src="/frd.jpeg"
+                alt="Frd Nutrition Logo"
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
               <h1 className="text-4xl md:text-6xl font-bold">
@@ -45,17 +45,17 @@ const FrdNutritionProject = () => {
                   Project Overview
                 </h2>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  Frd Nutrition is a comprehensive digital platform dedicated to nutrition and wellness. The website provides 
-                  valuable information about nutritional products, dietary plans, and health-related services to help users 
+                  Frd Nutrition is a comprehensive digital platform dedicated to nutrition and wellness. The website provides
+                  valuable information about nutritional products, dietary plans, and health-related services to help users
                   make informed decisions about their health and wellness journey.
                 </p>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  The platform features professional service listings with detailed descriptions of nutritional products and 
-                  services. It includes dedicated sections to display company offerings, making it easy for users to explore 
+                  The platform features professional service listings with detailed descriptions of nutritional products and
+                  services. It includes dedicated sections to display company offerings, making it easy for users to explore
                   and understand the available solutions.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Built with modern web technologies, the website offers optimized layout for branding and business presentation, 
+                  Built with modern web technologies, the website offers optimized layout for branding and business presentation,
                   creating a professional and trustworthy digital presence in the health and nutrition industry.
                 </p>
               </div>

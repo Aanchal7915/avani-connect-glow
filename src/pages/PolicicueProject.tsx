@@ -19,9 +19,9 @@ const PolicicueProject = () => {
               Back to Home
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
-              <img 
-                src="/policucue.jpeg" 
-                alt="Policicue Logo" 
+              <img
+                src="/policucue.jpeg"
+                alt="Policicue Logo"
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
               <h1 className="text-4xl md:text-6xl font-bold">
@@ -45,20 +45,20 @@ const PolicicueProject = () => {
                   Project Overview
                 </h2>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  Policicue is a corporate policy and service showcasing website designed specifically for insurance services. 
-                  The platform serves as a comprehensive digital presence that effectively presents company offerings, policies, 
+                  Policicue is a corporate policy and service showcasing website designed specifically for insurance services.
+                  The platform serves as a comprehensive digital presence that effectively presents company offerings, policies,
                   and services to potential clients and stakeholders.
                 </p>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  As an insurance website, Policicue features professional service listings with detailed descriptions, 
-                  making it easy for users to understand the various insurance products and policies available. The website 
-                  includes dedicated sections to display company offerings and policies, ensuring clear communication of services 
+                  As an insurance website, Policicue features professional service listings with detailed descriptions,
+                  making it easy for users to understand the various insurance products and policies available. The website
+                  includes dedicated sections to display company offerings and policies, ensuring clear communication of services
                   and terms.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  The website also features an "About Us" section that provides visitors with comprehensive information about 
-                  the company, its mission, values, and expertise in the insurance industry. Built with modern web technologies, 
-                  the platform offers optimized layout for branding and business presentation, creating a professional and 
+                  The website also features an "About Us" section that provides visitors with comprehensive information about
+                  the company, its mission, values, and expertise in the insurance industry. Built with modern web technologies,
+                  the platform offers optimized layout for branding and business presentation, creating a professional and
                   trustworthy digital presence.
                 </p>
               </div>
@@ -131,7 +131,7 @@ const PolicicueProject = () => {
         </div>
       </section>
 
-     
+
 
       {/* Project Images Gallery */}
       <section className="py-16 bg-gray-50">

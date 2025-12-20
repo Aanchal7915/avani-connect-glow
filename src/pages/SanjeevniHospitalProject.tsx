@@ -19,9 +19,9 @@ const SanjeevniHospitalProject = () => {
               Back to Home
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
-              <img 
-                src="/sanjeevni.jpeg" 
-                alt="Sanjeevni Hospital Logo" 
+              <img
+                src="/sanjeevni.jpeg"
+                alt="Sanjeevni Hospital Logo"
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
               <h1 className="text-4xl md:text-6xl font-bold">
@@ -45,17 +45,17 @@ const SanjeevniHospitalProject = () => {
                   Project Overview
                 </h2>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  Sanjeevni Hospital website is a comprehensive web platform developed for advanced healthcare services. 
-                  The system integrates an AI Chatbot for instant support and efficient appointment booking for patients, 
+                  Sanjeevni Hospital website is a comprehensive web platform developed for advanced healthcare services.
+                  The system integrates an AI Chatbot for instant support and efficient appointment booking for patients,
                   making healthcare more accessible and user-friendly.
                 </p>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  Key features include secure online OPD and test booking, fully integrated with a secure payment gateway. 
-                  The platform provides a robust Admin analytics dashboard and patient portals for managing orders and 
+                  Key features include secure online OPD and test booking, fully integrated with a secure payment gateway.
+                  The platform provides a robust Admin analytics dashboard and patient portals for managing orders and
                   accessing downloadable invoices, streamlining the entire healthcare experience.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Built with modern web technologies, the platform offers optimized layout for branding and business presentation, 
+                  Built with modern web technologies, the platform offers optimized layout for branding and business presentation,
                   creating a professional and trustworthy digital presence in the healthcare industry.
                 </p>
               </div>

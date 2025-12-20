@@ -19,9 +19,9 @@ const RohtakShoeProject = () => {
               Back to Home
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
-              <img 
-                src="/shoes.jpeg" 
-                alt="Rohtak Shoe co. Logo" 
+              <img
+                src="/shoes.jpeg"
+                alt="Rohtak Shoe co. Logo"
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
               <h1 className="text-4xl md:text-6xl font-bold">
@@ -45,17 +45,17 @@ const RohtakShoeProject = () => {
                   Project Overview
                 </h2>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  Rohtak Shoe co. is a feature-rich footwear e-commerce platform optimized for a modern shopping experience. 
-                  Key functionalities include stunning 3D product previews and a smooth, secure cart-to-checkout process, 
+                  Rohtak Shoe co. is a feature-rich footwear e-commerce platform optimized for a modern shopping experience.
+                  Key functionalities include stunning 3D product previews and a smooth, secure cart-to-checkout process,
                   making online shoe shopping intuitive and enjoyable.
                 </p>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  The system features smart inventory management and dedicated admin/delivery dashboards. It allows for advanced 
-                  features like order rescheduling, refund tracking, and analytics-driven business insights, ensuring efficient 
+                  The system features smart inventory management and dedicated admin/delivery dashboards. It allows for advanced
+                  features like order rescheduling, refund tracking, and analytics-driven business insights, ensuring efficient
                   operations and excellent customer service.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Built with modern web technologies, the platform offers optimized layout for branding and business presentation, 
+                  Built with modern web technologies, the platform offers optimized layout for branding and business presentation,
                   creating a professional and trustworthy digital presence in the e-commerce footwear industry.
                 </p>
               </div>

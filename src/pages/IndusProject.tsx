@@ -19,9 +19,9 @@ const IndusProject = () => {
               Back to Home
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
-              <img 
-                src="/indus.jpeg" 
-                alt="Indus group of Institution Logo" 
+              <img
+                src="/indus.jpeg"
+                alt="Indus group of Institution Logo"
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
               <h1 className="text-4xl md:text-6xl font-bold">
@@ -45,15 +45,15 @@ const IndusProject = () => {
                   Project Overview
                 </h2>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  Indus group of Institution is a comprehensive School Management (ERP) system designed to modernize educational operations. 
+                  Indus group of Institution is a comprehensive School Management (ERP) system designed to modernize educational operations.
                   The platform automates core tasks including digital attendance tracking, seamless timetable generation, and secure online fee management.
                 </p>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  The system features dedicated, role-based access for Admin, Teacher, and Parent users, ensuring secure and organized access to 
+                  The system features dedicated, role-based access for Admin, Teacher, and Parent users, ensuring secure and organized access to
                   relevant information. This setup allows for real-time data analytics to significantly boost institutional efficiency and stakeholder communication.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Built with modern web technologies, the platform offers a seamless user experience that streamlines administrative tasks and 
+                  Built with modern web technologies, the platform offers a seamless user experience that streamlines administrative tasks and
                   enhances communication between all stakeholders in the educational ecosystem.
                 </p>
               </div>
