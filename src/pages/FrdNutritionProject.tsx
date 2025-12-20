@@ -20,7 +20,7 @@ const FrdNutritionProject = () => {
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
               <img 
-                src="/frd-nutrition-logo.png" 
+                src="/frd.jpeg" 
                 alt="Frd Nutrition Logo" 
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
@@ -63,7 +63,7 @@ const FrdNutritionProject = () => {
             <AnimatedSection animation="fadeInRight" delay={0.4}>
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&h=600&fit=crop"
+                  src="/frd1.png"
                   alt="Nutrition Platform"
                   className="rounded-2xl shadow-2xl w-full"
                 />
@@ -145,7 +145,7 @@ const FrdNutritionProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.1}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=400&fit=crop"
+                  src="/frd2.png"
                   alt="Dashboard View"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -154,7 +154,7 @@ const FrdNutritionProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.2}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop"
+                  src="/frd3.png"
                   alt="Products"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -163,7 +163,7 @@ const FrdNutritionProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.3}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1506755855567-92ff770e8de0?w=600&h=400&fit=crop"
+                  src="/frd4.png"
                   alt="Services"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />

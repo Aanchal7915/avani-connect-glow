@@ -20,7 +20,7 @@ const PolicicueProject = () => {
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
               <img 
-                src="/policicue-logo.png" 
+                src="/policucue.jpeg" 
                 alt="Policicue Logo" 
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
@@ -66,7 +66,7 @@ const PolicicueProject = () => {
             <AnimatedSection animation="fadeInRight" delay={0.4}>
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+                  src="/policy1.png"
                   alt="Policicue Platform Dashboard"
                   className="rounded-2xl shadow-2xl w-full"
                 />
@@ -150,7 +150,7 @@ const PolicicueProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.1}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+                  src="/policy2.png"
                   alt="Dashboard View"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -159,7 +159,7 @@ const PolicicueProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.2}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+                  src="/policy3.png"
                   alt="User Interface"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -168,13 +168,13 @@ const PolicicueProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.3}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop"
+                  src="/policy4.png"
                   alt="Mobile Responsive"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
             </AnimatedSection>
-            <AnimatedSection animation="fadeInUp" delay={0.4}>
+            {/* <AnimatedSection animation="fadeInUp" delay={0.4}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
                   src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
@@ -200,7 +200,7 @@ const PolicicueProject = () => {
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-            </AnimatedSection>
+            </AnimatedSection> */}
           </div>
         </div>
       </section>

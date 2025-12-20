@@ -20,7 +20,7 @@ const SanjeevniHospitalProject = () => {
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
               <img 
-                src="/sanjeevni-hospital-logo.png" 
+                src="/sanjeevni.jpeg" 
                 alt="Sanjeevni Hospital Logo" 
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
@@ -63,7 +63,7 @@ const SanjeevniHospitalProject = () => {
             <AnimatedSection animation="fadeInRight" delay={0.4}>
               <div className="relative">
                 <img
-                  src="./s2.jpg"
+                  src="/sanjeevni1.png"
                   alt="Hospital Website"
                   className="rounded-2xl shadow-2xl w-full"
                 />
@@ -145,7 +145,7 @@ const SanjeevniHospitalProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.1}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="./s2.jpg"
+                  src="/sanjeevni2.png"
                   alt="Hospital Website"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -154,7 +154,7 @@ const SanjeevniHospitalProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.2}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop"
+                  src="/sanjeevni3.png"
                   alt="Appointment Booking"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -163,7 +163,7 @@ const SanjeevniHospitalProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.3}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=600&h=400&fit=crop"
+                  src="/sanjeevni4.png"
                   alt="Patient Portal"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />

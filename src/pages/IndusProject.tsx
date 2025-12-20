@@ -20,7 +20,7 @@ const IndusProject = () => {
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
               <img 
-                src="/indus-logo.png" 
+                src="/indus.jpeg" 
                 alt="Indus group of Institution Logo" 
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
@@ -61,7 +61,7 @@ const IndusProject = () => {
             <AnimatedSection animation="fadeInRight" delay={0.4}>
               <div className="relative">
                 <img
-                  src="./h-sm.jpg"
+                  src="/indus1.png"
                   alt="School Management System"
                   className="rounded-2xl shadow-2xl w-full"
                 />
@@ -143,7 +143,7 @@ const IndusProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.1}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="./h-sm.jpg"
+                  src="/indus2.png"
                   alt="Dashboard View"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -152,7 +152,7 @@ const IndusProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.2}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
+                  src="/indus3.png"
                   alt="User Interface"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -161,7 +161,7 @@ const IndusProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.3}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop"
+                  src="/indus4.png"
                   alt="Mobile Responsive"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />

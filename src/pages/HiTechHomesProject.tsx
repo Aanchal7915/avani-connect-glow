@@ -20,7 +20,7 @@ const HiTechHomesProject = () => {
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
               <img 
-                src="/hitech-homes-logo.png" 
+                src="/hitech.jpeg" 
                 alt="Hi-tech Homes Logo" 
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
@@ -62,7 +62,7 @@ const HiTechHomesProject = () => {
             <AnimatedSection animation="fadeInRight" delay={0.4}>
               <div className="relative">
                 <img
-                  src="./s6.jpg"
+                  src="/hitech1.png"
                   alt="Property Management Portal"
                   className="rounded-2xl shadow-2xl w-full"
                 />
@@ -144,7 +144,7 @@ const HiTechHomesProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.1}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="./s6.jpg"
+                  src="/hitech2.png"
                   alt="Property Listings"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -153,7 +153,7 @@ const HiTechHomesProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.2}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop"
+                  src="/hitech3.png"
                   alt="Property Details"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -162,7 +162,7 @@ const HiTechHomesProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.3}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&h=400&fit=crop"
+                  src="/hitech4.png"
                   alt="Admin Dashboard"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />

@@ -20,7 +20,7 @@ const RohtakShoeProject = () => {
             </Link>
             <div className="flex flex-col items-start gap-4 mb-4">
               <img 
-                src="/rohtak-shoe-logo.png" 
+                src="/shoes.jpeg" 
                 alt="Rohtak Shoe co. Logo" 
                 className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
               />
@@ -63,7 +63,7 @@ const RohtakShoeProject = () => {
             <AnimatedSection animation="fadeInRight" delay={0.4}>
               <div className="relative">
                 <img
-                  src="./s-shoe.jpg"
+                  src="/shoes1.png"
                   alt="Shoe E-Commerce Platform"
                   className="rounded-2xl shadow-2xl w-full"
                 />
@@ -145,7 +145,7 @@ const RohtakShoeProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.1}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="./s-shoe.jpg"
+                  src="/shoes2.png"
                   alt="Product Catalog"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -154,7 +154,7 @@ const RohtakShoeProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.2}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&h=400&fit=crop"
+                  src="/shoes3.png"
                   alt="Product Details"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -163,7 +163,7 @@ const RohtakShoeProject = () => {
             <AnimatedSection animation="fadeInUp" delay={0.3}>
               <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=600&h=400&fit=crop"
+                  src="/shoes4.png"
                   alt="Checkout"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
