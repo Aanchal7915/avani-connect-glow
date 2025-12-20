@@ -120,6 +120,13 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/privacypolicy";
 import TermsConditions from "./pages/termsnandcondition";
 import Index from "./pages/Index";
+import Policicue from "./pages/Policicue";
+import PolicicueProject from "./pages/PolicicueProject";
+import IndusProject from "./pages/IndusProject";
+import FrdNutritionProject from "./pages/FrdNutritionProject";
+import HiTechHomesProject from "./pages/HiTechHomesProject";
+import SanjeevniHospitalProject from "./pages/SanjeevniHospitalProject";
+import RohtakShoeProject from "./pages/RohtakShoeProject";
 
 // नई लाइन: ThankYou page import
 import ThankYou from "./pages/ThankYou";
@@ -173,6 +180,13 @@ const AppLayout = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsConditions />} />
           <Route path="/web-dev" element={<Index />} />
+          <Route path="/policicue" element={<Policicue />} />
+          <Route path="/projects/policicue" element={<PolicicueProject />} />
+          <Route path="/projects/indus" element={<IndusProject />} />
+          <Route path="/projects/frd-nutrition" element={<FrdNutritionProject />} />
+          <Route path="/projects/hitech-homes" element={<HiTechHomesProject />} />
+          <Route path="/projects/sanjeevni-hospital" element={<SanjeevniHospitalProject />} />
+          <Route path="/projects/rohtak-shoe" element={<RohtakShoeProject />} />
           <Route path="/admin" element={<AdminRedirect />} />
 
           {/* Catch-all */}
