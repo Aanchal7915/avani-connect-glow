@@ -216,13 +216,36 @@ const Home = () => {
   ];
 
   const clientLogos = [
-    "Indus group of Institution",
-    "Policicue",
-    "Frd Nutrition",
-    "Hi-tech Homes",
-    "Sanjeevni Hospital",
-    "Rohtak Shoe co."
-
+    {
+      name: "Indus group of Institution",
+      logo: "./indus.jpeg",
+      link: "/projects/indus"
+    },
+    {
+      name: "Policicue",
+      logo: "./policucue.jpeg",
+      link: "/projects/policicue"
+    },
+    {
+      name: "Frd Nutrition",
+      logo: "./frd.jpeg",
+      link: "/projects/frd-nutrition"
+    },
+    {
+      name: "Hi-tech Homes",
+      logo: "./hitech.jpeg",
+      link: "/projects/hitech-homes"
+    },
+    {
+      name: "Sanjeevni Hospital",
+      logo: "./sanjeevni.jpeg",
+      link: "/projects/sanjeevni-hospital"
+    },
+    {
+      name: "Rohtak Shoe co.",
+      logo: "./shoes.jpeg",
+      link: "/projects/rohtak-shoe"
+    }
   ];
 
   return (
@@ -545,20 +568,21 @@ const Home = () => {
 
           {/* Heading */}
           <div className="text-center mb-14">
-            <h3 className="text-2xl font-bold text-slate-900 mb-3">
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
               Project Showcase
             </h3>
-            <p className="text-slate-600">
+            <p className="text-lg text-slate-600">
               Companies that trust us with their digital transformation
             </p>
           </div>
 
-          {/* 3x3 Grid Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {clientLogos.map((logo, index) => (
+          {/* Logo Grid Layout */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {clientLogos.map((client, index) => (
               <div
                 key={index}
                 className="
+                  group
                   flex flex-col items-center justify-between
                   rounded-2xl
                   border-2 border-dashed border-blue-300
@@ -567,24 +591,54 @@ const Home = () => {
                   hover:shadow-lg hover:border-blue-500 hover:scale-105
                   hover:bg-white
                   transition-all duration-300 ease-in-out
-                  p-6
-                  min-h-[180px]
-                  group
+                  p-5
+                  min-h-[200px]
+                  relative
                 "
               >
-                <span className="text-slate-800 font-semibold text-base text-center mb-4 group-hover:text-blue-600 transition-colors duration-300">
-                  {logo}
-                </span>
+                {/* Logo Container */}
+                <div className="
+                  relative
+                  w-full
+                  h-32
+                  mb-4
+                  flex items-center justify-center
+                  bg-gray-50
+                  rounded-xl
+                  overflow-hidden
+                  group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-purple-50
+                  transition-all duration-300
+                ">
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="
+                      max-w-full
+                      max-h-full
+                      object-contain
+                      p-3
+                      group-hover:scale-110
+                      transition-transform duration-300
+                    "
+                  />
+                </div>
+
+                {/* Company Name */}
+                <h4 className="
+                  text-slate-800
+                  font-semibold
+                  text-base
+                  text-center
+                  mb-4
+                  group-hover:text-blue-600
+                  transition-colors duration-300
+                ">
+                  {client.name}
+                </h4>
+
+                {/* View Our Work Button - Always Visible */}
                 <Link
-                  to={
-                    logo === "Policicue" ? "/projects/policicue" :
-                    logo === "Indus group of Institution" ? "/projects/indus" :
-                    logo === "Frd Nutrition" ? "/projects/frd-nutrition" :
-                    logo === "Hi-tech Homes" ? "/projects/hitech-homes" :
-                    logo === "Sanjeevni Hospital" ? "/projects/sanjeevni-hospital" :
-                    logo === "Rohtak Shoe co." ? "/projects/rohtak-shoe" :
-                    "/case-studies"
-                  }
+                  to={client.link}
                   className="
                     bg-gradient-to-r from-blue-600 to-purple-600
                     text-white
@@ -594,7 +648,9 @@ const Home = () => {
                     hover:shadow-lg
                     transition-all duration-200
                     hover:scale-105
-                    text-sm
+text-xs sm:text-sm
+                    w-full
+                    text-center
                   "
                 >
                   View Our Work
