@@ -134,7 +134,7 @@ const PolicicueProject = () => {
 
 
       {/* Project Images Gallery */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center mb-12">
@@ -200,10 +200,10 @@ const PolicicueProject = () => {
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-            </AnimatedSection> */}
+            </AnimatedSection> 
           </div>
-        </div>
-      </section>
+       // </div>
+     // </section> */}
 
 
     </div>

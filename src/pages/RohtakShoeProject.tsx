@@ -129,7 +129,7 @@ const RohtakShoeProject = () => {
       </section>
 
       {/* Project Images Gallery */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center mb-12">
@@ -171,7 +171,7 @@ const RohtakShoeProject = () => {
             </AnimatedSection>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
