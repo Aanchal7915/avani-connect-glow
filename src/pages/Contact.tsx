@@ -45,7 +45,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+    const API_BASE = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
 
     // prepare payload to match backend expectations
     const payload = {
