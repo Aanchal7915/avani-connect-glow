@@ -464,20 +464,20 @@ const Home = () => {
                 <div className="
             bg-white 
             rounded-2xl 
-            p-5 sm:p-6 lg:p-8
+            p-4 sm:p-6 lg:p-8
             shadow-md 
             border border-gray-100
             h-full
           ">
-                  <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-3">
+                  <div className="text-2xl sm:text-4xl font-bold text-blue-600 mb-2 sm:mb-3">
                     {step.step}
                   </div>
 
-                  <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-sm sm:text-lg lg:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">
                     {step.title}
                   </h3>
 
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-xs sm:text-base text-gray-600 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -563,11 +563,11 @@ const Home = () => {
           </div>
         </div>
       </section> */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Heading */}
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 sm:mb-14">
             <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
               Project Showcase
             </h3>
@@ -577,8 +577,8 @@ const Home = () => {
           </div>
 
           {/* Logo Grid Layout */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {clientLogos.map((client, index) => (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+            {clientLogos.map((client, index) => (
               <div
                 key={index}
                 className="
@@ -591,8 +591,8 @@ const Home = () => {
                   hover:shadow-lg hover:border-blue-500 hover:scale-105
                   hover:bg-white
                   transition-all duration-300 ease-in-out
-                  p-5
-                  min-h-[200px]
+                  p-3 sm:p-5
+                  min-h-[180px] sm:min-h-[220px]
                   relative
                 "
               >
@@ -600,8 +600,8 @@ const Home = () => {
                 <div className="
                   relative
                   w-full
-                  h-32
-                  mb-4
+                  h-24 sm:h-32
+                  mb-3 sm:mb-4
                   flex items-center justify-center
                   bg-gray-50
                   rounded-xl
@@ -616,7 +616,7 @@ const Home = () => {
                       max-w-full
                       max-h-full
                       object-contain
-                      p-3
+                      p-2 sm:p-3
                       group-hover:scale-110
                       transition-transform duration-300
                     "
@@ -627,9 +627,9 @@ const Home = () => {
                 <h4 className="
                   text-slate-800
                   font-semibold
-                  text-base
+                  text-sm sm:text-base
                   text-center
-                  mb-4
+                  mb-3 sm:mb-4
                   group-hover:text-blue-600
                   transition-colors duration-300
                 ">
@@ -642,13 +642,13 @@ const Home = () => {
                   className="
                     bg-gradient-to-r from-blue-600 to-purple-600
                     text-white
-                    px-6 py-2
+                    px-4 py-1.5 sm:px-6 sm:py-2
                     rounded-lg
                     font-medium
                     hover:shadow-lg
                     transition-all duration-200
                     hover:scale-105
-text-xs sm:text-sm
+                    text-[10px] sm:text-sm
                     w-full
                     text-center
                   "
