@@ -292,7 +292,7 @@ const Contact = () => {
                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center"
                   >
                     <Send className="mr-2 w-5 h-5" />
-                    Send Message via WhatsApp
+                    Submit
                   </button>
                 </form>
               </div>
