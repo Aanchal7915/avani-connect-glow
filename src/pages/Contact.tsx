@@ -151,164 +151,154 @@ const Contact = () => {
                 <h2 className="text-3xl font-bold text-gray-900 mb-8">
                   Send Us a Message
                 </h2>
-                {isSubmitted ? (
-                  <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Send className="w-8 h-8 text-green-600" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
-                    <p className="text-gray-600">
-                      Thank you for contacting us. We'll get back to you shortly.
-                    </p>
-                    <button
-                      onClick={() => setIsSubmitted(false)}
-                      className="mt-6 text-blue-600 font-medium hover:text-blue-700 underline"
-                    >
-                      Send another message
-                    </button>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          required
-                          className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Enter your full name"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                          Email Address *
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          required
-                          className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Enter your email"
-                        />
-                      </div>
-                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Enter your phone number"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                          Company Name
-                        </label>
-                        <input
-                          type="text"
-                          id="company"
-                          name="company"
-                          value={formData.company}
-                          onChange={handleInputChange}
-                          className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Enter your company name"
-                        />
-                      </div>
-                    </div>
-
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Services Interested In
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                        Full Name *
                       </label>
-                      <div className="relative">
-                        <button
-                          type="button"
-                          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-left flex justify-between items-center"
-                        >
-                          <span className={`block truncate ${formData.service.length === 0 ? 'text-gray-400' : 'text-gray-900'}`}>
-                            {formData.service.length === 0
-                              ? "Select services"
-                              : `${formData.service.length} selected`}
-                          </span>
-                          <ChevronUp className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDropdownOpen ? '' : 'transform rotate-180'}`} />
-                        </button>
-
-                        {isDropdownOpen && (
-                          <div className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-                            {services.map((service) => (
-                              <div
-                                key={service}
-                                className="relative flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                                onClick={() => handleServiceToggle(service)}
-                              >
-                                <div className="flex items-center h-5">
-                                  <input
-                                    type="checkbox"
-                                    className="text-gray-800 focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                    checked={formData.service.includes(service)}
-                                    readOnly
-                                  />
-                                </div>
-                                <div className="ml-3 text-sm">
-                                  <span className={`font-medium ${formData.service.includes(service) ? 'text-gray-900' : 'text-gray-700'}`}>
-                                    {service}
-                                  </span>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                        Project Details *
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
                         onChange={handleInputChange}
                         required
-                        rows={6}
                         className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Tell us about your project requirements, goals, and timeline..."
+                        placeholder="Enter your full name"
                       />
                     </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter your email"
+                      />
+                    </div>
+                  </div>
 
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      {isLoading ? (
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                      ) : (
-                        <Send className="mr-2 w-5 h-5" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter your phone number"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                        Company Name
+                      </label>
+                      <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                        className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter your company name"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Services Interested In
+                    </label>
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-left flex justify-between items-center"
+                      >
+                        <span className={`block truncate ${formData.service.length === 0 ? 'text-gray-400' : 'text-gray-900'}`}>
+                          {formData.service.length === 0
+                            ? "Select services"
+                            : `${formData.service.length} selected`}
+                        </span>
+                        <ChevronUp className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDropdownOpen ? '' : 'transform rotate-180'}`} />
+                      </button>
+
+                      {isDropdownOpen && (
+                        <div className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+                          {services.map((service) => (
+                            <div
+                              key={service}
+                              className="relative flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                              onClick={() => handleServiceToggle(service)}
+                            >
+                              <div className="flex items-center h-5">
+                                <input
+                                  type="checkbox"
+                                  className="text-gray-800 focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
+                                  checked={formData.service.includes(service)}
+                                  readOnly
+                                />
+                              </div>
+                              <div className="ml-3 text-sm">
+                                <span className={`font-medium ${formData.service.includes(service) ? 'text-gray-900' : 'text-gray-700'}`}>
+                                  {service}
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       )}
-                      {isLoading ? 'Sending...' : 'Submit'}
-                    </button>
-                  </form>
-                )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      Project Details *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={6}
+                      className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Tell us about your project requirements, goals, and timeline..."
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? (
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                    ) : (
+                      <Send className="mr-2 w-5 h-5" />
+                    )}
+                    {isLoading ? 'Sending...' : 'Submit'}
+                  </button>
+                  {isSubmitted && (
+                    <div className="mt-4 text-center p-4 bg-green-50 rounded-lg border border-green-200">
+                      <h3 className="text-lg font-bold text-green-800">Message Submitted Successfully!</h3>
+                      <p className="text-green-700">We will get back to you soon.</p>
+                    </div>
+                  )}
+                </form>
+
               </div>
             </div>
 
