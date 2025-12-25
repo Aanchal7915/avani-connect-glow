@@ -131,9 +131,7 @@ const Footer = () => {
                 <MapPin size={20} className="text-blue-400 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300">
-                    F-145, Gurgaon Green EMAAR<br />
-                    Gurugram-124001<br />
-                    India
+                    Tower B, 3rd Floor, Unitech Cyber Park, Sector 39, Gurugram, Haryana 122002
                   </p>
                 </div>
               </div>
