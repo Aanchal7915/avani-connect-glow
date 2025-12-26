@@ -187,31 +187,31 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: "Priya Sharma",
-      position: "CEO, TechStart India",
+      name: "Abhishek Parashar",
+      position: "Founder,Trainingandplacementcell",
       content:
-        "Avani Enterprises transformed our digital presence completely. Our website traffic increased by 300% and conversions by 150% within 6 months.",
+        "The team delivered exactly what we needed — a clean, professional, and easy-to-manage website. The entire process was smooth, timely, and well-communicated. We’re very satisfied with both the quality and support.",
       rating: 5,
       image:
-        "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=150&h=150&fit=crop&crop=face"
+        "./review1.png"
     },
     {
-      name: "Rajesh Kumar",
-      position: "Founder, EcoSolutions",
+      name: "Mohit Bazzad",
+      position: "Founder, Kings pet Hospital",
       content:
-        "The team's expertise in SEO and content marketing helped us rank #1 for our target keywords. ROI exceeded our expectations by 200%.",
+        "We are extremely pleased with the website design and functionality delivered by the team. It’s user-friendly, professional, and perfectly showcases our services. The entire process was efficient and stress-free.",
       rating: 5,
       image:
-        "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=150&h=150&fit=crop&crop=face"
+        "./review2.png"
     },
     {
-      name: "Anita Patel",
-      position: "Marketing Director, HealthTech",
+      name: "Aman Sharma",
+      position: "CEO, Hi Tech Luxury Homes",
       content:
-        "Their AI solutions automated 70% of our customer service, saving us ₹50L annually while improving customer satisfaction.",
+        "We’re thrilled with the website — it’s elegant, responsive, and beautifully represents our brand. The design perfectly highlights our property offerings. The team delivered on time with excellent communication.",
       rating: 5,
       image:
-        "https://images.unsplash.com/photo-1610276198568-eb6d0ff53e48?w=150&h=150&fit=crop&crop=face"
+        "./review3.png"
     }
   ];
 
