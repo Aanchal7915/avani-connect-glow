@@ -193,7 +193,7 @@ const Home = () => {
         "The team delivered exactly what we needed — a clean, professional, and easy-to-manage website. The entire process was smooth, timely, and well-communicated. We’re very satisfied with both the quality and support.",
       rating: 5,
       image:
-        "./review1.png"
+        "/review1.png"
     },
     {
       name: "Mohit Bazzad",
@@ -202,7 +202,7 @@ const Home = () => {
         "We are extremely pleased with the website design and functionality delivered by the team. It’s user-friendly, professional, and perfectly showcases our services. The entire process was efficient and stress-free.",
       rating: 5,
       image:
-        "./review2.png"
+        "/review2.png"
     },
     {
       name: "Aman Sharma",
@@ -211,7 +211,7 @@ const Home = () => {
         "We’re thrilled with the website — it’s elegant, responsive, and beautifully represents our brand. The design perfectly highlights our property offerings. The team delivered on time with excellent communication.",
       rating: 5,
       image:
-        "./review3.png"
+        "/review3.png"
     }
   ];
 
@@ -515,7 +515,10 @@ const Home = () => {
                 <img
                   src={testimonials[currentTestimonial].image}
                   alt={testimonials[currentTestimonial].name}
-                  className="w-16 h-16 rounded-full object-cover mr-4"
+                  className={`w-20 h-20 rounded-full border-4 border-white shadow-lg mr-6 ${testimonials[currentTestimonial].image.includes('review2')
+                      ? 'object-contain bg-white'
+                      : 'object-cover object-top'
+                    }`}
                 />
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900">
