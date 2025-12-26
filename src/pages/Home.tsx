@@ -515,9 +515,9 @@ const Home = () => {
                 <img
                   src={testimonials[currentTestimonial].image}
                   alt={testimonials[currentTestimonial].name}
-                  className={`w-20 h-20 rounded-full border-4 border-white shadow-lg mr-6 ${testimonials[currentTestimonial].image.includes('review2')
-                      ? 'object-contain bg-white'
-                      : 'object-cover object-top'
+                  className={`w-20 h-20 rounded-full border-4 border-white shadow-lg mr-6 ${testimonials[currentTestimonial].image.includes('review2') || testimonials[currentTestimonial].image.includes('review1')
+                    ? 'object-contain bg-white'
+                    : 'object-cover object-top'
                     }`}
                 />
                 <div>

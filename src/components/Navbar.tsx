@@ -164,10 +164,9 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
-        ${
-          isScrolled
-            ? "bg-[#0b1220]/95 backdrop-blur-md shadow-xl"
-            : "bg-white shadow-sm"
+        ${isScrolled
+          ? "bg-[#0b1220]/95 backdrop-blur-md shadow-xl"
+          : "bg-white shadow-sm"
         }
       `}
     >
@@ -182,9 +181,8 @@ const Navbar = () => {
               className="h-[70px] w-[70px] rounded-md"
             />
             <span
-              className={`text-xl font-bold transition-colors ${
-                isScrolled ? "text-white" : "text-gray-900"
-              }`}
+              className={`text-xl font-bold transition-colors ${isScrolled ? "text-white" : "text-gray-900"
+                }`}
             >
               Avani Enterprises
             </span>
@@ -197,12 +195,11 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={`text-sm font-medium transition-all duration-200
-                  ${
-                    location.pathname === link.path
-                      ? isScrolled
-                        ? "text-blue-400"
-                        : "text-blue-600"
-                      : isScrolled
+                  ${location.pathname === link.path
+                    ? isScrolled
+                      ? "text-blue-400"
+                      : "text-blue-600"
+                    : isScrolled
                       ? "text-gray-200 hover:text-white"
                       : "text-gray-700 hover:text-blue-600"
                   }
@@ -218,10 +215,9 @@ const Navbar = () => {
             <a
               href="tel:+919253625099"
               className={`flex items-center space-x-2 transition-colors
-                ${
-                  isScrolled
-                    ? "text-gray-200 hover:text-white"
-                    : "text-gray-700 hover:text-blue-600"
+                ${isScrolled
+                  ? "text-gray-200 hover:text-white"
+                  : "text-gray-700 hover:text-blue-600"
                 }
               `}
             >
@@ -243,9 +239,8 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`transition-colors ${
-                isScrolled ? "text-white" : "text-gray-700"
-              }`}
+              className={`transition-colors ${isScrolled ? "text-white" : "text-gray-700"
+                }`}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -256,10 +251,9 @@ const Navbar = () => {
         {isOpen && (
           <div
             className={`lg:hidden border-t transition-all
-              ${
-                isScrolled
-                  ? "bg-[#0b1220] border-white/10"
-                  : "bg-white border-gray-200"
+              ${isScrolled
+                ? "bg-[#0b1220] border-white/10"
+                : "bg-white border-gray-200"
               }
             `}
           >
@@ -270,12 +264,11 @@ const Navbar = () => {
                   to={link.path}
                   onClick={() => setIsOpen(false)}
                   className={`block px-4 py-2 rounded-md text-base font-medium
-                    ${
-                      location.pathname === link.path
-                        ? isScrolled
-                          ? "text-blue-400 bg-white/10"
-                          : "text-blue-600 bg-blue-50"
-                        : isScrolled
+                    ${location.pathname === link.path
+                      ? isScrolled
+                        ? "text-blue-400 bg-white/10"
+                        : "text-blue-600 bg-blue-50"
+                      : isScrolled
                         ? "text-gray-200 hover:bg-white/10 hover:text-white"
                         : "text-gray-700 hover:bg-gray-100"
                     }
@@ -289,10 +282,9 @@ const Navbar = () => {
                 <a
                   href="tel:+919253625099"
                   className={`flex items-center space-x-2 px-4 py-2
-                    ${
-                      isScrolled
-                        ? "text-gray-200 hover:text-white"
-                        : "text-gray-700 hover:text-blue-600"
+                    ${isScrolled
+                      ? "text-gray-200 hover:text-white"
+                      : "text-gray-700 hover:text-blue-600"
                     }
                   `}
                 >
