@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Code, Search, Share2, TrendingUp } from "lucide-react";
+import { Code, Search, Share2, TrendingUp, Briefcase, Landmark, ShieldCheck } from "lucide-react";
 
 const services = [
   {
@@ -30,6 +30,27 @@ const services = [
     description:
       "Performance-focused Google and Meta advertising campaigns to maximise ROI and scale customer acquisition.",
     color: "from-teal-500 to-cyan-500",
+  },
+  {
+    icon: Briefcase,
+    title: "Business Consultation",
+    description:
+      "Expert guidance to optimize your business operations, strategy, and growth potential for long-term success.",
+    color: "from-amber-500 to-orange-500",
+  },
+  {
+    icon: Landmark,
+    title: "Business Loans",
+    description:
+      "Flexible financing solutions including term loans, working capital, and equipment financing to fuel your growth.",
+    color: "from-indigo-500 to-blue-500",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Business Insurance",
+    description:
+      "Comprehensive protection for your business assets, liability, and employees with tailored insurance plans.",
+    color: "from-emerald-500 to-green-500",
   },
 ];
 

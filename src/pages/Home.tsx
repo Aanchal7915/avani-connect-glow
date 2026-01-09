@@ -10,8 +10,14 @@ import {
   Mic,
   Calculator,
   ChevronRight,
-  Star
+  Star,
+  Briefcase,
+  Landmark,
+  ShieldCheck,
+  TrendingUp,
+  Users
 } from 'lucide-react';
+import { motion } from "framer-motion";
 import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCounter from '../components/AnimatedCounter';
 
@@ -125,6 +131,27 @@ const Home = () => {
       description: "Strategic financial planning and investment guidance for business growth.",
       color: "from-indigo-500 to-indigo-600",
       bgImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop"
+    },
+    {
+      icon: <Briefcase className="w-8 h-8" />,
+      title: "Business Consultation",
+      description: "Expert guidance to optimize your business operations, strategy, and growth potential for long-term success.",
+      color: "from-amber-500 to-orange-500",
+      bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+    },
+    {
+      icon: <Landmark className="w-8 h-8" />,
+      title: "Business Loans",
+      description: "Flexible financing solutions including term loans, working capital, and equipment financing to fuel your growth.",
+      color: "from-indigo-500 to-blue-500",
+      bgImage: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&h=400&fit=crop"
+    },
+    {
+      icon: <ShieldCheck className="w-8 h-8" />,
+      title: "Business Insurance",
+      description: "Comprehensive protection for your business assets, liability, and employees with tailored insurance plans.",
+      color: "from-emerald-500 to-green-500",
+      bgImage: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop"
     }
   ];
 
@@ -188,7 +215,7 @@ const Home = () => {
   const testimonials = [
     {
       name: "Abhishek Parashar",
-      position: "Founder,Trainingandplacementcell",
+      position: "Founder, Training and Placement Cell",
       content:
         "The team delivered exactly what we needed — a clean, professional, and easy-to-manage website. The entire process was smooth, timely, and well-communicated. We’re very satisfied with both the quality and support.",
       rating: 5,
@@ -251,57 +278,209 @@ const Home = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <section className="relative bg-gray-900 text-white overflow-hidden min-h-[90vh] flex items-center">
+        {/* Animated Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/50 to-purple-900/50 z-0"></div>
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              rotate: [0, 90, 0],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute -top-1/2 -right-1/2 w-[1000px] h-[1000px] bg-blue-600/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              rotate: [0, -90, 0],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute -bottom-1/2 -left-1/2 w-[1000px] h-[1000px] bg-purple-600/20 rounded-full blur-3xl"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <AnimatedSection animation="fadeInLeft" delay={0.2}>
-              <div>
-                <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                  Transform Your Brand with
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                    {" "}Strategic Digital Solutions
-                  </span>
-                </h1>
-                <AnimatedSection animation="fadeInUp" delay={0.4}>
-                  <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                    We help entrepreneurs and businesses achieve exponential growth through
-                    data-driven digital marketing, innovative technology solutions, and
-                    strategic brand transformation.
-                  </p>
-                </AnimatedSection>
-                <AnimatedSection animation="fadeInUp" delay={0.6}>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Link
-                      to="/contact"
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center"
+
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                <div className="flex flex-wrap gap-x-3 gap-y-1">
+                  {"Transform Your Brand with".split(" ").map((word, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: i * 0.15 }}
                     >
-                      Get Started
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Link>
-                    <Link to="/courses" className="border border-white/30 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all duration-200 flex items-center justify-center">
-                      <Play className="mr-2 w-5 h-5" />
-                      Explore Our Courses
-                    </Link>
-                  </div>
-                </AnimatedSection>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection animation="fadeInRight" delay={0.8} className="hidden lg:block">
-              <div className="relative">
-                <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl p-8 backdrop-blur-sm border border-white/10">
-                  <div className="grid grid-cols-2 gap-4">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                        <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-400 rounded-lg mb-3"></div>
-                        <div className="h-2 bg-white/20 rounded mb-2"></div>
-                        <div className="h-2 bg-white/20 rounded w-3/4"></div>
-                      </div>
-                    ))}
-                  </div>
+                      {word}
+                    </motion.span>
+                  ))}
                 </div>
-              </div>
-            </AnimatedSection>
+
+                <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+                  {"Strategic Digital Solutions".split(" ").map((word, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.6 + (i * 0.15) }}
+                      className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 pb-1"
+                    >
+                      {word}
+                    </motion.span>
+                  ))}
+                </div>
+              </h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl text-gray-300 mb-8 leading-relaxed max-w-lg"
+              >
+                We help entrepreneurs and businesses achieve exponential growth through
+                data-driven digital marketing, innovative technology solutions, and
+                strategic brand transformation.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <Link
+                  to="/contact"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105 flex items-center justify-center group"
+                >
+                  Get Started
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  to="/courses"
+                  className="relative overflow-hidden border border-white/30 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 flex items-center justify-center group"
+                >
+                  <span className="relative z-10 flex items-center">
+                    <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+                    Explore Courses
+                  </span>
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Content / Visual */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hidden lg:block relative"
+            >
+              <motion.div
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative z-10"
+              >
+                <div className="bg-gradient-to-tr from-gray-800/80 to-gray-900/80 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-2xl">
+                  {/* Fake UI Elements */}
+                  <div className="flex items-center space-x-2 mb-6">
+                    <div className="w-3 h-3 rounded-full bg-red-500" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                    <div className="w-3 h-3 rounded-full bg-green-500" />
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/5">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                          <Globe className="text-blue-400 w-5 h-5" />
+                        </div>
+                        <div>
+                          <div className="h-2 w-24 bg-white/20 rounded mb-1" />
+                          <div className="h-2 w-16 bg-white/10 rounded" />
+                        </div>
+                      </div>
+                      <div className="h-8 w-16 bg-blue-500/20 rounded-full" />
+                    </div>
+
+                    <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/5">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                          <Brain className="text-purple-400 w-5 h-5" />
+                        </div>
+                        <div>
+                          <div className="h-2 w-28 bg-white/20 rounded mb-1" />
+                          <div className="h-2 w-20 bg-white/10 rounded" />
+                        </div>
+                      </div>
+                      <div className="h-8 w-16 bg-purple-500/20 rounded-full" />
+                    </div>
+
+                    <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/5">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                          <Search className="text-green-400 w-5 h-5" />
+                        </div>
+                        <div>
+                          <div className="h-2 w-24 bg-white/20 rounded mb-1" />
+                          <div className="h-2 w-12 bg-white/10 rounded" />
+                        </div>
+                      </div>
+                      <div className="h-8 w-16 bg-green-500/20 rounded-full" />
+                    </div>
+                  </div>
+
+                  {/* Floating Stats */}
+                  <motion.div
+                    animate={{ x: [0, 10, 0], y: [0, -5, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+                    className="absolute -right-8 top-20 bg-white p-4 rounded-xl shadow-xl z-20"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="bg-green-100 p-2 rounded-lg">
+                        <TrendingUp className="text-green-600 w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="text-gray-500 text-xs font-semibold">Growth</div>
+                        <div className="text-gray-900 font-bold">+150%</div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    animate={{ x: [0, -10, 0], y: [0, 5, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+                    className="absolute -left-8 bottom-20 bg-white p-4 rounded-xl shadow-xl z-20"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="bg-blue-100 p-2 rounded-lg">
+                        <Users className="text-blue-600 w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="text-gray-500 text-xs font-semibold">Clients</div>
+                        <div className="text-gray-900 font-bold">500+</div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -510,29 +689,29 @@ const Home = () => {
             </p>
           </div>
           <div className="relative">
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 md:p-12">
-              <div className="flex items-center mb-6">
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 sm:p-8 md:p-12">
+              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6">
                 <img
                   src={testimonials[currentTestimonial].image}
                   alt={testimonials[currentTestimonial].name}
-                  className={`w-20 h-20 rounded-full border-4 border-white shadow-lg mr-6 ${testimonials[currentTestimonial].image.includes('review2') || testimonials[currentTestimonial].image.includes('review1')
+                  className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-white shadow-lg ${testimonials[currentTestimonial].image.includes('review2') || testimonials[currentTestimonial].image.includes('review1')
                     ? 'object-contain bg-white'
                     : 'object-cover object-top'
                     }`}
                 />
-                <div>
+                <div className="text-center sm:text-left">
                   <h4 className="text-lg font-semibold text-gray-900">
                     {testimonials[currentTestimonial].name}
                   </h4>
-                  <p className="text-gray-600">{testimonials[currentTestimonial].position}</p>
-                  <div className="flex items-center mt-1">
+                  <p className="text-gray-600 text-sm sm:text-base break-words">{testimonials[currentTestimonial].position}</p>
+                  <div className="flex items-center justify-center sm:justify-start mt-1">
                     {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                     ))}
                   </div>
                 </div>
               </div>
-              <p className="text-lg text-gray-700 italic">"{testimonials[currentTestimonial].content}"</p>
+              <p className="text-base sm:text-lg text-gray-700 italic text-center sm:text-left">"{testimonials[currentTestimonial].content}"</p>
             </div>
             <div className="flex justify-center mt-8 space-x-2">
               {testimonials.map((_, index) => (

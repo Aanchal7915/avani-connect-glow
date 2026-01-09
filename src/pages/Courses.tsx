@@ -441,12 +441,12 @@ const Courses = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between flex-wrap">
                       <div className="text-sm text-gray-500">
                         <div>Instructor: {course.instructor}</div>
                         <div>Level: {course.level}</div>
                       </div>
-                      <div className="flex space-x-2">
+                      <div className="flex space-x-2 mt-4 sm:mt-2">
                         <Link
                           to={`/courses/${course.id}`}
                           className="border border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-all duration-200 flex items-center"

@@ -443,7 +443,10 @@ import {
   ArrowRight,
   Star,
   Clock,
-  Users
+  Users,
+  Briefcase,
+  Landmark,
+  ShieldCheck
 } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 
@@ -487,7 +490,8 @@ const Services = () => {
       ],
       price: "₹15,000 - ₹5,00,000",
       duration: "4-12 weeks",
-      color: "from-blue-500 to-blue-600"
+      color: "from-blue-500 to-blue-600",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
     },
     {
       id: 'seo-content',
@@ -505,7 +509,8 @@ const Services = () => {
       ],
       price: "₹10,000 - ₹2,00,000",
       duration: "3-6 months",
-      color: "from-green-500 to-green-600"
+      color: "from-green-500 to-green-600",
+      image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&h=400&fit=crop"
     },
     {
       id: 'social-media',
@@ -523,7 +528,8 @@ const Services = () => {
       ],
       price: "₹15,000 - ₹1,50,000",
       duration: "Ongoing",
-      color: "from-purple-500 to-purple-600"
+      color: "from-purple-500 to-purple-600",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop"
     },
     {
       id: 'ai-solutions',
@@ -541,7 +547,8 @@ const Services = () => {
       ],
       price: "₹30,000 - ₹10,00,000",
       duration: "6-16 weeks",
-      color: "from-orange-500 to-orange-600"
+      color: "from-orange-500 to-orange-600",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop"
     },
     {
       id: 'podcast-production',
@@ -559,7 +566,8 @@ const Services = () => {
       ],
       price: "₹20,000 - ₹3,00,000",
       duration: "Ongoing",
-      color: "from-red-500 to-red-600"
+      color: "from-red-500 to-red-600",
+      image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=400&fit=crop"
     },
     {
       id: 'financial-consulting',
@@ -577,7 +585,65 @@ const Services = () => {
       ],
       price: "₹10,000 - ₹5,00,000",
       duration: "Ongoing",
-      color: "from-indigo-500 to-indigo-600"
+      color: "from-indigo-500 to-indigo-600",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop"
+    },
+    {
+      id: 'business-consultation',
+      category: 'consulting',
+      icon: <Briefcase className="w-8 h-8" />,
+      title: "Business Consultation",
+      description: "Expert guidance to optimize detailed operations, strategy, and sustainable growth.",
+      features: [
+        "Strategic business planning",
+        "Operational process optimization",
+        "Market analysis & research",
+        "Growth strategy development",
+        "Change management",
+        "Performance improvement"
+      ],
+      price: "₹20,000 - ₹5,00,000",
+      duration: "Ongoing",
+      color: "from-amber-500 to-orange-500",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+    },
+    {
+      id: 'business-loans',
+      category: 'consulting',
+      icon: <Landmark className="w-8 h-8" />,
+      title: "Business Loans",
+      description: "Fast and flexible financing solutions tailored to fuel your business expansion.",
+      features: [
+        "Unsecured business loans",
+        "Working capital finance",
+        "Machinery & equipment loans",
+        "Quick approval process",
+        "Competitive interest rates",
+        "Minimal documentation"
+      ],
+      price: "8.5% p.a - 18% p.a",
+      duration: "3-7 Days",
+      color: "from-indigo-500 to-blue-500",
+      image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&h=400&fit=crop"
+    },
+    {
+      id: 'business-insurance',
+      category: 'consulting',
+      icon: <ShieldCheck className="w-8 h-8" />,
+      title: "Business Insurance",
+      description: "Comprehensive coverage options to protect your business assets and liabilities.",
+      features: [
+        "General liability insurance",
+        "Property insurance",
+        "Workers' compensation",
+        "Professional liability",
+        "Cyber insurance",
+        "Keyman insurance"
+      ],
+      price: "₹999/mo - Custom",
+      duration: "Annual",
+      color: "from-emerald-500 to-green-500",
+      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop"
     }
   ];
 
@@ -635,19 +701,29 @@ const Services = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredServices.map((service) => (
               <AnimatedSection key={service.id} animation="fadeInUp" delay={0.4 + (filteredServices.indexOf(service) * 0.1)}>
-                <div id={service.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden">
-                  <div className={`bg-gradient-to-r ${service.color} p-6 text-white`}>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center">
-                        {service.icon}
+                <div id={service.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden group">
+                  <div className="relative p-6 text-white h-[280px]">
+                    <div className="absolute inset-0 z-0">
+                      <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                      <div className="absolute inset-0 bg-black/60 transition-opacity duration-300 group-hover:bg-black/50" />
+                    </div>
+
+                    <div className="relative z-10 h-full flex flex-col">
+                      <div className="flex items-center justify-between mb-auto">
+                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-lg">
+                          {service.icon}
+                        </div>
+                        <div className="text-right">
+                          <div className="text-sm opacity-90 font-medium">Starting from</div>
+                          <div className="text-lg font-bold text-shadow">{service.price.split(' - ')[0]}</div>
+                        </div>
                       </div>
-                      <div className="text-right">
-                        <div className="text-sm opacity-90">Starting from</div>
-                        <div className="text-lg font-bold">{service.price.split(' - ')[0]}</div>
+
+                      <div>
+                        <h3 className="text-2xl font-bold mb-2 text-shadow">{service.title}</h3>
+                        <p className="text-white/95 text-sm leading-relaxed font-medium line-clamp-3">{service.description}</p>
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                    <p className="text-white/90 text-sm">{service.description}</p>
                   </div>
 
                   <div className="p-6">
