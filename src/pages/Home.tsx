@@ -447,8 +447,8 @@ const Home = () => {
               </p>
             </div>
           </AnimatedSection>
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {services.map((service, index) => (
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            {services.slice(0, 4).map((service, index) => (
               <AnimatedSection
                 key={index}
                 animation="fadeInUp"
@@ -483,6 +483,17 @@ const Home = () => {
                 </div>
               </AnimatedSection>
             ))}
+          </div>
+
+          {/* View More Button */}
+          <div className="mt-12 text-center">
+            <Link
+              to="/services"
+              className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-bold hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+            >
+              View More Services
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section >
