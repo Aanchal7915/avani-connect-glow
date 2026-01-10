@@ -15,7 +15,8 @@ import {
   Landmark,
   ShieldCheck,
   TrendingUp,
-  Users
+  Users,
+  Mail
 } from 'lucide-react';
 import { motion } from "framer-motion";
 import AnimatedSection from '../components/AnimatedSection';
@@ -155,6 +156,36 @@ const Home = () => {
     }
   ];
 
+  const heroSlides = [
+    {
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2070",
+      title: "Elevate Your Business with",
+      highlight: "Next-Gen AI Solutions",
+      description: "Empower your enterprise with state-of-the-art artificial intelligence that automates workflows, provides deep data insights, and drives strategic digital transformation for the modern age. We help you stay ahead by integrating smart tech that scales with your ambition."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2070",
+      title: "Transforming Ideas into",
+      highlight: "Digital Reality",
+      description: "From custom-built software architectures to stunning, immersive web and mobile experiences, we build robust technology solutions that fuel global growth and user engagement. Our expert team ensures every line of code translates into measurable business success."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2070",
+      title: "Strategic Growth through",
+      highlight: "Inbound Marketing",
+      description: "Dominate your industry landscape with data-driven SEO strategies, expert content marketing, and precision-targeted social media campaigns. We don't just drive traffic; we build authority and convert leads into loyal customers through proven marketing funnels."
+    }
+  ];
+
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const slideTimer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(slideTimer);
+  }, []);
+
   const processSteps = [
     {
       step: "01",
@@ -278,168 +309,79 @@ const Home = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white overflow-hidden min-h-[90vh] flex items-center">
-        {/* Animated Background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/50 to-purple-900/50 z-0"></div>
-          <motion.div
-            animate={{
-              opacity: [0.3, 0.5, 0.3]
-            }}
-            transition={{
-              duration: 7,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute -top-1/2 -right-1/2 w-[1000px] h-[1000px] bg-blue-600/20 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              opacity: [0.3, 0.5, 0.3]
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute -bottom-1/2 -left-1/2 w-[1000px] h-[1000px] bg-purple-600/20 rounded-full blur-3xl"
-          />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-            {/* Left Content */}
-            <div>
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                <div className="flex flex-wrap gap-x-3 gap-y-1">
-                  Transform Your Brand with
-                </div>
-
-                <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 pb-1">
-                    Strategic Digital Solutions
-                  </span>
-                </div>
-              </h1>
-
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-lg">
-                We help entrepreneurs and businesses achieve exponential growth through
-                data-driven digital marketing, innovative technology solutions, and
-                strategic brand transformation.
-              </p>
-
-              <div
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <Link
-                  to="/contact"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105 flex items-center justify-center group"
-                >
-                  Get Started
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  to="/courses"
-                  className="relative overflow-hidden border border-white/30 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 flex items-center justify-center group"
-                >
-                  <span className="relative z-10 flex items-center">
-                    <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                    Explore Courses
-                  </span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Content / Visual */}
-            <div
-              className="hidden lg:block relative"
+      <section className="relative h-[95vh] flex items-center overflow-hidden">
+        {/* Background Images Slider */}
+        <div className="absolute inset-0 z-0">
+          {heroSlides.map((slide, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{
+                opacity: activeSlide === index ? 1 : 0,
+                scale: activeSlide === index ? 1 : 1.1
+              }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute inset-0"
             >
               <div
-                className="relative z-10"
-              >
-                <div className="bg-gradient-to-tr from-gray-800/80 to-gray-900/80 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-2xl">
-                  {/* Fake UI Elements */}
-                  <div className="flex items-center space-x-2 mb-6">
-                    <div className="w-3 h-3 rounded-full bg-red-500" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                    <div className="w-3 h-3 rounded-full bg-green-500" />
-                  </div>
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${slide.image})` }}
+              />
+              {/* Strategic gradient overlay to make text pop while keeping the image bright on the right */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+            </motion.div>
+          ))}
+        </div>
 
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/5">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                          <Globe className="text-blue-400 w-5 h-5" />
-                        </div>
-                        <div>
-                          <div className="h-2 w-24 bg-white/20 rounded mb-1" />
-                          <div className="h-2 w-16 bg-white/10 rounded" />
-                        </div>
-                      </div>
-                      <div className="h-8 w-16 bg-blue-500/20 rounded-full" />
-                    </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-3xl">
+            <motion.div
+              key={activeSlide}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
+                {heroSlides[activeSlide].title}{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 leading-tight">
+                  {heroSlides[activeSlide].highlight}
+                </span>
+              </h1>
 
-                    <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/5">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                          <Brain className="text-purple-400 w-5 h-5" />
-                        </div>
-                        <div>
-                          <div className="h-2 w-28 bg-white/20 rounded mb-1" />
-                          <div className="h-2 w-20 bg-white/10 rounded" />
-                        </div>
-                      </div>
-                      <div className="h-8 w-16 bg-purple-500/20 rounded-full" />
-                    </div>
+              <p className="text-lg md:text-xl text-white mb-10 leading-relaxed font-normal max-w-2xl drop-shadow-lg">
+                {heroSlides[activeSlide].description}
+              </p>
 
-                    <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/5">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
-                          <Search className="text-green-400 w-5 h-5" />
-                        </div>
-                        <div>
-                          <div className="h-2 w-24 bg-white/20 rounded mb-1" />
-                          <div className="h-2 w-12 bg-white/10 rounded" />
-                        </div>
-                      </div>
-                      <div className="h-8 w-16 bg-green-500/20 rounded-full" />
-                    </div>
-                  </div>
-
-                  {/* Floating Stats */}
-                  <div
-                    className="absolute -right-8 top-20 bg-white p-4 rounded-xl shadow-xl z-20"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="bg-green-100 p-2 rounded-lg">
-                        <TrendingUp className="text-green-600 w-6 h-6" />
-                      </div>
-                      <div>
-                        <div className="text-gray-500 text-xs font-semibold">Growth</div>
-                        <div className="text-gray-900 font-bold">+150%</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    className="absolute -left-8 bottom-20 bg-white p-4 rounded-xl shadow-xl z-20"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="bg-blue-100 p-2 rounded-lg">
-                        <Users className="text-blue-600 w-6 h-6" />
-                      </div>
-                      <div>
-                        <div className="text-gray-500 text-xs font-semibold">Clients</div>
-                        <div className="text-gray-900 font-bold">500+</div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+              <div className="flex flex-row gap-3 sm:gap-5">
+                <Link
+                  to="/courses"
+                  className="px-4 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white rounded-full font-bold text-sm sm:text-lg hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all duration-300 hover:-translate-y-1 text-center flex items-center justify-center group"
+                >
+                  Explore Courses
+                  <ChevronRight className="ml-1 w-4 h-4 sm:ml-2 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="px-4 py-3 sm:px-8 sm:py-4 bg-white text-blue-900 rounded-full font-bold text-sm sm:text-lg hover:bg-gray-100 transition-all duration-300 hover:-translate-y-1 text-center flex items-center justify-center group shadow-xl"
+                >
+                  Contact Us
+                  <Mail className="ml-1 w-4 h-4 sm:ml-2 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform text-blue-600" />
+                </Link>
               </div>
-            </div>
+            </motion.div>
           </div>
+        </div>
+
+        {/* Slide Indicators */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveSlide(index)}
+              className={`h-1.5 rounded-full transition-all duration-500 ${activeSlide === index ? "w-12 bg-white" : "w-6 bg-white/30"
+                }`}
+            />
+          ))}
         </div>
       </section>
 
@@ -489,10 +431,10 @@ const Home = () => {
             </AnimatedSection>
           </div>
         </div>
-      </section >
+      </section>
 
       {/* Services Section */}
-      < section className="py-20 bg-white" >
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center mb-16">
@@ -505,7 +447,7 @@ const Home = () => {
               </p>
             </div>
           </AnimatedSection>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <AnimatedSection
                 key={index}
@@ -593,7 +535,7 @@ const Home = () => {
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 lg:gap-8">
             {processSteps.map((step, index) => (
               <div key={index} className="relative">
 
@@ -717,7 +659,7 @@ const Home = () => {
           </div>
 
           {/* Logo Grid Layout */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {clientLogos.map((client, index) => (
               <div
                 key={index}

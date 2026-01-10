@@ -104,8 +104,8 @@ const Chatbot = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed bottom-24 right-6 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 flex flex-col mb-4"
-                        style={{ maxHeight: '600px', height: '500px' }}
+                        className="fixed bottom-20 right-4 md:right-6 w-[calc(100%-2rem)] md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 flex flex-col mb-4 md:mb-0"
+                        style={{ maxHeight: 'calc(100vh - 120px)', height: 'min(500px, 70vh)' }}
                     >
                         {/* Header */}
                         <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 flex items-center justify-between text-white">
@@ -199,7 +199,8 @@ const Chatbot = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg flex items-center justify-center text-white z-50 hover:shadow-xl transition-shadow"
+                className="fixed bottom-6 right-4 md:right-6 w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg flex items-center justify-center text-white z-50 hover:shadow-xl transition-all duration-300 transform-gpu"
+                style={{ bottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}
             >
                 <AnimatePresence mode='wait'>
                     {isOpen ? (
