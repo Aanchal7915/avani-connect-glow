@@ -284,12 +284,10 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/50 to-purple-900/50 z-0"></div>
           <motion.div
             animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 90, 0],
               opacity: [0.3, 0.5, 0.3]
             }}
             transition={{
-              duration: 20,
+              duration: 7,
               repeat: Infinity,
               ease: "linear"
             }}
@@ -297,12 +295,10 @@ const Home = () => {
           />
           <motion.div
             animate={{
-              scale: [1.2, 1, 1.2],
-              rotate: [0, -90, 0],
               opacity: [0.3, 0.5, 0.3]
             }}
             transition={{
-              duration: 15,
+              duration: 5,
               repeat: Infinity,
               ease: "linear"
             }}
@@ -314,55 +310,26 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <div>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
                 <div className="flex flex-wrap gap-x-3 gap-y-1">
-                  {"Transform Your Brand with".split(" ").map((word, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: i * 0.15 }}
-                    >
-                      {word}
-                    </motion.span>
-                  ))}
+                  Transform Your Brand with
                 </div>
 
                 <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
-                  {"Strategic Digital Solutions".split(" ").map((word, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.6 + (i * 0.15) }}
-                      className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 pb-1"
-                    >
-                      {word}
-                    </motion.span>
-                  ))}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 pb-1">
+                    Strategic Digital Solutions
+                  </span>
                 </div>
               </h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-300 mb-8 leading-relaxed max-w-lg"
-              >
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-lg">
                 We help entrepreneurs and businesses achieve exponential growth through
                 data-driven digital marketing, innovative technology solutions, and
                 strategic brand transformation.
-              </motion.p>
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+              <div
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <Link
@@ -381,19 +348,14 @@ const Home = () => {
                     Explore Courses
                   </span>
                 </Link>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Right Content / Visual */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+            <div
               className="hidden lg:block relative"
             >
-              <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              <div
                 className="relative z-10"
               >
                 <div className="bg-gradient-to-tr from-gray-800/80 to-gray-900/80 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-2xl">
@@ -446,9 +408,7 @@ const Home = () => {
                   </div>
 
                   {/* Floating Stats */}
-                  <motion.div
-                    animate={{ x: [0, 10, 0], y: [0, -5, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+                  <div
                     className="absolute -right-8 top-20 bg-white p-4 rounded-xl shadow-xl z-20"
                   >
                     <div className="flex items-center gap-3">
@@ -460,11 +420,9 @@ const Home = () => {
                         <div className="text-gray-900 font-bold">+150%</div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
 
-                  <motion.div
-                    animate={{ x: [0, -10, 0], y: [0, 5, 0] }}
-                    transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+                  <div
                     className="absolute -left-8 bottom-20 bg-white p-4 rounded-xl shadow-xl z-20"
                   >
                     <div className="flex items-center gap-3">
@@ -476,11 +434,11 @@ const Home = () => {
                         <div className="text-gray-900 font-bold">500+</div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
 
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -531,10 +489,10 @@ const Home = () => {
             </AnimatedSection>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Services Section */}
-      <section className="py-20 bg-white">
+      < section className="py-20 bg-white" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center mb-16">
@@ -585,7 +543,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
 
 
@@ -874,7 +832,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </div>
+    </div >
   );
 };
 
