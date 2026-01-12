@@ -115,369 +115,329 @@ const Contact = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://plus.unsplash.com/premium_photo-1747889461984-ecf42eab7d80?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW5kaWFuJTIwcHJvZmVzc2lvbmFsc3xlbnwwfHwwfHx8MA%3D%3D"
-            alt="Indian Office Team"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />
+      {/* Hero Section - Corporate Geometric Design */}
+      <section className="relative pt-32 pb-44 overflow-hidden bg-[#0f172a]">
+        {/* Background Geometric Elements inspired by reference */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Large Diagonal Navy/Blue Shape */}
+          <div className="absolute -top-24 -right-20 w-[120%] h-full bg-[#1e293b] -rotate-12 transform origin-top-right shadow-2xl" />
+
+          {/* Yellow Diagonal Strip */}
+          <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-[#FFD700] rotate-[35deg] transform origin-top opacity-90 shadow-2xl" />
+
+          {/* White Diagonal Accent */}
+          <div className="absolute top-0 right-[28%] w-8 h-[150%] bg-white/20 rotate-[35deg] transform origin-top blur-sm" />
+
+          {/* Subtle Stardust Texture */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
-            <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-200 via-white to-purple-200 bg-clip-text text-transparent">
-                Get In Touch
+            <div className="max-w-3xl">
+              <div className="w-20 h-2 bg-[#FFD700] mb-8" />
+              <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
+                Let's Start a <br />
+                <span className="text-[#FFD700]">Project.</span>
               </h1>
-              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-                Ready to transform your business? Let's discuss your project requirements
-                and create a custom solution that drives results.
+              <p className="text-xl text-slate-300 leading-relaxed max-w-2xl font-medium">
+                We combine strategic business understanding with technical excellence
+                to deliver solutions that don't just work—they win.
               </p>
+            </div>
+          </AnimatedSection>
+        </div>
+
+        {/* Bottom Hexagon Accent */}
+        <div className="absolute -bottom-12 right-12 w-48 h-48 opacity-10">
+          <svg viewBox="0 0 100 100" fill="currentColor" className="text-white">
+            <path d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" />
+          </svg>
+        </div>
+      </section>
+
+      {/* Main Content Section */}
+      <section className="relative -mt-24 z-20 pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            {/* Left Column: Business Card Inspired Info */}
+            <div className="lg:col-span-5 space-y-6">
+              <AnimatedSection animation="fadeInLeft" delay={0.3}>
+                <div className="bg-white p-1 rounded-3xl shadow-2xl overflow-hidden group">
+                  <div className="bg-slate-900 p-10 rounded-[1.4rem] relative overflow-hidden">
+                    {/* Corner Accent */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFD700] -translate-x-1/2 -translate-y-1/2 rotate-45" />
+
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-3 mb-10">
+                        <div className="w-10 h-10 border-2 border-[#FFD700] rotate-45 flex items-center justify-center">
+                          <div className="w-6 h-6 bg-[#FFD700] -rotate-45" />
+                        </div>
+                        <span className="text-white font-black uppercase tracking-[0.3em] text-sm">Avani Enterprises</span>
+                      </div>
+
+                      <h2 className="text-3xl font-black text-white mb-2 tracking-tight">Direct Support</h2>
+                      <p className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-10">Available 24/7 for you</p>
+
+                      <div className="space-y-6">
+                        <a href="tel:+919253625099" className="flex items-center gap-4 group/item">
+                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700] group-hover/item:bg-[#FFD700] group-hover/item:text-slate-900 transition-all">
+                            <Phone className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Phone</p>
+                            <p className="text-white font-bold text-lg">+91 9253625099</p>
+                          </div>
+                        </a>
+
+                        <a href="mailto:kp@avanienterprises.in" className="flex items-center gap-4 group/item">
+                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700] group-hover/item:bg-[#FFD700] group-hover/item:text-slate-900 transition-all">
+                            <Mail className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Email</p>
+                            <p className="text-white font-bold text-lg">kp@avanienterprises.in</p>
+                          </div>
+                        </a>
+
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700]">
+                            <MapPin className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Office</p>
+                            <p className="text-white font-bold leading-tight">Gurugram, Haryana</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-12 flex gap-4">
+                        <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex-1 py-4 bg-[#FFD700] text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-white transition-all">
+                          WhatsApp
+                        </a>
+                        <a href="tel:+919253625099" className="flex-1 py-4 border border-slate-700 text-white rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-slate-800 transition-all">
+                          Call Expert
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              {/* Business Values */}
+              <AnimatedSection animation="fadeInUp" delay={0.4}>
+                <div className="bg-slate-100 p-8 rounded-3xl border border-slate-200">
+                  <h4 className="text-slate-900 font-black text-lg mb-4">Why connect?</h4>
+                  <ul className="space-y-3">
+                    {['Free Consultation', 'Expert Strategy Session', 'Custom Tech Roadmap', 'Dedicated Account Manager'].map((text, i) => (
+                      <li key={i} className="flex items-center gap-3 text-slate-600 text-sm font-bold uppercase tracking-tight">
+                        <div className="w-1.5 h-1.5 bg-[#FFD700] rounded-full" /> {text}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            {/* Right Column: Premium Compact Form */}
+            <div className="lg:col-span-7">
+              <AnimatedSection animation="fadeInRight" delay={0.2}>
+                <div className="bg-white rounded-[1.5rem] shadow-2xl p-6 md:p-10 border border-slate-100 max-w-xl mx-auto lg:ml-auto lg:mr-0">
+                  <div className="mb-8">
+                    <span className="text-[#FFD700] font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Inquiry Form</span>
+                    <h3 className="text-3xl font-black text-slate-900 mb-3 tracking-tight">Send a Proposal</h3>
+                    <div className="w-12 h-1 bg-[#FFD700]" />
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="group">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 transition-colors group-focus-within:text-[#FFD700]">Full Name *</label>
+                        <input
+                          type="text" name="name" required value={formData.name} onChange={handleInputChange}
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          placeholder="Your Name"
+                        />
+                      </div>
+                      <div className="group">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Work Email *</label>
+                        <input
+                          type="email" name="email" required value={formData.email} onChange={handleInputChange}
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          placeholder="Email Address"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="group">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Mobile Phone</label>
+                        <input
+                          type="tel" name="phone" value={formData.phone} onChange={handleInputChange}
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          placeholder="+91"
+                        />
+                      </div>
+                      <div className="group">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Organization</label>
+                        <input
+                          type="text" name="company" value={formData.company} onChange={handleInputChange}
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          placeholder="Company Name"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="group">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Project Category</label>
+                      <div className="relative">
+                        <button
+                          type="button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 text-left flex justify-between items-center outline-none transition-all focus:border-[#FFD700]"
+                        >
+                          <span className={`font-bold text-sm ${formData.service.length === 0 ? 'text-slate-400' : 'text-slate-900'}`}>
+                            {formData.service.length === 0 ? "Select Services" : `${formData.service.length} Selected`}
+                          </span>
+                          <ChevronUp className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? '' : 'rotate-180'}`} />
+                        </button>
+                        {isDropdownOpen && (
+                          <div className="absolute z-50 mt-2 w-full bg-white shadow-2xl rounded-xl py-2 border border-slate-100 max-h-48 overflow-auto">
+                            {services.map((service) => (
+                              <div key={service} onClick={() => handleServiceToggle(service)} className="px-4 py-2 hover:bg-slate-50 cursor-pointer flex items-center gap-3">
+                                <input type="checkbox" checked={formData.service.includes(service)} readOnly className="w-3.5 h-3.5 text-[#FFD700] focus:ring-[#FFD700] border-slate-300 rounded" />
+                                <span className="text-xs font-bold text-slate-700">{service}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="group">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Message *</label>
+                      <textarea
+                        name="message" required value={formData.message} onChange={handleInputChange} rows={2}
+                        className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none resize-none text-sm"
+                        placeholder="Detail your requirements..."
+                      />
+                    </div>
+
+                    <button
+                      type="submit" disabled={isLoading}
+                      className="w-full py-4 bg-[#FFD700] text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-slate-900 hover:text-[#FFD700] transition-all flex items-center justify-center gap-2 shadow-lg shadow-yellow-200/50"
+                    >
+                      {isLoading ? (
+                        <div className="w-4 h-4 border-2 border-slate-900/10 border-t-slate-900 rounded-full animate-spin" />
+                      ) : (
+                        <>Send Proposal <Send className="w-3.5 h-3.5" /></>
+                      )}
+                    </button>
+
+                    {isSubmitted && (
+                      <div className="p-3 bg-emerald-50 text-emerald-700 rounded-lg font-bold text-center text-[11px] border border-emerald-100 uppercase tracking-wider">
+                        Proposal sent successfully!
+                      </div>
+                    )}
+                  </form>
+                </div>
+              </AnimatedSection>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Immersive Map Section */}
+      <section className="relative h-[550px] w-full mt-24">
+        <div className="absolute inset-0 grayscale contrast-125 brightness-95">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.2233913121413!2d77.0893143!3d28.4594965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18f5c5c5c5c5%3A0x5c5c5c5c5c5c5c5!2sBusiness+Park%2C+Sector+15%2C+Gurgaon%2C+Haryana+122001!5e0!3m2!1sen!2sin!4v1234567890"
+            width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full h-full"
+          />
+        </div>
+
+        {/* Floating Location Card */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-start">
+          <AnimatedSection animation="fadeInLeft">
+            <div className="bg-white/90 backdrop-blur-md p-10 rounded-[2rem] shadow-2xl border border-white/50 max-w-sm hidden md:block">
+              <div className="w-12 h-12 bg-slate-900 text-[#FFD700] rounded-xl flex items-center justify-center mb-6">
+                <MapPin className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">Visit our Studio</h3>
+              <p className="text-slate-600 font-bold text-sm leading-relaxed mb-8">
+                Unitech Cyber Park, Tower B,<br />
+                Gurugram, Haryana 122002
+              </p>
+              <div className="pt-6 border-t border-slate-100 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-[#FFD700] shadow-sm"><Phone className="w-4 h-4" /></div>
+                <span className="text-slate-900 font-black text-sm tracking-tight">+91 9253625099</span>
+              </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div>
+      {/* FAQ Section - Refined Light Grid Accordion */}
+      <section className="py-32 bg-slate-50 relative overflow-hidden">
+        {/* Subtle Light Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
 
-              <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                  Send Us a Message
-                </h2>
+        {/* Decorative Light Geometric Accents */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-slate-200/40 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[100px] animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#FFD700]/5 rounded-full translate-x-1/4 translate-y-1/4 blur-[80px]" />
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Enter your full name"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Enter your email"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Enter your phone number"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                        Company Name
-                      </label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleInputChange}
-                        className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Enter your company name"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Services Interested In
-                    </label>
-                    <div className="relative">
-                      <button
-                        type="button"
-                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-left flex justify-between items-center"
-                      >
-                        <span className={`block truncate ${formData.service.length === 0 ? 'text-gray-400' : 'text-gray-900'}`}>
-                          {formData.service.length === 0
-                            ? "Select services"
-                            : `${formData.service.length} selected`}
-                        </span>
-                        <ChevronUp className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDropdownOpen ? '' : 'transform rotate-180'}`} />
-                      </button>
-
-                      {isDropdownOpen && (
-                        <div className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-                          {services.map((service) => (
-                            <div
-                              key={service}
-                              className="relative flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                              onClick={() => handleServiceToggle(service)}
-                            >
-                              <div className="flex items-center h-5">
-                                <input
-                                  type="checkbox"
-                                  className="text-gray-800 focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                  checked={formData.service.includes(service)}
-                                  readOnly
-                                />
-                              </div>
-                              <div className="ml-3 text-sm">
-                                <span className={`font-medium ${formData.service.includes(service) ? 'text-gray-900' : 'text-gray-700'}`}>
-                                  {service}
-                                </span>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Project Details *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={6}
-                      className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Tell us about your project requirements, goals, and timeline..."
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
-                  >
-                    {isLoading ? (
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                    ) : (
-                      <Send className="mr-2 w-5 h-5" />
-                    )}
-                    {isLoading ? 'Sending...' : 'Submit'}
-                  </button>
-                  {isSubmitted && (
-                    <div className="mt-4 text-center p-4 bg-green-50 rounded-lg border border-green-200">
-                      <h3 className="text-lg font-bold text-green-800">Message Submitted Successfully!</h3>
-                      <p className="text-green-700">We will get back to you soon.</p>
-                    </div>
-                  )}
-                </form>
-
-              </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white rounded-full border border-slate-200 mb-6 shadow-sm">
+              <span className="w-2 h-2 bg-[#FFD700] rounded-full" />
+              <span className="text-slate-400 font-black text-[10px] uppercase tracking-[0.3em]">Knowledge Base</span>
             </div>
-
-            {/* Contact Information */}
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                Contact Information
-              </h2>
-
-              <div className="space-y-8">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Office Address</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Tower B, 3rd Floor, Unitech Cyber Park, Sector 39, Gurugram, Haryana 122002
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Phone Numbers</h3>
-                    <p className="text-gray-600">
-                      <a href="tel:+919253625099" className="hover:text-blue-600 transition-colors">
-                        +91 9253625099
-                      </a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                    <Mail className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Address</h3>
-                    <p className="text-gray-600">
-                      <a href="mailto:kapilatavanienterprises@gmail.com" className="hover:text-blue-600 transition-colors">
-                        kp@avanienterprises.in
-                      </a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                    <Clock className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Business Hours</h3>
-                    <p className="text-gray-600">
-                      Monday - Friday: 9:00 AM - 7:00 PM<br />
-                      Saturday: 10:00 AM - 4:00 PM<br />
-                      Sunday: Closed
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick Contact */}
-              <div className="mt-12 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Need Immediate Assistance?
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  For urgent inquiries or technical support, reach out to us directly.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="tel:+919253625099"
-                    className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center"
-                  >
-                    <Phone className="w-4 h-4 mr-2" />
-                    Call Now
-                  </a>
-                  <a
-                    href={`https://wa.me/${whatsappNumber}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center justify-center"
-                  >
-                    <MessageSquare className="w-4 h-4 mr-2" />
-                    WhatsApp
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Find Us
-            </h2>
-            <p className="text-xl text-gray-600">
-              Visit our office or schedule a meeting to discuss your project.
-            </p>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">Common Queries</h2>
+            <div className="w-20 h-1 bg-[#FFD700] mx-auto rounded-full" />
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="h-96">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.2233913121413!2d77.0893143!3d28.4594965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18f5c5c5c5c5%3A0x5c5c5c5c5c5c5c5!2sBusiness+Park%2C+Sector+15%2C+Gurgaon%2C+Haryana+122001!5e0!3m2!1sen!2sin!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Avani Enterprises Office Location"
-                className="w-full h-full"
-              ></iframe>
-            </div>
-            <div className="p-6 bg-gray-50">
-              <div className="flex items-center justify-center">
-                <MapPin className="w-5 h-5 text-gray-500 mr-2" />
-                <span className="text-gray-600 text-sm">
-                  Tower B, 3rd Floor, Unitech Cyber Park, Sector 39, Gurugram, Haryana 122002
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Common questions about our services and process.
-            </p>
-          </div>
-
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
             {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-xl transition-all duration-300 border-2 ${openFaq === index
-                  ? 'border-blue-500 shadow-md ring-1 ring-blue-100'
-                  : 'border-gray-100 hover:border-blue-200'
-                  }`}
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
-                >
-                  <span className={`text-lg font-semibold transition-colors duration-200 ${openFaq === index ? 'text-blue-700' : 'text-gray-900'
-                    }`}>
-                    {faq.question}
-                  </span>
-                  <ChevronUp
-                    className={`w-5 h-5 text-blue-500 transition-transform duration-300 ${openFaq === index ? 'transform rotate-0' : 'transform rotate-180'
-                      }`}
-                  />
-                </button>
-
+              <AnimatedSection key={index} animation="fadeInUp" delay={index * 0.1}>
                 <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+                  className={`group rounded-[2rem] transition-all duration-500 border ${openFaq === index
+                      ? 'bg-white border-[#FFD700] shadow-2xl shadow-slate-200/50'
+                      : 'bg-white border-slate-100 font-medium hover:border-slate-200 shadow-sm'
                     }`}
                 >
-                  <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-dashed border-gray-100 mt-2">
-                    {faq.answer}
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full flex items-center justify-between p-8 text-left"
+                  >
+                    <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-slate-900' : 'text-slate-600'}`}>
+                      {faq.question}
+                    </span>
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${openFaq === index ? 'bg-[#FFD700] text-slate-900 shadow-lg shadow-yellow-100' : 'bg-slate-50 text-slate-400 group-hover:bg-white group-hover:shadow-md'}`}>
+                      <ChevronUp className={`w-5 h-5 transition-transform duration-300 ${openFaq === index ? 'rotate-0' : 'rotate-180'}`} />
+                    </div>
+                  </button>
+                  <div
+                    className={`transition-all duration-500 ease-in-out px-8 overflow-hidden ${openFaq === index ? 'max-h-60 pb-8 opacity-100' : 'max-h-0 opacity-0'
+                      }`}
+                  >
+                    <p className="text-slate-500 font-medium text-sm leading-relaxed pt-5 border-t border-slate-50 text-justify">
+                      {faq.answer}
+                    </p>
                   </div>
                 </div>
-              </div>
+              </AnimatedSection>
             ))}
+          </div>
+
+          {/* FAQ Footer CTA */}
+          <div className="mt-20 text-center">
+            <p className="text-slate-400 font-bold mb-6">Still have questions?</p>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="px-8 py-4 rounded-xl border-2 border-slate-900 text-slate-900 font-black uppercase text-xs tracking-[0.2em] hover:bg-slate-900 hover:text-white transition-all shadow-xl shadow-slate-200"
+            >
+              Contact Support
+            </button>
           </div>
         </div>
       </section>

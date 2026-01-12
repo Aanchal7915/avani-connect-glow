@@ -11,16 +11,19 @@ import {
   Calculator,
   ChevronRight,
   Star,
+  Sparkles,
   Briefcase,
   Landmark,
   ShieldCheck,
   TrendingUp,
+  Award,
   Users,
   Mail
 } from 'lucide-react';
 import { motion } from "framer-motion";
 import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCounter from '../components/AnimatedCounter';
+import StatsSection from './StatsSection';
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -308,195 +311,249 @@ const Home = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative h-[95vh] flex items-center overflow-hidden">
-        {/* Background Images Slider */}
-        <div className="absolute inset-0 z-0">
-          {heroSlides.map((slide, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{
-                opacity: activeSlide === index ? 1 : 0,
-                scale: activeSlide === index ? 1 : 1.1
-              }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="absolute inset-0"
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${slide.image})` }}
-              />
-              {/* Strategic gradient overlay to make text pop while keeping the image bright on the right */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
-            </motion.div>
-          ))}
+      {/* Hero Section - Restored Content with Indian Visuals & Data Graphs */}
+      <section className="relative min-h-[95vh] flex items-center pt-24 pb-20 overflow-hidden bg-[#fefaf6]">
+        {/* Curved Background Split */}
+        <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none hidden lg:block">
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-100/40 via-orange-50/30 to-transparent rounded-l-[20rem] transform scale-x-110 translate-x-20" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-3xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left Column: Restored Original Content */}
             <motion.div
-              key={activeSlide}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
-                {heroSlides[activeSlide].title}{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 leading-tight">
-                  {heroSlides[activeSlide].highlight}
-                </span>
+              <span className="text-amber-600 font-bold text-sm tracking-wide mb-4 block">
+                Transforming Brands Since 2016!
+              </span>
+
+              <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
+                Build high-performing <span className="text-amber-500">Websites</span> & accelerate <span className="text-amber-500">Growth.</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-white mb-10 leading-relaxed font-normal max-w-2xl drop-shadow-lg">
-                {heroSlides[activeSlide].description}
+              <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed font-medium max-w-xl">
+                We're more than just a digital agency. We have stories to tell, and passions to share, and results to deliver that are more exciting than the competition.
               </p>
 
-              <div className="flex flex-row gap-3 sm:gap-5">
+              <div className="flex flex-col sm:flex-row items-center gap-6 mb-16">
                 <Link
-                  to="/courses"
-                  className="px-4 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white rounded-full font-bold text-sm sm:text-lg hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all duration-300 hover:-translate-y-1 text-center flex items-center justify-center group"
+                  to="/get-consultation"
+                  className="w-full sm:w-auto px-10 py-5 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl shadow-amber-500/20 active:scale-95 transition-all duration-300 flex items-center justify-center"
                 >
-                  Explore Courses
-                  <ChevronRight className="ml-1 w-4 h-4 sm:ml-2 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                  Explore Work
                 </Link>
-                <Link
-                  to="/contact"
-                  className="px-4 py-3 sm:px-8 sm:py-4 bg-white text-blue-900 rounded-full font-bold text-sm sm:text-lg hover:bg-gray-100 transition-all duration-300 hover:-translate-y-1 text-center flex items-center justify-center group shadow-xl"
-                >
-                  Contact Us
-                  <Mail className="ml-1 w-4 h-4 sm:ml-2 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform text-blue-600" />
-                </Link>
+                <div className="flex items-center gap-3">
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3].map(i => (
+                      <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200" />
+                    ))}
+                  </div>
+                  <span className="text-sm font-bold text-slate-400">Trusted by 150+ Companies</span>
+                </div>
               </div>
+
+              {/* Stats Row - Updated for Single Line Mobile View */}
+              <div className="flex flex-nowrap items-center gap-6 sm:gap-10 md:gap-16 overflow-x-visible">
+                <div className="group cursor-default flex-shrink-0">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 transition-transform group-hover:scale-105">150+</div>
+                  <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">Happy Clients</div>
+                </div>
+                <div className="group cursor-default flex-shrink-0">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 transition-transform group-hover:scale-105">300+</div>
+                  <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">Projects</div>
+                </div>
+                <div className="group cursor-default flex-shrink-0">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 transition-transform group-hover:scale-105">85%</div>
+                  <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">Growth Rate</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Column: Visuals with Indian Professionals & Data Graphs */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="relative hidden lg:block h-[600px]"
+            >
+              {/* NEW: Background Design for Right Side */}
+              <div className="absolute inset-0 z-0">
+                <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-amber-200/20 rounded-full blur-[80px] animate-pulse-slow" />
+                <div className="absolute bottom-1/4 right-0 w-[300px] h-[300px] bg-sky-200/20 rounded-full blur-[80px] animate-pulse-slow delay-700" />
+                {/* Geometric Rings */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] border border-amber-500/5 rounded-full" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] border border-amber-500/5 rounded-full" />
+              </div>
+
+              {/* Main Dashboard UI */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] h-[75%] bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.06)] border border-white overflow-hidden z-10">
+                <div className="p-8 h-full flex flex-col">
+                  {/* Top Header Mockup */}
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 bg-amber-500 rounded-xl" />
+                      <div>
+                        <div className="w-32 h-3 bg-slate-100 rounded-full mb-2" />
+                        <div className="w-20 h-2 bg-slate-50 rounded-full" />
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="w-8 h-8 rounded-lg bg-slate-50" />
+                      <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200&auto=format&fit=crop" alt="User" className="w-full h-full object-cover" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Graph Data Section - SQUARE & MULTI-COLOR */}
+                  <div className="flex-1 grid grid-cols-12 gap-6">
+                    <div className="col-span-8 bg-slate-50/50 rounded-3xl p-6 border border-slate-50">
+                      <div className="flex items-center justify-between mb-6">
+                        <span className="text-xs font-black text-slate-400 uppercase tracking-widest">Revenue Growth</span>
+                        <span className="text-xs font-bold text-emerald-500">+24.5%</span>
+                      </div>
+
+                      {/* Bar Graph UI - Square & Colorful */}
+                      <div className="flex items-end justify-between h-32 gap-3 px-2">
+                        {[
+                          { h: 40, c: "bg-blue-500" },
+                          { h: 70, c: "bg-amber-500" },
+                          { h: 55, c: "bg-violet-500" },
+                          { h: 90, c: "bg-emerald-500" },
+                          { h: 65, c: "bg-orange-500" },
+                          { h: 80, c: "bg-indigo-500" },
+                          { h: 100, c: "bg-rose-500" }
+                        ].map((bar, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ height: 0 }}
+                            animate={{ height: `${bar.h}%` }}
+                            transition={{ duration: 1, delay: 0.5 + (i * 0.1) }}
+                            className={`flex-1 ${bar.c} rounded-none shadow-sm opacity-90 hover:opacity-100 transition-opacity`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <div className="col-span-4 flex flex-col gap-4">
+                      <div className="flex-1 bg-amber-50/50 rounded-3xl p-5 border border-amber-100/50 text-center flex flex-col justify-center">
+                        <div className="text-[10px] font-black text-amber-600 uppercase mb-2">Projects</div>
+                        <div className="text-2xl font-black text-slate-800">300+</div>
+                      </div>
+                      <div className="flex-1 bg-sky-50/50 rounded-3xl p-5 border border-sky-100/50 text-center flex flex-col justify-center">
+                        <div className="text-[10px] font-black text-sky-600 uppercase mb-2">Clients</div>
+                        <div className="text-2xl font-black text-slate-800">150+</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Indian Avatars */}
+              <motion.div
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-[15%] right-[5%] w-24 h-24 rounded-full border-8 border-white shadow-2xl overflow-hidden z-20"
+              >
+                <img src="https://images.unsplash.com/photo-1589386417686-0d34b5903d23?q=80&w=800&auto=format&fit=crop" alt="Indian Businessman" className="w-full h-full object-cover" />
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, 20, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-[50%] -left-[5%] w-20 h-20 rounded-full border-8 border-white shadow-2xl overflow-hidden z-20"
+              >
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" alt="Indian Businesswoman" className="w-full h-full object-cover" />
+              </motion.div>
+
+              {/* ROI Badge (Moved Lower) */}
+              <motion.div
+                initial={{ x: 30, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="absolute bottom-[7%] right-[0%] bg-white p-5 rounded-2xl shadow-xl border border-slate-50 flex items-center gap-4 z-30"
+              >
+                <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-5 h-5 text-emerald-600" />
+                </div>
+                <div>
+                  <div className="text-xs font-black text-slate-900 line-clamp-1">Client Growth</div>
+                  <div className="text-[10px] font-bold text-emerald-500">+85% Avg. ROI</div>
+                </div>
+              </motion.div>
+
             </motion.div>
           </div>
         </div>
-
-        {/* Slide Indicators */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
-          {heroSlides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveSlide(index)}
-              className={`h-1.5 rounded-full transition-all duration-500 ${activeSlide === index ? "w-12 bg-white" : "w-6 bg-white/30"
-                }`}
-            />
-          ))}
-        </div>
       </section>
 
-      {/* Stats Section */}
-      <section id="stats-section" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <AnimatedSection animation="scaleIn" delay={0.1}>
-              <div className="text-center">
-                <AnimatedCounter
-                  target={150}
-                  className="text-3xl md:text-4xl font-bold text-blue-600 mb-2"
-                  suffix="+"
-                />
-                <div className="text-gray-600">Happy Clients</div>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection animation="scaleIn" delay={0.2}>
-              <div className="text-center">
-                <AnimatedCounter
-                  target={300}
-                  className="text-3xl md:text-4xl font-bold text-purple-600 mb-2"
-                  suffix="+"
-                />
-                <div className="text-gray-600">Projects Completed</div>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection animation="scaleIn" delay={0.3}>
-              <div className="text-center">
-                <AnimatedCounter
-                  target={85}
-                  className="text-3xl md:text-4xl font-bold text-green-600 mb-2"
-                  suffix="%"
-                />
-                <div className="text-gray-600">Average Growth</div>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection animation="scaleIn" delay={0.4}>
-              <div className="text-center">
-                <AnimatedCounter
-                  target={8}
-                  className="text-3xl md:text-4xl font-bold text-orange-600 mb-2"
-                  suffix="+"
-                />
-                <div className="text-gray-600">Years Experience</div>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
+      {/* Stats Section Removed as per request */}
+      {/* <StatsSection /> */}
 
       {/* Services Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Comprehensive Digital Solutions Section */}
+      <section className="py-24 bg-[#333333] relative overflow-hidden">
+        {/* Yellow Background Strip */}
+        <div className="absolute top-1/2 left-0 w-full h-[400px] -translate-y-1/2 bg-[#FFD700] z-0"></div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl md:text-5xl font-light text-white mb-4 tracking-wide font-sans">
                 Comprehensive Digital Solutions
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                From web development to AI integration, we provide end-to-end digital solutions
-                that drive growth and deliver measurable results.
+              <p className="text-lg text-gray-300 italic max-w-3xl mx-auto font-light">
+                From web development to AI integration, we provide end-to-end digital solutions that drive growth.
               </p>
             </div>
           </AnimatedSection>
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {services.slice(0, 4).map((service, index) => (
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+            {services.slice(0, 8).map((service, index) => (
               <AnimatedSection
                 key={index}
                 animation="fadeInUp"
-                delay={0.1 * (index + 1)}
+                delay={0.1 * (index % 4)}
               >
-                <div
-                  className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full"
-                >
-                  {/* Background Image */}
+                <div className="bg-white rounded-2xl p-3 shadow-2xl h-full flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform duration-300 min-h-[290px]">
+                  {/* Card Image */}
                   <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${service.bgImage})` }}
-                  />
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 group-hover:from-black/95 group-hover:via-black/70 transition-all duration-300" />
+                    className="w-full h-28 rounded-xl bg-cover bg-center mb-4 shadow-sm overflow-hidden shrink-0"
+                  >
+                    <div
+                      className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                      style={{ backgroundImage: `url(${service.bgImage})` }}
+                    />
+                  </div>
 
-                  {/* Content */}
-                  <div className="relative z-10 p-4 sm:p-6 lg:p-8 flex flex-col h-full min-h-[200px] sm:min-h-[260px]">
-                    <div className={`w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center text-white mb-3 sm:mb-4 lg:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                      <span className="scale-75 sm:scale-90 lg:scale-100">{service.icon}</span>
-                    </div>
-                    <h3 className="text-sm sm:text-lg lg:text-xl font-semibold text-white mb-2 sm:mb-3 lg:mb-4">{service.title}</h3>
-                    <p className="text-gray-300 text-xs sm:text-sm lg:text-base mb-3 sm:mb-4 lg:mb-6 flex-grow line-clamp-3 sm:line-clamp-none">{service.description}</p>
+                  {/* Title */}
+                  <h3 className="text-sm font-bold text-gray-800 mb-1 px-1">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-500 text-[11px] leading-snug mb-3 flex-grow px-1">
+                    {service.description}
+                  </p>
+
+                  {/* MORE Link */}
+                  <div className="mt-auto pb-2">
                     <Link
                       to="/services"
-                      className="inline-flex items-center text-blue-400 hover:text-blue-500 font-medium group-hover:translate-x-1 transition-transform duration-300 text-xs sm:text-sm lg:text-base"
+                      className="inline-flex items-center justify-center px-6 py-2 text-xs font-bold text-gray-900 uppercase tracking-widest border border-gray-900 rounded hover:bg-[#FFD700] hover:border-[#FFD700] hover:text-black transition-all duration-300"
                     >
-                      Learn More
-                      <ChevronRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4" />
+                      Read More
                     </Link>
                   </div>
                 </div>
               </AnimatedSection>
             ))}
           </div>
-
-          {/* View More Button */}
-          <div className="mt-12 text-center">
-            <Link
-              to="/services"
-              className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-bold hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-            >
-              View More Services
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </div>
         </div>
-      </section >
+      </section>
 
 
 
@@ -532,105 +589,207 @@ const Home = () => {
       </section> */}
 
 
-      <section className="py-16 bg-gradient-to-b from-slate-50 via-white to-gray-100">
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        {/* Creative Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Abstract Process Line */}
+          <svg className="absolute top-1/2 left-0 w-full h-[500px] -translate-y-1/2 opacity-20 hidden lg:block" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path
+              fill="none"
+              stroke="url(#gradient-line)"
+              strokeWidth="8"
+              strokeDasharray="20 20"
+              d="M0,160 C320,300, 420,20, 740,160 C1060,300, 1120,20, 1440,160"
+              className="animate-pulse"
+            />
+            <defs>
+              <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3B82F6" />
+                <stop offset="50%" stopColor="#8B5CF6" />
+                <stop offset="100%" stopColor="#EC4899" />
+              </linearGradient>
+            </defs>
+          </svg>
 
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          {/* Glowing Orbs */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4"></div>
+          <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-indigo-100/30 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
+        </div>
 
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-sans tracking-tight">
               Our 6-D Process
             </h2>
-            <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               A proven methodology that ensures successful project delivery and measurable results.
             </p>
           </div>
 
-          {/* GRID */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {processSteps.map((step, index) => (
-              <div key={index} className="relative">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+            {processSteps.map((step, index) => {
+              // Gradients resembling the reference image
+              const gradients = [
+                "from-cyan-100 to-blue-200 border-blue-200",      // 01 Discover - Blue/Cyan
+                "from-purple-100 to-fuchsia-200 border-purple-200", // 02 Define - Purple
+                "from-amber-100 to-orange-200 border-orange-200",   // 03 Design - Orange
+                "from-emerald-100 to-teal-200 border-teal-200",     // 04 Develop - Teal
+                "from-lime-100 to-green-200 border-green-200",      // 05 Deploy - Light Green
+                "from-blue-100 to-indigo-200 border-indigo-200"     // 06 Deliver - Indigo
+              ];
 
-                {/* CARD */}
-                <div className="
-            bg-white 
-            rounded-2xl 
-            p-4 sm:p-6 lg:p-8
-            shadow-md 
-            border border-gray-100
-            h-full
-          ">
-                  <div className="text-2xl sm:text-4xl font-bold text-blue-600 mb-2 sm:mb-3">
-                    {step.step}
+              const icons = [
+                <Search className="w-5 h-5 text-blue-600" />,
+                <TrendingUp className="w-5 h-5 text-purple-600" />,
+                <Brain className="w-5 h-5 text-orange-600" />,
+                <Globe className="w-5 h-5 text-teal-600" />,
+                <Play className="w-5 h-5 text-green-600" />,
+                <ShieldCheck className="w-5 h-5 text-indigo-600" />
+              ];
+
+              return (
+                <AnimatedSection
+                  key={index}
+                  animation="fadeInUp"
+                  delay={0.1 * index}
+                >
+                  <div className={`relative h-full p-4 rounded-2xl bg-gradient-to-br ${gradients[index]} border shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden group min-h-[180px]`}>
+                    {/* Glossy Overlay */}
+                    <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px] pointer-events-none"></div>
+
+                    {/* Content Container */}
+                    <div className="relative z-10">
+                      <div className="flex justify-between items-start mb-3">
+                        {/* Number Badge */}
+                        <div className="w-10 h-10 rounded-full bg-white border-2 border-white/50 shadow-sm flex items-center justify-center text-sm font-black text-slate-700">
+                          {step.step}
+                        </div>
+
+                        {/* Icon Bubble */}
+                        <div className="p-2 bg-white/60 rounded-xl shadow-sm backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                          {icons[index] || <Star className="w-5 h-5 text-gray-500" />}
+                        </div>
+                      </div>
+
+                      <h3 className="text-sm font-bold text-slate-800 mb-1 tracking-tight">
+                        {step.title}
+                      </h3>
+                      <p className="text-slate-700 text-[11px] font-semibold leading-snug">
+                        {step.description}
+                      </p>
+                    </div>
                   </div>
-
-                  <h3 className="text-sm sm:text-lg lg:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">
-                    {step.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-base text-gray-600 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-
-                {/* ARROW (Desktop only) */}
-                {index < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 -translate-y-1/2">
-                    <ArrowRight className="w-8 h-8 text-blue-400" />
-                  </div>
-                )}
-
-              </div>
-            ))}
+                </AnimatedSection>
+              );
+            })}
           </div>
-
         </div>
       </section>
 
 
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Testimonials Section */}
+      <section className="relative py-24 overflow-hidden">
+        {/* Background Image with Blur */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
+            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2070&auto=format&fit=crop")' }}
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-sans">
               What Our Clients Say
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-200 max-w-3xl mx-auto">
               Real results from real businesses. Here's how we've helped our clients achieve their goals.
             </p>
           </div>
-          <div className="relative">
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 sm:p-8 md:p-12">
-              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6">
-                <img
-                  src={testimonials[currentTestimonial].image}
-                  alt={testimonials[currentTestimonial].name}
-                  className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-white shadow-lg ${testimonials[currentTestimonial].image.includes('review2') || testimonials[currentTestimonial].image.includes('review1')
-                    ? 'object-contain bg-white'
-                    : 'object-cover object-top'
-                    }`}
-                />
-                <div className="text-center sm:text-left">
-                  <h4 className="text-lg font-semibold text-gray-900">
-                    {testimonials[currentTestimonial].name}
-                  </h4>
-                  <p className="text-gray-600 text-sm sm:text-base break-words">{testimonials[currentTestimonial].position}</p>
-                  <div className="flex items-center justify-center sm:justify-start mt-1">
-                    {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                    ))}
+
+          <div className="relative overflow-hidden lg:overflow-visible px-4 py-8">
+            <div
+              className="flex lg:grid lg:grid-cols-3 lg:gap-8 transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+            >
+              <style dangerouslySetInnerHTML={{
+                __html: `
+                @media (min-width: 1024px) {
+                  .lg\\:grid { transform: none !important; }
+                }
+              `}} />
+              {testimonials.map((testimonial, index) => {
+                const isDark = index % 2 !== 0;
+                const headerColor = isDark ? "bg-[#333333]" : "bg-[#FFA500]";
+                const roleColor = isDark ? "text-[#333333]" : "text-[#FFA500]";
+
+                return (
+                  <div key={index} className="w-full lg:w-auto flex-shrink-0 lg:flex-shrink px-4 lg:px-0">
+                    <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col group max-w-2xl lg:max-w-none mx-auto">
+                      {/* Top Header Section */}
+                      <div className={`${headerColor} h-32 lg:h-40 flex flex-col items-center justify-start pt-6 lg:pt-8 relative`}>
+                        <div className="text-center z-10 text-white relative">
+                          <span className="block font-serif italic text-xl lg:text-2xl tracking-wider mb-1 opacity-90">Client</span>
+                          <span className="block text-xl lg:text-2xl font-bold tracking-[0.2em] uppercase font-sans">TESTIMONIAL</span>
+                        </div>
+                      </div>
+
+                      {/* Overlapping Image */}
+                      <div className="relative flex justify-center -mt-10 lg:-mt-14 z-20">
+                        <div className="p-1 bg-white rounded-full shadow-md">
+                          <img
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            className={`w-16 h-16 lg:w-20 lg:h-20 rounded-full border-4 border-white shadow-sm ${testimonial.image.includes('review2') || testimonial.image.includes('review1') ? 'object-contain bg-white' : 'object-cover object-top'}`}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Card Body */}
+                      <div className="px-6 pt-4 pb-8 text-center flex-grow flex flex-col items-center">
+                        <h4 className="text-base lg:text-lg font-bold text-gray-900 uppercase tracking-widest mb-1">
+                          {testimonial.name}
+                        </h4>
+                        <p className={`${roleColor} text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-3 lg:mb-4`}>
+                          {testimonial.position}
+                        </p>
+
+                        <div className="flex justify-center gap-1 mb-4 lg:mb-5">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 lg:w-4 lg:h-4 text-yellow-400 fill-yellow-400" />
+                          ))}
+                        </div>
+
+                        <div className="relative">
+                          <span className="opacity-10 text-4xl lg:text-6xl leading-none font-serif absolute -top-4 left-0">"</span>
+                          <p className="text-gray-600 text-[13px] lg:text-sm leading-relaxed px-4 italic">
+                            {testimonial.content}
+                          </p>
+                          <span className="opacity-10 text-4xl lg:text-6xl leading-none font-serif absolute -bottom-6 lg:-bottom-8 right-0">"</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <p className="text-base sm:text-lg text-gray-700 italic text-center sm:text-left">"{testimonials[currentTestimonial].content}"</p>
+                );
+              })}
             </div>
-            <div className="flex justify-center mt-8 space-x-2">
+
+            {/* Pagination Dots - Hidden on Laptop */}
+            <div className="flex lg:hidden justify-center gap-3 mt-10">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${index === currentTestimonial ? 'bg-blue-600' : 'bg-gray-300'
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${currentTestimonial === index ? "bg-amber-500 scale-125 w-6" : "bg-white/30 hover:bg-white/50"
                     }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
             </div>
@@ -761,24 +920,33 @@ const Home = () => {
 
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="relative py-24 overflow-hidden">
+        {/* Background Image with Blur */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
+            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?q=80&w=2070&auto=format&fit=crop")' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/40 to-purple-600/40 backdrop-blur-sm" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-sans">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl mb-8 text-blue-100">
+          <p className="text-xl mb-8 text-gray-200">
             Let's discuss how we can help you achieve your growth goals and build a powerful digital presence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-consultation"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+              className="bg-[#FFD700] text-black px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-[#FDB931] transition-all duration-200 shadow-lg hover:transform hover:-translate-y-1 hover:shadow-xl"
             >
               Get Consultation
             </Link>
             <a
               href="tel:+919253625099"
-              className="border border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200"
+              className="bg-white text-gray-900 border-2 border-white px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-gray-100 hover:text-black transition-all duration-200 hover:transform hover:-translate-y-1 shadow-lg"
             >
               Call Us Now
             </a>

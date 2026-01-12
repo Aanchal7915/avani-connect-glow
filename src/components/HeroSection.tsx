@@ -19,7 +19,7 @@ export default function HeroSection() {
 
   const exportAsImage = async () => {
     if (!heroRef.current) return;
-    const canvas = await html2canvas(heroRef.current, { useCORS: true, scale: 2, backgroundColor: null });
+    const canvas = await html2canvas(heroRef.current, { useCORS: true, scale: 2, backgroundColor: "#0b1220" });
     const dataURL = canvas.toDataURL("image/png");
     const a = document.createElement("a");
     a.href = dataURL;
@@ -33,89 +33,97 @@ export default function HeroSection() {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex items-center pt-12 sm:pt-14 md:pt-12 overflow-hidden bg-white"
+      className="relative min-h-[95vh] flex items-center pt-24 sm:pt-28 md:pt-24 overflow-hidden bg-[#0b1220]"
     >
-      {/* background white, no image */}
-      <div className="absolute inset-0 bg-white z-0" aria-hidden />
+      {/* BACKGROUND: Corporate Geometric Theme */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Main Navy Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1220] via-[#0f172a] to-[#0b1220]" />
 
-      {/* soft blur effects – still visible but subtle */}
-      <div className="absolute inset-0 overflow-hidden" aria-hidden>
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-80 sm:h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-slow delay-1000" />
+        {/* Geometric Architectural Accents */}
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none">
+          <div className="absolute top-0 right-0 w-full h-full bg-[#FFD700] skew-x-12 transform origin-top-right transition-transform duration-1000" />
+        </div>
+
+        {/* Diagonal Stripes Accent */}
+        <div className="absolute -left-20 top-0 w-40 h-[200%] bg-white/5 -rotate-45 blur-2xl font-sans" />
+
+        {/* Stardust Texture Overlay */}
+        <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none"></div>
+
+        {/* Ambient Glows */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] animate-pulse-slow" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[100px] animate-pulse-slow delay-700" />
+
+        {/* Bottom Fade Transition to next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/5 to-transparent pointer-events-none" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-2 md:gap-8 items-start lg:items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start lg:items-center">
 
-          {/* Left Side */}
+          {/* Left Side: Content Bundle */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center lg:text-left max-w-2xl mx-auto lg:mx-0 w-full"
           >
-            <div className="inline-flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white/70 backdrop-blur-sm shadow-sm mb-1">
-              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-amber-500" />
-              <span className="text-xs sm:text-sm font-medium text-slate-600">Transforming Brands Since 2016</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl mb-8">
+              <Sparkles className="w-4 h-4 text-amber-500 animate-pulse" />
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-amber-500/80">Transforming Brands Since 2016</span>
             </div>
 
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight sm:leading-tight text-slate-900 mb-1">
-              Build high-performing Websites & accelerate digital
-              <span className="block text-slate-900">growth with smart marketing</span>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-white mb-6 tracking-tight">
+              Build high-performing <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-amber-400 font-sans">Websites</span> & accelerate growth
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-xl mx-auto lg:mx-0 mb-2 leading-relaxed">
+            <p className="text-lg sm:text-xl text-slate-400 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed font-medium">
               We create high-converting websites and amplify them with strategic social media management, AI-driven automation, and high-ROI Google & Meta ad campaigns.
             </p>
 
-            {/* Stats: HIDDEN on very small screens so the form on the right doesn't feel too long */}
-            <div className="mt-2 hidden sm:grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* Stats Bundles */}
+            <div className="mt-8 hidden sm:grid grid-cols-2 md:grid-cols-4 gap-8 font-sans">
               {stats.map((s, i) => (
-                <div key={s.label} className="text-center lg:text-left">
-                  <div className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-1 ${["text-sky-600", "text-emerald-600", "text-amber-500", "text-violet-600"][i]}`}>
+                <div key={s.label} className="text-center lg:text-left group cursor-default">
+                  <div className={`text-3xl md:text-4xl lg:text-5xl font-black mb-2 transition-transform duration-300 group-hover:scale-110 ${["text-sky-400", "text-emerald-400", "text-amber-400", "text-violet-400"][i]}`}>
                     {s.value}
                   </div>
-                  <div className="text-xs sm:text-sm text-slate-500">{s.label}</div>
+                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-slate-300 transition-colors">{s.label}</div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right Side: Only adjust mobile — keep laptop/desktop exactly as before */}
+          {/* Right Side: Visual/Form Bundle */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.12 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             className="relative w-full"
           >
-            {/*
-              Mobile: show the RegistrationForm wrapped in a compact, scrollable card so it doesn't make the page too long.
-              Desktop (md and up): render the original RegistrationForm directly so laptop view remains unchanged.
-            */}
+            {/* Form Container with High-End Styling */}
+            <div className="w-full relative group">
+              {/* Animated Glow Border */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-amber-500/20 to-purple-500/20 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
 
-            {/* Mobile-only wrapped card */}
-            <div className="md:hidden w-full mt-0 sm:mt-4">
-              <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden">
-                <RegistrationForm uniqueConsentId={"registrationForm1"} />
+              <div className="relative bg-white/[0.03] backdrop-blur-2xl rounded-[2.5rem] border border-white/10 shadow-3xl overflow-hidden font-sans">
+                <div className="p-1 sm:p-2">
+                  <RegistrationForm uniqueConsentId={"registrationForm1"} />
+                </div>
               </div>
 
-              <div className="mt-3 sm:mt-4 text-center">
+              {/* Utility Action */}
+              <div className="mt-6 text-center">
                 <button
                   onClick={exportAsImage}
-                  className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors"
+                  className="inline-flex items-center gap-2.5 text-[11px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-white transition-all duration-300 group/btn"
                 >
-                  <ArrowRight className="w-4 h-4" /> Download snapshot
+                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                  Download Business Brief
                 </button>
               </div>
             </div>
-
-            {/* Desktop/laptop: exact original render (no wrapper) */}
-            <div className="hidden md:block w-full">
-              <div className="p-0">{/* keep spacing identical to original desktop layout */}
-                <RegistrationForm uniqueConsentId={"registrationForm1"} />
-              </div>
-            </div>
-
           </motion.div>
 
         </div>

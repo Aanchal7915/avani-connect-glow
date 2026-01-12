@@ -452,6 +452,7 @@ import AnimatedSection from '../components/AnimatedSection';
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState('all');
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const location = useLocation();
 
   React.useEffect(() => {
@@ -681,81 +682,79 @@ const Services = () => {
       </section>
 
       {/* Service Categories */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+      <section className="py-24 bg-[#333333] relative overflow-hidden">
+        {/* Yellow Background Strip */}
+        <div className="absolute top-1/2 left-0 w-full h-[400px] -translate-y-1/2 bg-[#FFD700] z-0"></div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-3 lg:flex lg:flex-wrap lg:justify-center gap-2 md:gap-4 mb-12">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${activeTab === category.id
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                className={`px-2 py-2.5 lg:px-6 lg:py-3 rounded-lg font-bold tracking-wide text-[10px] lg:text-base transition-all duration-300 ${activeTab === category.id
+                  ? 'bg-[#FFD700] text-black shadow-lg transform -translate-y-1'
+                  : 'bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm'
                   }`}
               >
-                {category.name}
+                <span className="line-clamp-1">{category.name}</span>
               </button>
             ))}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredServices.map((service) => (
-              <AnimatedSection key={service.id} animation="fadeInUp" delay={0.4 + (filteredServices.indexOf(service) * 0.1)}>
-                <div id={service.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden group">
-                  <div className="relative p-6 text-white h-[280px]">
-                    <div className="absolute inset-0 z-0">
-                      <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                      <div className="absolute inset-0 bg-black/60 transition-opacity duration-300 group-hover:bg-black/50" />
-                    </div>
-
-                    <div className="relative z-10 h-full flex flex-col">
-                      <div className="flex items-center justify-between mb-auto">
-                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-lg">
-                          {service.icon}
-                        </div>
-                        <div className="text-right">
-                          <div className="text-sm opacity-90 font-medium">Starting from</div>
-                          <div className="text-lg font-bold text-shadow">{service.price.split(' - ')[0]}</div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h3 className="text-2xl font-bold mb-2 text-shadow">{service.title}</h3>
-                        <p className="text-white/95 text-sm leading-relaxed font-medium line-clamp-3">{service.description}</p>
-                      </div>
+              <AnimatedSection key={service.id} animation="fadeInUp" delay={0.1}>
+                <div id={service.id} className="bg-white rounded-2xl p-4 shadow-2xl h-full flex flex-col group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+                  {/* Card Image */}
+                  <div className="w-full h-48 rounded-xl bg-gray-100 mb-5 relative overflow-hidden shrink-0">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-gray-900 shadow-sm">
+                      {service.price.split(' - ')[0]}
                     </div>
                   </div>
 
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center text-gray-600">
-                        <Clock className="w-4 h-4 mr-2" />
-                        <span className="text-sm">{service.duration}</span>
-                      </div>
-                      <div className="flex items-center text-gray-600">
-                        <Users className="w-4 h-4 mr-2" />
-                        <span className="text-sm">Team of 3-5</span>
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-3 px-1">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 leading-tight mb-1">{service.title}</h3>
+                      <div className="flex items-center text-xs font-medium text-gray-500">
+                        <Clock className="w-3 h-3 mr-1" /> {service.duration}
                       </div>
                     </div>
-
-                    <div className="mb-6">
-                      <h4 className="font-semibold text-gray-900 mb-3">What's Included:</h4>
-                      <ul className="space-y-2">
-                        {service.features.slice(0, 4).map((feature, index) => (
-                          <li key={index} className="flex items-start">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                            <span className="text-sm text-gray-600">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className={`p-2 rounded-lg bg-gray-50 text-gray-600 group-hover:bg-[#FFD700] group-hover:text-black transition-colors duration-300`}>
+                      {React.cloneElement(service.icon, { className: "w-5 h-5" })}
                     </div>
+                  </div>
 
+                  {/* Description */}
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6 px-1 line-clamp-2">
+                    {service.description}
+                  </p>
+
+                  {/* Features */}
+                  <div className="mb-6 bg-gray-50 rounded-xl p-4">
+                    <ul className="space-y-2">
+                      {service.features.slice(0, 3).map((feature, index) => (
+                        <li key={index} className="flex items-start">
+                          <CheckCircle className="w-3.5 h-3.5 text-gray-900 mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="text-xs font-medium text-gray-600">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Button */}
+                  <div className="mt-auto">
                     <Link
                       to={`/contact?service=${service.id}`}
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center"
+                      className="w-full inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-gray-900 uppercase tracking-widest border border-gray-900 rounded hover:bg-[#FFD700] hover:border-[#FFD700] hover:text-black transition-all duration-300"
                     >
                       Get Quote
-                      <ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
                   </div>
                 </div>
@@ -777,40 +776,40 @@ const Services = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">
+              <div className="w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-base lg:text-xl font-bold mx-auto mb-3 lg:mb-4">
                 1
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Discovery</h3>
-              <p className="text-gray-600">
+              <h3 className="text-sm lg:text-xl font-semibold text-gray-900 mb-1 lg:mb-2 text-center px-1">Discovery</h3>
+              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
                 We analyze your business, goals, and requirements to create a strategic plan.
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">
+              <div className="w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center text-white text-base lg:text-xl font-bold mx-auto mb-3 lg:mb-4">
                 2
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Strategy</h3>
-              <p className="text-gray-600">
+              <h3 className="text-sm lg:text-xl font-semibold text-gray-900 mb-1 lg:mb-2 text-center px-1">Strategy</h3>
+              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
                 We develop a comprehensive strategy tailored to your specific needs and objectives.
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">
+              <div className="w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white text-base lg:text-xl font-bold mx-auto mb-3 lg:mb-4">
                 3
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Execution</h3>
-              <p className="text-gray-600">
+              <h3 className="text-sm lg:text-xl font-semibold text-gray-900 mb-1 lg:mb-2 text-center px-1">Execution</h3>
+              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
                 Our expert team implements the strategy with regular updates and quality assurance.
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">
+              <div className="w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white text-base lg:text-xl font-bold mx-auto mb-3 lg:mb-4">
                 4
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Optimization</h3>
-              <p className="text-gray-600">
+              <h3 className="text-sm lg:text-xl font-semibold text-gray-900 mb-1 lg:mb-2 text-center px-1">Optimization</h3>
+              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
                 We continuously monitor, analyze, and optimize for maximum performance and ROI.
               </p>
             </div>
@@ -819,109 +818,162 @@ const Services = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 overflow-hidden">
+        {/* Background Image with Blur */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
+            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2070&auto=format&fit=crop")' }}
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-sans">
               What Our Clients Say
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-200 max-w-3xl mx-auto">
               Real feedback from businesses we've helped transform.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 rounded-xl p-8">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-6 italic">
-                "Avani Enterprises transformed our digital presence completely. Their SEO and content
-                marketing strategies helped us achieve 300% increase in organic traffic."
-              </p>
-              <div className="flex items-center">
-                <img
-                  src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=150&h=150&fit=crop&crop=face"
-                  alt="Client"
-                  className="w-12 h-12 rounded-full mr-4"
-                />
-                <div>
-                  <div className="font-semibold text-gray-900">Priya Sharma</div>
-                  <div className="text-sm text-gray-600">CEO, TechStart India</div>
-                </div>
-              </div>
+          <div className="relative overflow-hidden lg:overflow-visible px-4 py-8">
+            <div
+              className="flex lg:grid lg:grid-cols-3 lg:gap-8 transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+            >
+              <style dangerouslySetInnerHTML={{
+                __html: `
+                @media (min-width: 1024px) {
+                  .lg\\:grid { transform: none !important; }
+                }
+              `}} />
+              {[
+                {
+                  name: "Abhishek Parashar",
+                  position: "Founder, Training and Placement Cell",
+                  content:
+                    "The team delivered exactly what we needed — a clean, professional, and easy-to-manage website. The entire process was smooth, timely, and well-communicated. We’re very satisfied with both the quality and support.",
+                  rating: 5,
+                  image: "/review1.png"
+                },
+                {
+                  name: "Mohit Bazzad",
+                  position: "Founder, Kings pet Hospital",
+                  content:
+                    "We are extremely pleased with the website design and functionality delivered by the team. It’s user-friendly, professional, and perfectly showcases our services. The entire process was efficient and stress-free.",
+                  rating: 5,
+                  image: "/review2.png"
+                },
+                {
+                  name: "Aman Sharma",
+                  position: "CEO, Hi Tech Luxury Homes",
+                  content:
+                    "We’re thrilled with the website — it’s elegant, responsive, and beautifully represents our brand. The design perfectly highlights our property offerings. The team delivered on time with excellent communication.",
+                  rating: 5,
+                  image: "/review3.png"
+                }
+              ].map((testimonial, index) => {
+                const isDark = index % 2 !== 0;
+                const headerColor = isDark ? "bg-[#333333]" : "bg-[#FFA500]";
+                const roleColor = isDark ? "text-[#333333]" : "text-[#FFA500]";
+
+                return (
+                  <div key={index} className="w-full lg:w-auto flex-shrink-0 lg:flex-shrink px-4 lg:px-0">
+                    <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col group max-w-2xl lg:max-w-none mx-auto">
+                      {/* Top Header Section */}
+                      <div className={`${headerColor} h-32 lg:h-40 flex flex-col items-center justify-start pt-6 lg:pt-8 relative`}>
+                        <div className="text-center z-10 text-white relative">
+                          <span className="block font-serif italic text-xl lg:text-2xl tracking-wider mb-1 opacity-90">Client</span>
+                          <span className="block text-xl lg:text-2xl font-bold tracking-[0.2em] uppercase font-sans">TESTIMONIAL</span>
+                        </div>
+                      </div>
+
+                      {/* Overlapping Image */}
+                      <div className="relative flex justify-center -mt-10 lg:-mt-14 z-20">
+                        <div className="p-1 bg-white rounded-full shadow-md">
+                          <img
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            className={`w-16 h-16 lg:w-20 lg:h-20 rounded-full border-4 border-white shadow-sm object-cover`}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Card Body */}
+                      <div className="px-6 pt-4 pb-8 text-center flex-grow flex flex-col items-center">
+                        <h4 className="text-base lg:text-lg font-bold text-gray-900 uppercase tracking-widest mb-1">
+                          {testimonial.name}
+                        </h4>
+                        <p className={`${roleColor} text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-3 lg:mb-4`}>
+                          {testimonial.position}
+                        </p>
+
+                        <div className="flex justify-center gap-1 mb-4 lg:mb-5">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 lg:w-4 lg:h-4 text-yellow-400 fill-yellow-400" />
+                          ))}
+                        </div>
+
+                        <div className="relative">
+                          <span className="opacity-10 text-4xl lg:text-6xl leading-none font-serif absolute -top-4 left-0">"</span>
+                          <p className="text-gray-600 text-[13px] lg:text-sm leading-relaxed px-4 italic">
+                            {testimonial.content}
+                          </p>
+                          <span className="opacity-10 text-4xl lg:text-6xl leading-none font-serif absolute -bottom-6 lg:-bottom-8 right-0">"</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-8">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-6 italic">
-                "The team's expertise in web development and AI solutions helped us automate
-                70% of our customer service operations."
-              </p>
-              <div className="flex items-center">
-                <img
-                  src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=150&h=150&fit=crop&crop=face"
-                  alt="Client"
-                  className="w-12 h-12 rounded-full mr-4"
+            {/* Pagination Dots - Hidden on Laptop */}
+            <div className="flex lg:hidden justify-center gap-3 mt-10">
+              {[1, 2, 3].map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${currentTestimonial === index ? "bg-amber-500 scale-125 w-6" : "bg-white/30 hover:bg-white/50"
+                    }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
                 />
-                <div>
-                  <div className="font-semibold text-gray-900">Rajesh Kumar</div>
-                  <div className="text-sm text-gray-600">Founder, EcoSolutions</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-8">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-6 italic">
-                "Their social media marketing campaigns increased our brand awareness by 200%
-                and generated 150% more leads for our business."
-              </p>
-              <div className="flex items-center">
-                <img
-                  src="https://images.unsplash.com/photo-1610276198568-eb6d0ff53e48?w=150&h=150&fit=crop&crop=face"
-                  alt="Client"
-                  className="w-12 h-12 rounded-full mr-4"
-                />
-                <div>
-                  <div className="font-semibold text-gray-900">Anita Patel</div>
-                  <div className="text-sm text-gray-600">Marketing Director, HealthTech</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="relative py-24 overflow-hidden">
+        {/* Background Image with Blur */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
+            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop")' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/40 to-purple-600/40 backdrop-blur-sm" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-sans">
             Ready to Get Started?
           </h2>
-          <p className="text-xl mb-8 text-blue-100">
+          <p className="text-xl mb-8 text-gray-200">
             Let's discuss your project requirements and create a custom solution that fits your budget and timeline.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-consultation"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+              className="bg-[#FFD700] text-black px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-[#FDB931] transition-all duration-200 shadow-lg hover:transform hover:-translate-y-1 hover:shadow-xl"
             >
               Get Consultation
             </Link>
             <a
               href="tel:+919253625099"
-              className="border border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200"
+              className="bg-white text-gray-900 border-2 border-white px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-gray-100 hover:text-black transition-all duration-200 hover:transform hover:-translate-y-1 shadow-lg"
             >
               Call Us Now
             </a>

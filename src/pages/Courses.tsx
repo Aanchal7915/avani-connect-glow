@@ -353,18 +353,18 @@ const Courses = () => {
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="grid grid-cols-3 lg:flex lg:flex-wrap lg:justify-center gap-2 md:gap-4">
               {categories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${activeCategory === category.id
-                    ? 'bg-blue-600 text-white shadow-lg'
+                  className={`flex flex-col lg:flex-row items-center justify-center space-y-1 lg:space-y-0 lg:space-x-2 px-2 py-2.5 lg:px-4 lg:py-2 rounded-lg font-bold transition-all duration-300 ${activeCategory === category.id
+                    ? 'bg-blue-600 text-white shadow-lg transform -translate-y-0.5'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                 >
-                  {category.icon}
-                  <span>{category.name}</span>
+                  <div className="scale-75 lg:scale-100">{category.icon}</div>
+                  <span className="text-[10px] lg:text-sm tracking-tight lg:tracking-normal line-clamp-1">{category.name}</span>
                 </button>
               ))}
             </div>
@@ -372,96 +372,113 @@ const Courses = () => {
         </div>
       </section>
 
-      {/* Course Grid */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Course Grid with Unique Path-to-Success Background */}
+      <section className="relative py-24 overflow-hidden bg-slate-900">
+        {/* Unique Background Design: Indigo Strip & Academic Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          {/* Subtle Academic Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=2074&auto=format&fit=crop")' }}
+          />
+
+          {/* Purple Path Strip (Distinguishing from Services' Yellow Strip) */}
+          <div className="absolute top-1/2 left-0 w-full h-[500px] -translate-y-1/2 bg-gradient-to-r from-purple-600/10 via-violet-500/20 to-indigo-600/10 z-0 skew-y-3 transform" />
+
+          {/* Decorative Grainy Overlay for Texture */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCourses.map((course) => (
               <AnimatedSection key={course.id} animation="fadeInUp" delay={0.4 + (course.id * 0.1)}>
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                  <div className="relative">
+                <div className="group flex flex-col bg-white rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.05)] overflow-hidden hover:shadow-[0_20px_60px_rgba(37,99,235,0.15)] transition-all duration-500 hover:-translate-y-2 border border-slate-100 h-full">
+                  {/* Thumbnail Section */}
+                  <div className="relative h-44 overflow-hidden">
                     <img
                       src={course.image}
                       alt={course.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+
+                    {/* Category Overlay */}
                     <div className="absolute top-4 left-4">
-                      <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-lg">
                         {categories.find(cat => cat.id === course.category)?.name}
                       </span>
                     </div>
-                    <div className="absolute top-4 right-4">
-                      <div className="flex items-center bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1">
-                        <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                        <span className="text-sm font-medium ml-1">{course.rating}</span>
+
+                    {/* Highly Visible Rating Overlay */}
+                    <div className="absolute bottom-4 right-4">
+                      <div className="flex items-center gap-1 bg-white/95 backdrop-blur-md rounded-xl px-2.5 py-1.5 shadow-xl border border-white/50">
+                        <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
+                        <span className="text-sm font-black text-slate-900 leading-none">{course.rating}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                  {/* Body Content */}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="text-lg font-black text-slate-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors h-14 line-clamp-2">
                       {course.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
+                    <p className="text-slate-500 text-[13px] leading-relaxed mb-4 line-clamp-2 h-10 font-medium">
                       {course.description}
                     </p>
 
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center text-sm text-gray-500">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {course.duration}
+                    {/* Bento Info Grid */}
+                    <div className="grid grid-cols-2 gap-2 mb-4">
+                      <div className="bg-slate-50 p-2 rounded-xl flex items-center gap-2 border border-slate-100">
+                        <Clock className="w-3.5 h-3.5 text-blue-500" />
+                        <span className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">{course.duration}</span>
                       </div>
-                      <div className="flex items-center text-sm text-gray-500">
-                        <Users className="w-4 h-4 mr-1" />
-                        {course.students} students
+                      <div className="bg-slate-50 p-2 rounded-xl flex items-center gap-2 border border-slate-100">
+                        <Users className="w-3.5 h-3.5 text-blue-500" />
+                        <span className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">{course.students} Learners</span>
                       </div>
                     </div>
 
-                    <div className="mb-4">
-                      <div className="flex items-center justify-between">
+                    {/* Price Block */}
+                    <div className="flex items-center justify-between p-3 bg-blue-50 rounded-2xl border border-blue-100/50 mb-5">
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl font-black text-blue-700">{course.price}</span>
+                        <span className="text-sm text-blue-400/70 line-through font-bold">{course.originalPrice}</span>
+                      </div>
+                      <span className="bg-blue-600 text-white text-[9px] font-black uppercase px-2 py-1 rounded-lg">
+                        {Math.round(((parseInt(course.originalPrice.replace('₹', '').replace(',', '')) - parseInt(course.price.replace('₹', '').replace(',', ''))) / parseInt(course.originalPrice.replace('₹', '').replace(',', ''))) * 100)}% OFF
+                      </span>
+                    </div>
+
+                    {/* Mini Instructor & Features Footer */}
+                    <div className="mt-auto space-y-4 pt-2 border-t border-slate-50">
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-bold text-slate-400">
                         <div className="flex items-center">
-                          <span className="text-2xl font-bold text-blue-600">{course.price}</span>
-                          <span className="text-lg text-gray-400 line-through ml-2">{course.originalPrice}</span>
+                          <CheckCircle className="w-3 h-3 text-emerald-500 mr-1.5" />
+                          <span>Instructor: {course.instructor}</span>
                         </div>
-                        <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
-                          {Math.round(((parseInt(course.originalPrice.replace('₹', '').replace(',', '')) - parseInt(course.price.replace('₹', '').replace(',', ''))) / parseInt(course.originalPrice.replace('₹', '').replace(',', ''))) * 100)}% OFF
-                        </span>
+                        <div className="flex items-center">
+                          <CheckCircle className="w-3 h-3 text-emerald-500 mr-1.5" />
+                          <span>Level: {course.level}</span>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="mb-6">
-                      <h4 className="font-semibold text-gray-900 mb-3">Course Features:</h4>
-                      <div className="space-y-2">
-                        {course.features.slice(0, 3).map((feature, index) => (
-                          <div key={index} className="flex items-start">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                            <span className="text-sm text-gray-600">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between flex-wrap">
-                      <div className="text-sm text-gray-500">
-                        <div>Instructor: {course.instructor}</div>
-                        <div>Level: {course.level}</div>
-                      </div>
-                      <div className="flex space-x-2 mt-4 sm:mt-2">
+                      {/* Call to Actions */}
+                      <div className="flex gap-2">
                         <Link
                           to={`/courses/${course.id}`}
-                          className="border border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-all duration-200 flex items-center"
+                          className="flex-1 text-center py-2.5 px-3 rounded-xl text-[12px] font-black text-blue-600 border border-blue-100 hover:bg-blue-50 transition-all duration-300 uppercase tracking-wider"
                         >
-                          View More
-                          <ArrowRight className="ml-2 w-4 h-4" />
+                          View Details
                         </Link>
                         <a
                           href={course.paymentLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center"
+                          className="flex-[1.5] text-center py-2.5 px-3 rounded-xl text-[12px] font-black text-white bg-gradient-to-r from-blue-600 to-indigo-700 hover:shadow-lg hover:shadow-blue-200 transition-all duration-300 uppercase tracking-wider block"
                         >
                           Enroll Now
-                          <ArrowRight className="ml-2 w-4 h-4" />
                         </a>
                       </div>
                     </div>
@@ -494,44 +511,44 @@ const Courses = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
-                {/* <Certificate className="w-8 h-8" /> */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+            <div className="text-center p-2">
+              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white mx-auto mb-3 lg:mb-4">
+                <CheckCircle className="w-6 h-6 lg:w-8 lg:h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Certified Courses</h3>
-              <p className="text-gray-600">
-                Industry-recognized certificates upon completion of all courses.
+              <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-1 lg:mb-2 text-center px-1">Certified Courses</h3>
+              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
+                Industry-recognized certificates upon completion.
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
-                <Users className="w-8 h-8" />
+            <div className="text-center p-2">
+              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center text-white mx-auto mb-3 lg:mb-4">
+                <Users className="w-6 h-6 lg:w-8 lg:h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Job Guarantee</h3>
-              <p className="text-gray-600">
-                Assured job placement in reputed firms after course completion.
+              <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-1 lg:mb-2 text-center px-1">Job Guarantee</h3>
+              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
+                Assured job placement in reputed firms.
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
-                <Briefcase className="w-8 h-8" />
+            <div className="text-center p-2">
+              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white mx-auto mb-3 lg:mb-4">
+                <Briefcase className="w-6 h-6 lg:w-8 lg:h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Paid Internship</h3>
-              <p className="text-gray-600">
-                30-day paid internship with real-world project experience.
+              <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-1 lg:mb-2 text-center px-1">Paid Internship</h3>
+              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
+                30-day paid internship with real-world experience.
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
-                <Brain className="w-8 h-8" />
+            <div className="text-center p-2">
+              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white mx-auto mb-3 lg:mb-4">
+                <Brain className="w-6 h-6 lg:w-8 lg:h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">AI Assistance</h3>
-              <p className="text-gray-600">
-                Free AI tools and assistance in both Hindi and English.
+              <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-1 lg:mb-2 text-center px-1">AI Assistance</h3>
+              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
+                Free AI tools and assistance in Hindi & English.
               </p>
             </div>
           </div>
@@ -539,24 +556,33 @@ const Courses = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="relative py-24 overflow-hidden">
+        {/* Background Image with Blur */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
+            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1524178232363-1fb28f74b0cd?q=80&w=2070&auto=format&fit=crop")' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/40 to-purple-600/40 backdrop-blur-sm" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-sans">
             Ready to Transform Your Career?
           </h2>
-          <p className="text-xl mb-8 text-blue-100">
+          <p className="text-xl mb-8 text-gray-200">
             Join thousands of students who have successfully launched their careers with our premium courses.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-consultation"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+              className="bg-[#FFD700] text-black px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-[#FDB931] transition-all duration-200 shadow-lg hover:transform hover:-translate-y-1 hover:shadow-xl"
             >
               Get Consultation
             </Link>
             <a
               href="tel:+919253625099"
-              className="border border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200"
+              className="bg-white text-gray-900 border-2 border-white px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-gray-100 hover:text-black transition-all duration-200 hover:transform hover:-translate-y-1 shadow-lg"
             >
               Call +91 9253625099
             </a>
