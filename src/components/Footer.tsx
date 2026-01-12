@@ -7,11 +7,11 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-6">
+            <div className="flex items-center space-x-3 mb-4">
               <img
                 src="/logo0.jpg"
                 alt="Avani Enterprises"
@@ -19,7 +19,7 @@ const Footer = () => {
               />
               <span className="ml-2 text-xl font-bold text-white">Avani Enterprises</span>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-4 leading-relaxed text-sm">
               We transform brands through strategic digital marketing, innovative technology solutions,
               and data-driven growth strategies that deliver measurable ROI.
             </p>
@@ -41,8 +41,8 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Services</h3>
-            <ul className="space-y-3">
+            <h3 className="text-base font-semibold mb-4">Services</h3>
+            <ul className="space-y-2">
               <li>
                 <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
                   Digital Marketing
@@ -78,8 +78,8 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Company</h3>
-            <ul className="space-y-3">
+            <h3 className="text-base font-semibold mb-4">Company</h3>
+            <ul className="space-y-2">
               <li>
                 <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
                   About Us
@@ -125,8 +125,8 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Contact</h3>
-            <div className="space-y-4">
+            <h3 className="text-base font-semibold mb-4">Contact</h3>
+            <div className="space-y-3">
               <a
                 href="https://maps.app.goo.gl/h4wX8BCPpE3BCsg56?g_st=ipc"
                 target="_blank"
@@ -157,7 +157,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
+        <div className="border-t border-gray-800 mt-8 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
               © {currentYear} Avani Enterprises. All rights reserved.

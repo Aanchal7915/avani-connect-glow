@@ -115,18 +115,15 @@ const Contact = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section - Corporate Geometric Design */}
-      <section className="relative pt-32 pb-44 overflow-hidden bg-[#0f172a]">
-        {/* Background Geometric Elements inspired by reference */}
+      {/* Hero Section - Full Page */}
+      <section className="relative min-h-screen flex items-center py-20 overflow-hidden bg-[#0f172a]">
+        {/* Background Geometric Elements */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Large Diagonal Navy/Blue Shape */}
           <div className="absolute -top-24 -right-20 w-[120%] h-full bg-[#1e293b] -rotate-12 transform origin-top-right shadow-2xl" />
 
           {/* Yellow Diagonal Strip */}
           <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-[#FFD700] rotate-[35deg] transform origin-top opacity-40 shadow-2xl" />
-
-          {/* White Diagonal Accent */}
-          <div className="absolute top-0 right-[28%] w-8 h-[150%] bg-white/10 rotate-[35deg] transform origin-top blur-sm" />
 
           {/* Subtle Stardust Texture */}
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
@@ -135,15 +132,12 @@ const Contact = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="max-w-3xl relative">
-              {/* Subtle text protector overlay */}
-              <div className="absolute inset-y-0 -left-10 right-0 bg-blue-950/20 blur-3xl -z-10" />
-
               <div className="w-20 h-2 bg-[#FFD700] mb-8" />
-              <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter drop-shadow-2xl">
+              <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
                 Let's Start a <br />
                 <span className="text-[#FFD700]">Project.</span>
               </h1>
-              <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-semibold drop-shadow-lg">
+              <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-medium">
                 We combine strategic business understanding with technical excellence
                 to deliver solutions that don't just work—they win.
               </p>

@@ -162,12 +162,12 @@ const CaseStudies = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80")' }}>
+      {/* Hero Section - Full Page */}
+      <section className="relative min-h-screen flex items-center py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80")' }}>
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Case Studies
             </h1>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
@@ -476,7 +476,7 @@ const CaseStudies = () => {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
             style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop")' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/40 to-purple-600/40 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-slate-900/85" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -501,6 +501,9 @@ const CaseStudies = () => {
             </a>
           </div>
         </div>
+
+        {/* Bottom Accent Bar for Visual Separation */}
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400"></div>
       </section>
     </div>
   );

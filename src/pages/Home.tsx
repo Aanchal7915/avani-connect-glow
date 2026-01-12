@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -18,12 +18,16 @@ import {
   TrendingUp,
   Award,
   Users,
-  Mail
+  Mail,
+  ChevronDown
 } from 'lucide-react';
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCounter from '../components/AnimatedCounter';
 import StatsSection from './StatsSection';
+import { fadeInUp, viewportSettings, scaleOnHover } from '../utils/animations';
+import RotatingText from '../components/RotatingText';
+import LogoMarquee from '../components/LogoMarquee';
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -311,8 +315,8 @@ const Home = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section - Restored Content with Indian Visuals & Data Graphs */}
-      <section className="relative min-h-[95vh] flex items-center pt-24 pb-20 overflow-hidden bg-[#fefaf6]">
+      {/* Hero Section - Full Page Height */}
+      <section className="relative min-h-screen flex items-center py-20 overflow-hidden bg-[#fefaf6]">
         {/* Curved Background Split */}
         <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none hidden lg:block">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-100/40 via-orange-50/30 to-transparent rounded-l-[20rem] transform scale-x-110 translate-x-20" />
@@ -332,7 +336,14 @@ const Home = () => {
               </span>
 
               <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-                Build high-performing <span className="text-amber-500">Websites</span> & accelerate <span className="text-amber-500">Growth.</span>
+                Build high-performing{" "}
+                <RotatingText
+                  words={["Websites", "Products", "Solutions", "Experiences"]}
+                  interval={3000}
+                  className="text-amber-500"
+                />
+                {" "}&{" "}accelerate{" "}
+                <span className="text-amber-500">Growth.</span>
               </h1>
 
               <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed font-medium max-w-xl">
@@ -517,66 +528,82 @@ const Home = () => {
         </div>
       </section>
 
+
       {/* Stats Section Removed as per request */}
       {/* <StatsSection /> */}
 
-      {/* Services Section */}
-      {/* Comprehensive Digital Solutions Section */}
-      <section className="py-24 bg-[#333333] relative overflow-hidden">
-        {/* Yellow Background Strip */}
-        <div className="absolute top-1/2 left-0 w-full h-[400px] -translate-y-1/2 bg-[#FFD700] z-0"></div>
-
+      {/* Services Section - ADKO-Style Hover Expand */}
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fadeInUp" delay={0.2}>
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-5xl font-light text-white mb-4 tracking-wide font-sans">
-                Comprehensive Digital Solutions
-              </h2>
-              <p className="text-lg text-gray-300 italic max-w-3xl mx-auto font-light">
-                From web development to AI integration, we provide end-to-end digital solutions that drive growth.
-              </p>
-            </div>
-          </AnimatedSection>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-4 tracking-tight uppercase">
+              Our Expertise
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              We create content that connects with your audience - built on strategy, guided by insight, and designed to deliver across platforms
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-            {services.slice(0, 8).map((service, index) => (
-              <AnimatedSection
+          {/* ADKO-Style Service Cards - Expand on Hover */}
+          <div className="space-y-4">
+            {services.slice(0, 6).map((service, index) => (
+              <motion.div
                 key={index}
-                animation="fadeInUp"
-                delay={0.1 * (index % 4)}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="group relative"
               >
-                <div className="bg-white rounded-2xl p-3 shadow-2xl h-full flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform duration-300 min-h-[290px]">
-                  {/* Card Image */}
+                {/* Card Container */}
+                <div className="relative bg-gradient-to-r from-amber-400 to-yellow-500 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl">
+                  {/* Background Image (visible on hover) */}
                   <div
-                    className="w-full h-28 rounded-xl bg-cover bg-center mb-4 shadow-sm overflow-hidden shrink-0"
-                  >
-                    <div
-                      className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                      style={{ backgroundImage: `url(${service.bgImage})` }}
-                    />
+                    className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                    style={{ backgroundImage: `url(${service.bgImage})` }}
+                  />
+
+                  {/* Content */}
+                  <div className="relative p-6 md:p-8">
+                    <div className="flex items-center justify-between">
+                      {/* Left: Icon + Title */}
+                      <div className="flex items-center gap-4 flex-1">
+                        <div className="text-slate-900 opacity-80">
+                          {service.icon}
+                        </div>
+                        <h3 className="text-lg md:text-xl font-black text-slate-900 uppercase tracking-wide">
+                          {service.title}
+                        </h3>
+                      </div>
+
+                      {/* Right: Arrow indicator */}
+                      <motion.div
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="text-slate-900 opacity-60"
+                      >
+                        <ChevronRight size={24} />
+                      </motion.div>
+                    </div>
+
+                    {/* Expanded Description (visible on hover) */}
+                    <div className="max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
+                      <p className="text-slate-800 text-sm md:text-base leading-relaxed max-w-4xl mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                        {service.description}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-sm font-bold text-gray-800 mb-1 px-1">
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-gray-500 text-[11px] leading-snug mb-3 flex-grow px-1">
-                    {service.description}
-                  </p>
-
-                  {/* MORE Link */}
-                  <div className="mt-auto pb-2">
-                    <Link
-                      to="/services"
-                      className="inline-flex items-center justify-center px-6 py-2 text-xs font-bold text-gray-900 uppercase tracking-widest border border-gray-900 rounded hover:bg-[#FFD700] hover:border-[#FFD700] hover:text-black transition-all duration-300"
-                    >
-                      Read More
-                    </Link>
-                  </div>
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 </div>
-              </AnimatedSection>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -616,103 +643,124 @@ const Home = () => {
       </section> */}
 
 
-      <section className="py-24 bg-slate-50 relative overflow-hidden">
-        {/* Creative Background Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Abstract Process Line */}
-          <svg className="absolute top-1/2 left-0 w-full h-[500px] -translate-y-1/2 opacity-20 hidden lg:block" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path
-              fill="none"
-              stroke="url(#gradient-line)"
-              strokeWidth="8"
-              strokeDasharray="20 20"
-              d="M0,160 C320,300, 420,20, 740,160 C1060,300, 1120,20, 1440,160"
-              className="animate-pulse"
-            />
-            <defs>
-              <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#3B82F6" />
-                <stop offset="50%" stopColor="#8B5CF6" />
-                <stop offset="100%" stopColor="#EC4899" />
-              </linearGradient>
-            </defs>
-          </svg>
-
-          {/* Glowing Orbs */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4"></div>
-          <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-indigo-100/30 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
+      {/* 6-D Process Section - Dynamic Flowchart */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, #000 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }} />
         </div>
 
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-sans tracking-tight">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight uppercase">
               Our 6-D Process
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              A proven methodology that ensures successful project delivery and measurable results.
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              A proven methodology that ensures successful project delivery and measurable results
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
-            {processSteps.map((step, index) => {
-              // Gradients resembling the reference image
-              const gradients = [
-                "from-cyan-100 to-blue-200 border-blue-200",      // 01 Discover - Blue/Cyan
-                "from-purple-100 to-fuchsia-200 border-purple-200", // 02 Define - Purple
-                "from-amber-100 to-orange-200 border-orange-200",   // 03 Design - Orange
-                "from-emerald-100 to-teal-200 border-teal-200",     // 04 Develop - Teal
-                "from-lime-100 to-green-200 border-green-200",      // 05 Deploy - Light Green
-                "from-blue-100 to-indigo-200 border-indigo-200"     // 06 Deliver - Indigo
-              ];
+          {/* Flowchart Grid */}
+          <div className="relative">
+            {/* Connecting Lines (Desktop) */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block" style={{ zIndex: 0 }}>
+              <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#3B82F6" />
+                  <stop offset="50%" stopColor="#8B5CF6" />
+                  <stop offset="100%" stopColor="#EC4899" />
+                </linearGradient>
+              </defs>
+              {/* Row 1 connections */}
+              <path d="M 33% 25% L 66% 25%" stroke="url(#lineGradient)" strokeWidth="3" strokeDasharray="8 8" opacity="0.3" />
+              {/* Row 2 connections */}
+              <path d="M 33% 75% L 66% 75%" stroke="url(#lineGradient)" strokeWidth="3" strokeDasharray="8 8" opacity="0.3" />
+              {/* Vertical connections */}
+              <path d="M 16.5% 40% L 16.5% 60%" stroke="url(#lineGradient)" strokeWidth="3" strokeDasharray="8 8" opacity="0.3" />
+              <path d="M 83.5% 40% L 83.5% 60%" stroke="url(#lineGradient)" strokeWidth="3" strokeDasharray="8 8" opacity="0.3" />
+            </svg>
 
-              const icons = [
-                <Search className="w-5 h-5 text-blue-600" />,
-                <TrendingUp className="w-5 h-5 text-purple-600" />,
-                <Brain className="w-5 h-5 text-orange-600" />,
-                <Globe className="w-5 h-5 text-teal-600" />,
-                <Play className="w-5 h-5 text-green-600" />,
-                <ShieldCheck className="w-5 h-5 text-indigo-600" />
-              ];
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+              {processSteps.map((step, index) => {
+                const gradients = [
+                  "from-blue-500 to-cyan-500",
+                  "from-purple-500 to-fuchsia-500",
+                  "from-orange-500 to-amber-500",
+                  "from-teal-500 to-emerald-500",
+                  "from-green-500 to-lime-500",
+                  "from-indigo-500 to-blue-500"
+                ];
 
-              return (
-                <AnimatedSection
-                  key={index}
-                  animation="fadeInUp"
-                  delay={0.1 * index}
-                >
-                  <div className={`relative h-full p-4 rounded-2xl bg-gradient-to-br ${gradients[index]} border shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden group min-h-[180px]`}>
-                    {/* Glossy Overlay */}
-                    <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px] pointer-events-none"></div>
+                const icons = [
+                  <Search className="w-8 h-8" />,
+                  <TrendingUp className="w-8 h-8" />,
+                  <Brain className="w-8 h-8" />,
+                  <Globe className="w-8 h-8" />,
+                  <Play className="w-8 h-8" />,
+                  <ShieldCheck className="w-8 h-8" />
+                ];
 
-                    {/* Content Container */}
-                    <div className="relative z-10">
-                      <div className="flex justify-between items-start mb-3">
-                        {/* Number Badge */}
-                        <div className="w-10 h-10 rounded-full bg-white border-2 border-white/50 shadow-sm flex items-center justify-center text-sm font-black text-slate-700">
-                          {step.step}
-                        </div>
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="relative group"
+                  >
+                    {/* Card */}
+                    <div className="relative bg-white rounded-3xl p-8 shadow-xl border-2 border-gray-100 hover:border-transparent hover:shadow-2xl transition-all duration-300 min-h-[280px] flex flex-col">
+                      {/* Gradient Border on Hover */}
+                      <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${gradients[index]} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl`} />
 
-                        {/* Icon Bubble */}
-                        <div className="p-2 bg-white/60 rounded-xl shadow-sm backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
-                          {icons[index] || <Star className="w-5 h-5 text-gray-500" />}
-                        </div>
+                      {/* Step Number Badge */}
+                      <div className={`absolute -top-4 -left-4 w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[index]} flex items-center justify-center shadow-lg`}>
+                        <span className="text-2xl font-black text-white">{step.step}</span>
                       </div>
 
-                      <h3 className="text-sm font-bold text-slate-800 mb-1 tracking-tight">
+                      {/* Icon */}
+                      <div className={`mb-6 mt-4 w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[index]} flex items-center justify-center text-white`}>
+                        {icons[index]}
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight">
                         {step.title}
                       </h3>
-                      <p className="text-slate-700 text-[11px] font-semibold leading-snug">
+
+                      {/* Description */}
+                      <p className="text-slate-600 leading-relaxed flex-grow">
                         {step.description}
                       </p>
+
+                      {/* Arrow Indicator (for flow) */}
+                      {index < processSteps.length - 1 && (
+                        <div className="absolute -right-4 top-1/2 -translate-y-1/2 hidden lg:block">
+                          <motion.div
+                            animate={{ x: [0, 5, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                            className={`w-8 h-8 rounded-full bg-gradient-to-br ${gradients[index]} flex items-center justify-center text-white shadow-lg`}
+                          >
+                            <ChevronRight size={20} />
+                          </motion.div>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                </AnimatedSection>
-              );
-            })}
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -756,27 +804,66 @@ const Home = () => {
                 const isDark = index % 2 !== 0;
                 const headerColor = isDark ? "bg-[#333333]" : "bg-[#FFA500]";
                 const roleColor = isDark ? "text-[#333333]" : "text-[#FFA500]";
+                const gradientColor = isDark ? "from-gray-500 to-gray-700" : "from-orange-500 to-amber-500";
 
                 return (
-                  <div key={index} className="w-full lg:w-auto flex-shrink-0 lg:flex-shrink px-4 lg:px-0">
-                    <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col group max-w-2xl lg:max-w-none mx-auto">
+                  <motion.div
+                    key={index}
+                    className="w-full lg:w-auto flex-shrink-0 lg:flex-shrink px-4 lg:px-0"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <motion.div
+                      className="relative bg-white rounded-2xl overflow-hidden shadow-lg h-full flex flex-col group max-w-2xl lg:max-w-none mx-auto"
+                      whileHover={{
+                        y: -12,
+                        scale: 1.02,
+                        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                      }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      {/* Gradient Border on Hover */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${gradientColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl`} />
+
                       {/* Top Header Section */}
-                      <div className={`${headerColor} h-32 lg:h-40 flex flex-col items-center justify-start pt-6 lg:pt-8 relative`}>
+                      <motion.div
+                        className={`${headerColor} h-32 lg:h-40 flex flex-col items-center justify-start pt-6 lg:pt-8 relative overflow-hidden`}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                      >
                         <div className="text-center z-10 text-white relative">
                           <span className="block font-serif italic text-xl lg:text-2xl tracking-wider mb-1 opacity-90">Client</span>
                           <span className="block text-xl lg:text-2xl font-bold tracking-[0.2em] uppercase font-sans">TESTIMONIAL</span>
                         </div>
-                      </div>
+                        {/* Animated Background Pattern */}
+                        <motion.div
+                          className="absolute inset-0 opacity-10"
+                          animate={{
+                            backgroundPosition: ["0% 0%", "100% 100%"],
+                          }}
+                          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                          style={{
+                            backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
+                            backgroundSize: "20px 20px"
+                          }}
+                        />
+                      </motion.div>
 
                       {/* Overlapping Image */}
                       <div className="relative flex justify-center -mt-10 lg:-mt-14 z-20">
-                        <div className="p-1 bg-white rounded-full shadow-md">
+                        <motion.div
+                          className="p-1 bg-white rounded-full shadow-md"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ duration: 0.3 }}
+                        >
                           <img
                             src={testimonial.image}
                             alt={testimonial.name}
                             className={`w-16 h-16 lg:w-20 lg:h-20 rounded-full border-4 border-white shadow-sm ${testimonial.image.includes('review2') || testimonial.image.includes('review1') ? 'object-contain bg-white' : 'object-cover object-top'}`}
                           />
-                        </div>
+                        </motion.div>
                       </div>
 
                       {/* Card Body */}
@@ -788,11 +875,22 @@ const Home = () => {
                           {testimonial.position}
                         </p>
 
-                        <div className="flex justify-center gap-1 mb-4 lg:mb-5">
+                        <motion.div
+                          className="flex justify-center gap-1 mb-4 lg:mb-5"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.2 }}
+                        >
                           {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="w-3 h-3 lg:w-4 lg:h-4 text-yellow-400 fill-yellow-400" />
+                            <motion.div
+                              key={i}
+                              initial={{ opacity: 0, scale: 0 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: i * 0.1 }}
+                            >
+                              <Star className="w-3 h-3 lg:w-4 lg:h-4 text-yellow-400 fill-yellow-400" />
+                            </motion.div>
                           ))}
-                        </div>
+                        </motion.div>
 
                         <div className="relative">
                           <span className="opacity-10 text-4xl lg:text-6xl leading-none font-serif absolute -top-4 left-0">"</span>
@@ -802,8 +900,8 @@ const Home = () => {
                           <span className="opacity-10 text-4xl lg:text-6xl leading-none font-serif absolute -bottom-6 lg:-bottom-8 right-0">"</span>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -842,102 +940,101 @@ const Home = () => {
           </div>
         </div>
       </section> */}
-      <section id="project-showcase" className="py-12 sm:py-20 bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50">
+
+      {/* Logo Marquee Section - ADKO Style */}
+      <section className="py-16 bg-white border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* Heading */}
-          <div className="text-center mb-8 sm:mb-14">
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
-              Project Showcase
-            </h3>
-            <p className="text-lg text-slate-600">
-              Companies that trust us with their digital transformation
+          <div className="text-center mb-10">
+            <p className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">
+              Trusted by Industry Leaders
             </p>
+            <h3 className="text-2xl md:text-3xl font-black text-slate-900">
+              150+ Companies Trust Us
+            </h3>
           </div>
 
-          {/* Logo Grid Layout */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-            {clientLogos.map((client, index) => (
-              <div
-                key={index}
-                className="
-                  group
-                  flex flex-col items-center justify-between
-                  rounded-2xl
-                  border-2 border-dashed border-blue-300
-                  bg-white/80 backdrop-blur-sm
-                  shadow-sm
-                  hover:shadow-lg hover:border-blue-500 hover:scale-105
-                  hover:bg-white
-                  transition-all duration-300 ease-in-out
-                  p-3 sm:p-5
-                  min-h-[180px] sm:min-h-[220px]
-                  relative
-                "
-              >
-                {/* Logo Container */}
-                <div className="
-                  relative
-                  w-full
-                  h-24 sm:h-32
-                  mb-3 sm:mb-4
-                  flex items-center justify-center
-                  bg-gray-50
-                  rounded-xl
-                  overflow-hidden
-                  group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-purple-50
-                  transition-all duration-300
-                ">
-                  <img
-                    src={client.logo}
-                    alt={client.name}
-                    className="
-                      max-w-full
-                      max-h-full
-                      object-contain
-                      p-2 sm:p-3
-                      group-hover:scale-110
-                      transition-transform duration-300
-                    "
-                  />
-                </div>
+          {/* Infinite Scrolling Logo Marquee */}
+          <LogoMarquee
+            logos={clientLogos}
+            speed={25}
+            direction="left"
+            className="mb-4"
+          />
 
-                {/* Company Name */}
-                <h4 className="
-                  text-slate-800
-                  font-semibold
-                  text-sm sm:text-base
-                  text-center
-                  mb-3 sm:mb-4
-                  group-hover:text-blue-600
-                  transition-colors duration-300
-                ">
-                  {client.name}
-                </h4>
+          {/* Second row going opposite direction for visual interest */}
+          <LogoMarquee
+            logos={clientLogos}
+            speed={30}
+            direction="right"
+          />
+        </div>
+      </section>
 
-                {/* View Our Work Button - Always Visible */}
-                <Link
-                  to={client.link}
-                  className="
-                    bg-gradient-to-r from-blue-600 to-purple-600
-                    text-white
-                    px-4 py-1.5 sm:px-6 sm:py-2
-                    rounded-lg
-                    font-medium
-                    hover:shadow-lg
-                    transition-all duration-200
-                    hover:scale-105
-                    text-[10px] sm:text-sm
-                    w-full
-                    text-center
-                  "
+      {/* Project Showcase - Stacked Scroll */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight uppercase">
+              Featured Work
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Transforming businesses through innovative digital solutions
+            </p>
+          </motion.div>
+
+          {/* Stacked Cards Container */}
+          <div className="relative" style={{ minHeight: `${clientLogos.length * 120}px` }}>
+            {clientLogos.map((client, index) => {
+              const isEven = index % 2 === 0;
+              return (
+                <div
+                  key={index}
+                  className="sticky w-full"
+                  style={{
+                    top: `${100 + index * 15}px`,
+                    zIndex: index + 1
+                  }}
                 >
-                  View Our Work
-                </Link>
-              </div>
-            ))}
+                  <div className={`${isEven ? 'bg-gradient-to-r from-amber-400 to-yellow-500' : 'bg-slate-900'} rounded-2xl overflow-hidden shadow-xl mb-4`}>
+                    <div className="p-6 md:p-8">
+                      <div className="flex items-center justify-between gap-6">
+                        <div className="flex items-center gap-6 flex-1">
+                          <div className={`w-12 h-12 rounded-xl ${isEven ? 'bg-black/10' : 'bg-white/10'} flex items-center justify-center`}>
+                            <span className={`text-xl font-black ${isEven ? 'text-slate-900' : 'text-white'}`}>{String(index + 1).padStart(2, '0')}</span>
+                          </div>
+                          <div className={`h-12 w-20 rounded-lg ${isEven ? '' : 'bg-white'} flex items-center justify-center p-1`}>
+                            <img src={client.logo} alt={client.name} className="h-full w-auto object-contain" />
+                          </div>
+                          <h3 className={`text-xl md:text-2xl font-black uppercase tracking-wide ${isEven ? 'text-slate-900' : 'text-white'}`}>
+                            {client.name}
+                          </h3>
+                        </div>
+                        <div className="hidden md:flex items-center">
+                          <Link to={client.link} className={`flex items-center gap-2 ${isEven ? 'bg-slate-900 text-white' : 'bg-amber-400 text-slate-900'} px-6 py-3 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity`}>
+                            View Project <ArrowRight size={16} />
+                          </Link>
+                        </div>
+                      </div>
+                      <div className="md:hidden mt-4 flex justify-end">
+                        <Link to={client.link} className={`flex items-center gap-2 ${isEven ? 'bg-slate-900 text-white' : 'bg-amber-400 text-slate-900'} px-4 py-2 rounded-lg font-bold text-sm`}>
+                          View <ArrowRight size={14} />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
+          {/* Spacer to prevent overlap with next section */}
+          <div className="h-40"></div>
         </div>
       </section>
 
@@ -954,7 +1051,7 @@ const Home = () => {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
             style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?q=80&w=2070&auto=format&fit=crop")' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/40 to-purple-600/40 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-slate-900/85" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -979,6 +1076,9 @@ const Home = () => {
             </a>
           </div>
         </div>
+
+        {/* Bottom Accent Bar for Visual Separation */}
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400"></div>
       </section>
     </div >
   );

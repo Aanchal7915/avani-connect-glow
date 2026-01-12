@@ -1,60 +1,66 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from "react";
+import { useInView, useReducedMotion } from "framer-motion";
 
-const AnimatedCounter = ({ 
-  target, 
-  duration = 2000, 
-  className = "",
-  prefix = "",
+interface AnimatedCounterProps {
+  target: number;
+  suffix?: string;
+  prefix?: string;
+  duration?: number;
+  className?: string;
+  decimals?: number;
+}
+
+/**
+ * Animated Counter Component - ADKO-Inspired
+ * Counts from 0 to target number when element enters viewport
+ */
+const AnimatedCounter = ({
+  target,
   suffix = "",
-  decimals = 0 
-}) => {
+  prefix = "",
+  duration = 2000,
+  className = "",
+  decimals = 0
+}: AnimatedCounterProps) => {
   const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-          animateCount();
-        }
-      },
-      { threshold: 0.5 }
-    );
+    if (!isInView) return;
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    // If user prefers reduced motion, jump to target immediately
+    if (shouldReduceMotion) {
+      setCount(target);
+      return;
     }
 
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [isVisible]);
-
-  const animateCount = () => {
-    const steps = 60;
-    const stepValue = target / steps;
-    let currentStep = 0;
+    let start = 0;
+    const increment = target / (duration / 16); // 60fps
 
     const timer = setInterval(() => {
-      currentStep++;
-      const currentCount = Math.min(stepValue * currentStep, target);
-      setCount(currentCount);
-
-      if (currentStep >= steps) {
+      start += increment;
+      if (start >= target) {
+        setCount(target);
         clearInterval(timer);
+      } else {
+        setCount(start);
       }
-    }, duration / steps);
-  };
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [isInView, target, duration, shouldReduceMotion]);
+
+  const displayValue = decimals > 0
+    ? count.toFixed(decimals)
+    : Math.floor(count);
 
   return (
     <div ref={ref} className={className}>
-      {prefix}{count.toFixed(decimals)}{suffix}
+      {prefix}{displayValue}{suffix}
     </div>
   );
 };
 
-export default AnimatedCounter; 
+export default AnimatedCounter;

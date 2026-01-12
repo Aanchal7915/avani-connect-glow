@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +54,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* CENTER: Navigation Links (Robust Layout) */}
+          {/* CENTER: Navigation Links (Enhanced with Framer Motion) */}
           <div className="hidden lg:flex items-center justify-center flex-shrink-0">
             <div className="flex items-center gap-1 xl:gap-2">
               {navLinks.map((link) => {
@@ -64,49 +65,60 @@ const Navbar = () => {
                     to={link.path}
                     className="relative px-3 xl:px-5 py-2 group whitespace-nowrap"
                   >
-                    <span className={`text-[14.5px] font-bold tracking-wide transition-all duration-300
-                      ${isActive
-                        ? "text-amber-600"
-                        : "text-amber-500 hover:text-amber-600"
-                      }
-                    `}>
+                    <motion.span
+                      className={`text-[14.5px] font-bold tracking-wide transition-all duration-300
+                        ${isActive
+                          ? "text-amber-600"
+                          : "text-amber-500 hover:text-amber-600"
+                        }
+                      `}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    >
                       {link.name}
-                    </span>
+                    </motion.span>
 
-                    {/* Minimalist Active Indicator */}
-                    {isActive && (
-                      <div className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-amber-600 rounded-full" />
-                    )}
-
-                    {/* Subtle Hover Reveal */}
-                    {!isActive && (
-                      <div className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-amber-500/0 rounded-full transition-all duration-300 group-hover:bg-amber-600" />
-                    )}
+                    {/* Animated Underline */}
+                    <motion.div
+                      className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 bg-amber-600 rounded-full"
+                      initial={{ width: isActive ? "4px" : 0 }}
+                      whileHover={{ width: "100%" }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    />
                   </Link>
                 );
               })}
             </div>
           </div>
 
-          {/* RIGHT: Actions Section (Updated) */}
+          {/* RIGHT: Actions Section (Enhanced with Motion) */}
           <div className="hidden lg:flex flex-1 items-center justify-end space-x-6 min-w-0">
-            <a
+            <motion.a
               href="tel:+919253625099"
               className="p-2.5 bg-amber-50 text-amber-600 rounded-full hover:bg-amber-100 transition-all duration-300 shadow-sm border border-amber-100"
               title="Call Us"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <Phone size={18} />
-            </a>
+            </motion.a>
 
-            <Link
-              to="/get-consultation"
-              className="bg-gradient-to-r from-amber-400 to-orange-500 
-              text-white px-7 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap
-              shadow-[0_4px_12px_rgba(245,158,11,0.15)] hover:shadow-[0_8px_20px_rgba(245,158,11,0.3)]
-              hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              Get Started
-            </Link>
+              <Link
+                to="/get-consultation"
+                className="bg-gradient-to-r from-amber-400 to-orange-500 
+                text-white px-7 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap
+                shadow-[0_4px_12px_rgba(245,158,11,0.15)] hover:shadow-[0_8px_20px_rgba(245,158,11,0.3)]
+                transition-all duration-300 inline-block"
+              >
+                Get Started
+              </Link>
+            </motion.div>
           </div>
 
           {/* MOBILE TOGGLE */}
