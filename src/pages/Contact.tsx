@@ -123,10 +123,10 @@ const Contact = () => {
           <div className="absolute -top-24 -right-20 w-[120%] h-full bg-[#1e293b] -rotate-12 transform origin-top-right shadow-2xl" />
 
           {/* Yellow Diagonal Strip */}
-          <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-[#FFD700] rotate-[35deg] transform origin-top opacity-90 shadow-2xl" />
+          <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-[#FFD700] rotate-[35deg] transform origin-top opacity-40 shadow-2xl" />
 
           {/* White Diagonal Accent */}
-          <div className="absolute top-0 right-[28%] w-8 h-[150%] bg-white/20 rotate-[35deg] transform origin-top blur-sm" />
+          <div className="absolute top-0 right-[28%] w-8 h-[150%] bg-white/10 rotate-[35deg] transform origin-top blur-sm" />
 
           {/* Subtle Stardust Texture */}
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
@@ -134,13 +134,16 @@ const Contact = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
-            <div className="max-w-3xl">
+            <div className="max-w-3xl relative">
+              {/* Subtle text protector overlay */}
+              <div className="absolute inset-y-0 -left-10 right-0 bg-blue-950/20 blur-3xl -z-10" />
+
               <div className="w-20 h-2 bg-[#FFD700] mb-8" />
-              <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
+              <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter drop-shadow-2xl">
                 Let's Start a <br />
                 <span className="text-[#FFD700]">Project.</span>
               </h1>
-              <p className="text-xl text-slate-300 leading-relaxed max-w-2xl font-medium">
+              <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-semibold drop-shadow-lg">
                 We combine strategic business understanding with technical excellence
                 to deliver solutions that don't just work—they win.
               </p>
@@ -174,10 +177,10 @@ const Contact = () => {
                         <div className="w-10 h-10 border-2 border-[#FFD700] rotate-45 flex items-center justify-center">
                           <div className="w-6 h-6 bg-[#FFD700] -rotate-45" />
                         </div>
-                        <span className="text-white font-black uppercase tracking-[0.3em] text-sm">Avani Enterprises</span>
+                        <span className="text-white font-black uppercase tracking-[0.3em] text-sm">DIRECT SUPPORT</span>
                       </div>
 
-                      <h2 className="text-3xl font-black text-white mb-2 tracking-tight">Direct Support</h2>
+                      <h2 className="text-3xl font-black text-white mb-2 tracking-tight">Get in Touch</h2>
                       <p className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-10">Available 24/7 for you</p>
 
                       <div className="space-y-6">
@@ -201,15 +204,23 @@ const Contact = () => {
                           </div>
                         </a>
 
-                        <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700]">
+                        <a
+                          href="https://maps.app.goo.gl/h4wX8BCPpE3BCsg56?g_st=ipc"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-4 group/item"
+                        >
+                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700] group-hover/item:bg-[#FFD700] group-hover/item:text-slate-900 transition-all">
                             <MapPin className="w-5 h-5" />
                           </div>
                           <div>
                             <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Office</p>
-                            <p className="text-white font-bold leading-tight">Gurugram, Haryana</p>
+                            <p className="text-white font-bold leading-tight text-xs">
+                              Tower B, 3rd Floor, Unitech Cyber Park, <br />
+                              Sector 39, Gurugram, Haryana 122002
+                            </p>
                           </div>
-                        </div>
+                        </a>
                       </div>
 
                       <div className="mt-12 flex gap-4">
@@ -348,29 +359,29 @@ const Contact = () => {
       </section>
 
       {/* Immersive Map Section */}
-      <section className="relative h-[550px] w-full mt-24">
-        <div className="absolute inset-0 grayscale contrast-125 brightness-95">
+      <section className="relative h-[400px] md:h-[550px] w-full mt-24">
+        <div className="absolute inset-0">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.2233913121413!2d77.0893143!3d28.4594965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18f5c5c5c5c5%3A0x5c5c5c5c5c5c5c5!2sBusiness+Park%2C+Sector+15%2C+Gurgaon%2C+Haryana+122001!5e0!3m2!1sen!2sin!4v1234567890"
             width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full h-full"
           />
         </div>
 
-        {/* Floating Location Card */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-start">
-          <AnimatedSection animation="fadeInLeft">
-            <div className="bg-white/90 backdrop-blur-md p-10 rounded-[2rem] shadow-2xl border border-white/50 max-w-sm hidden md:block">
-              <div className="w-12 h-12 bg-slate-900 text-[#FFD700] rounded-xl flex items-center justify-center mb-6">
-                <MapPin className="w-6 h-6" />
+        {/* Floating Location Card - Responsive */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-end justify-end md:items-center md:justify-start pb-8 md:pb-0 pointer-events-none">
+          <AnimatedSection animation="fadeInUp" className="pointer-events-auto w-auto">
+            <div className="bg-white/95 backdrop-blur-md p-4 md:p-10 rounded-xl md:rounded-[2rem] shadow-2xl border border-white/50 max-w-[240px] md:max-w-sm">
+              <div className="w-8 h-8 md:w-12 h-12 bg-slate-900 text-[#FFD700] rounded-lg md:rounded-xl flex items-center justify-center mb-3 md:mb-6">
+                <MapPin className="w-4 h-4 md:w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">Visit our Studio</h3>
-              <p className="text-slate-600 font-bold text-sm leading-relaxed mb-8">
-                Unitech Cyber Park, Tower B,<br />
-                Gurugram, Haryana 122002
+              <h3 className="text-base md:text-2xl font-black text-slate-900 mb-1 md:mb-4 tracking-tight">Visit our Office</h3>
+              <p className="text-slate-600 font-bold text-[10px] md:text-sm leading-relaxed mb-3 md:mb-8">
+                Unitech Cyber Park, Tower B, <br />
+                Sector 39, Gurugram, Haryana 122002
               </p>
-              <div className="pt-6 border-t border-slate-100 flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-[#FFD700] shadow-sm"><Phone className="w-4 h-4" /></div>
-                <span className="text-slate-900 font-black text-sm tracking-tight">+91 9253625099</span>
+              <div className="pt-3 md:pt-6 border-t border-slate-100 flex items-center gap-3 md:gap-4">
+                <div className="w-6 h-6 md:w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-[#FFD700] shadow-sm"><Phone className="w-2.5 h-2.5 md:w-4 h-4" /></div>
+                <span className="text-slate-900 font-black text-[10px] md:text-sm tracking-tight">+91 9253625099</span>
               </div>
             </div>
           </AnimatedSection>
@@ -401,8 +412,8 @@ const Contact = () => {
               <AnimatedSection key={index} animation="fadeInUp" delay={index * 0.1}>
                 <div
                   className={`group rounded-[2rem] transition-all duration-500 border ${openFaq === index
-                      ? 'bg-white border-[#FFD700] shadow-2xl shadow-slate-200/50'
-                      : 'bg-white border-slate-100 font-medium hover:border-slate-200 shadow-sm'
+                    ? 'bg-white border-[#FFD700] shadow-2xl shadow-slate-200/50'
+                    : 'bg-white border-slate-100 font-medium hover:border-slate-200 shadow-sm'
                     }`}
                 >
                   <button

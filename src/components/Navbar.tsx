@@ -28,8 +28,8 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out font-sans
         ${isScrolled
-          ? "bg-white/95 backdrop-blur-xl shadow-sm py-3"
-          : "bg-transparent py-6"
+          ? "bg-white/95 backdrop-blur-xl shadow-sm py-2"
+          : "bg-transparent py-4"
         }
       `}
     >
@@ -123,7 +123,7 @@ const Navbar = () => {
 
         {/* MOBILE OVERLAY (Enhanced) */}
         {isOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-[76px] mx-4 bg-white shadow-2xl rounded-3xl border border-slate-100 overflow-hidden animate-fadeInDown">
+          <div className="lg:hidden fixed inset-x-0 top-[70px] mx-4 bg-white shadow-2xl rounded-3xl border border-slate-100 overflow-hidden animate-fadeInDown">
             <div className="p-5 space-y-1">
               {navLinks.map((link) => (
                 <Link

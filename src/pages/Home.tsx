@@ -339,35 +339,62 @@ const Home = () => {
                 We're more than just a digital agency. We have stories to tell, and passions to share, and results to deliver that are more exciting than the competition.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center gap-6 mb-16">
-                <Link
-                  to="/get-consultation"
-                  className="w-full sm:w-auto px-10 py-5 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl shadow-amber-500/20 active:scale-95 transition-all duration-300 flex items-center justify-center"
-                >
-                  Explore Work
-                </Link>
+              <div className="flex flex-col gap-8 mb-16">
+                <div className="flex flex-row items-center gap-3 sm:gap-6">
+                  <Link
+                    to="/get-consultation"
+                    className="flex-1 sm:flex-none px-4 py-3 sm:px-10 sm:py-5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl sm:rounded-2xl font-black text-[11px] sm:text-sm uppercase tracking-widest shadow-lg shadow-amber-500/20 active:scale-95 transition-all duration-300 text-center"
+                  >
+                    Get Consultation
+                  </Link>
+                  <a
+                    href="#project-showcase"
+                    className="flex-1 sm:flex-none px-4 py-3 sm:px-10 sm:py-5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl sm:rounded-2xl font-black text-[11px] sm:text-sm uppercase tracking-widest shadow-lg active:scale-95 transition-all duration-300 text-center"
+                  >
+                    Explore Work
+                  </a>
+                </div>
+
                 <div className="flex items-center gap-3">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3].map(i => (
-                      <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200" />
+                  <div className="flex -space-x-3">
+                    {[0, 1, 5, 3].map((idx) => (
+                      <div key={idx} className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white bg-white shadow-sm overflow-hidden flex items-center justify-center">
+                        <img
+                          src={clientLogos[idx].logo}
+                          alt={clientLogos[idx].name}
+                          className="w-full h-full object-contain p-1"
+                        />
+                      </div>
                     ))}
                   </div>
-                  <span className="text-sm font-bold text-slate-400">Trusted by 150+ Companies</span>
+                  <span className="text-xs sm:text-sm font-bold text-slate-400">Trusted by 150+ Companies</span>
                 </div>
               </div>
 
               {/* Stats Row - Updated for Single Line Mobile View */}
               <div className="flex flex-nowrap items-center gap-6 sm:gap-10 md:gap-16 overflow-x-visible">
                 <div className="group cursor-default flex-shrink-0">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 transition-transform group-hover:scale-105">150+</div>
+                  <AnimatedCounter
+                    target={150}
+                    suffix="+"
+                    className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 transition-transform group-hover:scale-105"
+                  />
                   <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">Happy Clients</div>
                 </div>
                 <div className="group cursor-default flex-shrink-0">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 transition-transform group-hover:scale-105">300+</div>
+                  <AnimatedCounter
+                    target={300}
+                    suffix="+"
+                    className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 transition-transform group-hover:scale-105"
+                  />
                   <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">Projects</div>
                 </div>
                 <div className="group cursor-default flex-shrink-0">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 transition-transform group-hover:scale-105">85%</div>
+                  <AnimatedCounter
+                    target={85}
+                    suffix="%"
+                    className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 transition-transform group-hover:scale-105"
+                  />
                   <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">Growth Rate</div>
                 </div>
               </div>
@@ -815,7 +842,7 @@ const Home = () => {
           </div>
         </div>
       </section> */}
-      <section className="py-12 sm:py-20 bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50">
+      <section id="project-showcase" className="py-12 sm:py-20 bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Heading */}

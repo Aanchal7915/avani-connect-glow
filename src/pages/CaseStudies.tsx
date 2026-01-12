@@ -181,17 +181,17 @@ const CaseStudies = () => {
       {/* Filter Section */}
       <section className="py-12 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4">
-            {filters.map((filter) => (
+          <div className="grid grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-2 md:gap-4">
+            {filters.map((filter, index) => (
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${activeFilter === filter.id
-                  ? 'bg-blue-600 text-white shadow-lg'
+                className={`px-2 py-2.5 lg:px-6 lg:py-3 rounded-lg font-bold text-[11px] lg:text-base transition-all duration-300 ${activeFilter === filter.id
+                  ? 'bg-blue-600 text-white shadow-lg transform -translate-y-0.5'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  } ${index === filters.length - 1 ? 'col-span-2' : ''}`}
               >
-                {filter.name}
+                <span className="line-clamp-1">{filter.name}</span>
               </button>
             ))}
           </div>

@@ -127,14 +127,19 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Contact</h3>
             <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <MapPin size={20} className="text-blue-400 mt-1 flex-shrink-0" />
+              <a
+                href="https://maps.app.goo.gl/h4wX8BCPpE3BCsg56?g_st=ipc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start space-x-3 group"
+              >
+                <MapPin size={20} className="text-blue-400 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <div>
-                  <p className="text-gray-300">
+                  <p className="text-gray-300 group-hover:text-white transition-colors">
                     Tower B, 3rd Floor, Unitech Cyber Park, Sector 39, Gurugram, Haryana 122002
                   </p>
                 </div>
-              </div>
+              </a>
               <div className="flex items-center space-x-3">
                 <Phone size={20} className="text-blue-400 flex-shrink-0" />
                 <a href="tel:+919253625099" className="text-gray-300 hover:text-white transition-colors">
