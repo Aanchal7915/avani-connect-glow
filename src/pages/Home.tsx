@@ -31,6 +31,7 @@ import { fadeInUp, viewportSettings, scaleOnHover } from '../utils/animations';
 import RotatingText from '../components/RotatingText';
 import LogoMarquee from '../components/LogoMarquee';
 import axios from 'axios';
+import { API_BASE_URL } from '../utils/api';
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -42,6 +43,7 @@ const Home = () => {
   });
   const [blogs, setBlogs] = useState([]);
   const [loadingBlogs, setLoadingBlogs] = useState(true);
+  const [currentBlog, setCurrentBlog] = useState(0);
 
   const targetCounts = {
     clients: 150,
@@ -50,8 +52,6 @@ const Home = () => {
     years: 8
   };
 
-  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
-
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -59,7 +59,7 @@ const Home = () => {
   const fetchBlogs = async () => {
     try {
       setLoadingBlogs(true);
-      const response = await axios.get(`${API_BASE}/blogs?limit=3`);
+      const response = await axios.get(`${API_BASE_URL}/blogs?limit=3`);
       if (response.data.success) {
         setBlogs(response.data.data || []);
       }
@@ -1174,10 +1174,10 @@ const Home = () => {
           <AnimatedSection>
             <div className="text-center mb-16">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-2 mb-6">
+              {/* <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-2 mb-6">
                 <Sparkles className="w-4 h-4 text-amber-600" />
                 <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Blog</span>
-              </div>
+              </div> */}
               
               <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
                 Latest Insights & <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Updates</span>
@@ -1289,7 +1289,7 @@ const Home = () => {
                 ))}
               </div>
 
-              {/* View More Button */}
+              {/* View More Button - Show only if more than 3 blogs */}
               {blogs.length > 3 && (
                 <AnimatedSection>
                   <div className="text-center">

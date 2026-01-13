@@ -152,8 +152,8 @@ const GetConsultation = () => {
 
                     <div className="relative z-10">
                       <div className="flex items-center gap-3 mb-10">
-                        <div className="w-10 h-10 border-2 border-amber-500 rotate-45 flex items-center justify-center">
-                          <div className="w-6 h-6 bg-gradient-to-r from-amber-400 to-orange-500 -rotate-45" />
+                        <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 shadow-lg">
+                          <img src="/logo0.jpg" alt="Avani Enterprises" className="w-full h-full object-cover" />
                         </div>
                         <span className="text-white font-black uppercase tracking-[0.3em] text-sm">EXPERT SUPPORT</span>
                       </div>

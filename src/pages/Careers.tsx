@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import RotatingText from '../components/RotatingText';
+import { API_BASE_URL } from '../utils/api';
 import {
   Users,
   Clock,
@@ -55,7 +56,7 @@ const Careers = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/jobs`);
+        const response = await axios.get(`${API_BASE_URL}/jobs`);
         setJobs(response.data.data || []);
       } catch (error) {
         console.error('Error fetching jobs:', error);
@@ -188,7 +189,7 @@ const Careers = () => {
               <select
                 value={activeLocation}
                 onChange={(e) => setActiveLocation(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm bg-white text-gray-900 font-medium"
               >
                 <option value="all">All Locations</option>
                 <option value="remote">Remote</option>
@@ -204,7 +205,7 @@ const Careers = () => {
               <select
                 value={activeType}
                 onChange={(e) => setActiveType(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm bg-white text-gray-900 font-medium"
               >
                 <option value="all">All Types</option>
                 <option value="full-time">Full-Time</option>

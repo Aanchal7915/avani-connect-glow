@@ -15,6 +15,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { API_BASE_URL } from "../utils/api";
 
 const CareerDetail = () => {
   const { id } = useParams();
@@ -54,7 +55,7 @@ const CareerDetail = () => {
     try {
       // Fetch from public endpoint
       const res = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/jobs/${id}`
+        `${API_BASE_URL}/jobs/${id}`
       );
       setJob(res.data.data);
       setLoading(false);
@@ -118,7 +119,7 @@ const CareerDetail = () => {
         data.append("coverLetter", formData.coverLetter);
       }
 
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/applications`, data, {
+      const response = await axios.post(`${API_BASE_URL}/applications`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

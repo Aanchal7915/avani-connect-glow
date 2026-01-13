@@ -232,11 +232,16 @@ const Navbar = () => {
             <div className="p-5 space-y-1">
               {navItems.map((item) => {
                 if (item.dropdown) {
+                  const isDropdownActive = isActiveDropdown(item.dropdown);
                   return (
                     <div key={item.name}>
                       <button
                         onClick={() => toggleDropdown(item.name)}
-                        className="w-full flex items-center justify-between px-6 py-4 rounded-2xl text-[15px] font-semibold transition-all text-slate-500 hover:bg-slate-50"
+                        className={`w-full flex items-center justify-between px-6 py-4 rounded-2xl text-[15px] font-semibold transition-all ${
+                          isDropdownActive || openDropdown === item.name
+                            ? "bg-amber-50 text-amber-600"
+                            : "text-slate-500 hover:bg-slate-50"
+                        }`}
                       >
                         <span>{item.name}</span>
                         <ChevronDown
@@ -246,27 +251,37 @@ const Navbar = () => {
                           }`}
                         />
                       </button>
-                      {openDropdown === item.name && (
-                        <div className="ml-4 mt-1 space-y-1">
-                          {item.dropdown.map((subItem) => (
-                            <Link
-                              key={subItem.path}
-                              to={subItem.path}
-                              onClick={() => {
-                                setIsOpen(false);
-                                setOpenDropdown(null);
-                              }}
-                              className={`block px-6 py-3 rounded-xl text-sm font-semibold transition-all ${
-                                location.pathname === subItem.path
-                                  ? "bg-amber-50 text-amber-600"
-                                  : "text-slate-400 hover:bg-slate-50 hover:text-slate-700"
-                              }`}
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
+                      <AnimatePresence>
+                        {openDropdown === item.name && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="ml-4 mt-1 space-y-1 pb-2">
+                              {item.dropdown.map((subItem) => (
+                                <Link
+                                  key={subItem.path}
+                                  to={subItem.path}
+                                  onClick={() => {
+                                    setIsOpen(false);
+                                    setOpenDropdown(null);
+                                  }}
+                                  className={`block px-6 py-3 rounded-xl text-sm font-semibold transition-all ${
+                                    location.pathname === subItem.path
+                                      ? "bg-amber-100 text-amber-700"
+                                      : "text-slate-400 hover:bg-slate-50 hover:text-slate-700"
+                                  }`}
+                                >
+                                  {subItem.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   );
                 }
