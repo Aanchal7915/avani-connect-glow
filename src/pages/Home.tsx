@@ -19,7 +19,9 @@ import {
   Award,
   Users,
   Mail,
-  ChevronDown
+  ChevronDown,
+  Calendar,
+  Clock
 } from 'lucide-react';
 import { motion, useReducedMotion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import AnimatedSection from '../components/AnimatedSection';
@@ -28,6 +30,7 @@ import StatsSection from './StatsSection';
 import { fadeInUp, viewportSettings, scaleOnHover } from '../utils/animations';
 import RotatingText from '../components/RotatingText';
 import LogoMarquee from '../components/LogoMarquee';
+import axios from 'axios';
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -37,12 +40,34 @@ const Home = () => {
     growth: 0,
     years: 0
   });
+  const [blogs, setBlogs] = useState([]);
+  const [loadingBlogs, setLoadingBlogs] = useState(true);
 
   const targetCounts = {
     clients: 150,
     projects: 300,
     growth: 85,
     years: 8
+  };
+
+  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  const fetchBlogs = async () => {
+    try {
+      setLoadingBlogs(true);
+      const response = await axios.get(`${API_BASE}/blogs?limit=3`);
+      if (response.data.success) {
+        setBlogs(response.data.data || []);
+      }
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    } finally {
+      setLoadingBlogs(false);
+    }
   };
 
   useEffect(() => {
@@ -1117,10 +1142,171 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Blog Section */}
+      <section className="relative py-24 bg-white overflow-hidden">
+        {/* Geometric Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Hexagon Pattern */}
+          <div className="absolute top-20 right-10 w-64 h-64 opacity-5">
+            <svg viewBox="0 0 100 100" className="w-full h-full">
+              <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-slate-900" />
+              <polygon points="50 10 85 30 85 70 50 90 15 70 15 30" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-slate-900" />
+              <polygon points="50 20 75 35 75 65 50 80 25 65 25 35" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-slate-900" />
+            </svg>
+          </div>
+          
+          {/* Circuit Lines */}
+          <div className="absolute top-40 left-10 w-96 h-96 opacity-5">
+            <svg viewBox="0 0 200 200" className="w-full h-full">
+              <path d="M0,100 L50,100 L50,50 L100,50 L100,150 L150,150 L150,100 L200,100" fill="none" stroke="currentColor" strokeWidth="1" className="text-slate-900" />
+              <circle cx="50" cy="100" r="3" fill="currentColor" className="text-slate-900" />
+              <circle cx="100" cy="50" r="3" fill="currentColor" className="text-slate-900" />
+              <circle cx="150" cy="150" r="3" fill="currentColor" className="text-slate-900" />
+            </svg>
+          </div>
 
+          {/* Gradient Orbs */}
+          <div className="absolute -top-20 -left-20 w-96 h-96 bg-gradient-to-br from-amber-100/30 to-orange-100/30 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-gradient-to-tl from-amber-100/30 to-orange-100/30 rounded-full blur-3xl"></div>
+        </div>
 
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <div className="text-center mb-16">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-2 mb-6">
+                <Sparkles className="w-4 h-4 text-amber-600" />
+                <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Blog</span>
+              </div>
+              
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
+                Latest Insights & <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Updates</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Stay informed with our latest articles, industry insights, and expert advice to grow your business
+              </p>
+            </div>
+          </AnimatedSection>
 
+          {loadingBlogs ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="relative">
+                <div className="animate-spin rounded-full h-16 w-16 border-4 border-amber-200 border-t-amber-500"></div>
+                <div className="absolute inset-0 rounded-full bg-amber-100/50 blur-xl"></div>
+              </div>
+            </div>
+          ) : blogs.length === 0 ? (
+            <div className="text-center py-20">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-amber-50 mb-6">
+                <Sparkles className="w-10 h-10 text-amber-500" />
+              </div>
+              <p className="text-gray-600 text-lg">No blogs available yet. Check back soon!</p>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                {blogs.slice(0, 3).map((blog, index) => (
+                  <AnimatedSection key={blog._id} delay={index * 0.1}>
+                    <Link
+                      to={`/blog/${blog.slug}`}
+                      className="group relative bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-amber-400 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-100"
+                    >
+                      {/* Glow Effect on Hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-50/0 to-orange-50/0 group-hover:from-amber-50/50 group-hover:to-orange-50/50 transition-all duration-300"></div>
+                      
+                      {/* Featured Image */}
+                      <div className="relative h-48 overflow-hidden">
+                        {blog.featuredImage ? (
+                          <>
+                            <img
+                              src={blog.featuredImage}
+                              alt={blog.title}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
+                          </>
+                        ) : (
+                          <div className="w-full h-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
+                            <Sparkles className="w-16 h-16 text-amber-500 opacity-50" />
+                          </div>
+                        )}
+                        
+                        {/* Hexagon Accent */}
+                        <div className="absolute top-4 right-4 w-12 h-12 opacity-30">
+                          <svg viewBox="0 0 100 100" className="w-full h-full">
+                            <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="none" stroke="currentColor" strokeWidth="2" className="text-white" />
+                          </svg>
+                        </div>
+                      </div>
 
+                      {/* Content */}
+                      <div className="relative p-6 bg-white">
+                        {/* Meta Info */}
+                        <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
+                          <div className="flex items-center gap-1.5">
+                            <Calendar className="w-3.5 h-3.5 text-amber-500" />
+                            <span>{new Date(blog.publishedAt || blog.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                          </div>
+                          {blog.author && (
+                            <div className="flex items-center gap-1.5">
+                              <Users className="w-3.5 h-3.5 text-amber-500" />
+                              <span>{blog.author}</span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-amber-600 transition-colors leading-tight">
+                          {blog.title}
+                        </h3>
+
+                        {/* Excerpt */}
+                        <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                          {blog.excerpt || 'Read more to discover insights...'}
+                        </p>
+
+                        {/* Tags */}
+                        {blog.tags && blog.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {blog.tags.slice(0, 2).map((tag, idx) => (
+                              <span
+                                key={idx}
+                                className="px-3 py-1 bg-amber-50 border border-amber-200 text-amber-700 text-xs font-medium rounded-full"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Read More */}
+                        <div className="flex items-center gap-2 text-amber-600 font-semibold text-sm group-hover:gap-4 transition-all">
+                          Read Article <ArrowRight className="w-4 h-4" />
+                        </div>
+                      </div>
+                    </Link>
+                  </AnimatedSection>
+                ))}
+              </div>
+
+              {/* View More Button */}
+              {blogs.length > 3 && (
+                <AnimatedSection>
+                  <div className="text-center">
+                    <Link
+                      to="/blog"
+                      className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg hover:from-amber-500 hover:to-orange-600 transition-all duration-200 shadow-lg shadow-amber-200 hover:shadow-xl hover:shadow-amber-300 transform hover:-translate-y-1"
+                    >
+                      View All Blogs 
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </AnimatedSection>
+              )}
+            </>
+          )}
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden">

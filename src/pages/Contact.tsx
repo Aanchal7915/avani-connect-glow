@@ -18,7 +18,8 @@ const Contact = () => {
     phone: '',
     company: '',
     service: [],
-    message: ''
+    message: '',
+    otherService: ''
   });
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -57,6 +58,7 @@ const Contact = () => {
       service: formData.service.length > 0 ? (formData.service.length === 1 ? formData.service[0] : formData.service.join(', ')) : '',
       companyName: formData.company,
       projectDetails: formData.message,
+      otherService: formData.otherService
     };
 
     // send to backend endpoint expected: POST /api/forms/submit
@@ -91,7 +93,11 @@ const Contact = () => {
     "Social Media Marketing",
     "AI Solutions",
     "Podcast Production",
-    "Financial Consulting"
+    "Financial Consulting",
+    "Business Consultation",
+    "Business Loans",
+    "Business Insurance",
+    "Other"
   ];
 
   const faqs = [
@@ -123,7 +129,7 @@ const Contact = () => {
           <div className="absolute -top-24 -right-20 w-[120%] h-full bg-[#1e293b] -rotate-12 transform origin-top-right shadow-2xl" />
 
           {/* Yellow Diagonal Strip */}
-          <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-[#FFD700] rotate-[35deg] transform origin-top opacity-40 shadow-2xl" />
+          <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-gradient-to-r from-amber-400 to-orange-500 rotate-[35deg] transform origin-top opacity-40 shadow-2xl" />
 
           {/* Subtle Stardust Texture */}
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
@@ -132,10 +138,10 @@ const Contact = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="max-w-3xl relative">
-              <div className="w-20 h-2 bg-[#FFD700] mb-8" />
+              <div className="w-20 h-2 bg-gradient-to-r from-amber-400 to-orange-500 mb-8" />
               <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
                 Let's Start a <br />
-                <span className="text-[#FFD700]">Project.</span>
+                <span className="text-amber-500">Project.</span>
               </h1>
               <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-medium">
                 We combine strategic business understanding with technical excellence
@@ -164,12 +170,12 @@ const Contact = () => {
                 <div className="bg-white p-1 rounded-3xl shadow-2xl overflow-hidden group">
                   <div className="bg-slate-900 p-10 rounded-[1.4rem] relative overflow-hidden">
                     {/* Corner Accent */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFD700] -translate-x-1/2 -translate-y-1/2 rotate-45" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-r from-amber-400 to-orange-500 -translate-x-1/2 -translate-y-1/2 rotate-45" />
 
                     <div className="relative z-10">
                       <div className="flex items-center gap-3 mb-10">
-                        <div className="w-10 h-10 border-2 border-[#FFD700] rotate-45 flex items-center justify-center">
-                          <div className="w-6 h-6 bg-[#FFD700] -rotate-45" />
+                        <div className="w-10 h-10 border-2 border-amber-500 rotate-45 flex items-center justify-center">
+                          <div className="w-6 h-6 bg-gradient-to-r from-amber-400 to-orange-500 -rotate-45" />
                         </div>
                         <span className="text-white font-black uppercase tracking-[0.3em] text-sm">DIRECT SUPPORT</span>
                       </div>
@@ -179,7 +185,7 @@ const Contact = () => {
 
                       <div className="space-y-6">
                         <a href="tel:+919253625099" className="flex items-center gap-4 group/item">
-                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700] group-hover/item:bg-[#FFD700] group-hover/item:text-slate-900 transition-all">
+                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-amber-500 group-hover/item:bg-gradient-to-r from-amber-400 to-orange-500 group-hover/item:text-slate-900 transition-all">
                             <Phone className="w-5 h-5" />
                           </div>
                           <div>
@@ -189,7 +195,7 @@ const Contact = () => {
                         </a>
 
                         <a href="mailto:kp@avanienterprises.in" className="flex items-center gap-4 group/item">
-                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700] group-hover/item:bg-[#FFD700] group-hover/item:text-slate-900 transition-all">
+                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-amber-500 group-hover/item:bg-gradient-to-r from-amber-400 to-orange-500 group-hover/item:text-slate-900 transition-all">
                             <Mail className="w-5 h-5" />
                           </div>
                           <div>
@@ -204,7 +210,7 @@ const Contact = () => {
                           rel="noopener noreferrer"
                           className="flex items-center gap-4 group/item"
                         >
-                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700] group-hover/item:bg-[#FFD700] group-hover/item:text-slate-900 transition-all">
+                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-amber-500 group-hover/item:bg-gradient-to-r from-amber-400 to-orange-500 group-hover/item:text-slate-900 transition-all">
                             <MapPin className="w-5 h-5" />
                           </div>
                           <div>
@@ -218,7 +224,7 @@ const Contact = () => {
                       </div>
 
                       <div className="mt-12 flex gap-4">
-                        <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex-1 py-4 bg-[#FFD700] text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-white transition-all">
+                        <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex-1 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-white transition-all">
                           WhatsApp
                         </a>
                         <a href="tel:+919253625099" className="flex-1 py-4 border border-slate-700 text-white rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-slate-800 transition-all">
@@ -237,7 +243,7 @@ const Contact = () => {
                   <ul className="space-y-3">
                     {['Free Consultation', 'Expert Strategy Session', 'Custom Tech Roadmap', 'Dedicated Account Manager'].map((text, i) => (
                       <li key={i} className="flex items-center gap-3 text-slate-600 text-sm font-bold uppercase tracking-tight">
-                        <div className="w-1.5 h-1.5 bg-[#FFD700] rounded-full" /> {text}
+                        <div className="w-1.5 h-1.5 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full" /> {text}
                       </li>
                     ))}
                   </ul>
@@ -250,26 +256,26 @@ const Contact = () => {
               <AnimatedSection animation="fadeInRight" delay={0.2}>
                 <div className="bg-white rounded-[1.5rem] shadow-2xl p-6 md:p-10 border border-slate-100 max-w-xl mx-auto lg:ml-auto lg:mr-0">
                   <div className="mb-8">
-                    <span className="text-[#FFD700] font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Inquiry Form</span>
+                    <span className="text-amber-500 font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Inquiry Form</span>
                     <h3 className="text-3xl font-black text-slate-900 mb-3 tracking-tight">Send a Proposal</h3>
-                    <div className="w-12 h-1 bg-[#FFD700]" />
+                    <div className="w-12 h-1 bg-gradient-to-r from-amber-400 to-orange-500" />
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="group">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 transition-colors group-focus-within:text-[#FFD700]">Full Name *</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 transition-colors group-focus-within:text-amber-500">Full Name *</label>
                         <input
                           type="text" name="name" required value={formData.name} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="Your Name"
                         />
                       </div>
                       <div className="group">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Work Email *</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Work Email *</label>
                         <input
                           type="email" name="email" required value={formData.email} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="Email Address"
                         />
                       </div>
@@ -277,29 +283,29 @@ const Contact = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="group">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Mobile Phone</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Mobile Phone</label>
                         <input
                           type="tel" name="phone" value={formData.phone} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="+91"
                         />
                       </div>
                       <div className="group">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Organization</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Organization</label>
                         <input
                           type="text" name="company" value={formData.company} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="Company Name"
                         />
                       </div>
                     </div>
 
                     <div className="group">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Project Category</label>
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Project Category</label>
                       <div className="relative">
                         <button
                           type="button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 text-left flex justify-between items-center outline-none transition-all focus:border-[#FFD700]"
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 text-left flex justify-between items-center outline-none transition-all focus:border-amber-500"
                         >
                           <span className={`font-bold text-sm ${formData.service.length === 0 ? 'text-slate-400' : 'text-slate-900'}`}>
                             {formData.service.length === 0 ? "Select Services" : `${formData.service.length} Selected`}
@@ -310,7 +316,7 @@ const Contact = () => {
                           <div className="absolute z-50 mt-2 w-full bg-white shadow-2xl rounded-xl py-2 border border-slate-100 max-h-48 overflow-auto">
                             {services.map((service) => (
                               <div key={service} onClick={() => handleServiceToggle(service)} className="px-4 py-2 hover:bg-slate-50 cursor-pointer flex items-center gap-3">
-                                <input type="checkbox" checked={formData.service.includes(service)} readOnly className="w-3.5 h-3.5 text-[#FFD700] focus:ring-[#FFD700] border-slate-300 rounded" />
+                                <input type="checkbox" checked={formData.service.includes(service)} readOnly className="w-3.5 h-3.5 text-amber-500 focus:ring-amber-500 border-slate-300 rounded" />
                                 <span className="text-xs font-bold text-slate-700">{service}</span>
                               </div>
                             ))}
@@ -319,29 +325,40 @@ const Contact = () => {
                       </div>
                     </div>
 
+                    {formData.service.includes("Other") && (
+                      <div className="group">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Please Specify Other Service</label>
+                        <input
+                          type="text" name="otherService" value={formData.otherService} onChange={handleInputChange}
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
+                          placeholder="Describe your service need"
+                        />
+                      </div>
+                    )}
+
                     <div className="group">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Message *</label>
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Message *</label>
                       <textarea
                         name="message" required value={formData.message} onChange={handleInputChange} rows={2}
-                        className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none resize-none text-sm"
+                        className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none resize-none text-sm"
                         placeholder="Detail your requirements..."
                       />
                     </div>
 
                     <button
                       type="submit" disabled={isLoading}
-                      className="w-full py-4 bg-[#FFD700] text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-slate-900 hover:text-[#FFD700] transition-all flex items-center justify-center gap-2 shadow-lg shadow-yellow-200/50"
+                      className="w-full py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-gradient-to-r from-amber-400 to-orange-500 hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg shadow-yellow-200/50"
                     >
                       {isLoading ? (
                         <div className="w-4 h-4 border-2 border-slate-900/10 border-t-slate-900 rounded-full animate-spin" />
                       ) : (
-                        <>Send Proposal <Send className="w-3.5 h-3.5" /></>
+                        <>Submit <Send className="w-3.5 h-3.5" /></>
                       )}
                     </button>
 
                     {isSubmitted && (
                       <div className="p-3 bg-emerald-50 text-emerald-700 rounded-lg font-bold text-center text-[11px] border border-emerald-100 uppercase tracking-wider">
-                        Proposal sent successfully!
+                        Form submitted successfully!
                       </div>
                     )}
                   </form>
@@ -365,7 +382,7 @@ const Contact = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-end justify-end md:items-center md:justify-start pb-8 md:pb-0 pointer-events-none">
           <AnimatedSection animation="fadeInUp" className="pointer-events-auto w-auto">
             <div className="bg-white/95 backdrop-blur-md p-4 md:p-10 rounded-xl md:rounded-[2rem] shadow-2xl border border-white/50 max-w-[240px] md:max-w-sm">
-              <div className="w-8 h-8 md:w-12 h-12 bg-slate-900 text-[#FFD700] rounded-lg md:rounded-xl flex items-center justify-center mb-3 md:mb-6">
+              <div className="w-8 h-8 md:w-12 h-12 bg-slate-900 text-amber-500 rounded-lg md:rounded-xl flex items-center justify-center mb-3 md:mb-6">
                 <MapPin className="w-4 h-4 md:w-6 h-6" />
               </div>
               <h3 className="text-base md:text-2xl font-black text-slate-900 mb-1 md:mb-4 tracking-tight">Visit our Office</h3>
@@ -374,7 +391,7 @@ const Contact = () => {
                 Sector 39, Gurugram, Haryana 122002
               </p>
               <div className="pt-3 md:pt-6 border-t border-slate-100 flex items-center gap-3 md:gap-4">
-                <div className="w-6 h-6 md:w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-[#FFD700] shadow-sm"><Phone className="w-2.5 h-2.5 md:w-4 h-4" /></div>
+                <div className="w-6 h-6 md:w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-amber-500 shadow-sm"><Phone className="w-2.5 h-2.5 md:w-4 h-4" /></div>
                 <span className="text-slate-900 font-black text-[10px] md:text-sm tracking-tight">+91 9253625099</span>
               </div>
             </div>
@@ -389,16 +406,16 @@ const Contact = () => {
 
         {/* Decorative Light Geometric Accents */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-slate-200/40 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[100px] animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#FFD700]/5 rounded-full translate-x-1/4 translate-y-1/4 blur-[80px]" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-r from-amber-400 to-orange-500/5 rounded-full translate-x-1/4 translate-y-1/4 blur-[80px]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white rounded-full border border-slate-200 mb-6 shadow-sm">
-              <span className="w-2 h-2 bg-[#FFD700] rounded-full" />
+              <span className="w-2 h-2 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full" />
               <span className="text-slate-400 font-black text-[10px] uppercase tracking-[0.3em]">Knowledge Base</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">Common Queries</h2>
-            <div className="w-20 h-1 bg-[#FFD700] mx-auto rounded-full" />
+            <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
@@ -406,7 +423,7 @@ const Contact = () => {
               <AnimatedSection key={index} animation="fadeInUp" delay={index * 0.1}>
                 <div
                   className={`group rounded-[2rem] transition-all duration-500 border ${openFaq === index
-                    ? 'bg-white border-[#FFD700] shadow-2xl shadow-slate-200/50'
+                    ? 'bg-white border-amber-500 shadow-2xl shadow-slate-200/50'
                     : 'bg-white border-slate-100 font-medium hover:border-slate-200 shadow-sm'
                     }`}
                 >
@@ -417,7 +434,7 @@ const Contact = () => {
                     <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-slate-900' : 'text-slate-600'}`}>
                       {faq.question}
                     </span>
-                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${openFaq === index ? 'bg-[#FFD700] text-slate-900 shadow-lg shadow-yellow-100' : 'bg-slate-50 text-slate-400 group-hover:bg-white group-hover:shadow-md'}`}>
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${openFaq === index ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 shadow-lg shadow-yellow-100' : 'bg-slate-50 text-slate-400 group-hover:bg-white group-hover:shadow-md'}`}>
                       <ChevronUp className={`w-5 h-5 transition-transform duration-300 ${openFaq === index ? 'rotate-0' : 'rotate-180'}`} />
                     </div>
                   </button>

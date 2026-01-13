@@ -16,11 +16,12 @@ const GetConsultation = () => {
     phone: "",
     company: "",
     service: [],
-    message: ""
+    message: "",
+    otherService: ""
   });
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isPaying, setIsPaying] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -41,12 +42,46 @@ const GetConsultation = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsPaying(true);
 
-    // Redirect to payment link
-    setTimeout(() => {
-      window.location.href = 'https://razorpay.com/payment-link/plink_Qj3KCQT62VWolN';
-    }, 500);
+    const API_BASE = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+
+    setIsLoading(true);
+
+    // prepare payload to match backend expectations
+    const payload = {
+      fullName: formData.name,
+      email: formData.email,
+      phoneNu: formData.phone,
+      service: formData.service.length > 0 ? (formData.service.length === 1 ? formData.service[0] : formData.service.join(', ')) : '',
+      companyName: formData.company,
+      projectDetails: formData.message,
+      otherService: formData.otherService
+    };
+
+    // send to backend endpoint expected: POST /api/forms/submit
+    (async () => {
+      try {
+        const res = await fetch(`${API_BASE.replace(/\/$/, '')}/avani-form`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) {
+          const text = await res.text().catch(() => '');
+          console.error('Backend error submitting form', res.status, text);
+          alert('Unable to submit form to server. Please try again later.');
+          return;
+        }
+
+        setIsSubmitted(true);
+      } catch (err) {
+        console.error('Submit error:', err);
+        alert('There was an error submitting the form. Please try again.');
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   };
 
   const services = [
@@ -55,10 +90,12 @@ const GetConsultation = () => {
     "Social Media Marketing",
     "AI Solutions",
     "Podcast Production",
-    "Financial Consulting"
+    "Financial Consulting",
+    "Business Consultation",
+    "Business Loans",
+    "Business Insurance",
+    "Other"
   ];
-
-  const amount = 4999;
 
   return (
     <div className="pt-20">
@@ -70,7 +107,7 @@ const GetConsultation = () => {
           <div className="absolute -top-24 -right-20 w-[120%] h-full bg-[#1e293b] -rotate-12 transform origin-top-right shadow-2xl" />
 
           {/* Yellow Diagonal Strip */}
-          <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-[#FFD700] rotate-[35deg] transform origin-top opacity-40 shadow-2xl" />
+          <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-gradient-to-r from-amber-400 to-orange-500 rotate-[35deg] transform origin-top opacity-40 shadow-2xl" />
 
           {/* Subtle Stardust Texture */}
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
@@ -79,10 +116,10 @@ const GetConsultation = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="max-w-3xl relative">
-              <div className="w-20 h-2 bg-[#FFD700] mb-8" />
+              <div className="w-20 h-2 bg-gradient-to-r from-amber-400 to-orange-500 mb-8" />
               <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
                 Book Expert <br />
-                <span className="text-[#FFD700]">Consultation.</span>
+                <span className="text-amber-500">Consultation.</span>
               </h1>
               <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-medium">
                 Unlock business growth with a 1:1 session with our senior consultants.
@@ -111,12 +148,12 @@ const GetConsultation = () => {
                 <div className="bg-white p-1 rounded-3xl shadow-2xl overflow-hidden group">
                   <div className="bg-slate-900 p-10 rounded-[1.4rem] relative overflow-hidden">
                     {/* Corner Accent */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFD700] -translate-x-1/2 -translate-y-1/2 rotate-45" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-r from-amber-400 to-orange-500 -translate-x-1/2 -translate-y-1/2 rotate-45" />
 
                     <div className="relative z-10">
                       <div className="flex items-center gap-3 mb-10">
-                        <div className="w-10 h-10 border-2 border-[#FFD700] rotate-45 flex items-center justify-center">
-                          <div className="w-6 h-6 bg-[#FFD700] -rotate-45" />
+                        <div className="w-10 h-10 border-2 border-amber-500 rotate-45 flex items-center justify-center">
+                          <div className="w-6 h-6 bg-gradient-to-r from-amber-400 to-orange-500 -rotate-45" />
                         </div>
                         <span className="text-white font-black uppercase tracking-[0.3em] text-sm">EXPERT SUPPORT</span>
                       </div>
@@ -126,7 +163,7 @@ const GetConsultation = () => {
 
                       <div className="space-y-6">
                         <a href="tel:+919253625099" className="flex items-center gap-4 group/item">
-                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700] group-hover/item:bg-[#FFD700] group-hover/item:text-slate-900 transition-all">
+                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-amber-500 group-hover/item:bg-gradient-to-r from-amber-400 to-orange-500 group-hover/item:text-slate-900 transition-all">
                             <Phone className="w-5 h-5" />
                           </div>
                           <div>
@@ -136,7 +173,7 @@ const GetConsultation = () => {
                         </a>
 
                         <a href="mailto:kp@avanienterprises.in" className="flex items-center gap-4 group/item">
-                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700] group-hover/item:bg-[#FFD700] group-hover/item:text-slate-900 transition-all">
+                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-amber-500 group-hover/item:bg-gradient-to-r from-amber-400 to-orange-500 group-hover/item:text-slate-900 transition-all">
                             <Mail className="w-5 h-5" />
                           </div>
                           <div>
@@ -151,7 +188,7 @@ const GetConsultation = () => {
                           rel="noopener noreferrer"
                           className="flex items-center gap-4 group/item"
                         >
-                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-[#FFD700] group-hover/item:bg-[#FFD700] group-hover/item:text-slate-900 transition-all">
+                          <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-amber-500 group-hover/item:bg-gradient-to-r from-amber-400 to-orange-500 group-hover/item:text-slate-900 transition-all">
                             <MapPin className="w-5 h-5" />
                           </div>
                           <div>
@@ -165,7 +202,7 @@ const GetConsultation = () => {
                       </div>
 
                       <div className="mt-12 flex gap-4">
-                        <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex-1 py-4 bg-[#FFD700] text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-white transition-all">
+                        <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex-1 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-white transition-all">
                           WhatsApp
                         </a>
                         <a href="tel:+919253625099" className="flex-1 py-4 border border-slate-700 text-white rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-slate-800 transition-all">
@@ -184,7 +221,7 @@ const GetConsultation = () => {
                   <ul className="space-y-3">
                     {['60-Min Strategy Session', '1:1 Expert Consultation', 'Custom Growth Roadmap', 'Actionable Insights'].map((text, i) => (
                       <li key={i} className="flex items-center gap-3 text-slate-600 text-sm font-bold uppercase tracking-tight">
-                        <div className="w-1.5 h-1.5 bg-[#FFD700] rounded-full" /> {text}
+                        <div className="w-1.5 h-1.5 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full" /> {text}
                       </li>
                     ))}
                   </ul>
@@ -197,26 +234,26 @@ const GetConsultation = () => {
               <AnimatedSection animation="fadeInRight" delay={0.2}>
                 <div className="bg-white rounded-[1.5rem] shadow-2xl p-6 md:p-10 border border-slate-100 max-w-xl mx-auto lg:ml-auto lg:mr-0">
                   <div className="mb-8">
-                    <span className="text-[#FFD700] font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">BOOKING FORM</span>
+                    <span className="text-amber-500 font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">BOOKING FORM</span>
                     <h3 className="text-3xl font-black text-slate-900 mb-3 tracking-tight">Reserve Your Slot</h3>
-                    <div className="w-12 h-1 bg-[#FFD700]" />
+                    <div className="w-12 h-1 bg-gradient-to-r from-amber-400 to-orange-500" />
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="group">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 transition-colors group-focus-within:text-[#FFD700]">Full Name *</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 transition-colors group-focus-within:text-amber-500">Full Name *</label>
                         <input
                           type="text" name="name" required value={formData.name} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="Your Name"
                         />
                       </div>
                       <div className="group">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Work Email *</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Work Email *</label>
                         <input
                           type="email" name="email" required value={formData.email} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="Email Address"
                         />
                       </div>
@@ -224,29 +261,29 @@ const GetConsultation = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="group">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Mobile Phone *</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Mobile Phone *</label>
                         <input
                           type="tel" name="phone" required value={formData.phone} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="+91"
                         />
                       </div>
                       <div className="group">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Organization</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Organization</label>
                         <input
                           type="text" name="company" value={formData.company} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="Company Name"
                         />
                       </div>
                     </div>
 
                     <div className="group">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Interested Services</label>
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Interested Services</label>
                       <div className="relative">
                         <button
                           type="button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 text-left flex justify-between items-center outline-none transition-all focus:border-[#FFD700]"
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 text-left flex justify-between items-center outline-none transition-all focus:border-amber-500"
                         >
                           <span className={`font-bold text-sm ${formData.service.length === 0 ? 'text-slate-400' : 'text-slate-900'}`}>
                             {formData.service.length === 0 ? "Select Services" : `${formData.service.length} Selected`}
@@ -257,7 +294,7 @@ const GetConsultation = () => {
                           <div className="absolute z-50 mt-2 w-full bg-white shadow-2xl rounded-xl py-2 border border-slate-100 max-h-48 overflow-auto">
                             {services.map((service) => (
                               <div key={service} onClick={() => handleServiceToggle(service)} className="px-4 py-2 hover:bg-slate-50 cursor-pointer flex items-center gap-3">
-                                <input type="checkbox" checked={formData.service.includes(service)} readOnly className="w-3.5 h-3.5 text-[#FFD700] focus:ring-[#FFD700] border-slate-300 rounded" />
+                                <input type="checkbox" checked={formData.service.includes(service)} readOnly className="w-3.5 h-3.5 text-amber-500 focus:ring-amber-500 border-slate-300 rounded" />
                                 <span className="text-xs font-bold text-slate-700">{service}</span>
                               </div>
                             ))}
@@ -266,43 +303,42 @@ const GetConsultation = () => {
                       </div>
                     </div>
 
+                    {formData.service.includes("Other") && (
+                      <div className="group">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Please Specify Other Service</label>
+                        <input
+                          type="text" name="otherService" value={formData.otherService} onChange={handleInputChange}
+                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
+                          placeholder="Describe your service need"
+                        />
+                      </div>
+                    )}
+
                     <div className="group">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-[#FFD700]">Message</label>
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Message</label>
                       <textarea
                         name="message" value={formData.message} onChange={handleInputChange} rows={2}
-                        className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-[#FFD700] text-slate-900 font-bold transition-all outline-none resize-none text-sm"
+                        className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none resize-none text-sm"
                         placeholder="Brief description of your needs..."
                       />
                     </div>
 
-                    {/* Price Display */}
-                    <div className="bg-[#FFD700]/10 rounded-xl p-6 text-center border border-[#FFD700]/20">
-                      <div className="text-sm font-semibold text-slate-600 uppercase tracking-wider mb-1">Consultation Fee</div>
-                      <div className="text-3xl font-bold text-slate-900">₹{(amount).toLocaleString("en-IN")}</div>
-                      <div className="text-xs text-slate-500 mt-1">One-time payment • 60 min session</div>
-                    </div>
-
                     <button
-                      type="submit"
-                      disabled={isPaying}
-                      className="w-full py-4 bg-[#FFD700] text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-slate-900 hover:text-[#FFD700] transition-all flex items-center justify-center gap-2 shadow-lg shadow-yellow-200/50"
+                      type="submit" disabled={isLoading}
+                      className="w-full py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-gradient-to-r from-amber-400 to-orange-500 hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg shadow-yellow-200/50"
                     >
-                      {isPaying ? (
+                      {isLoading ? (
                         <div className="w-4 h-4 border-2 border-slate-900/10 border-t-slate-900 rounded-full animate-spin" />
                       ) : (
-                        <>Pay ₹{(amount).toLocaleString("en-IN")} & Book <Send className="w-3.5 h-3.5" /></>
+                        <>Submit <Send className="w-3.5 h-3.5" /></>
                       )}
                     </button>
 
                     {isSubmitted && (
                       <div className="p-3 bg-emerald-50 text-emerald-700 rounded-lg font-bold text-center text-[11px] border border-emerald-100 uppercase tracking-wider">
-                        Redirecting to payment...
+                        Form submitted successfully!
                       </div>
                     )}
-
-                    <div className="text-center text-slate-500 text-xs">
-                      100% secure payment via Razorpay. You'll receive a confirmation email after booking.
-                    </div>
                   </form>
                 </div>
               </AnimatedSection>

@@ -8,8 +8,11 @@ import {
   Search,
   Tag,
   Eye,
-  Share2
+  Share2,
+  TrendingUp,
+  Sparkles
 } from 'lucide-react';
+import AnimatedSection from '../components/AnimatedSection';
 
 // Simple toast component
 const Toast = ({ message, type, onClose }) => (
@@ -124,100 +127,140 @@ const Blog = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-purple-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Blog & Insights
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Stay updated with the latest trends in digital marketing, technology, and business strategy. 
-              Expert insights to help your business grow.
-            </p>
-          </div>
+      {/* Hero Section - Full Page */}
+      <section className="relative min-h-[70vh] flex items-center py-20 overflow-hidden bg-[#0f172a]">
+        {/* Background Geometric Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Large Diagonal Navy/Blue Shape */}
+          <div className="absolute -top-24 -right-20 w-[120%] h-full bg-[#1e293b] -rotate-12 transform origin-top-right shadow-2xl" />
+
+          {/* Yellow Diagonal Strip */}
+          <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-gradient-to-r from-amber-400 to-orange-500 rotate-[35deg] transform origin-top opacity-40 shadow-2xl" />
+
+          {/* Subtle Stardust Texture */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection animation="fadeInUp" delay={0.2}>
+            <div className="max-w-4xl relative">
+              <div className="w-20 h-2 bg-gradient-to-r from-amber-400 to-orange-500 mb-8" />
+              <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
+                Insights & <br />
+                <span className="text-amber-500">Knowledge.</span>
+              </h1>
+              <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-medium">
+                Stay ahead with expert insights on digital marketing, technology, and business strategy. 
+                Real-world knowledge to fuel your growth.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+
+        {/* Bottom Hexagon Accent */}
+        <div className="absolute -bottom-12 right-12 w-48 h-48 opacity-10">
+          <svg viewBox="0 0 100 100" fill="currentColor" className="text-white">
+            <path d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" />
+          </svg>
         </div>
       </section>
 
       {/* Search and Filter */}
-      <section className="py-12 bg-white border-b border-gray-200">
+      <section className="relative -mt-16 z-20 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search articles..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
+          <AnimatedSection animation="fadeInUp" delay={0.3}>
+            <div className="bg-white rounded-[2rem] shadow-2xl p-8 border border-slate-100">
+              <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
+                <div className="relative flex-1 max-w-md w-full">
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+                  <input
+                    type="text"
+                    placeholder="Search articles..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-12 pr-4 py-4 bg-slate-50 border-b-2 border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none rounded-lg"
+                  />
+                </div>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {categories.map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => setActiveCategory(category.id)}
+                      className={`px-5 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-wider transition-all duration-200 ${
+                        activeCategory === category.id
+                          ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 shadow-lg shadow-yellow-200/50'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      }`}
+                    >
+                      {category.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-4">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                    activeCategory === category.id
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Featured Posts */}
       {featuredPosts.length > 0 && (
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Articles</h2>
+            <AnimatedSection animation="fadeInUp" delay={0.1}>
+              <div className="flex items-center gap-3 mb-12">
+                <Sparkles className="w-8 h-8 text-amber-500" />
+                <h2 className="text-4xl font-black text-slate-900 tracking-tight">Featured Articles</h2>
+              </div>
+            </AnimatedSection>
+            
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {featuredPosts.map((post) => (
-                <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                  <div className="relative">
-                    <Link to={`/blog/${post.slug}`}>
-                      <img
-                        src={post.featuredImage || post.image}
-                        alt={post.title}
-                        className="w-full h-64 object-cover"
-                      />
-                    </Link>
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        Featured
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-8">
-                    <div className="flex items-center text-sm text-gray-500 mb-4">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      {new Date(post.date).toLocaleDateString()}
-                      <Clock className="w-4 h-4 ml-4 mr-2" />
-                      {post.readTime}
-                      <Eye className="w-4 h-4 ml-4 mr-2" />
-                      {post.views} views
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <User className="w-4 h-4 text-gray-400 mr-2" />
-                        <span className="text-sm text-gray-600">{post.author}</span>
+              {featuredPosts.map((post, index) => (
+                <AnimatedSection key={post.id} animation="fadeInUp" delay={index * 0.1}>
+                  <article className="group bg-white rounded-[2rem] shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 border border-slate-100">
+                    <div className="relative overflow-hidden">
+                      <Link to={`/blog/${post.slug}`}>
+                        <img
+                          src={post.featuredImage || post.image}
+                          alt={post.title}
+                          className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </Link>
+                      <div className="absolute top-6 left-6">
+                        <span className="bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider shadow-lg">
+                          Featured
+                        </span>
                       </div>
-                      <Link to={`/blog/${post.slug}`} className="text-blue-600 hover:text-blue-700 font-medium flex items-center">Read More <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
-                  </div>
-                </article>
+                    <div className="p-8">
+                      <div className="flex items-center text-xs text-slate-500 mb-4 font-bold uppercase tracking-wider">
+                        <Calendar className="w-4 h-4 mr-2" />
+                        {new Date(post.date).toLocaleDateString()}
+                        <Clock className="w-4 h-4 ml-4 mr-2" />
+                        {post.readTime}
+                        <Eye className="w-4 h-4 ml-4 mr-2" />
+                        {post.views}
+                      </div>
+                      <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-amber-500 transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-slate-600 mb-6 leading-relaxed font-medium">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between pt-6 border-t border-slate-100">
+                        <div className="flex items-center">
+                          <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-amber-500 mr-3">
+                            <User className="w-5 h-5" />
+                          </div>
+                          <span className="text-sm text-slate-700 font-bold">{post.author}</span>
+                        </div>
+                        <Link to={`/blog/${post.slug}`} className="text-slate-900 hover:text-amber-500 font-black text-xs uppercase tracking-wider flex items-center transition-colors">
+                          Read More <ArrowRight className="ml-2 w-4 h-4" />
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                </AnimatedSection>
               ))}
             </div>
           </div>
@@ -225,70 +268,85 @@ const Blog = () => {
       )}
 
       {/* Regular Posts */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Latest Articles</h2>
+          <AnimatedSection animation="fadeInUp" delay={0.1}>
+            <div className="flex items-center gap-3 mb-12">
+              <TrendingUp className="w-8 h-8 text-amber-500" />
+              <h2 className="text-4xl font-black text-slate-900 tracking-tight">Latest Articles</h2>
+            </div>
+          </AnimatedSection>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularPosts.map((post) => (
-              <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div className="relative">
-                  <Link to={`/blog/${post.slug}`}>
-                    <img
-                      src={post.featuredImage || post.image}
-                      alt={post.title}
-                      className="w-full h-48 object-cover"
-                    />
-                  </Link>
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-gray-800 text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {categories.find(cat => cat.id === post.category)?.name}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    {new Date(post.date).toLocaleDateString()}
-                    <Clock className="w-4 h-4 ml-4 mr-2" />
-                    {post.readTime}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center">
-                      <User className="w-4 h-4 text-gray-400 mr-2" />
-                      <span className="text-sm text-gray-600">{post.author}</span>
-                    </div>
-                    <div className="flex items-center text-gray-500">
-                      <Eye className="w-4 h-4 mr-1" />
-                      <span className="text-sm">{post.views}</span>
+            {regularPosts.map((post, index) => (
+              <AnimatedSection key={post.id} animation="fadeInUp" delay={index * 0.05}>
+                <article className="group bg-slate-50 rounded-[1.5rem] shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-amber-500">
+                  <div className="relative overflow-hidden">
+                    <Link to={`/blog/${post.slug}`}>
+                      <img
+                        src={post.featuredImage || post.image}
+                        alt={post.title}
+                        className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </Link>
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-slate-900 text-amber-500 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider shadow-lg">
+                        {categories.find(cat => cat.id === post.category)?.name}
+                      </span>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-wrap gap-2">
-                      {(post.tags || []).slice(0, 2).map((tag) => (
-                        <span
-                          key={tag}
-                          className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                  <div className="p-6">
+                    <div className="flex items-center text-[10px] text-slate-500 mb-4 font-bold uppercase tracking-wider">
+                      <Calendar className="w-3.5 h-3.5 mr-1.5" />
+                      {new Date(post.date).toLocaleDateString()}
+                      <Clock className="w-3.5 h-3.5 ml-3 mr-1.5" />
+                      {post.readTime}
                     </div>
-                    <Link to={`/blog/${post.slug}`} className="text-blue-600 hover:text-blue-700 font-medium flex items-center">Read More <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                    <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tight group-hover:text-amber-500 transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-slate-600 mb-4 leading-relaxed text-sm font-medium line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between mb-4 pt-4 border-t border-slate-200">
+                      <div className="flex items-center">
+                        <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-amber-500 mr-2">
+                          <User className="w-4 h-4" />
+                        </div>
+                        <span className="text-xs text-slate-700 font-bold">{post.author}</span>
+                      </div>
+                      <div className="flex items-center text-slate-500">
+                        <Eye className="w-3.5 h-3.5 mr-1" />
+                        <span className="text-xs font-bold">{post.views}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-wrap gap-2">
+                        {(post.tags || []).slice(0, 2).map((tag) => (
+                          <span
+                            key={tag}
+                            className="bg-white text-slate-600 px-2 py-1 rounded-lg text-[10px] font-bold border border-slate-200"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <Link to={`/blog/${post.slug}`} className="text-slate-900 hover:text-amber-500 font-black text-[10px] uppercase tracking-wider flex items-center transition-colors">
+                        Read <ArrowRight className="ml-1 w-3.5 h-3.5" />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </AnimatedSection>
             ))}
           </div>
           
           {regularPosts.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-600 text-lg">
+            <div className="text-center py-20">
+              <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Search className="w-10 h-10 text-slate-400" />
+              </div>
+              <p className="text-slate-600 text-lg font-bold">
                 No articles found matching your criteria.
               </p>
             </div>
@@ -297,45 +355,57 @@ const Blog = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Stay Updated with Our Insights
-          </h2>
-          <p className="text-xl mb-8 text-blue-100">
-            Get the latest articles, tips, and insights delivered directly to your inbox.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <input
-              type="email"
-              value={newsletterEmail}
-              onChange={e => setNewsletterEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="flex-1 px-6 py-4 rounded-lg text-gray-900 focus:ring-2 focus:ring-white focus:outline-none"
-              disabled={isSending}
-            />
-            <button
-              className={`bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center ${isSending ? "opacity-60 cursor-not-allowed" : "hover:bg-gray-100"}`}
-              onClick={handleNewsletterSubscribe}
-              type="button"
-              disabled={isSending}
-            >
-              {isSending ? (
-                <>
-                  <svg className="animate-spin h-5 w-5 mr-2 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-                  </svg>
-                  Sending...
-                </>
-              ) : (
-                "Subscribe"
-              )}
-            </button>
-          </div>
-          <p className="text-sm text-blue-200 mt-4">
-            No spam, unsubscribe at any time.
-          </p>
+      <section className="relative py-24 overflow-hidden bg-[#0f172a]">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-amber-400 to-orange-500/10 rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-amber-400 to-orange-500/10 rounded-full blur-[100px]" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <AnimatedSection animation="fadeInUp" delay={0.1}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-amber-400 to-orange-500/20 rounded-full border border-amber-500/30 mb-8">
+              <span className="w-2 h-2 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full animate-pulse" />
+              <span className="text-amber-500 font-black text-[10px] uppercase tracking-[0.3em]">Newsletter</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+              Stay in the Loop
+            </h2>
+            <p className="text-xl text-white/80 mb-10 font-medium">
+              Get expert insights delivered to your inbox. No spam, just value.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
+              <input
+                type="email"
+                value={newsletterEmail}
+                onChange={e => setNewsletterEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="flex-1 px-6 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white placeholder-white/50 focus:ring-2 focus:ring-amber-500 focus:outline-none font-bold"
+                disabled={isSending}
+              />
+              <button
+                className={`bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 px-8 py-4 rounded-xl font-black text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center shadow-lg shadow-yellow-200/20 ${isSending ? "opacity-60 cursor-not-allowed" : "hover:brightness-110"}`}
+                onClick={handleNewsletterSubscribe}
+                type="button"
+                disabled={isSending}
+              >
+                {isSending ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5 mr-2 text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  "Subscribe"
+                )}
+              </button>
+            </div>
+            <p className="text-sm text-white/50 mt-6 font-bold uppercase tracking-wider">
+              Join 1,000+ subscribers • Unsubscribe anytime
+            </p>
+          </AnimatedSection>
         </div>
         {toast && (
           <Toast
@@ -347,57 +417,71 @@ const Blog = () => {
       </section>
 
       {/* Popular Topics */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Popular Topics
-            </h2>
-            <p className="text-xl text-gray-600">
-              Explore our most-read articles and trending topics.
-            </p>
-          </div>
+          <AnimatedSection animation="fadeInUp" delay={0.1}>
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white rounded-full border border-slate-200 mb-6 shadow-sm">
+                <span className="w-2 h-2 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full" />
+                <span className="text-slate-400 font-black text-[10px] uppercase tracking-[0.3em]">Explore Topics</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+                Popular Topics
+              </h2>
+              <p className="text-xl text-slate-600 font-medium">
+                Dive into our most-read content and trending discussions.
+              </p>
+            </div>
+          </AnimatedSection>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
-                <Search className="w-8 h-8" />
+            <AnimatedSection animation="fadeInUp" delay={0.1}>
+              <div className="group bg-white p-8 rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500">
+                <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Search className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-black text-slate-900 mb-3 text-center tracking-tight">SEO</h3>
+                <p className="text-slate-600 text-sm text-center font-medium leading-relaxed">
+                  15+ articles on search engine optimization and ranking strategies.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">SEO</h3>
-              <p className="text-gray-600 text-sm">
-                15+ articles on search engine optimization and ranking strategies.
-              </p>
-            </div>
+            </AnimatedSection>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
-                <Share2 className="w-8 h-8" />
+            <AnimatedSection animation="fadeInUp" delay={0.15}>
+              <div className="group bg-white p-8 rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500">
+                <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Share2 className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-black text-slate-900 mb-3 text-center tracking-tight">Social Media</h3>
+                <p className="text-slate-600 text-sm text-center font-medium leading-relaxed">
+                  12+ articles on social media marketing and engagement strategies.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Social Media</h3>
-              <p className="text-gray-600 text-sm">
-                12+ articles on social media marketing and engagement strategies.
-              </p>
-            </div>
+            </AnimatedSection>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
-                <Tag className="w-8 h-8" />
+            <AnimatedSection animation="fadeInUp" delay={0.2}>
+              <div className="group bg-white p-8 rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500">
+                <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Tag className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-black text-slate-900 mb-3 text-center tracking-tight">Content Marketing</h3>
+                <p className="text-slate-600 text-sm text-center font-medium leading-relaxed">
+                  10+ articles on content strategy and creation best practices.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Content Marketing</h3>
-              <p className="text-gray-600 text-sm">
-                10+ articles on content strategy and creation best practices.
-              </p>
-            </div>
+            </AnimatedSection>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white mx-auto mb-4">
-                <Share2 className="w-8 h-8" />
+            <AnimatedSection animation="fadeInUp" delay={0.25}>
+              <div className="group bg-white p-8 rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500">
+                <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <TrendingUp className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-black text-slate-900 mb-3 text-center tracking-tight">Digital Strategy</h3>
+                <p className="text-slate-600 text-sm text-center font-medium leading-relaxed">
+                  8+ articles on digital transformation and business strategy.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Digital Strategy</h3>
-              <p className="text-gray-600 text-sm">
-                8+ articles on digital transformation and business strategy.
-              </p>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
