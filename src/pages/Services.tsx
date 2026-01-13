@@ -449,6 +449,8 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
+import RotatingText from '../components/RotatingText';
+import { motion } from 'framer-motion';
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -663,19 +665,49 @@ const Services = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section - Full Page */}
-      <section className="relative min-h-screen flex items-center py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")' }}>
-        <div className="absolute inset-0 bg-black/70"></div>
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/30 blur-[100px] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100/30 blur-[100px] rounded-full" />
+        </div>
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Our Services
-              </h1>
-              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+              <motion.h1
+                className="text-4xl md:text-6xl font-bold text-slate-900 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                Expert{" "}
+                <RotatingText
+                  words={[
+                    "Web Development",
+                    "SEO & Content Marketing",
+                    "Social Media Marketing",
+                    "AI Solutions",
+                    "Podcast Production",
+                    "Financial Consulting",
+                    "Business Consultation",
+                    "Business Loans",
+                    "Business Insurance"
+                  ]}
+                  interval={2500}
+                  className="text-amber-500"
+                />
+              </motion.h1>
+              <motion.p
+                className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              >
                 Comprehensive digital solutions designed to drive growth, enhance brand presence,
                 and deliver measurable results for your business.
-              </p>
+              </motion.p>
             </div>
           </AnimatedSection>
         </div>
@@ -947,14 +979,11 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
-        {/* Background Image with Blur */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
-            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop")' }}
-          />
-          <div className="absolute inset-0 bg-slate-900/85" />
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

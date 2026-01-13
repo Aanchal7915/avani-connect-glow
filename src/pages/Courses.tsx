@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import RotatingText from '../components/RotatingText';
 import {
   //  GraduationCap, 
   //  Certificate, 
@@ -321,19 +323,46 @@ const Courses = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section - Full Page */}
-      <section className="relative min-h-screen flex items-center py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80")' }}>
-        <div className="absolute inset-0 bg-black/70"></div>
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/30 blur-[100px] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100/30 blur-[100px] rounded-full" />
+        </div>
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Our Premium Courses
-              </h1>
-              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+              <motion.h1
+                className="text-4xl md:text-6xl font-bold text-slate-900 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                Master{" "}
+                <RotatingText
+                  words={[
+                    "Web Development",
+                    "Digital Marketing",
+                    "Graphic Design",
+                    "Data Analytics",
+                    "UI/UX Design",
+                    "Content Writing"
+                  ]}
+                  interval={2500}
+                  className="text-amber-500"
+                />
+              </motion.h1>
+              <motion.p
+                className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              >
                 Master in-demand skills with our comprehensive training programs
                 and secure your future with assured job placements.
-              </p>
+              </motion.p>
             </div>
           </AnimatedSection>
         </div>
@@ -350,7 +379,7 @@ const Courses = () => {
                 placeholder="Search courses..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               />
             </div>
             <div className="grid grid-cols-3 lg:flex lg:flex-wrap lg:justify-center gap-2 md:gap-4">
@@ -359,7 +388,7 @@ const Courses = () => {
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
                   className={`flex flex-col lg:flex-row items-center justify-center space-y-1 lg:space-y-0 lg:space-x-2 px-2 py-2.5 lg:px-4 lg:py-2 rounded-lg font-bold transition-all duration-300 ${activeCategory === category.id
-                    ? 'bg-blue-600 text-white shadow-lg transform -translate-y-0.5'
+                    ? 'bg-amber-500 text-white shadow-lg transform -translate-y-0.5'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                 >
@@ -405,7 +434,7 @@ const Courses = () => {
 
                     {/* Category Overlay */}
                     <div className="absolute top-4 left-4">
-                      <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-lg">
+                      <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-lg">
                         {categories.find(cat => cat.id === course.category)?.name}
                       </span>
                     </div>
@@ -421,7 +450,7 @@ const Courses = () => {
 
                   {/* Body Content */}
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-lg font-black text-slate-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors h-14 line-clamp-2">
+                    <h3 className="text-lg font-black text-slate-900 mb-2 leading-tight group-hover:text-amber-600 transition-colors h-14 line-clamp-2">
                       {course.title}
                     </h3>
                     <p className="text-slate-500 text-[13px] leading-relaxed mb-4 line-clamp-2 h-10 font-medium">
@@ -431,22 +460,22 @@ const Courses = () => {
                     {/* Bento Info Grid */}
                     <div className="grid grid-cols-2 gap-2 mb-4">
                       <div className="bg-slate-50 p-2 rounded-xl flex items-center gap-2 border border-slate-100">
-                        <Clock className="w-3.5 h-3.5 text-blue-500" />
+                        <Clock className="w-3.5 h-3.5 text-amber-500" />
                         <span className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">{course.duration}</span>
                       </div>
                       <div className="bg-slate-50 p-2 rounded-xl flex items-center gap-2 border border-slate-100">
-                        <Users className="w-3.5 h-3.5 text-blue-500" />
+                        <Users className="w-3.5 h-3.5 text-amber-500" />
                         <span className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">{course.students} Learners</span>
                       </div>
                     </div>
 
                     {/* Price Block */}
-                    <div className="flex items-center justify-between p-3 bg-blue-50 rounded-2xl border border-blue-100/50 mb-5">
+                    <div className="flex items-center justify-between p-3 bg-amber-50 rounded-2xl border border-amber-100/50 mb-5">
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl font-black text-blue-700">{course.price}</span>
-                        <span className="text-sm text-blue-400/70 line-through font-bold">{course.originalPrice}</span>
+                        <span className="text-2xl font-black text-amber-700">{course.price}</span>
+                        <span className="text-sm text-amber-400/70 line-through font-bold">{course.originalPrice}</span>
                       </div>
-                      <span className="bg-blue-600 text-white text-[9px] font-black uppercase px-2 py-1 rounded-lg">
+                      <span className="bg-amber-600 text-white text-[9px] font-black uppercase px-2 py-1 rounded-lg">
                         {Math.round(((parseInt(course.originalPrice.replace('₹', '').replace(',', '')) - parseInt(course.price.replace('₹', '').replace(',', ''))) / parseInt(course.originalPrice.replace('₹', '').replace(',', ''))) * 100)}% OFF
                       </span>
                     </div>
@@ -468,7 +497,7 @@ const Courses = () => {
                       <div className="flex gap-2">
                         <Link
                           to={`/courses/${course.id}`}
-                          className="flex-1 text-center py-2.5 px-3 rounded-xl text-[12px] font-black text-blue-600 border border-blue-100 hover:bg-blue-50 transition-all duration-300 uppercase tracking-wider"
+                          className="flex-1 text-center py-2.5 px-3 rounded-xl text-[12px] font-black text-amber-600 border border-amber-100 hover:bg-amber-50 transition-all duration-300 uppercase tracking-wider"
                         >
                           View Details
                         </Link>
@@ -476,7 +505,7 @@ const Courses = () => {
                           href={course.paymentLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-[1.5] text-center py-2.5 px-3 rounded-xl text-[12px] font-black text-white bg-gradient-to-r from-blue-600 to-indigo-700 hover:shadow-lg hover:shadow-blue-200 transition-all duration-300 uppercase tracking-wider block"
+                          className="flex-[1.5] text-center py-2.5 px-3 rounded-xl text-[12px] font-black text-white bg-gradient-to-r from-amber-500 to-orange-600 hover:shadow-lg hover:shadow-amber-200 transition-all duration-300 uppercase tracking-wider block"
                         >
                           Enroll Now
                         </a>
@@ -513,7 +542,7 @@ const Courses = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
             <div className="text-center p-2">
-              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white mx-auto mb-3 lg:mb-4">
+              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg flex items-center justify-center text-white mx-auto mb-3 lg:mb-4">
                 <CheckCircle className="w-6 h-6 lg:w-8 lg:h-8" />
               </div>
               <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-1 lg:mb-2 text-center px-1">Certified Courses</h3>
@@ -556,14 +585,11 @@ const Courses = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
-        {/* Background Image with Blur */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
-            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1524178232363-1fb28f74b0cd?q=80&w=2070&auto=format&fit=crop")' }}
-          />
-          <div className="absolute inset-0 bg-slate-900/85" />
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -284,31 +284,37 @@ const Home = () => {
     {
       name: "Indus group of Institution",
       logo: "./indus.jpeg",
+      video: "./indus.mp4",
       link: "/projects/indus"
     },
     {
       name: "Policicue",
       logo: "./policucue.jpeg",
+      video: "./policicue.mp4",
       link: "/projects/policicue"
     },
     {
       name: "Frd Nutrition",
       logo: "./frd.jpeg",
+      video: "./FrdNutrition.mp4",
       link: "/projects/frd-nutrition"
     },
     {
       name: "Hi-tech Homes",
       logo: "./hitech.jpeg",
+      video: "./hitech.mp4",
       link: "/projects/hitech-homes"
     },
     {
       name: "Sanjeevni Hospital",
       logo: "./sanjeevni.jpeg",
+      video: "./Sanjeevni.mp4",
       link: "/projects/sanjeevni-hospital"
     },
     {
       name: "Rohtak Shoe co.",
       logo: "./shoes.jpeg",
+      video: "./Rohtak Shoe.mp4",
       link: "/projects/rohtak-shoe"
     }
   ];
@@ -335,16 +341,40 @@ const Home = () => {
                 Transforming Brands Since 2016!
               </span>
 
-              <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-                Build high-performing{" "}
+              <motion.h1
+                className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.03,
+                      delayChildren: 0.2
+                    }
+                  }
+                }}
+              >
+                {("Build high-performing ").split("").map((char, index) => (
+                  <motion.span
+                    key={`char-${index}`}
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: { opacity: 1, y: 0 }
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
                 <RotatingText
                   words={["Websites", "Products", "Solutions", "Experiences"]}
                   interval={3000}
                   className="text-amber-500"
                 />
-                {" "}&{" "}accelerate{" "}
+                {" & accelerate "}
                 <span className="text-amber-500">Growth.</span>
-              </h1>
+              </motion.h1>
 
               <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed font-medium max-w-xl">
                 We're more than just a digital agency. We have stories to tell, and passions to share, and results to deliver that are more exciting than the competition.
@@ -724,13 +754,8 @@ const Home = () => {
                       {/* Gradient Border on Hover */}
                       <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${gradients[index]} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl`} />
 
-                      {/* Step Number Badge */}
-                      <div className={`absolute -top-4 -left-4 w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[index]} flex items-center justify-center shadow-lg`}>
-                        <span className="text-2xl font-black text-white">{step.step}</span>
-                      </div>
-
                       {/* Icon */}
-                      <div className={`mb-6 mt-4 w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[index]} flex items-center justify-center text-white`}>
+                      <div className={`mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[index]} flex items-center justify-center text-white`}>
                         {icons[index]}
                       </div>
 
@@ -743,19 +768,6 @@ const Home = () => {
                       <p className="text-slate-600 leading-relaxed flex-grow">
                         {step.description}
                       </p>
-
-                      {/* Arrow Indicator (for flow) */}
-                      {index < processSteps.length - 1 && (
-                        <div className="absolute -right-4 top-1/2 -translate-y-1/2 hidden lg:block">
-                          <motion.div
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                            className={`w-8 h-8 rounded-full bg-gradient-to-br ${gradients[index]} flex items-center justify-center text-white shadow-lg`}
-                          >
-                            <ChevronRight size={20} />
-                          </motion.div>
-                        </div>
-                      )}
                     </div>
                   </motion.div>
                 );
@@ -970,8 +982,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Project Showcase - Stacked Scroll */}
-      <section className="py-20 bg-white">
+      {/* Project Showcase - Video Cards with Overlapping Scroll */}
+      <section id="project-showcase" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -988,8 +1000,8 @@ const Home = () => {
             </p>
           </motion.div>
 
-          {/* Stacked Cards Container */}
-          <div className="relative" style={{ minHeight: `${clientLogos.length * 120}px` }}>
+          {/* Stacked Cards Container with Videos */}
+          <div className="relative" style={{ minHeight: `${clientLogos.length * 280}px` }}>
             {clientLogos.map((client, index) => {
               const isEven = index % 2 === 0;
               return (
@@ -997,33 +1009,38 @@ const Home = () => {
                   key={index}
                   className="sticky w-full"
                   style={{
-                    top: `${100 + index * 15}px`,
+                    top: `${100 + index * 20}px`,
                     zIndex: index + 1
                   }}
                 >
-                  <div className={`${isEven ? 'bg-gradient-to-r from-amber-400 to-yellow-500' : 'bg-slate-900'} rounded-2xl overflow-hidden shadow-xl mb-4`}>
-                    <div className="p-6 md:p-8">
-                      <div className="flex items-center justify-between gap-6">
-                        <div className="flex items-center gap-6 flex-1">
-                          <div className={`w-12 h-12 rounded-xl ${isEven ? 'bg-black/10' : 'bg-white/10'} flex items-center justify-center`}>
-                            <span className={`text-xl font-black ${isEven ? 'text-slate-900' : 'text-white'}`}>{String(index + 1).padStart(2, '0')}</span>
-                          </div>
-                          <div className={`h-12 w-20 rounded-lg ${isEven ? '' : 'bg-white'} flex items-center justify-center p-1`}>
-                            <img src={client.logo} alt={client.name} className="h-full w-auto object-contain" />
-                          </div>
-                          <h3 className={`text-xl md:text-2xl font-black uppercase tracking-wide ${isEven ? 'text-slate-900' : 'text-white'}`}>
-                            {client.name}
-                          </h3>
-                        </div>
-                        <div className="hidden md:flex items-center">
-                          <Link to={client.link} className={`flex items-center gap-2 ${isEven ? 'bg-slate-900 text-white' : 'bg-amber-400 text-slate-900'} px-6 py-3 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity`}>
-                            View Project <ArrowRight size={16} />
-                          </Link>
-                        </div>
+                  <div className={`${isEven ? 'bg-gradient-to-r from-amber-400 to-yellow-500' : 'bg-slate-900'} rounded-2xl overflow-hidden shadow-2xl mb-6`}>
+                    <div className="flex flex-col md:flex-row">
+                      {/* Video Section */}
+                      <div className="w-full md:w-2/3 aspect-video md:aspect-auto md:h-72 relative overflow-hidden">
+                        <video
+                          className="w-full h-full object-cover"
+                          src={client.video}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          poster={client.logo}
+                        />
                       </div>
-                      <div className="md:hidden mt-4 flex justify-end">
-                        <Link to={client.link} className={`flex items-center gap-2 ${isEven ? 'bg-slate-900 text-white' : 'bg-amber-400 text-slate-900'} px-4 py-2 rounded-lg font-bold text-sm`}>
-                          View <ArrowRight size={14} />
+
+                      {/* Content Section */}
+                      <div className="w-full md:w-1/3 p-6 md:p-8 flex flex-col justify-center">
+                        <div className={`h-14 w-24 rounded-lg ${isEven ? '' : 'bg-white'} flex items-center justify-center p-2 mb-4`}>
+                          <img src={client.logo} alt={client.name} className="h-full w-auto object-contain" />
+                        </div>
+                        <h3 className={`text-xl md:text-2xl font-black uppercase tracking-wide mb-4 ${isEven ? 'text-slate-900' : 'text-white'}`}>
+                          {client.name}
+                        </h3>
+                        <Link
+                          to={client.link}
+                          className={`flex items-center gap-2 w-fit ${isEven ? 'bg-slate-900 text-white' : 'bg-amber-400 text-slate-900'} px-6 py-3 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity`}
+                        >
+                          View Project <ArrowRight size={16} />
                         </Link>
                       </div>
                     </div>

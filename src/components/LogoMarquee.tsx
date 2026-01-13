@@ -44,7 +44,7 @@ const LogoMarquee = ({
                 {duplicatedLogos.map((logo, index) => (
                     <div
                         key={`${logo.name}-${index}`}
-                        className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+                        className="flex-shrink-0 transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-110"
                     >
                         {logo.link ? (
                             <a href={logo.link} target="_blank" rel="noopener noreferrer">

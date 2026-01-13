@@ -13,6 +13,8 @@ import {
   Zap
 } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
+import AnimatedCounter from '../components/AnimatedCounter';
+import EcosystemMap from '../components/EcosystemMap';
 
 const About = () => {
   const values = [
@@ -63,49 +65,58 @@ const About = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section - Full Page */}
-      <section className="relative min-h-screen flex items-center py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1553632168-eb4237620881?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")' }}>
-        <div className="absolute inset-0 bg-black/70"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fadeInUp" delay={0.2}>
-            <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                About Avani Enterprises
-              </h1>
-              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-12">
-                We are a team of passionate professionals dedicated to transforming businesses
-                through strategic digital solutions and innovative technology.
-              </p>
+      {/* Hero Section with Ecosystem Map */}
+      <section className="relative py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/30 blur-[100px] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100/30 blur-[100px] rounded-full" />
+        </div>
 
-              {/* Animated Stats */}
-              <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-                <motion.div
-                  className="text-center group cursor-default"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="text-4xl md:text-5xl font-bold text-white mb-1 group-hover:text-amber-400 transition-colors">8+</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wider">Years</div>
-                </motion.div>
-                <motion.div
-                  className="text-center group cursor-default"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="text-4xl md:text-5xl font-bold text-white mb-1 group-hover:text-amber-400 transition-colors">150+</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wider">Clients</div>
-                </motion.div>
-                <motion.div
-                  className="text-center group cursor-default"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="text-4xl md:text-5xl font-bold text-white mb-1 group-hover:text-amber-400 transition-colors">300+</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wider">Projects</div>
-                </motion.div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-4">
+              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Avani Enterprises</span>
+            </h1>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Transforming businesses through strategic digital solutions and innovative technology
+            </p>
+          </motion.div>
+
+          {/* Ecosystem Map */}
+          <EcosystemMap />
+
+          {/* Compact Stats Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="flex flex-wrap justify-center gap-8 md:gap-16 mt-16 pt-12 border-t border-slate-200"
+          >
+            <div className="text-center group cursor-default">
+              <div className="text-3xl md:text-4xl font-black text-slate-900 mb-1 group-hover:text-amber-500 transition-colors">
+                <AnimatedCounter target={8} suffix="+" />
               </div>
+              <div className="text-sm text-slate-500 uppercase tracking-wider font-bold">Years</div>
             </div>
-          </AnimatedSection>
+            <div className="text-center group cursor-default">
+              <div className="text-3xl md:text-4xl font-black text-slate-900 mb-1 group-hover:text-amber-500 transition-colors">
+                <AnimatedCounter target={150} suffix="+" />
+              </div>
+              <div className="text-sm text-slate-500 uppercase tracking-wider font-bold">Clients</div>
+            </div>
+            <div className="text-center group cursor-default">
+              <div className="text-3xl md:text-4xl font-black text-slate-900 mb-1 group-hover:text-amber-500 transition-colors">
+                <AnimatedCounter target={300} suffix="+" />
+              </div>
+              <div className="text-sm text-slate-500 uppercase tracking-wider font-bold">Projects</div>
+            </div>
+          </motion.div>
         </div>
       </section>
       <section className="relative py-24 bg-white overflow-hidden">
@@ -410,19 +421,50 @@ const About = () => {
             </p>
           </div>
           <div className="flex flex-nowrap items-center justify-between gap-2 overflow-x-visible">
-            {achievements.map((achievement, index) => (
-              <div key={index} className="text-center flex-shrink-0 min-w-0 flex-1">
-                <div className="flex items-center justify-center mb-2 scale-75 md:scale-100">
-                  {achievement.icon}
-                </div>
-                <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1">
-                  {achievement.number}
-                </div>
-                <div className="text-[10px] sm:text-xs md:text-blue-100 line-clamp-1">
-                  {achievement.label}
-                </div>
+            <div className="text-center flex-shrink-0 min-w-0 flex-1">
+              <div className="flex items-center justify-center mb-2 scale-75 md:scale-100 text-white">
+                <Users className="w-6 h-6" />
               </div>
-            ))}
+              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 text-white">
+                <AnimatedCounter target={150} suffix="+" />
+              </div>
+              <div className="text-[10px] sm:text-xs md:text-blue-100 line-clamp-1">
+                Happy Clients
+              </div>
+            </div>
+            <div className="text-center flex-shrink-0 min-w-0 flex-1">
+              <div className="flex items-center justify-center mb-2 scale-75 md:scale-100 text-white">
+                <Award className="w-6 h-6" />
+              </div>
+              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 text-white">
+                <AnimatedCounter target={300} suffix="+" />
+              </div>
+              <div className="text-[10px] sm:text-xs md:text-blue-100 line-clamp-1">
+                Projects Completed
+              </div>
+            </div>
+            <div className="text-center flex-shrink-0 min-w-0 flex-1">
+              <div className="flex items-center justify-center mb-2 scale-75 md:scale-100 text-white">
+                <TrendingUp className="w-6 h-6" />
+              </div>
+              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 text-white">
+                <AnimatedCounter target={85} suffix="%" />
+              </div>
+              <div className="text-[10px] sm:text-xs md:text-blue-100 line-clamp-1">
+                Average Growth
+              </div>
+            </div>
+            <div className="text-center flex-shrink-0 min-w-0 flex-1">
+              <div className="flex items-center justify-center mb-2 scale-75 md:scale-100 text-white">
+                <Globe className="w-6 h-6" />
+              </div>
+              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 text-white">
+                <AnimatedCounter target={8} suffix="+" />
+              </div>
+              <div className="text-[10px] sm:text-xs md:text-blue-100 line-clamp-1">
+                Years Experience
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -539,14 +581,11 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
-        {/* Background Image with Blur */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
-            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop")' }}
-          />
-          <div className="absolute inset-0 bg-slate-900/85" />
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -571,7 +610,7 @@ const About = () => {
             </a>
           </div>
         </div>
-        
+
         {/* Bottom Accent Bar for Visual Separation */}
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400"></div>
       </section>

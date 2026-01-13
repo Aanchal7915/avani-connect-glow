@@ -6,7 +6,7 @@ import AnimatedSection from '../components/AnimatedSection';
 const IndusProject = () => {
   return (
     <div className="pt-20 min-h-screen bg-white">
-      {/* Hero Section */}
+      {/* Hero Section with Video */}
       <section className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
@@ -18,20 +18,41 @@ const IndusProject = () => {
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
             </Link>
-            <div className="flex flex-col items-start gap-4 mb-4">
-              <img
-                src="/indus.jpeg"
-                alt="Indus group of Institution Logo"
-                className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
-              />
-              <h1 className="text-4xl md:text-6xl font-bold">
-                Indus group of Institution
-              </h1>
-            </div>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl">
-              A comprehensive educational management system designed to modernize institutional operations and enhance learning experiences
-            </p>
           </AnimatedSection>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Video Section */}
+            <AnimatedSection animation="fadeInLeft" delay={0.3}>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <video
+                  className="w-full aspect-video object-cover"
+                  src="/indus.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster="/indus.jpeg"
+                />
+              </div>
+            </AnimatedSection>
+
+            {/* Content Section */}
+            <AnimatedSection animation="fadeInRight" delay={0.4}>
+              <div className="flex flex-col items-start gap-4">
+                <img
+                  src="/indus.jpeg"
+                  alt="Indus group of Institution Logo"
+                  className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
+                />
+                <h1 className="text-4xl md:text-5xl font-bold">
+                  Indus group of Institution
+                </h1>
+                <p className="text-xl md:text-2xl text-blue-100 max-w-xl">
+                  A comprehensive educational management system designed to modernize institutional operations and enhance learning experiences
+                </p>
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
