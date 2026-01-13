@@ -55,7 +55,7 @@ const Careers = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/jobs`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/jobs`);
         setJobs(response.data.data || []);
       } catch (error) {
         console.error('Error fetching jobs:', error);

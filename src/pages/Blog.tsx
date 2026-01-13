@@ -50,7 +50,7 @@ const Blog = () => {
     const fetchPosts = async () => {
       setLoadingPosts(true);
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/blogs`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/blogs`);
         const json = await res.json();
         if (json?.success) setBlogPosts(json.data || []);
         else setPostsError(json?.message || "Failed to load posts");

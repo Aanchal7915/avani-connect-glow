@@ -54,7 +54,7 @@ const CareerDetail = () => {
     try {
       // Fetch from public endpoint
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/jobs/${id}`
+        `${import.meta.env.VITE_BACKEND_URL}/jobs/${id}`
       );
       setJob(res.data.data);
       setLoading(false);
