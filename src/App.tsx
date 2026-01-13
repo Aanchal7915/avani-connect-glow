@@ -127,6 +127,7 @@ import FrdNutritionProject from "./pages/FrdNutritionProject";
 import HiTechHomesProject from "./pages/HiTechHomesProject";
 import SanjeevniHospitalProject from "./pages/SanjeevniHospitalProject";
 import RohtakShoeProject from "./pages/RohtakShoeProject";
+import ServiceDetail from "./pages/ServiceDetail";
 
 // नई लाइन: ThankYou page import
 import ThankYou from "./pages/ThankYou";
@@ -168,6 +169,7 @@ const AppLayout = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:id" element={<ServiceDetail />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/contact" element={<Contact />} />
           {/* <Route path="/blog" element={<Blog />} /> */}

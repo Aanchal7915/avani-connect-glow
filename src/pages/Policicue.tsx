@@ -7,7 +7,7 @@ const Policicue = () => {
   return (
     <div className="pt-20 min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white overflow-hidden">
+      <section className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
@@ -38,17 +38,17 @@ const Policicue = () => {
                   About Policicue
                 </h2>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  Policicue is a forward-thinking digital solutions company dedicated to helping businesses 
-                  transform their operations through cutting-edge technology and strategic innovation. We specialize 
+                  Policicue is a forward-thinking digital solutions company dedicated to helping businesses
+                  transform their operations through cutting-edge technology and strategic innovation. We specialize
                   in creating comprehensive digital ecosystems that drive growth, efficiency, and competitive advantage.
                 </p>
                 <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                  Our team of experts combines deep industry knowledge with technical excellence to deliver 
-                  solutions that not only meet current needs but also anticipate future challenges. We believe 
+                  Our team of experts combines deep industry knowledge with technical excellence to deliver
+                  solutions that not only meet current needs but also anticipate future challenges. We believe
                   in building long-term partnerships with our clients, ensuring sustainable success and continuous improvement.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  With a focus on user-centric design and data-driven decision making, Policicue helps organizations 
+                  With a focus on user-centric design and data-driven decision making, Policicue helps organizations
                   navigate the digital landscape with confidence and achieve their strategic objectives.
                 </p>
               </div>

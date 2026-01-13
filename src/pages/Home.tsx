@@ -103,63 +103,72 @@ const Home = () => {
       title: "Web & App Development",
       description: "Custom websites and mobile apps that drive conversions and user engagement.",
       color: "from-blue-500 to-blue-600",
-      bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+      slug: "web-development"
     },
     {
       icon: <Search className="w-8 h-8" />,
       title: "SEO & Content Marketing",
       description: "Data-driven SEO strategies and compelling content that ranks and converts.",
       color: "from-green-500 to-green-600",
-      bgImage: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&h=400&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&h=400&fit=crop",
+      slug: "seo-content"
     },
     {
       icon: <Share2 className="w-8 h-8" />,
       title: "Social Media Marketing",
       description: "Strategic SMM campaigns that build brand awareness and drive engagement.",
       color: "from-purple-500 to-purple-600",
-      bgImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop",
+      slug: "social-media"
     },
     {
       icon: <Brain className="w-8 h-8" />,
       title: "AI Solutions",
       description: "Cutting-edge AI integration for automation and intelligent decision-making.",
       color: "from-orange-500 to-orange-600",
-      bgImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
+      slug: "ai-solutions"
     },
     {
       icon: <Mic className="w-8 h-8" />,
       title: "Podcast Production",
       description: "Professional podcast creation and distribution to amplify your brand voice.",
       color: "from-red-500 to-red-600",
-      bgImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=400&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=400&fit=crop",
+      slug: "podcast-production"
     },
     {
       icon: <Calculator className="w-8 h-8" />,
       title: "Financial Consulting",
       description: "Strategic financial planning and investment guidance for business growth.",
       color: "from-indigo-500 to-indigo-600",
-      bgImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
+      slug: "financial-consulting"
     },
     {
       icon: <Briefcase className="w-8 h-8" />,
       title: "Business Consultation",
       description: "Expert guidance to optimize your business operations, strategy, and growth potential for long-term success.",
       color: "from-amber-500 to-orange-500",
-      bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+      slug: "business-consultation"
     },
     {
       icon: <Landmark className="w-8 h-8" />,
       title: "Business Loans",
       description: "Flexible financing solutions including term loans, working capital, and equipment financing to fuel your growth.",
       color: "from-indigo-500 to-blue-500",
-      bgImage: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&h=400&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&h=400&fit=crop",
+      slug: "business-loans"
     },
     {
       icon: <ShieldCheck className="w-8 h-8" />,
       title: "Business Insurance",
       description: "Comprehensive protection for your business assets, liability, and employees with tailored insurance plans.",
       color: "from-emerald-500 to-green-500",
-      bgImage: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop",
+      slug: "business-insurance"
     }
   ];
 
@@ -612,48 +621,50 @@ const Home = () => {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 className="group relative"
               >
-                {/* Card Container */}
-                <div className="relative bg-gradient-to-r from-amber-400 to-yellow-500 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl">
-                  {/* Background Image (visible on hover) */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-20 transition-opacity duration-500"
-                    style={{ backgroundImage: `url(${service.bgImage})` }}
-                  />
+                {/* Card Container - Wrapped with Link */}
+                <Link to={`/services/${service.slug}`} className="block">
+                  <div className="relative bg-gradient-to-r from-amber-400 to-yellow-500 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl">
+                    {/* Background Image (visible on hover) */}
+                    <div
+                      className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                      style={{ backgroundImage: `url(${service.bgImage})` }}
+                    />
 
-                  {/* Content */}
-                  <div className="relative p-6 md:p-8">
-                    <div className="flex items-center justify-between">
-                      {/* Left: Icon + Title */}
-                      <div className="flex items-center gap-4 flex-1">
-                        <div className="text-slate-900 opacity-80">
-                          {service.icon}
+                    {/* Content */}
+                    <div className="relative p-6 md:p-8">
+                      <div className="flex items-center justify-between">
+                        {/* Left: Icon + Title */}
+                        <div className="flex items-center gap-4 flex-1">
+                          <div className="text-slate-900 opacity-80">
+                            {service.icon}
+                          </div>
+                          <h3 className="text-lg md:text-xl font-black text-slate-900 uppercase tracking-wide">
+                            {service.title}
+                          </h3>
                         </div>
-                        <h3 className="text-lg md:text-xl font-black text-slate-900 uppercase tracking-wide">
-                          {service.title}
-                        </h3>
+
+                        {/* Right: Arrow indicator */}
+                        <motion.div
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className="text-slate-900 opacity-60"
+                        >
+                          <ChevronRight size={24} />
+                        </motion.div>
                       </div>
 
-                      {/* Right: Arrow indicator */}
-                      <motion.div
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="text-slate-900 opacity-60"
-                      >
-                        <ChevronRight size={24} />
-                      </motion.div>
+                      {/* Expanded Description (visible on hover) */}
+                      <div className="max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p className="text-slate-800 text-sm md:text-base leading-relaxed max-w-4xl mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                          {service.description}
+                        </p>
+                      </div>
                     </div>
 
-                    {/* Expanded Description (visible on hover) */}
-                    <div className="max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
-                      <p className="text-slate-800 text-sm md:text-base leading-relaxed max-w-4xl mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                        {service.description}
-                      </p>
-                    </div>
+                    {/* Subtle gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   </div>
-
-                  {/* Subtle gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -740,7 +751,7 @@ const Home = () => {
               <path d="M 83.5% 40% L 83.5% 60%" stroke="url(#lineGradient)" strokeWidth="3" strokeDasharray="8 8" opacity="0.3" />
             </svg>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 relative z-10">
               {processSteps.map((step, index) => {
                 const gradients = [
                   "from-blue-500 to-cyan-500",

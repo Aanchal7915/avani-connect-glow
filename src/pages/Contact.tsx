@@ -158,8 +158,8 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-            {/* Left Column: Business Card Inspired Info */}
-            <div className="lg:col-span-5 space-y-6">
+            {/* Left Column: Business Card Inspired Info - Order changes on mobile */}
+            <div className="lg:col-span-5 space-y-6 order-2 lg:order-1">
               <AnimatedSection animation="fadeInLeft" delay={0.3}>
                 <div className="bg-white p-1 rounded-3xl shadow-2xl overflow-hidden group">
                   <div className="bg-slate-900 p-10 rounded-[1.4rem] relative overflow-hidden">
@@ -245,8 +245,8 @@ const Contact = () => {
               </AnimatedSection>
             </div>
 
-            {/* Right Column: Premium Compact Form */}
-            <div className="lg:col-span-7">
+            {/* Right Column: Premium Compact Form - Order changes on mobile */}
+            <div className="lg:col-span-7 order-1 lg:order-2">
               <AnimatedSection animation="fadeInRight" delay={0.2}>
                 <div className="bg-white rounded-[1.5rem] shadow-2xl p-6 md:p-10 border border-slate-100 max-w-xl mx-auto lg:ml-auto lg:mr-0">
                   <div className="mb-8">

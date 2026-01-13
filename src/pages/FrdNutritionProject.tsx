@@ -7,7 +7,7 @@ const FrdNutritionProject = () => {
   return (
     <div className="pt-20 min-h-screen bg-white">
       {/* Hero Section with Video */}
-      <section className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white overflow-hidden">
+      <section className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
