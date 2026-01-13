@@ -80,7 +80,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-4">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4">
               About <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Avani Enterprises</span>
             </h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">

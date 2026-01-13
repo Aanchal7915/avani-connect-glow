@@ -12,6 +12,8 @@ import {
   Calculator,
   Star,
   Calendar,
+  ChevronDown,
+  ArrowRight
 } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCounter from '../components/AnimatedCounter';
@@ -176,7 +178,7 @@ const CaseStudies = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <motion.h1
-              className="text-4xl md:text-6xl font-bold text-slate-900 mb-6"
+              className="text-3xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
@@ -386,94 +388,119 @@ const CaseStudies = () => {
               What Our Clients Say
             </h2>
             <p className="text-lg text-gray-200 max-w-3xl mx-auto">
-              Real feedback from businesses we've helped transform.
+              Real results from real businesses. Here's how we've helped our clients achieve their goals.
             </p>
           </div>
 
-          <div className="relative overflow-hidden lg:overflow-visible px-4 py-8">
-            <div
-              className="flex lg:grid lg:grid-cols-3 lg:gap-8 transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+          <div className="relative px-4 py-8">
+            {/* Left Arrow */}
+            <button
+              onClick={() => setCurrentTestimonial((prev) => (prev - 1 + 6) % 6)}
+              className="absolute left-4 md:left-8 lg:left-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 group"
+              aria-label="Previous testimonial"
             >
-              <style dangerouslySetInnerHTML={{
-                __html: `
-                @media (min-width: 1024px) {
-                  .lg\\:grid { transform: none !important; }
-                }
-              `}} />
+              <ChevronDown className="w-6 h-6 text-gray-900 rotate-90 group-hover:text-amber-600 transition-colors" />
+            </button>
+
+            {/* Right Arrow */}
+            <button
+              onClick={() => setCurrentTestimonial((prev) => (prev + 1) % 6)}
+              className="absolute right-4 md:right-8 lg:right-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 group"
+              aria-label="Next testimonial"
+            >
+              <ChevronDown className="w-6 h-6 text-gray-900 -rotate-90 group-hover:text-amber-600 transition-colors" />
+            </button>
+
+            {/* Coverflow Container */}
+            <div className="relative h-[500px] md:h-[550px] flex items-center justify-center overflow-visible">
               {[
                 {
-                  name: "Abhishek Parashar",
-                  position: "Founder, Training and Placement Cell",
-                  content:
-                    "The team delivered exactly what we needed — a clean, professional, and easy-to-manage website. The entire process was smooth, timely, and well-communicated. We’re very satisfied with both the quality and support.",
+                  name: "Dr. Rajesh Kumar",
+                  position: "Principal, Indus Public School",
+                  content: "Avani Enterprises delivered an outstanding website that perfectly captures our school's vision and values. The design is modern, intuitive, and makes it easy for parents and students to find information. Their team was professional, responsive, and delivered beyond our expectations.",
                   rating: 5,
-                  image: "/review1.png"
+                  image: "/indus.jpeg"
                 },
                 {
-                  name: "Mohit Bazzad",
-                  position: "Founder, Kings pet Hospital",
-                  content:
-                    "We are extremely pleased with the website design and functionality delivered by the team. It’s user-friendly, professional, and perfectly showcases our services. The entire process was efficient and stress-free.",
+                  name: "Vikram Sharma",
+                  position: "Managing Director, Rohtak Shoe Company",
+                  content: "The e-commerce platform developed by Avani Enterprises transformed our business completely. Online sales increased by 250% in just 3 months. The website is fast, user-friendly, and our customers love the shopping experience. Highly recommended!",
                   rating: 5,
-                  image: "/review2.png"
+                  image: "/shoes.jpeg"
+                },
+                {
+                  name: "Ankit Verma",
+                  position: "Co-Founder, Policicue",
+                  content: "Working with Avani Enterprises was a game-changer for our startup. They built a sophisticated platform that handles complex policy management with ease. The UI/UX is exceptional, and their technical expertise is top-notch. Our users are impressed!",
+                  rating: 5,
+                  image: "/policucue.jpeg"
+                },
+                {
+                  name: "Amit Kapoor",
+                  position: "Founder, FRD Nutrition",
+                  content: "The team created a stunning website that perfectly showcases our nutrition products. The e-commerce integration is seamless, and we've seen a 180% increase in online orders. Their attention to detail and customer service is outstanding!",
+                  rating: 5,
+                  image: "/frd.jpeg"
                 },
                 {
                   name: "Aman Sharma",
-                  position: "CEO, Hi Tech Luxury Homes",
-                  content:
-                    "We’re thrilled with the website — it’s elegant, responsive, and beautifully represents our brand. The design perfectly highlights our property offerings. The team delivered on time with excellent communication.",
+                  position: "CEO, Hi-Tech Luxury Homes",
+                  content: "We're thrilled with the elegant website that beautifully represents our luxury properties. The design is sophisticated, the property listings are easy to manage, and our clients love the virtual tour feature. Excellent work!",
                   rating: 5,
-                  image: "/review3.png"
+                  image: "/hitech.jpeg"
+                },
+                {
+                  name: "Dr. Mohit Verma",
+                  position: "Director, Sanjeevni Hospital",
+                  content: "The hospital management portal developed by Avani Enterprises has streamlined our operations significantly. Patient appointment booking is now effortless, and the admin panel is incredibly user-friendly. A truly professional solution!",
+                  rating: 5,
+                  image: "/sanjeevni.jpeg"
                 }
               ].map((testimonial, index) => {
                 const isDark = index % 2 !== 0;
                 const headerColor = isDark ? "bg-[#333333]" : "bg-[#FFA500]";
                 const roleColor = isDark ? "text-[#333333]" : "text-[#FFA500]";
+                const gradientColor = isDark ? "from-gray-500 to-gray-700" : "from-orange-500 to-amber-500";
+
+                const position = index - currentTestimonial;
+                let cardStyle = {};
+                let cardClass = "absolute transition-all duration-700 ease-out";
+
+                if (position === 0) {
+                  cardStyle = { transform: 'translateX(-50%) scale(1)', left: '50%', opacity: 1, zIndex: 20 };
+                } else if (position === -1 || (currentTestimonial === 0 && index === 5)) {
+                  cardStyle = { transform: 'translateX(-50%) scale(0.85)', left: '25%', opacity: 0.5, zIndex: 10 };
+                } else if (position === 1 || (currentTestimonial === 5 && index === 0)) {
+                  cardStyle = { transform: 'translateX(-50%) scale(0.85)', left: '75%', opacity: 0.5, zIndex: 10 };
+                } else {
+                  cardStyle = { transform: 'translateX(-50%) scale(0.7)', left: position < 0 ? '0%' : '100%', opacity: 0, zIndex: 0 };
+                }
 
                 return (
-                  <div key={index} className="w-full lg:w-auto flex-shrink-0 lg:flex-shrink px-4 lg:px-0">
-                    <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col group max-w-2xl lg:max-w-none mx-auto">
-                      {/* Top Header Section */}
-                      <div className={`${headerColor} h-32 lg:h-40 flex flex-col items-center justify-start pt-6 lg:pt-8 relative`}>
+                  <div key={index} className={cardClass} style={cardStyle}>
+                    <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl w-80 md:w-96 h-full flex flex-col group">
+                      <div className={`absolute inset-0 bg-gradient-to-br ${gradientColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl`} />
+                      <div className={`${headerColor} h-32 md:h-36 flex flex-col items-center justify-start pt-6 md:pt-8 relative overflow-hidden`}>
                         <div className="text-center z-10 text-white relative">
-                          <span className="block font-serif italic text-xl lg:text-2xl tracking-wider mb-1 opacity-90">Client</span>
-                          <span className="block text-xl lg:text-2xl font-bold tracking-[0.2em] uppercase font-sans">TESTIMONIAL</span>
+                          <span className="block font-serif italic text-lg md:text-xl tracking-wider mb-1 opacity-90">Client</span>
+                          <span className="block text-lg md:text-xl font-bold tracking-[0.2em] uppercase font-sans">TESTIMONIAL</span>
                         </div>
                       </div>
-
-                      {/* Overlapping Image */}
-                      <div className="relative flex justify-center -mt-10 lg:-mt-14 z-20">
-                        <div className="p-1 bg-white rounded-full shadow-md">
-                          <img
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            className={`w-16 h-16 lg:w-20 lg:h-20 rounded-full border-4 border-white shadow-sm object-cover`}
-                          />
+                      <div className="relative flex justify-center -mt-10 md:-mt-12 z-20">
+                        <div className="p-1 bg-white rounded-full shadow-lg">
+                          <img src={testimonial.image} alt={testimonial.name} className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-sm object-contain bg-white p-1" />
                         </div>
                       </div>
-
-                      {/* Card Body */}
-                      <div className="px-6 pt-4 pb-8 text-center flex-grow flex flex-col items-center">
-                        <h4 className="text-base lg:text-lg font-bold text-gray-900 uppercase tracking-widest mb-1">
-                          {testimonial.name}
-                        </h4>
-                        <p className={`${roleColor} text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-3 lg:mb-4`}>
-                          {testimonial.position}
-                        </p>
-
-                        <div className="flex justify-center gap-1 mb-4 lg:mb-5">
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="w-3 h-3 lg:w-4 lg:h-4 text-yellow-400 fill-yellow-400" />
-                          ))}
+                      <div className="px-6 pt-4 pb-6 text-center flex-grow flex flex-col items-center">
+                        <h4 className="text-base md:text-lg font-bold text-gray-900 uppercase tracking-widest mb-1">{testimonial.name}</h4>
+                        <p className={`${roleColor} text-xs font-bold uppercase tracking-widest mb-3 md:mb-4`}>{testimonial.position}</p>
+                        <div className="flex justify-center gap-1 mb-4">
+                          {[...Array(testimonial.rating)].map((_, i) => (<Star key={i} className="w-3 h-3 md:w-4 md:h-4 text-yellow-400 fill-yellow-400" />))}
                         </div>
-
                         <div className="relative">
-                          <span className="opacity-10 text-4xl lg:text-6xl leading-none font-serif absolute -top-4 left-0">"</span>
-                          <p className="text-gray-600 text-[13px] lg:text-sm leading-relaxed px-4 italic">
-                            {testimonial.content}
-                          </p>
-                          <span className="opacity-10 text-4xl lg:text-6xl leading-none font-serif absolute -bottom-6 lg:-bottom-8 right-0">"</span>
+                          <span className="opacity-10 text-4xl md:text-5xl leading-none font-serif absolute -top-3 left-0">"</span>
+                          <p className="text-gray-600 text-sm md:text-base leading-relaxed px-4 italic">{testimonial.content}</p>
+                          <span className="opacity-10 text-4xl md:text-5xl leading-none font-serif absolute -bottom-5 right-0">"</span>
                         </div>
                       </div>
                     </div>
