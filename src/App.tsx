@@ -131,6 +131,8 @@ import RohtakShoeProject from "./pages/RohtakShoeProject";
 // नई लाइन: ThankYou page import
 import ThankYou from "./pages/ThankYou";
 import Chatbot from "./components/Chatbot";
+import Careers from "./pages/Careers";
+import CareerDetail from "./pages/CareerDetail";
 
 const queryClient = new QueryClient();
 
@@ -187,6 +189,8 @@ const AppLayout = () => {
           <Route path="/projects/hitech-homes" element={<HiTechHomesProject />} />
           <Route path="/projects/sanjeevni-hospital" element={<SanjeevniHospitalProject />} />
           <Route path="/projects/rohtak-shoe" element={<RohtakShoeProject />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/careers/:id" element={<CareerDetail />} />
           <Route path="/admin" element={<AdminRedirect />} />
 
           {/* Catch-all */}
