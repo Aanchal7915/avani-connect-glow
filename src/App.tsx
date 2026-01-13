@@ -102,6 +102,7 @@ import Navbar1 from "./components/ui/navbar1";
 import Footer from "./components/Footer";
 import Footer1 from "./components/Footer1";
 import ScrollToTop from "./components/ScrollToTop";
+import SeoHead from "./components/SeoHead";
 
 // Router hook for conditional rendering
 import { useLocation } from "react-router-dom";
@@ -163,6 +164,7 @@ const AppLayout = () => {
 
   return (
     <div className="min-h-screen">
+  <SeoHead />
       {!hideNavbar && (useNavbar1 ? <Navbar1 /> : <Navbar />)}
       <main>
         <Routes>
