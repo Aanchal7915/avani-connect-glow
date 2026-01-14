@@ -788,7 +788,7 @@ const Home = () => {
                     className="relative group h-full"
                   >
                     {/* Card */}
-                    <div className="relative bg-white rounded-xl md:rounded-2xl p-4 md:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 transition-all duration-300 flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-3 md:gap-6 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 overflow-hidden h-full">
+                    <div className="relative bg-white rounded-xl md:rounded-2xl p-4 md:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 transition-all duration-300 flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-3 md:gap-6 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 h-full">
 
                       {/* Step Number Badge */}
                       <span className="absolute top-2 right-2 md:-top-2 md:-right-2 w-6 h-6 md:w-9 md:h-9 bg-slate-900 text-white rounded-full flex items-center justify-center font-black text-[10px] md:text-xs z-20 shadow-lg border-2 border-white">
@@ -802,12 +802,12 @@ const Home = () => {
 
                       <div className="flex-1">
                         {/* Title */}
-                        <h3 className="text-[12px] md:text-xl font-black text-slate-900 mb-1 md:mb-2 uppercase tracking-tight">
+                        <h3 className="text-[13px] md:text-xl font-black text-slate-900 mb-1 md:mb-2 uppercase tracking-tight">
                           {step.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-slate-500 text-[10px] md:text-[15px] leading-relaxed">
+                        <p className="text-slate-500 text-[11px] md:text-[15px] leading-relaxed">
                           {step.description}
                         </p>
                       </div>
