@@ -77,8 +77,8 @@ export default function HeroSection() {
             <h1 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-black mb-3 tracking-tight">
               Build high-<br />
               performing Websites<br />
-              & accelerate digital growth<br />
-              with smart marketing
+              & accelerate digital<br />
+              growth with smart marketing
             </h1>
 
             <p className="text-[13px] sm:text-base text-gray-600 max-w-xl mx-auto lg:mx-0 mb-3 leading-snug">
