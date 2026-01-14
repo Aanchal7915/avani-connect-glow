@@ -33,7 +33,7 @@ export default function HeroSection() {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-[95vh] flex items-center pt-24 sm:pt-28 md:pt-24 overflow-hidden bg-white"
+      className="relative min-h-[90vh] flex items-center pt-12 sm:pt-16 md:pt-12 overflow-hidden bg-white"
     >
       {/* BACKGROUND: Corporate Geometric Theme */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -86,7 +86,7 @@ export default function HeroSection() {
             </p>
 
             {/* Stats Bundles */}
-            <div className="mt-8 hidden sm:grid grid-cols-2 md:grid-cols-4 gap-8 font-sans">
+            <div className="mt-8 grid grid-cols-4 gap-4 md:gap-8 font-sans">
               {stats.map((s, i) => (
                 <div key={s.label} className="text-center lg:text-left">
                   <div className={`text-2xl md:text-3xl lg:text-4xl font-black mb-2 ${["text-sky-500", "text-emerald-500", "text-orange-500", "text-purple-600"][i]}`}>
