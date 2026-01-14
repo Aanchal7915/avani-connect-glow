@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Calendar, 
-  User, 
-  Clock, 
+import {
+  Calendar,
+  User,
+  Clock,
   ArrowRight,
   Search,
   Tag,
@@ -17,11 +17,10 @@ import AnimatedSection from '../components/AnimatedSection';
 // Simple toast component
 const Toast = ({ message, type, onClose }) => (
   <div
-    className={`fixed top-8 right-8 z-50 px-6 py-4 rounded-lg shadow-lg text-white font-semibold transition-all duration-300 ${
-      type === "success"
-        ? "bg-green-600"
-        : "bg-red-600"
-    }`}
+    className={`fixed top-8 right-8 z-50 px-6 py-4 rounded-lg shadow-lg text-white font-semibold transition-all duration-300 ${type === "success"
+      ? "bg-green-600"
+      : "bg-red-600"
+      }`}
     role="alert"
   >
     {message}
@@ -68,8 +67,8 @@ const Blog = () => {
   const filteredPosts = blogPosts.filter(post => {
     const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         (post.excerpt || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         (post.tags || []).some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      (post.excerpt || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (post.tags || []).some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesSearch;
   });
 
@@ -150,7 +149,7 @@ const Blog = () => {
                 <span className="text-amber-500">Knowledge.</span>
               </h1>
               <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-medium">
-                Stay ahead with expert insights on digital marketing, technology, and business strategy. 
+                Stay ahead with expert insights on digital marketing, technology, and business strategy.
                 Real-world knowledge to fuel your growth.
               </p>
             </div>
@@ -186,11 +185,10 @@ const Blog = () => {
                     <button
                       key={category.id}
                       onClick={() => setActiveCategory(category.id)}
-                      className={`px-5 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-wider transition-all duration-200 ${
-                        activeCategory === category.id
-                          ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 shadow-lg shadow-yellow-200/50'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                      }`}
+                      className={`px-5 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-wider transition-all duration-200 ${activeCategory === category.id
+                        ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 shadow-lg shadow-yellow-200/50'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        }`}
                     >
                       {category.name}
                     </button>
@@ -212,7 +210,7 @@ const Blog = () => {
                 <h2 className="text-4xl font-black text-slate-900 tracking-tight">Featured Articles</h2>
               </div>
             </AnimatedSection>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {featuredPosts.map((post, index) => (
                 <AnimatedSection key={post.id} animation="fadeInUp" delay={index * 0.1}>
@@ -267,7 +265,8 @@ const Blog = () => {
         </section>
       )}
 
-      {/* Regular Posts */}
+      {/* 
+      // Regular Posts
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.1}>
@@ -354,9 +353,9 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
+      // Newsletter Section
       <section className="relative py-24 overflow-hidden bg-[#0f172a]">
-        {/* Background Elements */}
+        // Background Elements
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-amber-400 to-orange-500/10 rounded-full blur-[100px]" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-amber-400 to-orange-500/10 rounded-full blur-[100px]" />
@@ -415,6 +414,7 @@ const Blog = () => {
           />
         )}
       </section>
+      */}
 
       {/* Popular Topics */}
       <section className="py-24 bg-slate-50">
@@ -433,51 +433,51 @@ const Blog = () => {
               </p>
             </div>
           </AnimatedSection>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
             <AnimatedSection animation="fadeInUp" delay={0.1}>
-              <div className="group bg-white p-8 rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500">
-                <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Search className="w-8 h-8" />
+              <div className="group bg-white p-4 md:p-8 rounded-[1.2rem] md:rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500 h-full flex flex-col">
+                <div className="w-10 h-10 md:w-16 md:h-16 bg-slate-900 rounded-lg md:rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Search className="w-5 h-5 md:w-8 md:h-8" />
                 </div>
-                <h3 className="text-xl font-black text-slate-900 mb-3 text-center tracking-tight">SEO</h3>
-                <p className="text-slate-600 text-sm text-center font-medium leading-relaxed">
+                <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-3 text-center tracking-tight uppercase">SEO</h3>
+                <p className="text-slate-600 text-[10px] md:text-sm text-center font-medium leading-relaxed">
                   15+ articles on search engine optimization and ranking strategies.
                 </p>
               </div>
             </AnimatedSection>
-            
+
             <AnimatedSection animation="fadeInUp" delay={0.15}>
-              <div className="group bg-white p-8 rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500">
-                <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Share2 className="w-8 h-8" />
+              <div className="group bg-white p-4 md:p-8 rounded-[1.2rem] md:rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500 h-full flex flex-col">
+                <div className="w-10 h-10 md:w-16 md:h-16 bg-slate-900 rounded-lg md:rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Share2 className="w-5 h-5 md:w-8 md:h-8" />
                 </div>
-                <h3 className="text-xl font-black text-slate-900 mb-3 text-center tracking-tight">Social Media</h3>
-                <p className="text-slate-600 text-sm text-center font-medium leading-relaxed">
+                <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-3 text-center tracking-tight uppercase">Social Media</h3>
+                <p className="text-slate-600 text-[10px] md:text-sm text-center font-medium leading-relaxed">
                   12+ articles on social media marketing and engagement strategies.
                 </p>
               </div>
             </AnimatedSection>
-            
+
             <AnimatedSection animation="fadeInUp" delay={0.2}>
-              <div className="group bg-white p-8 rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500">
-                <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Tag className="w-8 h-8" />
+              <div className="group bg-white p-4 md:p-8 rounded-[1.2rem] md:rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500 h-full flex flex-col">
+                <div className="w-10 h-10 md:w-16 md:h-16 bg-slate-900 rounded-lg md:rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Tag className="w-5 h-5 md:w-8 md:h-8" />
                 </div>
-                <h3 className="text-xl font-black text-slate-900 mb-3 text-center tracking-tight">Content Marketing</h3>
-                <p className="text-slate-600 text-sm text-center font-medium leading-relaxed">
+                <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-3 text-center tracking-tight uppercase">Content</h3>
+                <p className="text-slate-600 text-[10px] md:text-sm text-center font-medium leading-relaxed">
                   10+ articles on content strategy and creation best practices.
                 </p>
               </div>
             </AnimatedSection>
-            
+
             <AnimatedSection animation="fadeInUp" delay={0.25}>
-              <div className="group bg-white p-8 rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500">
-                <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <TrendingUp className="w-8 h-8" />
+              <div className="group bg-white p-4 md:p-8 rounded-[1.2rem] md:rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500 h-full flex flex-col">
+                <div className="w-10 h-10 md:w-16 md:h-16 bg-slate-900 rounded-lg md:rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <TrendingUp className="w-5 h-5 md:w-8 md:h-8" />
                 </div>
-                <h3 className="text-xl font-black text-slate-900 mb-3 text-center tracking-tight">Digital Strategy</h3>
-                <p className="text-slate-600 text-sm text-center font-medium leading-relaxed">
+                <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-3 text-center tracking-tight uppercase text-wrap">Digital</h3>
+                <p className="text-slate-600 text-[10px] md:text-sm text-center font-medium leading-relaxed">
                   8+ articles on digital transformation and business strategy.
                 </p>
               </div>

@@ -406,7 +406,7 @@ const Contact = () => {
 
         {/* Decorative Light Geometric Accents */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-slate-200/40 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[100px] animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-r from-amber-400 to-orange-500/5 rounded-full translate-x-1/4 translate-y-1/4 blur-[80px]" />
+        <div className="absolute bottom-0 right-0 w-400 h-400 bg-white rounded-full translate-x-1/4 translate-y-1/4 blur-[80px]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
@@ -456,7 +456,7 @@ const Contact = () => {
             <p className="text-slate-400 font-bold mb-6">Still have questions?</p>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="px-8 py-4 rounded-xl border-2 border-slate-900 text-slate-900 font-black uppercase text-xs tracking-[0.2em] hover:bg-slate-900 hover:text-white transition-all shadow-xl shadow-slate-200"
+              className="px-8 py-4 rounded-xl bg-black text-white font-black uppercase text-xs tracking-[0.2em] hover:bg-slate-800 transition-all shadow-xl shadow-slate-200"
             >
               Contact Support
             </button>
