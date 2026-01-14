@@ -33,7 +33,7 @@ export default function HeroSection() {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-[90vh] flex items-center pt-12 sm:pt-16 md:pt-12 overflow-hidden bg-white"
+      className="relative min-h-[85vh] flex items-center pt-4 sm:pt-16 md:pt-12 overflow-hidden bg-white"
     >
       {/* BACKGROUND: Corporate Geometric Theme */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -69,30 +69,30 @@ export default function HeroSection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center lg:text-left max-w-2xl mx-auto lg:mx-0 w-full"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl mb-8">
-              <Sparkles className="w-4 h-4 text-amber-500 animate-pulse" />
-              <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-amber-500/80">Transforming Brands Since 2016</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 backdrop-blur-md border border-gray-200 shadow-sm mb-4">
+              <Sparkles className="w-3 h-3 text-amber-500 animate-pulse" />
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-600/80">Transforming Brands Since 2016</span>
             </div>
 
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.15] text-black mb-6 tracking-tight">
+            <h1 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-black mb-3 tracking-tight">
               Build high-<br />
               performing Websites<br />
-              & accelerate digital<br />
-              growth with smart marketing
+              & accelerate digital growth<br />
+              with smart marketing
             </h1>
 
-            <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed">
+            <p className="text-[13px] sm:text-base text-gray-600 max-w-xl mx-auto lg:mx-0 mb-3 leading-snug">
               We create high-converting websites and amplify them with strategic social media management, AI-driven automation, and high-ROI Google & Meta ad campaigns.
             </p>
 
             {/* Stats Bundles */}
-            <div className="mt-8 grid grid-cols-4 gap-4 md:gap-8 font-sans">
+            <div className="mt-4 grid grid-cols-4 gap-2 md:grid-cols-4 md:gap-8 font-sans">
               {stats.map((s, i) => (
                 <div key={s.label} className="text-center lg:text-left">
-                  <div className={`text-2xl md:text-3xl lg:text-4xl font-black mb-2 ${["text-sky-500", "text-emerald-500", "text-orange-500", "text-purple-600"][i]}`}>
+                  <div className={`text-lg sm:text-3xl lg:text-4xl font-black mb-1 ${["text-sky-500", "text-emerald-500", "text-orange-500", "text-purple-600"][i]}`}>
                     {s.value}
                   </div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500">{s.label}</div>
+                  <div className="text-[8px] font-black uppercase tracking-tight text-slate-500">{s.label}</div>
                 </div>
               ))}
             </div>
