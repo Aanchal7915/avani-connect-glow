@@ -49,6 +49,7 @@ const servicesData = {
             { name: "FRD Nutrition", link: "/projects/frd-nutrition", description: "Nutrition & wellness platform", logo: "/frd-nutrition-new.png", video: "/FrdNutrition.mp4" },
             { name: "Rohtak Shoe Co.", link: "/projects/rohtak-shoe", description: "Footwear e-commerce platform", logo: "/shoes.jpeg", video: "/Rohtak Shoe.mp4" }
         ],
+        impactStats: [],
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
         color: "from-blue-500 to-cyan-500"
     },
@@ -75,6 +76,12 @@ const servicesData = {
             "Generate qualified leads consistently"
         ],
         relatedProjects: [],
+        impactStats: [
+            { value: "400%", label: "Average Traffic Growth" },
+            { value: "50+", label: "SEO Campaigns Delivered" },
+            { value: "#1", label: "Rankings Achieved" },
+            { value: "95%", label: "Client Retention Rate" }
+        ],
         image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1200&h=600&fit=crop",
         color: "from-green-500 to-emerald-500"
     },
@@ -101,6 +108,12 @@ const servicesData = {
             "Enhance customer loyalty"
         ],
         relatedProjects: [],
+        impactStats: [
+            { value: "200%", label: "Avg. Engagement Increase" },
+            { value: "25+", label: "Brands Managed" },
+            { value: "1M+", label: "Followers Grown" },
+            { value: "500K+", label: "Monthly Reach" }
+        ],
         image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&h=600&fit=crop",
         color: "from-purple-500 to-fuchsia-500"
     },
@@ -155,6 +168,7 @@ const servicesData = {
                 video: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1920&h=1080&fit=crop&q=90"
             }
         ],
+        impactStats: [],
         image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
         color: "from-orange-500 to-amber-500"
     },
@@ -181,6 +195,12 @@ const servicesData = {
             "Strengthen brand identity"
         ],
         relatedProjects: [],
+        impactStats: [
+            { value: "15+", label: "Podcasts Produced" },
+            { value: "100K+", label: "Total Downloads" },
+            { value: "50+", label: "Episodes Delivered" },
+            { value: "98%", label: "Client Satisfaction" }
+        ],
         image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1200&h=600&fit=crop",
         color: "from-red-500 to-rose-500"
     },
@@ -207,6 +227,12 @@ const servicesData = {
             "Improve profitability"
         ],
         relatedProjects: [],
+        impactStats: [
+            { value: "₹50Cr+", label: "Funds Raised for Clients" },
+            { value: "40+", label: "Businesses Advised" },
+            { value: "35%", label: "Avg. Cost Savings" },
+            { value: "90%", label: "Funding Success Rate" }
+        ],
         image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=600&fit=crop",
         color: "from-indigo-500 to-blue-500"
     },
@@ -233,6 +259,12 @@ const servicesData = {
             "Achieve strategic objectives"
         ],
         relatedProjects: [],
+        impactStats: [
+            { value: "75+", label: "Businesses Consulted" },
+            { value: "200%", label: "Avg. Revenue Growth" },
+            { value: "30%", label: "Operational Efficiency Gain" },
+            { value: "95%", label: "Client Recommendation Rate" }
+        ],
         image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop",
         color: "from-amber-500 to-orange-500"
     },
@@ -259,6 +291,12 @@ const servicesData = {
             "Seize growth opportunities"
         ],
         relatedProjects: [],
+        impactStats: [
+            { value: "₹25Cr+", label: "Loans Facilitated" },
+            { value: "100+", label: "Businesses Funded" },
+            { value: "72hrs", label: "Avg. Approval Time" },
+            { value: "8.5%", label: "Starting Interest Rate" }
+        ],
         image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&h=600&fit=crop",
         color: "from-indigo-500 to-blue-500"
     },
@@ -285,6 +323,12 @@ const servicesData = {
             "Comply with regulations"
         ],
         relatedProjects: [],
+        impactStats: [
+            { value: "₹100Cr+", label: "Coverage Provided" },
+            { value: "60+", label: "Policies Issued" },
+            { value: "24hrs", label: "Claim Processing" },
+            { value: "99%", label: "Claim Settlement Rate" }
+        ],
         image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=600&fit=crop",
         color: "from-emerald-500 to-green-500"
     }
@@ -492,6 +536,131 @@ const ServiceDetail = () => {
                                 </AnimatedSection>
                             ))}
                         </div>
+                    </div>
+                </section>
+            )}
+
+            {/* Impact Stats Section - Shows when no related projects */}
+            {service.relatedProjects.length === 0 && service.impactStats && service.impactStats.length > 0 && (
+                <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="text-center mb-12"
+                        >
+                            <span className="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-[0.2em] text-amber-600 uppercase bg-amber-50 rounded-full border border-amber-200">
+                                Our Impact
+                            </span>
+                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                                Proven Results in {service.title}
+                            </h2>
+                            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                                See how we've helped businesses achieve remarkable success through our {service.title.toLowerCase()} services.
+                            </p>
+                        </motion.div>
+
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                            {service.impactStats.map((stat, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{
+                                        duration: 0.5,
+                                        delay: index * 0.15,
+                                        ease: "easeOut"
+                                    }}
+                                    whileHover={{
+                                        scale: 1.05,
+                                        y: -5,
+                                        transition: { duration: 0.3 }
+                                    }}
+                                    className="relative bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-shadow duration-500 border-2 border-amber-500/30 hover:border-amber-500 text-center overflow-hidden group cursor-default"
+                                >
+                                    {/* Animated background gradient */}
+                                    <motion.div
+                                        className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50"
+                                        initial={{ opacity: 0 }}
+                                        whileHover={{ opacity: 1 }}
+                                        transition={{ duration: 0.3 }}
+                                    />
+
+                                    <div className="relative z-10">
+                                        <motion.div
+                                            className="text-3xl md:text-5xl font-black text-slate-900 mb-2 group-hover:text-amber-500 transition-colors"
+                                            initial={{ scale: 0.5, opacity: 0 }}
+                                            whileInView={{ scale: 1, opacity: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{
+                                                duration: 0.6,
+                                                delay: index * 0.15 + 0.3,
+                                                type: "spring",
+                                                stiffness: 200
+                                            }}
+                                        >
+                                            {stat.value}
+                                        </motion.div>
+                                        <motion.div
+                                            className="text-xs md:text-sm text-slate-600 font-bold uppercase tracking-wider"
+                                            initial={{ opacity: 0 }}
+                                            whileInView={{ opacity: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.4, delay: index * 0.15 + 0.5 }}
+                                        >
+                                            {stat.label}
+                                        </motion.div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Testimonial/Trust Badge */}
+                        <motion.div
+                            className="mt-12 text-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.6 }}
+                        >
+                            <div className="inline-flex items-center gap-3 bg-white px-6 py-4 rounded-xl shadow-md border border-slate-100">
+                                <div className="flex -space-x-2">
+                                    <motion.div
+                                        className="w-8 h-8 rounded-full bg-amber-100 border-2 border-white flex items-center justify-center"
+                                        initial={{ scale: 0 }}
+                                        whileInView={{ scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.7, type: "spring" }}
+                                    >
+                                        <CheckCircle className="w-4 h-4 text-amber-600" />
+                                    </motion.div>
+                                    <motion.div
+                                        className="w-8 h-8 rounded-full bg-orange-100 border-2 border-white flex items-center justify-center"
+                                        initial={{ scale: 0 }}
+                                        whileInView={{ scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.8, type: "spring" }}
+                                    >
+                                        <CheckCircle className="w-4 h-4 text-orange-600" />
+                                    </motion.div>
+                                    <motion.div
+                                        className="w-8 h-8 rounded-full bg-amber-100 border-2 border-white flex items-center justify-center"
+                                        initial={{ scale: 0 }}
+                                        whileInView={{ scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.9, type: "spring" }}
+                                    >
+                                        <CheckCircle className="w-4 h-4 text-amber-600" />
+                                    </motion.div>
+                                </div>
+                                <p className="text-slate-600 font-medium text-sm">
+                                    Trusted by <span className="font-bold text-slate-900">150+</span> businesses across India
+                                </p>
+                            </div>
+                        </motion.div>
                     </div>
                 </section>
             )}
