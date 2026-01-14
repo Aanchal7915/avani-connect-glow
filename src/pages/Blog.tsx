@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
   Calendar,
   User,
@@ -60,46 +61,42 @@ const Blog = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section - Full Page */}
-      <section className="relative min-h-[70vh] flex items-center py-20 overflow-hidden bg-[#0f172a]">
-        {/* Background Geometric Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Large Diagonal Navy/Blue Shape */}
-          <div className="absolute -top-24 -right-20 w-[120%] h-full bg-[#1e293b] -rotate-12 transform origin-top-right shadow-2xl" />
-
-          {/* Yellow Diagonal Strip */}
-          <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-gradient-to-r from-amber-400 to-orange-500 rotate-[35deg] transform origin-top opacity-40 shadow-2xl" />
-
-          {/* Subtle Stardust Texture */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+      {/* Hero Section - Matching Theme */}
+      <section className="relative py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/30 blur-[100px] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100/30 blur-[100px] rounded-full" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
-            <div className="max-w-4xl relative">
-              <div className="w-20 h-2 bg-gradient-to-r from-amber-400 to-orange-500 mb-8" />
-              <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
-                Insights & <br />
-                <span className="text-amber-500">Knowledge.</span>
-              </h1>
-              <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-medium">
+            <div className="text-center">
+              <motion.h1
+                className="text-3xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                Insights on{" "}
+                <span className="text-amber-500">Digital Growth</span>
+              </motion.h1>
+              <motion.p
+                className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              >
                 Stay ahead with expert insights on digital marketing, technology, and business strategy.
                 Real-world knowledge to fuel your growth.
-              </p>
+              </motion.p>
             </div>
           </AnimatedSection>
-        </div>
-
-        {/* Bottom Hexagon Accent */}
-        <div className="absolute -bottom-12 right-12 w-48 h-48 opacity-10">
-          <svg viewBox="0 0 100 100" fill="currentColor" className="text-white">
-            <path d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" />
-          </svg>
         </div>
       </section>
 
       {/* Search and Filter */}
-      <section className="relative -mt-16 z-20 pb-12">
+      <section className="py-12 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.3}>
             <div className="bg-white rounded-[2rem] shadow-2xl p-8 border border-slate-100">
@@ -208,7 +205,7 @@ const Blog = () => {
               <h2 className="text-4xl font-black text-slate-900 tracking-tight">Latest Articles</h2>
             </div>
           </AnimatedSection>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regularPosts.map((post, index) => (
               <AnimatedSection key={post.id} animation="fadeInUp" delay={index * 0.05}>
@@ -272,7 +269,7 @@ const Blog = () => {
               </AnimatedSection>
             ))}
           </div>
-          
+
           {regularPosts.length === 0 && (
             <div className="text-center py-20">
               <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-6">

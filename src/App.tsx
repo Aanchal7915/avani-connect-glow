@@ -131,6 +131,7 @@ import RohtakShoeProject from "./pages/RohtakShoeProject";
 import ServiceDetail from "./pages/ServiceDetail";
 import LeadManagementProject from "./pages/LeadManagementProject";
 import WhatsAppAutomationProject from "./pages/WhatsAppAutomationProject";
+import BusinessProcessOptimizationProject from "./pages/BusinessProcessOptimizationProject";
 
 // नई लाइन: ThankYou page import
 import ThankYou from "./pages/ThankYou";
@@ -167,7 +168,7 @@ const AppLayout = () => {
 
   return (
     <div className="min-h-screen">
-  <SeoHead />
+      <SeoHead />
       {!hideNavbar && (useNavbar1 ? <Navbar1 /> : <Navbar />)}
       <main>
         <Routes>
@@ -199,6 +200,7 @@ const AppLayout = () => {
           <Route path="/projects/rohtak-shoe" element={<RohtakShoeProject />} />
           <Route path="/projects/lead-management-automation" element={<LeadManagementProject />} />
           <Route path="/projects/whatsapp-automation" element={<WhatsAppAutomationProject />} />
+          <Route path="/projects/business-process-optimization" element={<BusinessProcessOptimizationProject />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/careers/:id" element={<CareerDetail />} />
           <Route path="/admin" element={<AdminRedirect />} />

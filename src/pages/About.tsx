@@ -248,8 +248,8 @@ const About = () => {
                     alt="Our Mission"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-blue-950/70 backdrop-blur-[2px]" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-900/40 to-transparent" />
+                  <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[2px]" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-600/60 via-orange-500/40 to-transparent" />
                 </div>
                 <div className="relative z-10 text-white text-center">
                   <div className="w-10 h-10 md:w-20 md:h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center mb-3 md:mb-8 border border-white/20 mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
@@ -259,12 +259,12 @@ const About = () => {
                     Mission
                   </h2>
                   <div className="max-w-md mx-auto">
-                    <p className="text-[9px] sm:text-lg text-blue-50 mb-2 md:mb-6 leading-relaxed font-medium">
+                    <p className="text-[9px] sm:text-lg text-amber-50 mb-2 md:mb-6 leading-relaxed font-medium">
                       To empower businesses with cutting-edge digital solutions that drive growth,
                       enhance brand presence, and deliver measurable ROI.
                     </p>
-                    <div className="w-8 h-0.5 md:w-12 md:h-1 bg-white/30 mx-auto mb-2 md:mb-6 rounded-full" />
-                    <p className="text-[8px] sm:text-base text-blue-100/80 leading-tight italic">
+                    <div className="w-8 h-0.5 md:w-12 md:h-1 bg-amber-400/50 mx-auto mb-2 md:mb-6 rounded-full" />
+                    <p className="text-[8px] sm:text-base text-amber-100/80 leading-tight italic">
                       "Building long-term partnerships through trust, innovation, and results."
                     </p>
                   </div>
@@ -281,8 +281,8 @@ const About = () => {
                     alt="Our Vision"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-purple-950/70 backdrop-blur-[2px]" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/80 via-purple-900/40 to-transparent" />
+                  <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[2px]" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-600/60 via-amber-500/40 to-transparent" />
                 </div>
                 <div className="relative z-10 text-white text-center">
                   <div className="w-10 h-10 md:w-20 md:h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center mb-2 md:mb-8 border border-white/20 mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
@@ -290,21 +290,21 @@ const About = () => {
                   </div>
                   <h3 className="text-sm sm:text-3xl md:text-5xl font-black mb-1 md:mb-6 tracking-tight drop-shadow-lg uppercase">Vision</h3>
                   <div className="max-w-md mx-auto">
-                    <p className="text-[9px] sm:text-lg text-purple-50 mb-2 md:mb-8 leading-relaxed font-medium">
+                    <p className="text-[9px] sm:text-lg text-orange-50 mb-2 md:mb-8 leading-relaxed font-medium">
                       To be the leading digital transformation partner for businesses across India,
                       known for our innovative solutions and exceptional service.
                     </p>
                     <div className="flex flex-wrap justify-center gap-1 md:gap-3">
-                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-white/20 text-[7px] md:text-sm font-semibold">
-                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-purple-200" />
+                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-amber-400/30 text-[7px] md:text-sm font-semibold">
+                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-amber-300" />
                         Data-Driven
                       </div>
-                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-white/20 text-[7px] md:text-sm font-semibold">
-                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-purple-200" />
+                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-amber-400/30 text-[7px] md:text-sm font-semibold">
+                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-amber-300" />
                         Innovation
                       </div>
-                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-white/20 text-[7px] md:text-sm font-semibold">
-                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-purple-200" />
+                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-amber-400/30 text-[7px] md:text-sm font-semibold">
+                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-amber-300" />
                         Success
                       </div>
                     </div>
@@ -318,23 +318,13 @@ const About = () => {
 
       {/* Values Section */}
       <section className="relative py-24 overflow-hidden">
-        {/* Dreamy Pastel Background */}
+        {/* Background with amber/orange theme */}
         <div className="absolute inset-0 z-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: 'url("https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2070&auto=format&fit=crop")',
-              opacity: 0.15
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 via-purple-50/50 to-pink-50/50" />
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-orange-50/30 to-white" />
 
           {/* Animated Blobs for "Wavy" effect */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/30 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-200/30 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2" />
-
-          {/* Stars/Dots Pattern Overlay */}
-          <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-200/30 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-200/30 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -377,7 +367,7 @@ const About = () => {
               >
                 <div className="bg-white/80 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2.5rem] p-4 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-all duration-300 border border-white/50 h-full group flex flex-col">
                   <div className="flex flex-col md:flex-row items-center md:items-center gap-3 md:gap-5 mb-3 md:mb-5 text-center md:text-left">
-                    <div className="w-10 h-10 md:w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg shadow-purple-200 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <div className="w-10 h-10 md:w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg shadow-amber-200 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                       {value.icon}
                     </div>
                     <h3 className="text-base md:text-2xl font-bold text-slate-800 tracking-tight leading-tight">

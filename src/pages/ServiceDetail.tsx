@@ -133,19 +133,26 @@ const servicesData = {
             "Make data-driven decisions faster"
         ],
         relatedProjects: [
-            { 
-                name: "Lead Management Automation", 
-                link: "/projects/lead-management-automation", 
+            {
+                name: "Lead Management Automation",
+                link: "/projects/lead-management-automation",
                 description: "Automated lead capture, scoring, and nurturing system that increased conversion rates by 45%. Intelligent lead distribution and follow-up automation.",
                 logo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=400&fit=crop&q=90",
                 video: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop&q=90"
             },
-            { 
-                name: "WhatsApp Text Automation", 
-                link: "/projects/whatsapp-automation", 
+            {
+                name: "WhatsApp Text Automation",
+                link: "/projects/whatsapp-automation",
                 description: "WhatsApp Business API integration for automated customer support, marketing campaigns, and instant notifications. Handle unlimited conversations efficiently.",
                 logo: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=400&h=400&fit=crop&q=90",
                 video: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1920&h=1080&fit=crop&q=90"
+            },
+            {
+                name: "Business Process Optimization Agent",
+                link: "/projects/business-process-optimization",
+                description: "An AI system that reads daily business work (emails, tickets, sheets), understands patterns, identifies waste, and automates repeatable tasks. Reduces manual work and saves operational time.",
+                logo: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=400&fit=crop&q=90",
+                video: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1920&h=1080&fit=crop&q=90"
             }
         ],
         image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
