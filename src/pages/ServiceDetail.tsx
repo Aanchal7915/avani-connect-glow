@@ -42,9 +42,12 @@ const servicesData = {
             "Generate more leads and conversions"
         ],
         relatedProjects: [
-            { name: "Hi-tech Homes", link: "/projects/hitech-homes", description: "Property management portal" },
-            { name: "Policicue", link: "/projects/policicue", description: "Insurance comparison platform" },
-            { name: "Indus", link: "/projects/indus", description: "Industrial solutions website" }
+            { name: "Hi-tech Homes", link: "/projects/hitech-homes", description: "Property management portal", logo: "/hitech.jpeg", video: "/hitech.mp4" },
+            { name: "Policicue", link: "/projects/policicue", description: "Insurance comparison platform", logo: "/policucue.jpeg", video: "/policicue.mp4" },
+            { name: "Indus", link: "/projects/indus", description: "Educational management system", logo: "/indus.jpeg", video: "/indus.mp4" },
+            { name: "Sanjeevni Hospital", link: "/projects/sanjeevni-hospital", description: "Healthcare services platform", logo: "/sanjeevni.jpeg", video: "/Sanjeevni.mp4" },
+            { name: "FRD Nutrition", link: "/projects/frd-nutrition", description: "Nutrition & wellness platform", logo: "/frd-nutrition-new.png", video: "/FrdNutrition.mp4" },
+            { name: "Rohtak Shoe Co.", link: "/projects/rohtak-shoe", description: "Footwear e-commerce platform", logo: "/shoes.jpeg", video: "/Rohtak Shoe.mp4" }
         ],
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
         color: "from-blue-500 to-cyan-500"
@@ -398,20 +401,65 @@ const ServiceDetail = () => {
                             </div>
                         </AnimatedSection>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                             {service.relatedProjects.map((project, index) => (
                                 <AnimatedSection key={index} animation="fadeInUp" delay={0.1 * index}>
                                     <Link
                                         to={project.link}
-                                        className="group block bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                                        className="group block bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 sm:hover:-translate-y-3"
                                     >
-                                        <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-amber-500 transition-colors">
-                                            {project.name}
-                                        </h3>
-                                        <p className="text-slate-600 mb-4">{project.description}</p>
-                                        <span className="inline-flex items-center text-amber-500 font-bold text-sm uppercase tracking-wide">
-                                            View Project <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                                        </span>
+                                        {/* Video/Image Preview Section */}
+                                        <div className="relative aspect-video overflow-hidden bg-slate-100">
+                                            {project.video ? (
+                                                <video
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                                    src={project.video}
+                                                    muted
+                                                    loop
+                                                    playsInline
+                                                    poster={project.logo}
+                                                    onMouseEnter={(e) => e.currentTarget.play()}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.pause();
+                                                        e.currentTarget.currentTime = 0;
+                                                    }}
+                                                    onTouchStart={(e) => e.currentTarget.play()}
+                                                    onTouchEnd={(e) => {
+                                                        e.currentTarget.pause();
+                                                        e.currentTarget.currentTime = 0;
+                                                    }}
+                                                />
+                                            ) : (
+                                                <img
+                                                    src={project.logo}
+                                                    alt={project.name}
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                                />
+                                            )}
+                                            {/* Gradient Overlay */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                        </div>
+
+                                        {/* Content Section */}
+                                        <div className="p-4 sm:p-5 lg:p-6">
+                                            {/* Logo */}
+                                            {project.logo && (
+                                                <div className="mb-3 sm:mb-4">
+                                                    <img
+                                                        src={project.logo}
+                                                        alt={`${project.name} Logo`}
+                                                        className="h-10 sm:h-12 w-auto object-contain rounded-lg bg-slate-50 p-1"
+                                                    />
+                                                </div>
+                                            )}
+                                            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2 group-hover:text-amber-500 transition-colors line-clamp-1">
+                                                {project.name}
+                                            </h3>
+                                            <p className="text-sm sm:text-base text-slate-600 mb-3 sm:mb-4 line-clamp-2">{project.description}</p>
+                                            <span className="inline-flex items-center text-amber-500 font-bold text-xs sm:text-sm uppercase tracking-wide">
+                                                View Project <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+                                            </span>
+                                        </div>
                                     </Link>
                                 </AnimatedSection>
                             ))}
