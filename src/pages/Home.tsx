@@ -770,12 +770,12 @@ const Home = () => {
                 ];
 
                 const icons = [
-                  <Search className="w-5 h-5 md:w-6 md:h-6" />,
-                  <TrendingUp className="w-5 h-5 md:w-6 md:h-6" />,
-                  <Brain className="w-5 h-5 md:w-6 md:h-6" />,
-                  <Globe className="w-5 h-5 md:w-6 md:h-6" />,
-                  <Play className="w-5 h-5 md:w-6 md:h-6" />,
-                  <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
+                  <Search className="w-4 h-4 md:w-6 md:h-6" />,
+                  <TrendingUp className="w-4 h-4 md:w-6 md:h-6" />,
+                  <Brain className="w-4 h-4 md:w-6 md:h-6" />,
+                  <Globe className="w-4 h-4 md:w-6 md:h-6" />,
+                  <Play className="w-4 h-4 md:w-6 md:h-6" />,
+                  <ShieldCheck className="w-4 h-4 md:w-6 md:h-6" />
                 ];
 
                 return (
@@ -802,12 +802,12 @@ const Home = () => {
 
                       <div className="flex-1">
                         {/* Title */}
-                        <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-2 uppercase tracking-tight">
+                        <h3 className="text-[12px] md:text-xl font-black text-slate-900 mb-1 md:mb-2 uppercase tracking-tight">
                           {step.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-slate-500 text-[10px] md:text-[15px] leading-relaxed line-clamp-2 md:line-clamp-none">
+                        <p className="text-slate-500 text-[10px] md:text-[15px] leading-relaxed">
                           {step.description}
                         </p>
                       </div>
