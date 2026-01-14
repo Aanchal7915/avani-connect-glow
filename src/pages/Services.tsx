@@ -543,11 +543,11 @@ const Services = () => {
       description: "Cutting-edge AI integration for automation and intelligent decision-making.",
       features: [
         "Chatbot development",
+        "Lead management automation",
+        "WhatsApp text automation",
         "Predictive analytics",
         "Process automation",
-        "Data analysis & insights",
-        "Machine learning models",
-        "AI-powered tools"
+        "Data analysis & insights"
       ],
       price: "₹30,000 - ₹10,00,000",
       duration: "6-16 weeks",
@@ -718,8 +718,8 @@ const Services = () => {
 
       {/* Service Categories */}
       <section className="py-24 bg-[#333333] relative overflow-hidden">
-        {/* Yellow Background Strip */}
-        <div className="absolute top-1/2 left-0 w-full h-[400px] -translate-y-1/2 bg-[#FFD700] z-0"></div>
+        {/* Amber Background Strip */}
+        <div className="absolute top-1/2 left-0 w-full h-[400px] -translate-y-1/2 bg-amber-500 z-0"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-3 lg:flex lg:flex-wrap lg:justify-center gap-2 md:gap-4 mb-12">
@@ -728,7 +728,7 @@ const Services = () => {
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
                 className={`px-2 py-2.5 lg:px-6 lg:py-3 rounded-lg font-bold tracking-wide text-[10px] lg:text-base transition-all duration-300 ${activeTab === category.id
-                  ? 'bg-[#FFD700] text-black shadow-lg transform -translate-y-1'
+                  ? 'bg-amber-500 text-white shadow-lg transform -translate-y-1'
                   : 'bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm'
                   }`}
               >
@@ -761,7 +761,7 @@ const Services = () => {
                         <Clock className="w-3 h-3 mr-1" /> {service.duration}
                       </div>
                     </div>
-                    <div className={`p-2 rounded-lg bg-gray-50 text-gray-600 group-hover:bg-[#FFD700] group-hover:text-black transition-colors duration-300`}>
+                    <div className={`p-2 rounded-lg bg-gray-50 text-gray-600 group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300`}>
                       {React.cloneElement(service.icon, { className: "w-5 h-5" })}
                     </div>
                   </div>
@@ -787,7 +787,7 @@ const Services = () => {
                   <div className="mt-auto">
                     <Link
                       to={`/contact?service=${service.id}`}
-                      className="w-full inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-gray-900 uppercase tracking-widest border border-gray-900 rounded hover:bg-[#FFD700] hover:border-[#FFD700] hover:text-black transition-all duration-300"
+                      className="w-full inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white uppercase tracking-widest bg-amber-500 rounded hover:bg-amber-600 transition-all duration-300"
                     >
                       Get Quote
                     </Link>
@@ -800,54 +800,178 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              How We Work
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our proven process ensures successful project delivery and exceptional results.
-            </p>
+      <section className="relative py-24 bg-white overflow-hidden">
+        {/* Subtle Background Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-amber-500/5 blur-[120px] rounded-full" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 blur-[120px] rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/3 blur-[150px] rounded-full" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 font-sans">
+                How We <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Work</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Our proven 4-step process ensures successful project delivery and exceptional results every time.
+              </p>
+            </motion.div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-            <div className="text-center">
-              <div className="w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-base lg:text-xl font-bold mx-auto mb-3 lg:mb-4">
-                1
-              </div>
-              <h3 className="text-sm lg:text-xl font-semibold text-gray-900 mb-1 lg:mb-2 text-center px-1">Discovery</h3>
-              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
-                We analyze your business, goals, and requirements to create a strategic plan.
-              </p>
+          {/* Desktop View - Horizontal Flow with Connecting Lines */}
+          <div className="hidden lg:block relative">
+            {/* Connecting Line */}
+            <div className="absolute top-24 left-[12.5%] right-[12.5%] h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-amber-500 opacity-20" />
+            
+            <div className="grid grid-cols-4 gap-8 relative">
+              {[
+                {
+                  number: "01",
+                  title: "Discovery",
+                  description: "We analyze your business, goals, and requirements to create a strategic plan.",
+                  gradient: "from-blue-500 to-cyan-500",
+                  delay: 0.2
+                },
+                {
+                  number: "02",
+                  title: "Strategy",
+                  description: "We develop a comprehensive strategy tailored to your specific needs and objectives.",
+                  gradient: "from-green-500 to-emerald-500",
+                  delay: 0.4
+                },
+                {
+                  number: "03",
+                  title: "Execution",
+                  description: "Our expert team implements the strategy with regular updates and quality assurance.",
+                  gradient: "from-purple-500 to-pink-500",
+                  delay: 0.6
+                },
+                {
+                  number: "04",
+                  title: "Optimization",
+                  description: "We continuously monitor, analyze, and optimize for maximum performance and ROI.",
+                  gradient: "from-amber-500 to-orange-500",
+                  delay: 0.8
+                }
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: step.delay }}
+                  className="relative group"
+                >
+                  {/* Card */}
+                  <div className="relative bg-white rounded-2xl p-8 border-2 border-gray-200 hover:border-amber-500 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/10">
+                    {/* Number Badge */}
+                    <div className={`absolute -top-6 left-1/2 -translate-x-1/2 w-20 h-20 bg-gradient-to-br ${step.gradient} rounded-2xl flex items-center justify-center text-white text-2xl font-black shadow-lg rotate-3 group-hover:rotate-0 transition-transform duration-300`}>
+                      {step.number}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center mt-8 group-hover:text-amber-600 transition-colors duration-300">
+                      {step.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-600 text-center leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                      {step.description}
+                    </p>
+
+                    {/* Decorative Corner */}
+                    <div className={`absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl ${step.gradient} opacity-0 group-hover:opacity-10 rounded-tl-full transition-opacity duration-500`} />
+                  </div>
+
+                  {/* Arrow Connector (except for last item) */}
+                  {index < 3 && (
+                    <div className="absolute top-24 -right-4 z-20 text-amber-500 text-3xl">
+                      →
+                    </div>
+                  )}
+                </motion.div>
+              ))}
             </div>
-            <div className="text-center">
-              <div className="w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center text-white text-base lg:text-xl font-bold mx-auto mb-3 lg:mb-4">
-                2
-              </div>
-              <h3 className="text-sm lg:text-xl font-semibold text-gray-900 mb-1 lg:mb-2 text-center px-1">Strategy</h3>
-              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
-                We develop a comprehensive strategy tailored to your specific needs and objectives.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white text-base lg:text-xl font-bold mx-auto mb-3 lg:mb-4">
-                3
-              </div>
-              <h3 className="text-sm lg:text-xl font-semibold text-gray-900 mb-1 lg:mb-2 text-center px-1">Execution</h3>
-              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
-                Our expert team implements the strategy with regular updates and quality assurance.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white text-base lg:text-xl font-bold mx-auto mb-3 lg:mb-4">
-                4
-              </div>
-              <h3 className="text-sm lg:text-xl font-semibold text-gray-900 mb-1 lg:mb-2 text-center px-1">Optimization</h3>
-              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
-                We continuously monitor, analyze, and optimize for maximum performance and ROI.
-              </p>
-            </div>
+          </div>
+
+          {/* Mobile/Tablet View - Vertical Flow */}
+          <div className="lg:hidden space-y-8">
+            {[
+              {
+                number: "01",
+                title: "Discovery",
+                description: "We analyze your business, goals, and requirements to create a strategic plan.",
+                gradient: "from-blue-500 to-cyan-500",
+                delay: 0.2
+              },
+              {
+                number: "02",
+                title: "Strategy",
+                description: "We develop a comprehensive strategy tailored to your specific needs and objectives.",
+                gradient: "from-green-500 to-emerald-500",
+                delay: 0.3
+              },
+              {
+                number: "03",
+                title: "Execution",
+                description: "Our expert team implements the strategy with regular updates and quality assurance.",
+                gradient: "from-purple-500 to-pink-500",
+                delay: 0.4
+              },
+              {
+                number: "04",
+                title: "Optimization",
+                description: "We continuously monitor, analyze, and optimize for maximum performance and ROI.",
+                gradient: "from-amber-500 to-orange-500",
+                delay: 0.5
+              }
+            ].map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: step.delay }}
+                className="relative"
+              >
+                <div className="relative bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-amber-500 transition-all duration-300 shadow-sm hover:shadow-lg">
+                  <div className="flex items-start gap-4">
+                    {/* Number Badge */}
+                    <div className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${step.gradient} rounded-xl flex items-center justify-center text-white text-xl font-black shadow-lg`}>
+                      {step.number}
+                    </div>
+
+                    <div className="flex-1">
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        {step.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Vertical Connector Arrow */}
+                {index < 3 && (
+                  <div className="flex justify-center my-2">
+                    <div className="text-amber-500 text-2xl">
+                      ↓
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -1004,31 +1128,34 @@ const Services = () => {
 
       {/* CTA Section */}
       <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full" />
+        {/* Background Image with Blur */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
+            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?q=80&w=2070&auto=format&fit=crop")' }}
+          />
+          <div className="absolute inset-0 bg-slate-900/85" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-sans">
-            Ready to Get Started?
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 font-sans leading-tight">
+            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Success Story</span> Together
           </h2>
-          <p className="text-xl mb-8 text-gray-200">
-            Let's discuss your project requirements and create a custom solution that fits your budget and timeline.
+          <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-consultation"
-              className="bg-[#FFD700] text-black px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-[#FDB931] transition-all duration-200 shadow-lg hover:transform hover:-translate-y-1 hover:shadow-xl"
+              className="px-8 py-4 bg-amber-500 text-white rounded-xl font-black uppercase tracking-widest shadow-lg shadow-amber-500/20 transition-all duration-300"
             >
               Get Consultation
             </Link>
             <a
               href="tel:+919253625099"
-              className="bg-white text-gray-900 border-2 border-white px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-gray-100 hover:text-black transition-all duration-200 hover:transform hover:-translate-y-1 shadow-lg"
+              className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-white/20 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 shadow-lg"
             >
-              Call Us Now
+              Talk to Expert
             </a>
           </div>
         </div>

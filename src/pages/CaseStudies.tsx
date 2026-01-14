@@ -87,7 +87,7 @@ const CaseStudies = () => {
       client: "FinServe",
       industry: "Financial Services",
       challenge: "FinServe needed to automate customer service operations while maintaining high service quality.",
-      solution: "Developed AI-powered chatbot and automated response system integrated with existing CRM and knowledge base.",
+      solution: "Developed AI-powered chatbot, automated response system, lead management automation, and WhatsApp text automation integrated with existing CRM and knowledge base.",
       results: {
         automation: "70% of customer queries automated",
         savings: "₹50L annual cost savings",
@@ -97,7 +97,7 @@ const CaseStudies = () => {
       duration: "4 months",
       team: "3 AI developers, 1 UX designer",
       image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=300&fit=crop",
-      technologies: ["Python", "TensorFlow", "NLP", "AWS", "Dialogflow"]
+      technologies: ["Python", "TensorFlow", "NLP", "AWS", "Dialogflow", "WhatsApp API"]
     },
     {
       id: 5,
@@ -350,22 +350,24 @@ const CaseStudies = () => {
             </p>
           </div>
 
-          <div className="flex flex-nowrap items-center justify-between gap-2 overflow-x-visible px-2">
-            <div className="text-center flex-1">
-              <AnimatedCounter target={150} suffix="+" className="text-xl sm:text-4xl font-black text-amber-600 mb-1 lg:mb-2 transition-transform hover:scale-105" />
-              <div className="text-[10px] sm:text-base font-bold text-gray-500 uppercase tracking-tight">Happy Clients</div>
+          <div className="grid grid-cols-4 gap-4 md:gap-8">
+            <div className="text-center">
+              <AnimatedCounter target={150} suffix="+" className="text-2xl sm:text-4xl md:text-5xl font-black text-amber-600 mb-2 transition-transform hover:scale-105" />
+              <div className="text-xs sm:text-sm md:text-base font-bold text-gray-500 uppercase tracking-tight">Happy Clients</div>
             </div>
-            <div className="text-center flex-1">
-              <AnimatedCounter target={300} suffix="+" className="text-xl sm:text-4xl font-black text-orange-600 mb-1 lg:mb-2 transition-transform hover:scale-105" />
-              <div className="text-[10px] sm:text-base font-bold text-gray-500 uppercase tracking-tight">Projects</div>
+            <div className="text-center">
+              <AnimatedCounter target={300} suffix="+" className="text-2xl sm:text-4xl md:text-5xl font-black text-orange-600 mb-2 transition-transform hover:scale-105" />
+              <div className="text-xs sm:text-sm md:text-base font-bold text-gray-500 uppercase tracking-tight">Projects</div>
             </div>
-            <div className="text-center flex-1">
-              <AnimatedCounter target={85} suffix="%" className="text-xl sm:text-4xl font-black text-amber-700 mb-1 lg:mb-2 transition-transform hover:scale-105" />
-              <div className="text-[10px] sm:text-base font-bold text-gray-500 uppercase tracking-tight">Growth</div>
+            <div className="text-center">
+              <AnimatedCounter target={85} suffix="%" className="text-2xl sm:text-4xl md:text-5xl font-black text-amber-700 mb-2 transition-transform hover:scale-105" />
+              <div className="text-xs sm:text-sm md:text-base font-bold text-gray-500 uppercase tracking-tight">Growth</div>
             </div>
-            <div className="text-center flex-1">
-              <div className="text-xl sm:text-4xl font-black text-orange-700 mb-1 lg:mb-2 transition-transform hover:scale-105">₹<AnimatedCounter target={50} />Cr+</div>
-              <div className="text-[10px] sm:text-base font-bold text-gray-500 uppercase tracking-tight">Revenue</div>
+            <div className="text-center">
+              <div className="text-2xl sm:text-4xl md:text-5xl font-black text-orange-700 mb-2 transition-transform hover:scale-105">
+                ₹<AnimatedCounter target={50} />Cr+
+              </div>
+              <div className="text-xs sm:text-sm md:text-base font-bold text-gray-500 uppercase tracking-tight">Revenue</div>
             </div>
           </div>
         </div>
@@ -526,35 +528,35 @@ const CaseStudies = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
         {/* Background Image with Blur */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
-            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop")' }}
+            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?q=80&w=2070&auto=format&fit=crop")' }}
           />
           <div className="absolute inset-0 bg-slate-900/85" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-sans">
-            Ready to Achieve Similar Results?
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 font-sans leading-tight">
+            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Success Story</span> Together
           </h2>
-          <p className="text-xl mb-8 text-gray-200">
-            Let's discuss your project and create a custom strategy to drive growth for your business.
+          <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="bg-[#FFD700] text-black px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-[#FDB931] transition-all duration-200 shadow-lg hover:transform hover:-translate-y-1 hover:shadow-xl"
+              className="px-8 py-4 bg-amber-500 text-white rounded-xl font-black uppercase tracking-widest shadow-lg shadow-amber-500/20 transition-all duration-300"
             >
-              Start Your Project
+              Get Consultation
             </a>
             <a
               href="tel:+919253625099"
-              className="bg-white text-gray-900 border-2 border-white px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-gray-100 hover:text-black transition-all duration-200 hover:transform hover:-translate-y-1 shadow-lg"
+              className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-white/20 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 shadow-lg"
             >
-              Call Us Now
+              Talk to Expert
             </a>
           </div>
         </div>

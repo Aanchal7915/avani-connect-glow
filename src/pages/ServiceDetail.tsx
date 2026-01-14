@@ -470,31 +470,35 @@ const ServiceDetail = () => {
 
             {/* CTA Section */}
             <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full" />
-                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full" />
+                {/* Background Image with Blur */}
+                <div className="absolute inset-0 z-0 pointer-events-none">
+                    <div
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
+                        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?q=80&w=2070&auto=format&fit=crop")' }}
+                    />
+                    <div className="absolute inset-0 bg-slate-900/85" />
                 </div>
 
                 <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <AnimatedSection animation="fadeInUp" delay={0.2}>
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                            Ready to Get Started?
+                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 font-sans leading-tight">
+                            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Success Story</span> Together
                         </h2>
-                        <p className="text-xl mb-8 text-slate-300">
-                            Let's discuss how our {service.title.toLowerCase()} services can help transform your business.
+                        <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                            Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 to="/get-consultation"
-                                className="bg-amber-500 text-slate-900 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-amber-400 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                                className="px-8 py-4 bg-amber-500 text-white rounded-xl font-black uppercase tracking-widest shadow-lg shadow-amber-500/20 transition-all duration-300"
                             >
                                 Get Consultation
                             </Link>
                             <a
                                 href="tel:+919253625099"
-                                className="bg-white text-slate-900 border-2 border-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-100 transition-all duration-200 hover:-translate-y-1 shadow-lg"
+                                className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-white/20 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 shadow-lg"
                             >
-                                Call Us Now
+                                Talk to Expert
                             </a>
                         </div>
                     </AnimatedSection>

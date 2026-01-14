@@ -126,7 +126,7 @@ const Home = () => {
     {
       icon: <Globe className="w-8 h-8" />,
       title: "Web & App Development",
-      description: "Custom websites and mobile apps that drive conversions and user engagement.",
+      description: "Transform your vision into reality with custom-built websites and mobile applications. We create scalable, high-performance digital solutions that deliver exceptional user experiences and drive measurable business results.",
       color: "from-blue-500 to-blue-600",
       bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
       slug: "web-development"
@@ -134,7 +134,7 @@ const Home = () => {
     {
       icon: <Search className="w-8 h-8" />,
       title: "SEO & Content Marketing",
-      description: "Data-driven SEO strategies and compelling content that ranks and converts.",
+      description: "Dominate search rankings and captivate your audience with data-driven SEO strategies and compelling content. We help you build authority, increase organic traffic, and convert visitors into loyal customers.",
       color: "from-green-500 to-green-600",
       bgImage: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&h=400&fit=crop",
       slug: "seo-content"
@@ -142,7 +142,7 @@ const Home = () => {
     {
       icon: <Share2 className="w-8 h-8" />,
       title: "Social Media Marketing",
-      description: "Strategic SMM campaigns that build brand awareness and drive engagement.",
+      description: "Build a powerful brand presence across social platforms. Our strategic campaigns create meaningful connections with your audience, boost engagement, and turn followers into brand advocates.",
       color: "from-purple-500 to-purple-600",
       bgImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop",
       slug: "social-media"
@@ -150,7 +150,7 @@ const Home = () => {
     {
       icon: <Brain className="w-8 h-8" />,
       title: "AI Solutions",
-      description: "Cutting-edge AI integration for automation and intelligent decision-making.",
+      description: "Harness the power of artificial intelligence to automate processes, gain actionable insights, and make smarter business decisions. From lead management automation to WhatsApp text automation, we integrate cutting-edge AI technology tailored to your unique needs.",
       color: "from-orange-500 to-orange-600",
       bgImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
       slug: "ai-solutions"
@@ -158,7 +158,7 @@ const Home = () => {
     {
       icon: <Mic className="w-8 h-8" />,
       title: "Podcast Production",
-      description: "Professional podcast creation and distribution to amplify your brand voice.",
+      description: "Amplify your brand voice with professional podcast production. From concept to distribution, we handle everything to help you reach and engage your target audience through compelling audio content.",
       color: "from-red-500 to-red-600",
       bgImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=400&fit=crop",
       slug: "podcast-production"
@@ -166,7 +166,7 @@ const Home = () => {
     {
       icon: <Calculator className="w-8 h-8" />,
       title: "Financial Consulting",
-      description: "Strategic financial planning and investment guidance for business growth.",
+      description: "Navigate complex financial decisions with confidence. Our expert consultants provide strategic planning, investment guidance, and financial optimization strategies to accelerate your business growth.",
       color: "from-indigo-500 to-indigo-600",
       bgImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
       slug: "financial-consulting"
@@ -174,7 +174,7 @@ const Home = () => {
     {
       icon: <Briefcase className="w-8 h-8" />,
       title: "Business Consultation",
-      description: "Expert guidance to optimize your business operations, strategy, and growth potential for long-term success.",
+      description: "Unlock your business's full potential with expert strategic guidance. We analyze your operations, identify growth opportunities, and provide actionable insights to optimize performance and achieve sustainable success.",
       color: "from-amber-500 to-orange-500",
       bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
       slug: "business-consultation"
@@ -182,7 +182,7 @@ const Home = () => {
     {
       icon: <Landmark className="w-8 h-8" />,
       title: "Business Loans",
-      description: "Flexible financing solutions including term loans, working capital, and equipment financing to fuel your growth.",
+      description: "Fuel your growth with flexible financing solutions. Access term loans, working capital, equipment financing, and more with competitive rates and terms designed to support your business expansion.",
       color: "from-indigo-500 to-blue-500",
       bgImage: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&h=400&fit=crop",
       slug: "business-loans"
@@ -190,7 +190,7 @@ const Home = () => {
     {
       icon: <ShieldCheck className="w-8 h-8" />,
       title: "Business Insurance",
-      description: "Comprehensive protection for your business assets, liability, and employees with tailored insurance plans.",
+      description: "Protect what you've built with comprehensive insurance coverage. Safeguard your assets, mitigate risks, and ensure business continuity with tailored insurance plans that give you peace of mind.",
       color: "from-emerald-500 to-green-500",
       bgImage: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop",
       slug: "business-insurance"
@@ -1306,24 +1306,24 @@ const Home = () => {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-sans">
-            Ready to Transform Your Business?
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 font-sans leading-tight">
+            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Success Story</span> Together
           </h2>
-          <p className="text-xl mb-8 text-gray-200">
-            Let's discuss how we can help you achieve your growth goals and build a powerful digital presence.
+          <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-consultation"
-              className="bg-[#FFD700] text-black px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-[#FDB931] transition-all duration-200 shadow-lg hover:transform hover:-translate-y-1 hover:shadow-xl"
+              className="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-black uppercase tracking-widest shadow-lg shadow-amber-500/20 active:scale-95 transition-all duration-300"
             >
               Get Consultation
             </Link>
             <a
               href="tel:+919253625099"
-              className="bg-white text-gray-900 border-2 border-white px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-gray-100 hover:text-black transition-all duration-200 hover:transform hover:-translate-y-1 shadow-lg"
+              className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-white/20 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 shadow-lg"
             >
-              Call Us Now
+              Talk to Expert
             </a>
           </div>
         </div>

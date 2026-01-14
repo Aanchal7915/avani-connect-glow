@@ -122,45 +122,60 @@ const Contact = () => {
   return (
     <div className="pt-20">
       {/* Hero Section - Full Page */}
-      <section className="relative min-h-screen flex items-center py-20 overflow-hidden bg-[#0f172a]">
-        {/* Background Geometric Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Large Diagonal Navy/Blue Shape */}
-          <div className="absolute -top-24 -right-20 w-[120%] h-full bg-[#1e293b] -rotate-12 transform origin-top-right shadow-2xl" />
-
-          {/* Yellow Diagonal Strip */}
-          <div className="absolute top-0 right-1/4 w-32 h-[150%] bg-gradient-to-r from-amber-400 to-orange-500 rotate-[35deg] transform origin-top opacity-40 shadow-2xl" />
-
-          {/* Subtle Stardust Texture */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+      <section className="relative min-h-screen flex items-center py-20 overflow-hidden bg-[#fefaf6]">
+        {/* Curved Background Split */}
+        <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none hidden lg:block">
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-100/40 via-orange-50/30 to-transparent rounded-l-[20rem] transform scale-x-110 translate-x-20" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fadeInUp" delay={0.2}>
-            <div className="max-w-3xl relative">
-              <div className="w-20 h-2 bg-gradient-to-r from-amber-400 to-orange-500 mb-8" />
-              <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
-                Let's Start a <br />
-                <span className="text-amber-500">Project.</span>
-              </h1>
-              <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-medium">
-                We combine strategic business understanding with technical excellence
-                to deliver solutions that don't just work—they win.
-              </p>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Content - Centered */}
+            <span className="text-amber-600 font-bold text-sm tracking-wide mb-4 block">
+              We're Here to Help
+            </span>
+
+            <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
+              Let's Start a <span className="text-amber-500">Project.</span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed font-medium max-w-2xl mx-auto">
+              We combine strategic business understanding with technical excellence to deliver solutions that don't just work—they win.
+            </p>
+
+            <div className="flex flex-col gap-8 mb-16">
+              <div className="flex flex-row items-center justify-center gap-3 sm:gap-6">
+                <a
+                  href="#contact-form"
+                  className="flex-1 sm:flex-none px-4 py-3 sm:px-10 sm:py-5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl sm:rounded-2xl font-black text-[11px] sm:text-sm uppercase tracking-widest shadow-lg shadow-amber-500/20 active:scale-95 transition-all duration-300 text-center"
+                >
+                  Send Message
+                </a>
+                <a
+                  href={`https://wa.me/${whatsappNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-none px-4 py-3 sm:px-10 sm:py-5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl sm:rounded-2xl font-black text-[11px] sm:text-sm uppercase tracking-widest shadow-lg active:scale-95 transition-all duration-300 text-center"
+                >
+                  WhatsApp
+                </a>
+              </div>
+
+              <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold text-sm">
+                    ⚡
+                  </div>
+                  <span className="text-xs sm:text-sm font-bold text-slate-600">Quick Response Guaranteed</span>
+                </div>
+              </div>
             </div>
-          </AnimatedSection>
-        </div>
-
-        {/* Bottom Hexagon Accent */}
-        <div className="absolute -bottom-12 right-12 w-48 h-48 opacity-10">
-          <svg viewBox="0 0 100 100" fill="currentColor" className="text-white">
-            <path d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" />
-          </svg>
+          </div>
         </div>
       </section>
 
       {/* Main Content Section */}
-      <section className="relative -mt-24 z-20 pb-24">
+      <section id="contact-form" className="relative -mt-24 z-20 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 

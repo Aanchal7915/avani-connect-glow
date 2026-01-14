@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Target,
@@ -407,64 +408,97 @@ const About = () => {
               opacity: 0.2
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-purple-900" />
-          <div className="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+          <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+          
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-amber-500/10 blur-[120px] rounded-full animate-pulse" />
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+          </div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 text-white">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-sans tracking-tight">
-              Our Achievements
-            </h2>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto font-medium">
-              Numbers that speak for themselves and demonstrate our commitment to excellence.
-            </p>
+          <div className="text-center mb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 font-sans">
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Achievements</span>
+              </h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Numbers that speak for themselves and demonstrate our commitment to excellence.
+              </p>
+            </motion.div>
           </div>
-          <div className="flex flex-nowrap items-center justify-between gap-2 overflow-x-visible">
-            <div className="text-center flex-shrink-0 min-w-0 flex-1">
-              <div className="flex items-center justify-center mb-2 scale-75 md:scale-100 text-white">
-                <Users className="w-6 h-6" />
-              </div>
-              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 text-white">
-                <AnimatedCounter target={150} suffix="+" />
-              </div>
-              <div className="text-[10px] sm:text-xs md:text-blue-100 line-clamp-1">
-                Happy Clients
-              </div>
-            </div>
-            <div className="text-center flex-shrink-0 min-w-0 flex-1">
-              <div className="flex items-center justify-center mb-2 scale-75 md:scale-100 text-white">
-                <Award className="w-6 h-6" />
-              </div>
-              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 text-white">
-                <AnimatedCounter target={300} suffix="+" />
-              </div>
-              <div className="text-[10px] sm:text-xs md:text-blue-100 line-clamp-1">
-                Projects Completed
-              </div>
-            </div>
-            <div className="text-center flex-shrink-0 min-w-0 flex-1">
-              <div className="flex items-center justify-center mb-2 scale-75 md:scale-100 text-white">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 text-white">
-                <AnimatedCounter target={85} suffix="%" />
-              </div>
-              <div className="text-[10px] sm:text-xs md:text-blue-100 line-clamp-1">
-                Average Growth
-              </div>
-            </div>
-            <div className="text-center flex-shrink-0 min-w-0 flex-1">
-              <div className="flex items-center justify-center mb-2 scale-75 md:scale-100 text-white">
-                <Globe className="w-6 h-6" />
-              </div>
-              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 text-white">
-                <AnimatedCounter target={8} suffix="+" />
-              </div>
-              <div className="text-[10px] sm:text-xs md:text-blue-100 line-clamp-1">
-                Years Experience
-              </div>
-            </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {[
+              {
+                icon: <Users className="w-8 h-8" />,
+                value: 150,
+                suffix: "+",
+                label: "Happy Clients",
+                gradient: "from-blue-500 to-cyan-500",
+                delay: 0.2
+              },
+              {
+                icon: <Award className="w-8 h-8" />,
+                value: 300,
+                suffix: "+",
+                label: "Projects Completed",
+                gradient: "from-purple-500 to-pink-500",
+                delay: 0.3
+              },
+              {
+                icon: <TrendingUp className="w-8 h-8" />,
+                value: 85,
+                suffix: "%",
+                label: "Average Growth",
+                gradient: "from-amber-500 to-orange-500",
+                delay: 0.4
+              },
+              {
+                icon: <Globe className="w-8 h-8" />,
+                value: 8,
+                suffix: "+",
+                label: "Years Experience",
+                gradient: "from-green-500 to-emerald-500",
+                delay: 0.5
+              }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: stat.delay }}
+                className="group"
+              >
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-amber-500/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/20">
+                  {/* Icon */}
+                  <div className={`w-16 h-16 bg-gradient-to-br ${stat.gradient} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    {stat.icon}
+                  </div>
+
+                  {/* Value */}
+                  <div className="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-amber-400 transition-colors duration-300">
+                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                  </div>
+
+                  {/* Label */}
+                  <div className="text-sm font-bold text-gray-400 uppercase tracking-wider group-hover:text-gray-300 transition-colors duration-300">
+                    {stat.label}
+                  </div>
+
+                  {/* Decorative Corner */}
+                  <div className={`absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl ${stat.gradient} opacity-0 group-hover:opacity-10 rounded-tl-full transition-opacity duration-500`} />
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -582,31 +616,34 @@ const About = () => {
 
       {/* CTA Section */}
       <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full" />
+        {/* Background Image with Blur */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
+            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?q=80&w=2070&auto=format&fit=crop")' }}
+          />
+          <div className="absolute inset-0 bg-slate-900/85" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-sans">
-            Ready to Work with Us?
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 font-sans leading-tight">
+            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Success Story</span> Together
           </h2>
-          <p className="text-xl mb-8 text-gray-200">
-            Let's discuss how we can help transform your business and achieve your growth goals.
+          <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="bg-[#FFD700] text-black px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-[#FDB931] transition-all duration-200 shadow-lg hover:transform hover:-translate-y-1 hover:shadow-xl"
+            <Link
+              to="/get-consultation"
+              className="px-8 py-4 bg-amber-500 text-white rounded-xl font-black uppercase tracking-widest shadow-lg shadow-amber-500/20 transition-all duration-300"
             >
-              Get Started Today
-            </a>
+              Get Consultation
+            </Link>
             <a
               href="tel:+919253625099"
-              className="bg-white text-gray-900 border-2 border-white px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-gray-100 hover:text-black transition-all duration-200 hover:transform hover:-translate-y-1 shadow-lg"
+              className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-white/20 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 shadow-lg"
             >
-              Call Us Now
+              Talk to Expert
             </a>
           </div>
         </div>
