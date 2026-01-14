@@ -471,28 +471,26 @@ const Courses = () => {
         </div>
       </section>
 
-      {/* Course Grid with Unique Path-to-Success Background */}
-      <section className="relative py-24 overflow-hidden bg-slate-900">
-        {/* Unique Background Design: Indigo Strip & Academic Image */}
+      {/* Course Grid with Creative Light Background */}
+      <section className="relative py-24 overflow-hidden bg-[#fefaf6]">
+        {/* Creative Background Design */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          {/* Subtle Academic Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=2074&auto=format&fit=crop")' }}
-          />
-
-          {/* Purple Path Strip (Distinguishing from Services' Yellow Strip) */}
-          <div className="absolute top-1/2 left-0 w-full h-[500px] -translate-y-1/2 bg-gradient-to-r from-purple-600/10 via-violet-500/20 to-indigo-600/10 z-0 skew-y-3 transform" />
-
-          {/* Decorative Grainy Overlay for Texture */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 via-orange-50/40 to-transparent" />
+          
+          {/* Large Decorative Blobs */}
+          <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/30 to-orange-200/30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-br from-orange-200/30 to-amber-200/30 blur-[120px] rounded-full" />
+          
+          {/* Subtle Dot Pattern */}
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCourses.map((course) => (
               <AnimatedSection key={course.id} animation="fadeInUp" delay={0.4 + (course.id * 0.1)}>
-                <div className="group flex flex-col bg-white rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.05)] overflow-hidden hover:shadow-[0_20px_60px_rgba(37,99,235,0.15)] transition-all duration-500 hover:-translate-y-2 border border-slate-100 h-full">
+                <div className="group flex flex-col bg-white rounded-[2rem] shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 border border-slate-100 h-full">
                   {/* Thumbnail Section */}
                   <div className="relative h-44 overflow-hidden">
                     <img

@@ -135,7 +135,7 @@ const Home = () => {
       icon: <Search className="w-8 h-8" />,
       title: "SEO & Content Marketing",
       description: "Dominate search rankings and captivate your audience with data-driven SEO strategies and compelling content. We help you build authority, increase organic traffic, and convert visitors into loyal customers.",
-      color: "from-green-500 to-green-600",
+      color: "from-amber-500 to-orange-600",
       bgImage: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&h=400&fit=crop",
       slug: "seo-content"
     },
@@ -143,7 +143,7 @@ const Home = () => {
       icon: <Share2 className="w-8 h-8" />,
       title: "Social Media Marketing",
       description: "Build a powerful brand presence across social platforms. Our strategic campaigns create meaningful connections with your audience, boost engagement, and turn followers into brand advocates.",
-      color: "from-purple-500 to-purple-600",
+      color: "from-amber-500 to-orange-600",
       bgImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop",
       slug: "social-media"
     },
@@ -543,9 +543,9 @@ const Home = () => {
                       {/* Bar Graph UI - Square & Colorful */}
                       <div className="flex items-end justify-between h-32 gap-3 px-2">
                         {[
-                          { h: 40, c: "bg-blue-500" },
+                          { h: 40, c: "bg-amber-500" },
                           { h: 70, c: "bg-amber-500" },
-                          { h: 55, c: "bg-violet-500" },
+                          { h: 55, c: "bg-orange-500" },
                           { h: 90, c: "bg-emerald-500" },
                           { h: 65, c: "bg-orange-500" },
                           { h: 80, c: "bg-indigo-500" },

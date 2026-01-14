@@ -175,7 +175,7 @@ const Contact = () => {
       </section>
 
       {/* Main Content Section */}
-      <section id="contact-form" className="relative -mt-24 z-20 pb-24">
+      <section id="contact-form" className="relative -mt-24 z-20 pb-24 bg-gradient-to-b from-transparent via-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 

@@ -717,9 +717,19 @@ const Services = () => {
       </section>
 
       {/* Service Categories */}
-      <section className="py-24 bg-[#333333] relative overflow-hidden">
-        {/* Amber Background Strip */}
-        <div className="absolute top-1/2 left-0 w-full h-[400px] -translate-y-1/2 bg-amber-500 z-0"></div>
+      <section className="relative py-24 bg-[#fefaf6] overflow-hidden">
+        {/* Creative Background Design */}
+        <div className="absolute inset-0 z-0">
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 via-orange-50/40 to-transparent" />
+          
+          {/* Large Decorative Blobs */}
+          <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/30 to-orange-200/30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-br from-orange-200/30 to-amber-200/30 blur-[120px] rounded-full" />
+          
+          {/* Subtle Dot Pattern */}
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-3 lg:flex lg:flex-wrap lg:justify-center gap-2 md:gap-4 mb-12">
@@ -728,8 +738,8 @@ const Services = () => {
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
                 className={`px-2 py-2.5 lg:px-6 lg:py-3 rounded-lg font-bold tracking-wide text-[10px] lg:text-base transition-all duration-300 ${activeTab === category.id
-                  ? 'bg-amber-500 text-white shadow-lg transform -translate-y-1'
-                  : 'bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm'
+                  ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg transform -translate-y-1'
+                  : 'bg-white/80 text-slate-700 hover:bg-white border border-slate-200 hover:border-amber-300'
                   }`}
               >
                 <span className="line-clamp-1">{category.name}</span>
@@ -740,7 +750,7 @@ const Services = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredServices.map((service) => (
               <AnimatedSection key={service.id} animation="fadeInUp" delay={0.1}>
-                <div id={service.id} className="bg-white rounded-2xl p-4 shadow-2xl h-full flex flex-col group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+                <div id={service.id} className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-2xl h-full flex flex-col group cursor-pointer hover:-translate-y-2 transition-all duration-300 border border-slate-100">
                   {/* Card Image */}
                   <div className="w-full h-48 rounded-xl bg-gray-100 mb-5 relative overflow-hidden shrink-0">
                     <img
@@ -787,7 +797,7 @@ const Services = () => {
                   <div className="mt-auto">
                     <Link
                       to={`/contact?service=${service.id}`}
-                      className="w-full inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white uppercase tracking-widest bg-amber-500 rounded hover:bg-amber-600 transition-all duration-300"
+                      className="w-full inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white uppercase tracking-widest bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 rounded hover:shadow-lg transition-all duration-300"
                     >
                       Get Quote
                     </Link>

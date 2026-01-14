@@ -7,13 +7,20 @@ const SanjeevniHospitalProject = () => {
   return (
     <div className="pt-20 min-h-screen bg-white">
       {/* Hero Section with Video */}
-      <section className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <section className="relative bg-[#fefaf6] overflow-hidden">
+        {/* Creative Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 via-orange-50/40 to-transparent" />
+          <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/30 to-orange-200/30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-br from-orange-200/30 to-amber-200/30 blur-[120px] rounded-full" />
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <Link
               to="/"
-              className="inline-flex items-center text-white/90 hover:text-white mb-6 transition-colors"
+              className="inline-flex items-center text-slate-700 hover:text-amber-600 mb-6 transition-colors font-bold"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
@@ -23,7 +30,7 @@ const SanjeevniHospitalProject = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Video Section */}
             <AnimatedSection animation="fadeInLeft" delay={0.3}>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                 <video
                   className="w-full aspect-video object-cover"
                   src="/Sanjeevni.mp4"
@@ -42,12 +49,12 @@ const SanjeevniHospitalProject = () => {
                 <img
                   src="/sanjeevni.jpeg"
                   alt="Sanjeevni Hospital Logo"
-                  className="h-16 md:h-20 object-contain bg-white/10 p-2 rounded-lg"
+                  className="h-16 md:h-20 object-contain bg-white p-3 rounded-xl shadow-md"
                 />
-                <h1 className="text-4xl md:text-5xl font-bold">
+                <h1 className="text-4xl md:text-5xl font-black text-slate-900">
                   Sanjeevni Hospital
                 </h1>
-                <p className="text-xl md:text-2xl text-blue-100 max-w-xl">
+                <p className="text-xl md:text-2xl text-slate-600 max-w-xl font-medium leading-relaxed">
                   A comprehensive web platform for healthcare services, specializing in patient care and medical facility management
                 </p>
               </div>

@@ -7,20 +7,23 @@ const BusinessProcessOptimizationProject = () => {
     return (
         <div className="pt-20 min-h-screen bg-white">
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
-                <div className="absolute inset-0 bg-black/20"></div>
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0" style={{
-                        backgroundImage: `radial-gradient(circle at 2px 2px, #f97316 1px, transparent 0)`,
+            <section className="relative bg-[#fefaf6] overflow-hidden">
+                {/* Creative Background */}
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 via-orange-50/40 to-transparent" />
+                    <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/30 to-orange-200/30 blur-[120px] rounded-full" />
+                    <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-br from-orange-200/30 to-amber-200/30 blur-[120px] rounded-full" />
+                    <div className="absolute inset-0 opacity-[0.02]" style={{
+                        backgroundImage: `radial-gradient(circle at 2px 2px, #f59e0b 1px, transparent 0)`,
                         backgroundSize: '40px 40px'
                     }} />
                 </div>
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+                
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
                     <AnimatedSection animation="fadeInUp" delay={0.2}>
                         <Link
                             to="/services/ai-solutions"
-                            className="inline-flex items-center text-white/90 hover:text-white mb-6 transition-colors"
+                            className="inline-flex items-center text-slate-700 hover:text-amber-600 mb-6 transition-colors font-bold"
                         >
                             <ArrowLeft className="w-4 h-4 mr-2" />
                             Back to AI Solutions
@@ -31,13 +34,13 @@ const BusinessProcessOptimizationProject = () => {
                         {/* Content Section */}
                         <AnimatedSection animation="fadeInLeft" delay={0.3}>
                             <div className="flex flex-col items-start gap-4">
-                                <div className="p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-                                    <Workflow className="w-12 h-12 text-orange-400" />
+                                <div className="p-4 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl shadow-lg">
+                                    <Workflow className="w-12 h-12 text-white" />
                                 </div>
-                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black">
+                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900">
                                     Business Process Optimization Agent
                                 </h1>
-                                <p className="text-xl md:text-2xl text-slate-300 max-w-xl leading-relaxed">
+                                <p className="text-xl md:text-2xl text-slate-600 max-w-xl leading-relaxed font-medium">
                                     An AI system that reads daily business work, understands patterns, identifies waste, and automates repeatable tasks
                                 </p>
                             </div>
@@ -45,35 +48,35 @@ const BusinessProcessOptimizationProject = () => {
 
                         {/* Image/Illustration Section */}
                         <AnimatedSection animation="fadeInRight" delay={0.4}>
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                                 <img
                                     src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop"
                                     alt="Business Process Optimization Dashboard"
                                     className="w-full aspect-video object-cover"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-slate-900/50"></div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-slate-900/30"></div>
                                 {/* Stats Overlay */}
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <div className="grid grid-cols-2 gap-4 p-8">
-                                        <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-white/20">
-                                            <Clock className="w-8 h-8 mx-auto mb-2 text-orange-400" />
-                                            <div className="text-3xl font-black mb-1">60%</div>
-                                            <div className="text-sm opacity-90">Time Saved</div>
+                                        <div className="bg-white/90 backdrop-blur-md rounded-xl p-6 text-center border-2 border-amber-200 shadow-lg">
+                                            <Clock className="w-8 h-8 mx-auto mb-2 text-amber-500" />
+                                            <div className="text-3xl font-black mb-1 text-slate-900">60%</div>
+                                            <div className="text-sm text-slate-600 font-bold">Time Saved</div>
                                         </div>
-                                        <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-white/20">
-                                            <Bot className="w-8 h-8 mx-auto mb-2 text-orange-400" />
-                                            <div className="text-3xl font-black mb-1">80%</div>
-                                            <div className="text-sm opacity-90">Tasks Automated</div>
+                                        <div className="bg-white/90 backdrop-blur-md rounded-xl p-6 text-center border-2 border-amber-200 shadow-lg">
+                                            <Bot className="w-8 h-8 mx-auto mb-2 text-amber-500" />
+                                            <div className="text-3xl font-black mb-1 text-slate-900">80%</div>
+                                            <div className="text-sm text-slate-600 font-bold">Tasks Automated</div>
                                         </div>
-                                        <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-white/20">
-                                            <TrendingUp className="w-8 h-8 mx-auto mb-2 text-orange-400" />
-                                            <div className="text-3xl font-black mb-1">40%</div>
-                                            <div className="text-sm opacity-90">Cost Reduction</div>
+                                        <div className="bg-white/90 backdrop-blur-md rounded-xl p-6 text-center border-2 border-amber-200 shadow-lg">
+                                            <TrendingUp className="w-8 h-8 mx-auto mb-2 text-amber-500" />
+                                            <div className="text-3xl font-black mb-1 text-slate-900">40%</div>
+                                            <div className="text-sm text-slate-600 font-bold">Cost Reduction</div>
                                         </div>
-                                        <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-white/20">
-                                            <Workflow className="w-8 h-8 mx-auto mb-2 text-orange-400" />
-                                            <div className="text-3xl font-black mb-1">5x</div>
-                                            <div className="text-sm opacity-90">Faster Processing</div>
+                                        <div className="bg-white/90 backdrop-blur-md rounded-xl p-6 text-center border-2 border-amber-200 shadow-lg">
+                                            <Workflow className="w-8 h-8 mx-auto mb-2 text-amber-500" />
+                                            <div className="text-3xl font-black mb-1 text-slate-900">5x</div>
+                                            <div className="text-sm text-slate-600 font-bold">Faster Processing</div>
                                         </div>
                                     </div>
                                 </div>

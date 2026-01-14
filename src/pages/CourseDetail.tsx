@@ -744,42 +744,55 @@ const CourseDetail = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-purple-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section - Creative Design */}
+      <section className="relative py-20 overflow-hidden bg-[#fefaf6]">
+        {/* Creative Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 via-orange-50/40 to-transparent" />
+          <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/30 to-orange-200/30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-br from-orange-200/30 to-amber-200/30 blur-[120px] rounded-full" />
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="mb-4">
-                <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <div className="mb-6">
+                <span className="inline-block px-4 py-2 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-full text-xs font-black uppercase tracking-wider shadow-lg">
                   {course.category}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
                 {course.title}
               </h1>
-              <h2 className="text-2xl text-gray-600 mb-6">
+              <h2 className="text-xl md:text-2xl text-slate-600 mb-6 font-medium">
                 {course.subtitle}
               </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed font-medium">
                 {course.description}
               </p>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-                <div className="flex items-center">
-                  <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                  <span className="text-sm text-gray-600">{course.duration}</span>
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="bg-white rounded-xl p-4 shadow-md border border-slate-100">
+                  <Clock className="w-5 h-5 text-amber-500 mb-2" />
+                  <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Duration</div>
+                  <div className="text-sm text-slate-900 font-black">{course.duration}</div>
                 </div>
-                <div className="flex items-center">
-                  <Users className="w-5 h-5 text-blue-600 mr-2" />
-                  <span className="text-sm text-gray-600">{course.students} students</span>
+                <div className="bg-white rounded-xl p-4 shadow-md border border-slate-100">
+                  <Users className="w-5 h-5 text-amber-500 mb-2" />
+                  <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Students</div>
+                  <div className="text-sm text-slate-900 font-black">{course.students}</div>
                 </div>
-                <div className="flex items-center">
-                  <Star className="w-5 h-5 text-yellow-400 mr-2" />
-                  <span className="text-sm text-gray-600">{course.rating} rating</span>
+                <div className="bg-white rounded-xl p-4 shadow-md border border-slate-100">
+                  <Star className="w-5 h-5 text-yellow-400 fill-yellow-400 mb-2" />
+                  <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Rating</div>
+                  <div className="text-sm text-slate-900 font-black">{course.rating}</div>
                 </div>
-                <div className="flex items-center">
-                  <BookOpen className="w-5 h-5 text-blue-600 mr-2" />
-                  <span className="text-sm text-gray-600">{course.level}</span>
+                <div className="bg-white rounded-xl p-4 shadow-md border border-slate-100">
+                  <BookOpen className="w-5 h-5 text-amber-500 mb-2" />
+                  <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Level</div>
+                  <div className="text-sm text-slate-900 font-black">{course.level}</div>
                 </div>
               </div>
               
@@ -788,33 +801,28 @@ const CourseDetail = () => {
                   href={course.paymentLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center"
+                  className="bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white px-8 py-4 rounded-xl font-black hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center uppercase tracking-wider text-sm"
                 >
                   <Play className="mr-2 w-5 h-5" />
                   Enroll Now - {course.price}
                 </a>
-                {/* <Link
-                  to="/get-consultation"
-                  className="border border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-200 flex items-center justify-center"
-                >
-                  <MessageSquare className="mr-2 w-5 h-5" />
-                  Get Consultation
-                </Link> */}
               </div>
             </div>
             
             <div className="relative">
-              <img
-                src={course.image}
-                alt={course.title}
-                className="w-full rounded-xl shadow-lg"
-              />
-              <div className="absolute top-4 right-4">
-                <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                  <span className="text-sm font-medium text-gray-700">
-                    {Math.round(((parseInt(course.originalPrice.replace('₹', '').replace(',', '')) - parseInt(course.price.replace('₹', '').replace(',', ''))) / parseInt(course.originalPrice.replace('₹', '').replace(',', ''))) * 100)}% OFF
-                  </span>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                <img
+                  src={course.image}
+                  alt={course.title}
+                  className="w-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+              </div>
+              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl px-6 py-4 shadow-2xl transform rotate-3">
+                <div className="text-white font-black text-2xl">
+                  {Math.round(((parseInt(course.originalPrice.replace('₹', '').replace(',', '')) - parseInt(course.price.replace('₹', '').replace(',', ''))) / parseInt(course.originalPrice.replace('₹', '').replace(',', ''))) * 100)}% OFF
                 </div>
+                <div className="text-white/80 text-xs font-bold uppercase tracking-wider">Limited Time</div>
               </div>
             </div>
           </div>
@@ -822,14 +830,14 @@ const CourseDetail = () => {
       </section>
 
       {/* Course Details */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-white via-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2">
               {/* Tabs */}
-              <div className="border-b border-gray-200 mb-8">
-                <nav className="flex space-x-8">
+              <div className="bg-white rounded-2xl shadow-lg border border-slate-100 p-2 mb-8">
+                <nav className="flex flex-wrap gap-2">
                   {[
                     { id: 'overview', name: 'Overview', icon: <BookOpen className="w-4 h-4" /> },
                     { id: 'curriculum', name: 'Curriculum', icon: <BookOpen className="w-4 h-4" /> },
@@ -839,10 +847,10 @@ const CourseDetail = () => {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm ${
+                      className={`flex items-center space-x-2 py-3 px-6 rounded-xl font-bold text-sm transition-all duration-300 ${
                         activeTab === tab.id
-                          ? 'border-blue-500 text-blue-600'
-                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                          ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-md scale-105'
+                          : 'bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                       }`}
                     >
                       {tab.icon}
@@ -855,18 +863,24 @@ const CourseDetail = () => {
               {/* Tab Content */}
               <div className="min-h-96">
                 {activeTab === 'overview' && (
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Course Overview</h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">
+                  <div className="bg-white rounded-2xl shadow-lg border border-slate-100 p-8">
+                    <div className="flex items-center mb-6">
+                      <div className="w-1 h-8 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full mr-4"></div>
+                      <h3 className="text-3xl font-black text-slate-900">Course Overview</h3>
+                    </div>
+                    <p className="text-slate-600 mb-8 leading-relaxed text-lg font-medium">
                       {course.description}
                     </p>
                     
-                    <h4 className="text-xl font-semibold text-gray-900 mb-4">What You'll Learn</h4>
+                    <div className="flex items-center mb-6">
+                      <div className="w-1 h-8 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full mr-4"></div>
+                      <h4 className="text-2xl font-black text-slate-900">What You'll Learn</h4>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                       {course.outcomes.map((outcome, index) => (
-                        <div key={index} className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-600">{outcome}</span>
+                        <div key={index} className="flex items-start bg-gradient-to-br from-amber-50 to-orange-50 p-4 rounded-xl border border-amber-100 hover:shadow-md transition-all duration-300">
+                          <CheckCircle className="w-5 h-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="text-slate-700 font-medium">{outcome}</span>
                         </div>
                       ))}
                     </div>
@@ -874,19 +888,25 @@ const CourseDetail = () => {
                 )}
 
                 {activeTab === 'curriculum' && (
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Course Curriculum</h3>
-                    <div className="space-y-4">
+                  <div className="bg-white rounded-2xl shadow-lg border border-slate-100 p-8">
+                    <div className="flex items-center mb-8">
+                      <div className="w-1 h-8 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full mr-4"></div>
+                      <h3 className="text-3xl font-black text-slate-900">Course Curriculum</h3>
+                    </div>
+                    <div className="space-y-6">
                       {course.curriculum.map((module, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                            Module {index + 1}: {module.title}
+                        <div key={index} className="relative border-2 border-slate-200 rounded-2xl p-6 hover:border-amber-300 hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-slate-50">
+                          <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center text-white font-black text-lg shadow-lg">
+                            {index + 1}
+                          </div>
+                          <h4 className="text-xl font-black text-slate-900 mb-4 ml-8">
+                            {module.title}
                           </h4>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {module.topics.map((topic, topicIndex) => (
-                              <div key={topicIndex} className="flex items-center">
-                                <Play className="w-4 h-4 text-blue-600 mr-2" />
-                                <span className="text-gray-600 text-sm">{topic}</span>
+                              <div key={topicIndex} className="flex items-center bg-white p-3 rounded-lg border border-slate-100">
+                                <div className="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                                <span className="text-slate-700 text-sm font-medium">{topic}</span>
                               </div>
                             ))}
                           </div>
@@ -897,13 +917,18 @@ const CourseDetail = () => {
                 )}
 
                 {activeTab === 'requirements' && (
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Course Requirements</h3>
-                    <div className="space-y-4">
+                  <div className="bg-white rounded-2xl shadow-lg border border-slate-100 p-8">
+                    <div className="flex items-center mb-8">
+                      <div className="w-1 h-8 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full mr-4"></div>
+                      <h3 className="text-3xl font-black text-slate-900">Course Requirements</h3>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {course.requirements.map((requirement, index) => (
-                        <div key={index} className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-600">{requirement}</span>
+                        <div key={index} className="flex items-start bg-gradient-to-br from-slate-50 to-white p-5 rounded-xl border-2 border-slate-200 hover:border-amber-300 hover:shadow-md transition-all duration-300">
+                          <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <CheckCircle className="w-5 h-5 text-white" />
+                          </div>
+                          <span className="text-slate-700 font-medium pt-1">{requirement}</span>
                         </div>
                       ))}
                     </div>
@@ -911,13 +936,18 @@ const CourseDetail = () => {
                 )}
 
                 {activeTab === 'outcomes' && (
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Learning Outcomes</h3>
+                  <div className="bg-white rounded-2xl shadow-lg border border-slate-100 p-8">
+                    <div className="flex items-center mb-8">
+                      <div className="w-1 h-8 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full mr-4"></div>
+                      <h3 className="text-3xl font-black text-slate-900">Learning Outcomes</h3>
+                    </div>
                     <div className="space-y-4">
                       {course.outcomes.map((outcome, index) => (
-                        <div key={index} className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-600">{outcome}</span>
+                        <div key={index} className="flex items-start bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 p-5 rounded-xl border-l-4 border-amber-400 hover:shadow-md transition-all duration-300 hover:translate-x-2">
+                          <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white font-black text-sm mr-4 flex-shrink-0">
+                            {index + 1}
+                          </div>
+                          <span className="text-slate-700 font-medium pt-1">{outcome}</span>
                         </div>
                       ))}
                     </div>
@@ -929,17 +959,17 @@ const CourseDetail = () => {
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Course Card */}
-              <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-lg">
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg">
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">{course.price}</div>
-                  <div className="text-lg text-gray-400 line-through">{course.originalPrice}</div>
+                  <div className="text-3xl font-black text-amber-600 mb-2">{course.price}</div>
+                  <div className="text-lg text-slate-400 line-through font-bold">{course.originalPrice}</div>
                 </div>
                 
                 <div className="space-y-4 mb-6">
                   {course.features.map((feature, index) => (
                     <div key={index} className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600 text-sm">{feature}</span>
+                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600 text-sm font-medium">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -948,40 +978,40 @@ const CourseDetail = () => {
                   href={course.paymentLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 hover:scale-105 text-center block"
+                  className="w-full bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white py-3 px-6 rounded-xl font-black hover:shadow-lg transition-all duration-200 hover:scale-105 text-center block uppercase tracking-wider text-sm"
                 >
                   Enroll Now
                 </a>
               </div>
 
               {/* Instructor */}
-              <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-lg">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Instructor</h3>
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg">
+                <h3 className="text-lg font-black text-slate-900 mb-4">Instructor</h3>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white font-black mr-4">
                     {course.instructor.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">{course.instructor}</div>
-                    <div className="text-sm text-gray-600">Expert Instructor</div>
+                    <div className="font-black text-slate-900">{course.instructor}</div>
+                    <div className="text-sm text-slate-600 font-bold">Expert Instructor</div>
                   </div>
                 </div>
               </div>
 
               {/* Contact */}
-              <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-lg">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Need Help?</h3>
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg">
+                <h3 className="text-lg font-black text-slate-900 mb-4">Need Help?</h3>
                 <div className="space-y-3">
                   <a
                     href="tel:+919253625099"
-                    className="flex items-center text-gray-600 hover:text-blue-600 transition-colors"
+                    className="flex items-center text-slate-600 hover:text-amber-600 transition-colors font-bold"
                   >
                     <Phone className="w-4 h-4 mr-2" />
                     +91 9253625099
                   </a>
                   <a
                     href="mailto:kapilatavanienterprises@gmail.com"
-                    className="flex items-center text-gray-600 hover:text-blue-600 transition-colors"
+                    className="flex items-center text-slate-600 hover:text-amber-600 transition-colors font-bold"
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     kapilatavanienterprises@gmail.com
@@ -990,7 +1020,7 @@ const CourseDetail = () => {
                     href="https://wa.me/919253625099"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-gray-600 hover:text-blue-600 transition-colors"
+                    className="flex items-center text-slate-600 hover:text-amber-600 transition-colors font-bold"
                   >
                     <MessageSquare className="w-4 h-4 mr-2" />
                     WhatsApp
@@ -1003,26 +1033,26 @@ const CourseDetail = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Let's Build Your Success Story Together
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Success Story</span> Together
           </h2>
-          <p className="text-xl mb-8 text-blue-100">
-Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
+          <p className="text-xl mb-10 text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
+            Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={course.paymentLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+              className="px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white rounded-xl font-black uppercase tracking-widest shadow-lg transition-all duration-300"
             >
               Enroll Now - {course.price}
             </a>
             <Link
               to="/get-consultation"
-              className="border border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200"
+              className="bg-slate-100 text-slate-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-200 hover:border-slate-300 transition-all duration-300"
             >
               Get Consultation
             </Link>

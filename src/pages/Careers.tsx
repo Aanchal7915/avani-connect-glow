@@ -218,35 +218,33 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Job Grid with Unique Background */}
-      <section className="relative py-24 overflow-hidden bg-slate-900">
-        {/* Unique Background Design: Indigo Strip & Career Image */}
+      {/* Job Grid with Creative Light Background */}
+      <section className="relative py-24 overflow-hidden bg-[#fefaf6]">
+        {/* Creative Background Design */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          {/* Subtle Career Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop")' }}
-          />
-
-          {/* Purple Path Strip (Distinguishing from Services' Yellow Strip) */}
-          <div className="absolute top-1/2 left-0 w-full h-[500px] -translate-y-1/2 bg-gradient-to-r from-purple-600/10 via-violet-500/20 to-indigo-600/10 z-0 skew-y-3 transform" />
-
-          {/* Decorative Grainy Overlay for Texture */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 via-orange-50/40 to-transparent" />
+          
+          {/* Large Decorative Blobs */}
+          <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/30 to-orange-200/30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-br from-orange-200/30 to-amber-200/30 blur-[120px] rounded-full" />
+          
+          {/* Subtle Dot Pattern */}
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-amber-500"></div>
-              <p className="text-white mt-4">Loading opportunities...</p>
+              <p className="text-slate-900 mt-4 font-bold">Loading opportunities...</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredJobs.map((job, index) => (
                 <AnimatedSection key={job._id} animation="fadeInUp" delay={0.4 + (index * 0.1)}>
                   <div 
-                    className="group flex flex-col bg-white rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.05)] overflow-hidden hover:shadow-[0_20px_60px_rgba(37,99,235,0.15)] transition-all duration-500 hover:-translate-y-2 border border-slate-100 h-full cursor-pointer"
+                    className="group flex flex-col bg-white rounded-[2rem] shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 border border-slate-100 h-full cursor-pointer"
                     onClick={() => navigate(`/careers/${job._id}`)}
                   >
                     {/* Thumbnail Section */}
@@ -346,7 +344,7 @@ const Careers = () => {
           {!loading && filteredJobs.length === 0 && (
             <div className="text-center py-12">
               <Briefcase className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <p className="text-white text-lg">
+              <p className="text-slate-900 text-lg font-bold">
                 No jobs found matching your criteria.
               </p>
             </div>
@@ -386,7 +384,7 @@ const Careers = () => {
             <AnimatedSection animation="fadeInUp" delay={0.2}>
               <div className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 overflow-hidden">
                 {/* Decorative Number */}
-                <div className="absolute -top-6 -right-6 text-[120px] font-black text-amber-500/5 leading-none">01</div>
+                <div className="absolute top-4 right-4 text-[60px] font-black text-amber-500/30 leading-none">01</div>
                 
                 <div className="relative z-10">
                   {/* Accent Bar */}
@@ -409,7 +407,7 @@ const Careers = () => {
             <AnimatedSection animation="fadeInUp" delay={0.3}>
               <div className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 overflow-hidden">
                 {/* Decorative Number */}
-                <div className="absolute -top-6 -right-6 text-[120px] font-black text-amber-500/5 leading-none">02</div>
+                <div className="absolute top-4 right-4 text-[60px] font-black text-amber-500/30 leading-none">02</div>
                 
                 <div className="relative z-10">
                   {/* Accent Bar */}
@@ -432,7 +430,7 @@ const Careers = () => {
             <AnimatedSection animation="fadeInUp" delay={0.4}>
               <div className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 overflow-hidden">
                 {/* Decorative Number */}
-                <div className="absolute -top-6 -right-6 text-[120px] font-black text-amber-500/5 leading-none">03</div>
+                <div className="absolute top-4 right-4 text-[60px] font-black text-amber-500/30 leading-none">03</div>
                 
                 <div className="relative z-10">
                   {/* Accent Bar */}
@@ -455,7 +453,7 @@ const Careers = () => {
             <AnimatedSection animation="fadeInUp" delay={0.5}>
               <div className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 overflow-hidden">
                 {/* Decorative Number */}
-                <div className="absolute -top-6 -right-6 text-[120px] font-black text-amber-500/5 leading-none">04</div>
+                <div className="absolute top-4 right-4 text-[60px] font-black text-amber-500/30 leading-none">04</div>
                 
                 <div className="relative z-10">
                   {/* Accent Bar */}

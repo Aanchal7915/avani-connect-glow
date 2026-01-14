@@ -69,6 +69,21 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/services/business-consultation" className="text-gray-300 hover:text-white transition-colors">
+                  Business Consultation
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/business-loans" className="text-gray-300 hover:text-white transition-colors">
+                  Business Loans
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/business-insurance" className="text-gray-300 hover:text-white transition-colors">
+                  Business Insurance
+                </Link>
+              </li>
+              <li>
                 <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
                   Financial Consulting
                 </Link>

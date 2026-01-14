@@ -7,20 +7,23 @@ const WhatsAppAutomationProject = () => {
   return (
     <div className="pt-20 min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, #10b981 1px, transparent 0)`,
+      <section className="relative bg-[#fefaf6] overflow-hidden">
+        {/* Creative Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 via-orange-50/40 to-transparent" />
+          <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/30 to-orange-200/30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-br from-orange-200/30 to-amber-200/30 blur-[120px] rounded-full" />
+          <div className="absolute inset-0 opacity-[0.02]" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, #f59e0b 1px, transparent 0)`,
             backgroundSize: '40px 40px'
           }} />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <Link
               to="/services/ai-solutions"
-              className="inline-flex items-center text-white/90 hover:text-white mb-6 transition-colors"
+              className="inline-flex items-center text-slate-700 hover:text-amber-600 mb-6 transition-colors font-bold"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to AI Solutions
@@ -31,48 +34,48 @@ const WhatsAppAutomationProject = () => {
             {/* Content Section */}
             <AnimatedSection animation="fadeInLeft" delay={0.3}>
               <div className="flex flex-col items-start gap-4">
-                <div className="p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-                  <MessageCircle className="w-12 h-12 text-emerald-400" />
+                <div className="p-4 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl shadow-lg">
+                  <MessageCircle className="w-12 h-12 text-white" />
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900">
                   WhatsApp Text Automation
                 </h1>
-                <p className="text-xl md:text-2xl text-slate-300 max-w-xl leading-relaxed">
+                <p className="text-xl md:text-2xl text-slate-600 max-w-xl leading-relaxed font-medium">
                   WhatsApp Business API integration for automated customer support, marketing campaigns, and instant notifications
                 </p>
               </div>
             </AnimatedSection>
 
             <AnimatedSection animation="fadeInRight" delay={0.4}>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
                   src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1200&h=800&fit=crop"
                   alt="WhatsApp Business Automation"
                   className="w-full aspect-video object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-slate-900/50"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-slate-900/30"></div>
                 {/* Stats Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="grid grid-cols-2 gap-4 p-8">
-                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-white/20">
-                      <MessageCircle className="w-8 h-8 mx-auto mb-2 text-emerald-400" />
-                      <div className="text-3xl font-black mb-1">10k+</div>
-                      <div className="text-sm opacity-90">Messages/Day</div>
+                    <div className="bg-white/90 backdrop-blur-md rounded-xl p-6 text-center border-2 border-amber-200 shadow-lg">
+                      <MessageCircle className="w-8 h-8 mx-auto mb-2 text-amber-500" />
+                      <div className="text-3xl font-black mb-1 text-slate-900">10k+</div>
+                      <div className="text-sm text-slate-600 font-bold">Messages/Day</div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-white/20">
-                      <Zap className="w-8 h-8 mx-auto mb-2 text-emerald-400" />
-                      <div className="text-3xl font-black mb-1">Instant</div>
-                      <div className="text-sm opacity-90">Response Time</div>
+                    <div className="bg-white/90 backdrop-blur-md rounded-xl p-6 text-center border-2 border-amber-200 shadow-lg">
+                      <Zap className="w-8 h-8 mx-auto mb-2 text-amber-500" />
+                      <div className="text-3xl font-black mb-1 text-slate-900">Instant</div>
+                      <div className="text-sm text-slate-600 font-bold">Response Time</div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-white/20">
-                      <Users className="w-8 h-8 mx-auto mb-2 text-emerald-400" />
-                      <div className="text-3xl font-black mb-1">85%</div>
-                      <div className="text-sm opacity-90">Open Rate</div>
+                    <div className="bg-white/90 backdrop-blur-md rounded-xl p-6 text-center border-2 border-amber-200 shadow-lg">
+                      <Users className="w-8 h-8 mx-auto mb-2 text-amber-500" />
+                      <div className="text-3xl font-black mb-1 text-slate-900">85%</div>
+                      <div className="text-sm text-slate-600 font-bold">Open Rate</div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-white/20">
-                      <Clock className="w-8 h-8 mx-auto mb-2 text-emerald-400" />
-                      <div className="text-3xl font-black mb-1">24/7</div>
-                      <div className="text-sm opacity-90">Availability</div>
+                    <div className="bg-white/90 backdrop-blur-md rounded-xl p-6 text-center border-2 border-amber-200 shadow-lg">
+                      <Clock className="w-8 h-8 mx-auto mb-2 text-amber-500" />
+                      <div className="text-3xl font-black mb-1 text-slate-900">24/7</div>
+                      <div className="text-sm text-slate-600 font-bold">Availability</div>
                     </div>
                   </div>
                 </div>

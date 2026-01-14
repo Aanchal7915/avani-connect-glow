@@ -346,23 +346,20 @@ const ServiceDetail = () => {
     return (
         <div className="pt-20 min-h-screen bg-white">
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
-                <div className="absolute inset-0 bg-black/20"></div>
-
-                {/* Background Image */}
-                <div className="absolute inset-0 opacity-20">
-                    <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover"
-                    />
+            <section className="relative bg-[#fefaf6] overflow-hidden">
+                {/* Creative Background */}
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 via-orange-50/40 to-transparent" />
+                    <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/30 to-orange-200/30 blur-[120px] rounded-full" />
+                    <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-br from-orange-200/30 to-amber-200/30 blur-[120px] rounded-full" />
+                    <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
                 </div>
 
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
                     <AnimatedSection animation="fadeInUp" delay={0.2}>
                         <Link
                             to="/services"
-                            className="inline-flex items-center text-white/90 hover:text-white mb-6 transition-colors"
+                            className="inline-flex items-center text-slate-700 hover:text-amber-600 mb-6 transition-colors font-bold"
                         >
                             <ArrowLeft className="w-4 h-4 mr-2" />
                             Back to Services
@@ -373,23 +370,25 @@ const ServiceDetail = () => {
                         {/* Content Section */}
                         <AnimatedSection animation="fadeInLeft" delay={0.3}>
                             <div className="flex flex-col items-start gap-6">
-                                <div className={`p-4 rounded-2xl bg-gradient-to-br ${service.color} shadow-lg`}>
-                                    {service.icon}
+                                <div className={`p-4 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 shadow-lg`}>
+                                    <div className="text-white">
+                                        {service.icon}
+                                    </div>
                                 </div>
                                 <div>
-                                    <p className="text-amber-400 font-bold text-sm uppercase tracking-widest mb-2">
+                                    <p className="text-amber-600 font-bold text-sm uppercase tracking-widest mb-2">
                                         {service.subtitle}
                                     </p>
-                                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4">
+                                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-slate-900">
                                         {service.title}
                                     </h1>
-                                    <p className="text-xl text-slate-300 max-w-xl leading-relaxed">
+                                    <p className="text-xl text-slate-600 max-w-xl leading-relaxed font-medium">
                                         {service.description}
                                     </p>
                                 </div>
                                 <Link
                                     to="/get-consultation"
-                                    className="mt-4 inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 rounded-xl font-bold text-sm uppercase tracking-widest transition-all shadow-lg shadow-amber-500/25"
+                                    className="mt-4 inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white rounded-xl font-bold text-sm uppercase tracking-widest transition-all shadow-lg hover:scale-105"
                                 >
                                     Get Consultation <ArrowRight className="w-4 h-4" />
                                 </Link>
@@ -398,13 +397,13 @@ const ServiceDetail = () => {
 
                         {/* Image Section */}
                         <AnimatedSection animation="fadeInRight" delay={0.4}>
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                                 <img
                                     src={service.image}
                                     alt={service.title}
                                     className="w-full aspect-video object-cover"
                                 />
-                                <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-20`}></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent"></div>
                             </div>
                         </AnimatedSection>
                     </div>
@@ -435,8 +434,8 @@ const ServiceDetail = () => {
                         </AnimatedSection>
 
                         <AnimatedSection animation="fadeInRight" delay={0.3}>
-                            <div className="bg-slate-900 rounded-3xl p-8 text-white">
-                                <h3 className="text-2xl font-bold mb-6">What's Included</h3>
+                            <div className="bg-white border-2 border-slate-200 rounded-3xl p-8 shadow-lg">
+                                <h3 className="text-2xl font-bold mb-6 text-slate-900">What's Included</h3>
                                 <ul className="space-y-4">
                                     {service.features.map((feature, index) => (
                                         <motion.li
@@ -447,8 +446,8 @@ const ServiceDetail = () => {
                                             transition={{ delay: index * 0.1 }}
                                             className="flex items-start gap-3"
                                         >
-                                            <CheckCircle className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
-                                            <span className="text-slate-300">{feature}</span>
+                                            <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                                            <span className="text-slate-700 font-medium">{feature}</span>
                                         </motion.li>
                                     ))}
                                 </ul>
