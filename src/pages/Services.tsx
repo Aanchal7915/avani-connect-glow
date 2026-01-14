@@ -921,7 +921,7 @@ const Services = () => {
                   position: "Founder, FRD Nutrition",
                   content: "The team created a stunning website that perfectly showcases our nutrition products. The e-commerce integration is seamless, and we've seen a 180% increase in online orders. Their attention to detail and customer service is outstanding!",
                   rating: 5,
-                  image: "/frd.jpeg"
+                  image: "/frd-nutrition-new.png"
                 },
                 {
                   name: "Aman Sharma",

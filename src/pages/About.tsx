@@ -236,34 +236,34 @@ const About = () => {
       {/* Mission & Vision */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-4 md:gap-12">
+          <div className="grid grid-cols-2 gap-3 md:gap-12">
 
             {/* Mission Card */}
             <AnimatedSection animation="fadeInUp" delay={0.2}>
-              <div className="relative h-full min-h-[450px] rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-center p-8 sm:p-12 group">
+              <div className="relative h-full min-h-[180px] md:min-h-[450px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-center p-4 md:p-12 group">
                 <div className="absolute inset-0 z-0">
                   <img
                     src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop"
                     alt="Our Mission"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-blue-950/60 backdrop-blur-[2px]" />
+                  <div className="absolute inset-0 bg-blue-950/70 backdrop-blur-[2px]" />
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-900/40 to-transparent" />
                 </div>
                 <div className="relative z-10 text-white text-center">
-                  <div className="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center mb-8 border border-white/20 mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    <Target className="w-10 h-10 text-white" />
+                  <div className="w-10 h-10 md:w-20 md:h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center mb-3 md:mb-8 border border-white/20 mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    <Target className="w-5 h-5 md:w-10 md:h-10 text-white" />
                   </div>
-                  <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight drop-shadow-lg">
-                    Our Mission
+                  <h2 className="text-sm sm:text-3xl md:text-5xl font-black mb-1 md:mb-6 tracking-tight drop-shadow-lg uppercase">
+                    Mission
                   </h2>
                   <div className="max-w-md mx-auto">
-                    <p className="text-lg text-blue-50 mb-6 leading-relaxed font-medium">
+                    <p className="text-[9px] sm:text-lg text-blue-50 mb-2 md:mb-6 leading-relaxed font-medium">
                       To empower businesses with cutting-edge digital solutions that drive growth,
                       enhance brand presence, and deliver measurable ROI.
                     </p>
-                    <div className="w-12 h-1 bg-white/30 mx-auto mb-6 rounded-full" />
-                    <p className="text-base text-blue-100/80 leading-relaxed italic">
+                    <div className="w-8 h-0.5 md:w-12 md:h-1 bg-white/30 mx-auto mb-2 md:mb-6 rounded-full" />
+                    <p className="text-[8px] sm:text-base text-blue-100/80 leading-tight italic">
                       "Building long-term partnerships through trust, innovation, and results."
                     </p>
                   </div>
@@ -273,38 +273,38 @@ const About = () => {
 
             {/* Vision Card */}
             <AnimatedSection animation="fadeInUp" delay={0.4}>
-              <div className="relative h-full min-h-[450px] rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-center p-8 sm:p-12 group">
+              <div className="relative h-full min-h-[180px] md:min-h-[450px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-center p-3 md:p-12 group">
                 <div className="absolute inset-0 z-0">
                   <img
                     src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
                     alt="Our Vision"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-purple-950/60 backdrop-blur-[2px]" />
+                  <div className="absolute inset-0 bg-purple-950/70 backdrop-blur-[2px]" />
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-900/80 via-purple-900/40 to-transparent" />
                 </div>
                 <div className="relative z-10 text-white text-center">
-                  <div className="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center mb-8 border border-white/20 mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    <Globe className="w-10 h-10 text-white" />
+                  <div className="w-10 h-10 md:w-20 md:h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center mb-2 md:mb-8 border border-white/20 mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    <Globe className="w-5 h-5 md:w-10 md:h-10 text-white" />
                   </div>
-                  <h3 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight drop-shadow-lg">Our Vision</h3>
+                  <h3 className="text-sm sm:text-3xl md:text-5xl font-black mb-1 md:mb-6 tracking-tight drop-shadow-lg uppercase">Vision</h3>
                   <div className="max-w-md mx-auto">
-                    <p className="text-lg text-purple-50 mb-8 leading-relaxed font-medium">
+                    <p className="text-[9px] sm:text-lg text-purple-50 mb-2 md:mb-8 leading-relaxed font-medium">
                       To be the leading digital transformation partner for businesses across India,
                       known for our innovative solutions and exceptional service.
                     </p>
-                    <div className="flex flex-wrap justify-center gap-3">
-                      <div className="flex items-center bg-white/15 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-sm font-semibold">
-                        <CheckCircle className="w-4 h-4 mr-2 text-purple-200" />
+                    <div className="flex flex-wrap justify-center gap-1 md:gap-3">
+                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-white/20 text-[7px] md:text-sm font-semibold">
+                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-purple-200" />
                         Data-Driven
                       </div>
-                      <div className="flex items-center bg-white/15 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-sm font-semibold">
-                        <CheckCircle className="w-4 h-4 mr-2 text-purple-200" />
+                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-white/20 text-[7px] md:text-sm font-semibold">
+                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-purple-200" />
                         Innovation
                       </div>
-                      <div className="flex items-center bg-white/15 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-sm font-semibold">
-                        <CheckCircle className="w-4 h-4 mr-2 text-purple-200" />
-                        Client Success
+                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-white/20 text-[7px] md:text-sm font-semibold">
+                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-purple-200" />
+                        Success
                       </div>
                     </div>
                   </div>

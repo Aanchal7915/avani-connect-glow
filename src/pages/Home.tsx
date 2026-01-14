@@ -286,7 +286,7 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: "Dr. Rajesh Kumar",
+      name: "Director Of Indus School",
       position: "Principal, Indus Public School",
       content:
         "Avani Enterprises delivered an outstanding website that perfectly captures our school's vision and values. The design is modern, intuitive, and makes it easy for parents and students to find information. Their team was professional, responsive, and delivered beyond our expectations.",
@@ -302,7 +302,7 @@ const Home = () => {
       image: "/shoes.jpeg"
     },
     {
-      name: "Ankit Verma",
+      name: "Sanjay Vats",
       position: "Co-Founder, Policicue",
       content:
         "Working with Avani Enterprises was a game-changer for our startup. They built a sophisticated platform that handles complex policy management with ease. The UI/UX is exceptional, and their technical expertise is top-notch. Our users are impressed!",
@@ -315,7 +315,7 @@ const Home = () => {
       content:
         "The team created a stunning website that perfectly showcases our nutrition products. The e-commerce integration is seamless, and we've seen a 180% increase in online orders. Their attention to detail and customer service is outstanding!",
       rating: 5,
-      image: "/frd.jpeg"
+      image: "/frd-nutrition-new.png"
     },
     {
       name: "Aman Sharma",
@@ -350,7 +350,7 @@ const Home = () => {
     },
     {
       name: "Frd Nutrition",
-      logo: "./frd.jpeg",
+      logo: "/frd-nutrition-new.png",
       video: "./FrdNutrition.mp4",
       link: "/projects/frd-nutrition"
     },
@@ -758,73 +758,59 @@ const Home = () => {
 
           {/* Flowchart Grid */}
           <div className="relative">
-            {/* Connecting Lines (Desktop) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block" style={{ zIndex: 0 }}>
-              <defs>
-                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3B82F6" />
-                  <stop offset="50%" stopColor="#8B5CF6" />
-                  <stop offset="100%" stopColor="#EC4899" />
-                </linearGradient>
-              </defs>
-              {/* Row 1 connections */}
-              <path d="M 33% 25% L 66% 25%" stroke="url(#lineGradient)" strokeWidth="3" strokeDasharray="8 8" opacity="0.3" />
-              {/* Row 2 connections */}
-              <path d="M 33% 75% L 66% 75%" stroke="url(#lineGradient)" strokeWidth="3" strokeDasharray="8 8" opacity="0.3" />
-              {/* Vertical connections */}
-              <path d="M 16.5% 40% L 16.5% 60%" stroke="url(#lineGradient)" strokeWidth="3" strokeDasharray="8 8" opacity="0.3" />
-              <path d="M 83.5% 40% L 83.5% 60%" stroke="url(#lineGradient)" strokeWidth="3" strokeDasharray="8 8" opacity="0.3" />
-            </svg>
-
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 relative z-10">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-10 relative z-10">
               {processSteps.map((step, index) => {
-                const gradients = [
-                  "from-blue-500 to-cyan-500",
-                  "from-purple-500 to-fuchsia-500",
-                  "from-orange-500 to-amber-500",
-                  "from-teal-500 to-emerald-500",
-                  "from-green-500 to-lime-500",
-                  "from-indigo-500 to-blue-500"
+                const iconColors = [
+                  "bg-blue-600",
+                  "bg-purple-600",
+                  "bg-orange-600",
+                  "bg-teal-600",
+                  "bg-green-600",
+                  "bg-indigo-600"
                 ];
 
                 const icons = [
-                  <Search className="w-8 h-8" />,
-                  <TrendingUp className="w-8 h-8" />,
-                  <Brain className="w-8 h-8" />,
-                  <Globe className="w-8 h-8" />,
-                  <Play className="w-8 h-8" />,
-                  <ShieldCheck className="w-8 h-8" />
+                  <Search className="w-5 h-5 md:w-6 md:h-6" />,
+                  <TrendingUp className="w-5 h-5 md:w-6 md:h-6" />,
+                  <Brain className="w-5 h-5 md:w-6 md:h-6" />,
+                  <Globe className="w-5 h-5 md:w-6 md:h-6" />,
+                  <Play className="w-5 h-5 md:w-6 md:h-6" />,
+                  <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
                 ];
 
                 return (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    className="relative group"
+                    className="relative group h-full"
                   >
                     {/* Card */}
-                    <div className="relative bg-white rounded-3xl p-8 shadow-xl border-2 border-gray-100 hover:border-transparent hover:shadow-2xl transition-all duration-300 min-h-[280px] flex flex-col">
-                      {/* Gradient Border on Hover */}
-                      <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${gradients[index]} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl`} />
+                    <div className="relative bg-white rounded-xl md:rounded-2xl p-4 md:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 transition-all duration-300 flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-3 md:gap-6 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 overflow-hidden h-full">
+
+                      {/* Step Number Badge */}
+                      <span className="absolute top-2 right-2 md:-top-2 md:-right-2 w-6 h-6 md:w-9 md:h-9 bg-slate-900 text-white rounded-full flex items-center justify-center font-black text-[10px] md:text-xs z-20 shadow-lg border-2 border-white">
+                        {step.step}
+                      </span>
 
                       {/* Icon */}
-                      <div className={`mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[index]} flex items-center justify-center text-white`}>
+                      <div className={`shrink-0 w-10 h-10 md:w-16 md:h-16 rounded-lg md:rounded-2xl ${iconColors[index]} flex items-center justify-center text-white shadow-xl shadow-black/5`}>
                         {icons[index]}
                       </div>
 
-                      {/* Title */}
-                      <h3 className="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight">
-                        {step.title}
-                      </h3>
+                      <div className="flex-1">
+                        {/* Title */}
+                        <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-2 uppercase tracking-tight">
+                          {step.title}
+                        </h3>
 
-                      {/* Description */}
-                      <p className="text-slate-600 leading-relaxed flex-grow">
-                        {step.description}
-                      </p>
+                        {/* Description */}
+                        <p className="text-slate-500 text-[10px] md:text-[15px] leading-relaxed line-clamp-2 md:line-clamp-none">
+                          {step.description}
+                        </p>
+                      </div>
                     </div>
                   </motion.div>
                 );
@@ -1154,7 +1140,7 @@ const Home = () => {
               <polygon points="50 20 75 35 75 65 50 80 25 65 25 35" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-slate-900" />
             </svg>
           </div>
-          
+
           {/* Circuit Lines */}
           <div className="absolute top-40 left-10 w-96 h-96 opacity-5">
             <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -1178,7 +1164,7 @@ const Home = () => {
                 <Sparkles className="w-4 h-4 text-amber-600" />
                 <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Blog</span>
               </div> */}
-              
+
               <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
                 Latest Insights & <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Updates</span>
               </h2>
@@ -1213,7 +1199,7 @@ const Home = () => {
                     >
                       {/* Glow Effect on Hover */}
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-50/0 to-orange-50/0 group-hover:from-amber-50/50 group-hover:to-orange-50/50 transition-all duration-300"></div>
-                      
+
                       {/* Featured Image */}
                       <div className="relative h-48 overflow-hidden">
                         {blog.featuredImage ? (
@@ -1230,7 +1216,7 @@ const Home = () => {
                             <Sparkles className="w-16 h-16 text-amber-500 opacity-50" />
                           </div>
                         )}
-                        
+
                         {/* Hexagon Accent */}
                         <div className="absolute top-4 right-4 w-12 h-12 opacity-30">
                           <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -1297,7 +1283,7 @@ const Home = () => {
                       to="/blog"
                       className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg hover:from-amber-500 hover:to-orange-600 transition-all duration-200 shadow-lg shadow-amber-200 hover:shadow-xl hover:shadow-amber-300 transform hover:-translate-y-1"
                     >
-                      View All Blogs 
+                      View All Blogs
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
