@@ -33,12 +33,12 @@ export default function HeroSection() {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-[95vh] flex items-center pt-24 sm:pt-28 md:pt-24 overflow-hidden bg-[#0b1220]"
+      className="relative min-h-[95vh] flex items-center pt-24 sm:pt-28 md:pt-24 overflow-hidden bg-white"
     >
       {/* BACKGROUND: Corporate Geometric Theme */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Main Navy Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1220] via-[#0f172a] to-[#0b1220]" />
+        {/* Main Navy Gradient - COMMENTED OUT FOR WHITE BACKGROUND */}
+        {/* <div className="absolute inset-0 bg-gradient-to-br from-[#0b1220] via-[#0f172a] to-[#0b1220]" /> */}
 
         {/* Geometric Architectural Accents */}
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none">
@@ -74,22 +74,25 @@ export default function HeroSection() {
               <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-amber-500/80">Transforming Brands Since 2016</span>
             </div>
 
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-white mb-6 tracking-tight">
-              Build high-performing <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-amber-400 font-sans">Websites</span> & accelerate growth
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.15] text-black mb-6 tracking-tight">
+              Build high-<br />
+              performing Websites<br />
+              & accelerate digital<br />
+              growth with smart marketing
             </h1>
 
-            <p className="text-lg sm:text-xl text-slate-400 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed font-medium">
+            <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed">
               We create high-converting websites and amplify them with strategic social media management, AI-driven automation, and high-ROI Google & Meta ad campaigns.
             </p>
 
             {/* Stats Bundles */}
             <div className="mt-8 hidden sm:grid grid-cols-2 md:grid-cols-4 gap-8 font-sans">
               {stats.map((s, i) => (
-                <div key={s.label} className="text-center lg:text-left group cursor-default">
-                  <div className={`text-3xl md:text-4xl lg:text-5xl font-black mb-2 transition-transform duration-300 group-hover:scale-110 ${["text-sky-400", "text-emerald-400", "text-amber-400", "text-violet-400"][i]}`}>
+                <div key={s.label} className="text-center lg:text-left">
+                  <div className={`text-2xl md:text-3xl lg:text-4xl font-black mb-2 ${["text-sky-500", "text-emerald-500", "text-orange-500", "text-purple-600"][i]}`}>
                     {s.value}
                   </div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-slate-300 transition-colors">{s.label}</div>
+                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500">{s.label}</div>
                 </div>
               ))}
             </div>
