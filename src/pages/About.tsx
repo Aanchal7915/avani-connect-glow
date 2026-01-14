@@ -398,26 +398,7 @@ const About = () => {
 
 
       {/* Achievements Section */}
-      <section className="relative py-24 overflow-hidden">
-        {/* Night-Dream Starry Background */}
-        <div className="absolute inset-0 z-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: 'url("https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2070&auto=format&fit=crop")',
-              opacity: 0.2
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-          <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
-          
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-amber-500/10 blur-[120px] rounded-full animate-pulse" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-          </div>
-        </div>
-
+      <section className="relative py-24 bg-white overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <motion.div
@@ -426,10 +407,10 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 font-sans">
-                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Achievements</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 font-sans">
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Achievements</span>
               </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 Numbers that speak for themselves and demonstrate our commitment to excellence.
               </p>
             </motion.div>
@@ -442,7 +423,7 @@ const About = () => {
                 value: 150,
                 suffix: "+",
                 label: "Happy Clients",
-                gradient: "from-blue-500 to-cyan-500",
+                gradient: "from-amber-500 to-orange-500",
                 delay: 0.2
               },
               {
@@ -450,7 +431,7 @@ const About = () => {
                 value: 300,
                 suffix: "+",
                 label: "Projects Completed",
-                gradient: "from-purple-500 to-pink-500",
+                gradient: "from-orange-500 to-amber-500",
                 delay: 0.3
               },
               {
@@ -466,7 +447,7 @@ const About = () => {
                 value: 8,
                 suffix: "+",
                 label: "Years Experience",
-                gradient: "from-green-500 to-emerald-500",
+                gradient: "from-orange-500 to-amber-500",
                 delay: 0.5
               }
             ].map((stat, index) => (
@@ -478,19 +459,19 @@ const About = () => {
                 transition={{ duration: 0.6, delay: stat.delay }}
                 className="group"
               >
-                <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-amber-500/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/20">
+                <div className="relative bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-amber-400 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-xl">
                   {/* Icon */}
                   <div className={`w-16 h-16 bg-gradient-to-br ${stat.gradient} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                     {stat.icon}
                   </div>
 
                   {/* Value */}
-                  <div className="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-amber-400 transition-colors duration-300">
+                  <div className="text-4xl md:text-5xl font-black text-slate-900 mb-2 group-hover:text-amber-500 transition-colors duration-300">
                     <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                   </div>
 
                   {/* Label */}
-                  <div className="text-sm font-bold text-gray-400 uppercase tracking-wider group-hover:text-gray-300 transition-colors duration-300">
+                  <div className="text-sm font-bold text-gray-600 uppercase tracking-wider group-hover:text-gray-700 transition-colors duration-300">
                     {stat.label}
                   </div>
 
@@ -529,11 +510,11 @@ const About = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <AnimatedSection animation="fadeInUp">
-              <span className="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-[0.2em] text-blue-600 uppercase bg-blue-50 rounded-full border border-blue-100">
+              <span className="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-[0.2em] text-amber-600 uppercase bg-amber-50 rounded-full border border-amber-200">
                 The Avani Advantage
               </span>
               <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 font-sans tracking-tight">
-                Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Avani Enterprises?</span>
+                Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Avani Enterprises?</span>
               </h2>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
                 Empowering your digital journey with strategic excellence and innovative solutions.
@@ -543,7 +524,7 @@ const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatedSection animation="fadeInUp" delay={0.1}>
-              <div className="group relative bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-white hover:border-blue-200 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+              <div className="group relative bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-white hover:border-amber-300 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop"
@@ -553,7 +534,7 @@ const About = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
                 <div className="p-8 flex-grow">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-200 -mt-16 relative z-10 group-hover:rotate-6 transition-transform">
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-amber-200 -mt-16 relative z-10 group-hover:rotate-6 transition-transform">
                     <Shield className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Proven Track Record</h3>
@@ -566,7 +547,7 @@ const About = () => {
             </AnimatedSection>
 
             <AnimatedSection animation="fadeInUp" delay={0.2}>
-              <div className="group relative bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-white hover:border-green-200 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+              <div className="group relative bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-white hover:border-orange-300 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop"
@@ -576,7 +557,7 @@ const About = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
                 <div className="p-8 flex-grow">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-green-200 -mt-16 relative z-10 group-hover:rotate-6 transition-transform">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-orange-200 -mt-16 relative z-10 group-hover:rotate-6 transition-transform">
                     <Zap className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Innovation-Driven</h3>
@@ -589,7 +570,7 @@ const About = () => {
             </AnimatedSection>
 
             <AnimatedSection animation="fadeInUp" delay={0.3}>
-              <div className="group relative bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-white hover:border-purple-200 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+              <div className="group relative bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-white hover:border-amber-300 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
@@ -599,7 +580,7 @@ const About = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
                 <div className="p-8 flex-grow">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-purple-200 -mt-16 relative z-10 group-hover:rotate-6 transition-transform">
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-amber-200 -mt-16 relative z-10 group-hover:rotate-6 transition-transform">
                     <Users className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Client-Centric</h3>
@@ -615,41 +596,29 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
-        {/* Background Image with Blur */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
-            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?q=80&w=2070&auto=format&fit=crop")' }}
-          />
-          <div className="absolute inset-0 bg-slate-900/85" />
-        </div>
-
+      <section className="relative py-24 bg-white overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 font-sans leading-tight">
-            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Success Story</span> Together
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 font-sans leading-tight">
+            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Success Story</span> Together
           </h2>
-          <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl mb-10 text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/get-consultation"
-              className="px-8 py-4 bg-amber-500 text-white rounded-xl font-black uppercase tracking-widest shadow-lg shadow-amber-500/20 transition-all duration-300"
+              className="px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white rounded-xl font-black uppercase tracking-widest shadow-lg transition-all duration-300"
             >
               Get Consultation
             </Link>
             <a
               href="tel:+919253625099"
-              className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-white/20 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 shadow-lg"
+              className="bg-slate-100 text-slate-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-200 hover:border-slate-300 transition-all duration-300"
             >
               Talk to Expert
             </a>
           </div>
         </div>
-
-        {/* Bottom Accent Bar for Visual Separation */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400"></div>
       </section>
     </div>
   );

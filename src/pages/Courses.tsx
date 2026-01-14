@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import RotatingText from '../components/RotatingText';
 import {
@@ -19,6 +19,76 @@ import {
 import { Link } from 'react-router-dom';
 import PaymentModal from '../components/PaymentModal';
 import AnimatedSection from '../components/AnimatedSection';
+
+// Animated Counter Component
+const StatCard = ({ end, suffix = '', label, decimals = 0 }) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = React.useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const increment = end / steps;
+    const stepDuration = duration / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(current);
+      }
+    }, stepDuration);
+
+    return () => clearInterval(timer);
+  }, [isVisible, end]);
+
+  return (
+    <div
+      ref={cardRef}
+      className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-500 border-2 border-amber-500/30 hover:border-amber-500 text-center overflow-hidden"
+    >
+      {/* Subtle background gradient on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-50/0 to-orange-50/0 group-hover:from-amber-50/50 group-hover:to-orange-50/50 transition-all duration-500" />
+      
+      <div className="relative z-10">
+        <div className="text-4xl md:text-5xl font-black text-slate-900 mb-3">
+          {decimals > 0 ? count.toFixed(decimals) : Math.floor(count).toLocaleString()}
+          <span className="text-amber-500">{suffix}</span>
+        </div>
+        <div className="text-xs md:text-sm text-slate-600 font-bold uppercase tracking-wider">
+          {label}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Courses = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -379,7 +449,7 @@ const Courses = () => {
                 placeholder="Search courses..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-slate-900 placeholder-gray-400 bg-white"
               />
             </div>
             <div className="grid grid-cols-3 lg:flex lg:flex-wrap lg:justify-center gap-2 md:gap-4">
@@ -528,95 +598,165 @@ const Courses = () => {
         </div>
       </section>
 
-      {/* Course Benefits */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Our Courses?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We provide comprehensive training with guaranteed job placement and industry-recognized certifications.
-            </p>
+      {/* Course Benefits - Creative Design */}
+      <section className="relative py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-10 w-72 h-72 bg-amber-100/40 rounded-full blur-[120px]" />
+          <div className="absolute bottom-20 left-10 w-72 h-72 bg-orange-100/40 rounded-full blur-[120px]" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <AnimatedSection animation="fadeInUp" delay={0.1}>
+            <div className="text-center mb-16">
+              <div className="inline-block mb-6">
+                <span className="px-4 py-2 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-full text-xs font-black uppercase tracking-wider shadow-lg">
+                  Our Promise
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+                Why Choose Our Courses?
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
+                We provide comprehensive training with guaranteed job placement and industry-recognized certifications.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          {/* Benefits Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Benefit 1 */}
+            <AnimatedSection animation="fadeInUp" delay={0.2}>
+              <div className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 overflow-hidden">
+                {/* Decorative Number */}
+                <div className="absolute -top-6 -right-6 text-[120px] font-black text-amber-500/5 leading-none">01</div>
+                
+                <div className="relative z-10">
+                  {/* Accent Bar */}
+                  <div className="w-16 h-1.5 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full mb-6" />
+                  
+                  <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">
+                    Certified Courses
+                  </h3>
+                  <p className="text-slate-600 text-base leading-relaxed font-medium">
+                    Industry-recognized certificates upon completion that validate your expertise and boost your career prospects.
+                  </p>
+                </div>
+
+                {/* Hover Effect Border */}
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-amber-500/20 rounded-3xl transition-all duration-500" />
+              </div>
+            </AnimatedSection>
+
+            {/* Benefit 2 */}
+            <AnimatedSection animation="fadeInUp" delay={0.3}>
+              <div className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 overflow-hidden">
+                {/* Decorative Number */}
+                <div className="absolute -top-6 -right-6 text-[120px] font-black text-amber-500/5 leading-none">02</div>
+                
+                <div className="relative z-10">
+                  {/* Accent Bar */}
+                  <div className="w-16 h-1.5 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full mb-6" />
+                  
+                  <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">
+                    Job Guarantee
+                  </h3>
+                  <p className="text-slate-600 text-base leading-relaxed font-medium">
+                    Assured job placement in reputed firms with our extensive network of hiring partners across industries.
+                  </p>
+                </div>
+
+                {/* Hover Effect Border */}
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-amber-500/20 rounded-3xl transition-all duration-500" />
+              </div>
+            </AnimatedSection>
+
+            {/* Benefit 3 */}
+            <AnimatedSection animation="fadeInUp" delay={0.4}>
+              <div className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 overflow-hidden">
+                {/* Decorative Number */}
+                <div className="absolute -top-6 -right-6 text-[120px] font-black text-amber-500/5 leading-none">03</div>
+                
+                <div className="relative z-10">
+                  {/* Accent Bar */}
+                  <div className="w-16 h-1.5 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full mb-6" />
+                  
+                  <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">
+                    Paid Internship
+                  </h3>
+                  <p className="text-slate-600 text-base leading-relaxed font-medium">
+                    30-day paid internship with real-world experience to apply your skills and build your professional portfolio.
+                  </p>
+                </div>
+
+                {/* Hover Effect Border */}
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-amber-500/20 rounded-3xl transition-all duration-500" />
+              </div>
+            </AnimatedSection>
+
+            {/* Benefit 4 */}
+            <AnimatedSection animation="fadeInUp" delay={0.5}>
+              <div className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 overflow-hidden">
+                {/* Decorative Number */}
+                <div className="absolute -top-6 -right-6 text-[120px] font-black text-amber-500/5 leading-none">04</div>
+                
+                <div className="relative z-10">
+                  {/* Accent Bar */}
+                  <div className="w-16 h-1.5 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full mb-6" />
+                  
+                  <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">
+                    AI Assistance
+                  </h3>
+                  <p className="text-slate-600 text-base leading-relaxed font-medium">
+                    Free AI tools and assistance in Hindi & English to enhance your learning experience and productivity.
+                  </p>
+                </div>
+
+                {/* Hover Effect Border */}
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-amber-500/20 rounded-3xl transition-all duration-500" />
+              </div>
+            </AnimatedSection>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-            <div className="text-center p-2">
-              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg flex items-center justify-center text-white mx-auto mb-3 lg:mb-4">
-                <CheckCircle className="w-6 h-6 lg:w-8 lg:h-8" />
-              </div>
-              <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-1 lg:mb-2 text-center px-1">Certified Courses</h3>
-              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
-                Industry-recognized certificates upon completion.
-              </p>
+          {/* Stats Bar */}
+          <AnimatedSection animation="fadeInUp" delay={0.6}>
+            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+              <StatCard end={5000} suffix="+" label="Students Trained" />
+              <StatCard end={95} suffix="%" label="Placement Rate" />
+              <StatCard end={500} suffix="+" label="Hiring Partners" />
+              <StatCard end={4.8} suffix="★" label="Average Rating" decimals={1} />
             </div>
-
-            <div className="text-center p-2">
-              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center text-white mx-auto mb-3 lg:mb-4">
-                <Users className="w-6 h-6 lg:w-8 lg:h-8" />
-              </div>
-              <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-1 lg:mb-2 text-center px-1">Job Guarantee</h3>
-              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
-                Assured job placement in reputed firms.
-              </p>
-            </div>
-
-            <div className="text-center p-2">
-              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white mx-auto mb-3 lg:mb-4">
-                <Briefcase className="w-6 h-6 lg:w-8 lg:h-8" />
-              </div>
-              <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-1 lg:mb-2 text-center px-1">Paid Internship</h3>
-              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
-                30-day paid internship with real-world experience.
-              </p>
-            </div>
-
-            <div className="text-center p-2">
-              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white mx-auto mb-3 lg:mb-4">
-                <Brain className="w-6 h-6 lg:w-8 lg:h-8" />
-              </div>
-              <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-1 lg:mb-2 text-center px-1">AI Assistance</h3>
-              <p className="text-gray-600 text-[10px] lg:text-base leading-snug lg:leading-relaxed">
-                Free AI tools and assistance in Hindi & English.
-              </p>
-            </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full" />
-        </div>
-
+      <section className="relative py-24 bg-white overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-sans">
-            Ready to Transform Your Career?
-          </h2>
-          <p className="text-xl mb-8 text-gray-200">
-            Join thousands of students who have successfully launched their careers with our premium courses.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/get-consultation"
-              className="bg-[#FFD700] text-black px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-[#FDB931] transition-all duration-200 shadow-lg hover:transform hover:-translate-y-1 hover:shadow-xl"
-            >
-              Get Consultation
-            </Link>
-            <a
-              href="tel:+919253625099"
-              className="bg-white text-gray-900 border-2 border-white px-8 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-gray-100 hover:text-black transition-all duration-200 hover:transform hover:-translate-y-1 shadow-lg"
-            >
-              Call +91 9253625099
-            </a>
-          </div>
+          <AnimatedSection animation="fadeInUp" delay={0.1}>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
+              Ready to Transform Your Career?
+            </h2>
+            <p className="text-xl mb-8 text-gray-600 leading-relaxed">
+              Join thousands of students who have successfully launched their careers with our premium courses.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/get-consultation"
+                className="bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white px-8 py-4 rounded-xl font-black text-sm uppercase tracking-widest shadow-lg transition-all duration-300"
+              >
+                Get Consultation
+              </Link>
+              <a
+                href="tel:+919253625099"
+                className="bg-slate-100 text-slate-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-slate-200 hover:border-slate-300 transition-all duration-300"
+              >
+                Call +91 9253625099
+              </a>
+            </div>
+          </AnimatedSection>
         </div>
-
-        {/* Bottom Accent Bar for Visual Separation */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400"></div>
       </section>
 
       {/* Payment Modal */}

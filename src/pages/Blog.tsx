@@ -14,26 +14,9 @@ import {
 } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 
-// Simple toast component
-const Toast = ({ message, type, onClose }) => (
-  <div
-    className={`fixed top-8 right-8 z-50 px-6 py-4 rounded-lg shadow-lg text-white font-semibold transition-all duration-300 ${type === "success"
-      ? "bg-green-600"
-      : "bg-red-600"
-      }`}
-    role="alert"
-  >
-    {message}
-    <button className="ml-4 text-white font-bold" onClick={onClose}>×</button>
-  </div>
-);
-
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [toast, setToast] = useState(null);
-  const [isSending, setIsSending] = useState(false);
 
   const categories = [
     { id: 'all', name: 'All Posts' },
@@ -72,57 +55,8 @@ const Blog = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const featuredPosts = blogPosts.filter(post => post.isPublished && (post.featuredImage || post.isFeatured));
+  const featuredPosts = filteredPosts.filter(post => post.isPublished && (post.featuredImage || post.isFeatured));
   const regularPosts = filteredPosts.filter(post => post.isPublished && !(post.featuredImage || post.isFeatured));
-
-  // Newsletter subscribe handler
-  const handleNewsletterSubscribe = async () => {
-    const toEmail = process.env.REACT_APP_NEWSLETTER_EMAIL;
-    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const userId = process.env.REACT_APP_EMAILJS_USER_ID;
-
-    if (!newsletterEmail) {
-      setToast({ message: "Please enter your email.", type: "error" });
-      setTimeout(() => setToast(null), 3000);
-      return;
-    }
-    if (!toEmail || !serviceId || !templateId || !userId) {
-      setToast({ message: "Email service is not configured.", type: "error" });
-      setTimeout(() => setToast(null), 3000);
-      return;
-    }
-
-    setIsSending(true);
-
-    try {
-      const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          service_id: serviceId,
-          template_id: templateId,
-          user_id: userId,
-          template_params: {
-            to_email: toEmail,
-            subscriber_email: newsletterEmail
-          }
-        })
-      });
-      if (res.ok) {
-        setToast({ message: "Subscription email sent successfully!", type: "success" });
-        setNewsletterEmail("");
-        setTimeout(() => setToast(null), 3000);
-      } else {
-        setToast({ message: "Failed to send subscription email.", type: "error" });
-        setTimeout(() => setToast(null), 3000);
-      }
-    } catch (err) {
-      setToast({ message: "Failed to send subscription email.", type: "error" });
-      setTimeout(() => setToast(null), 3000);
-    }
-    setIsSending(false);
-  };
 
   return (
     <div className="pt-20">
@@ -265,8 +199,7 @@ const Blog = () => {
         </section>
       )}
 
-      {/* 
-      // Regular Posts
+      {/* Regular Posts */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.1}>
@@ -353,68 +286,7 @@ const Blog = () => {
         </div>
       </section>
 
-      // Newsletter Section
-      <section className="relative py-24 overflow-hidden bg-[#0f172a]">
-        // Background Elements
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-amber-400 to-orange-500/10 rounded-full blur-[100px]" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-amber-400 to-orange-500/10 rounded-full blur-[100px]" />
-        </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection animation="fadeInUp" delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-amber-400 to-orange-500/20 rounded-full border border-amber-500/30 mb-8">
-              <span className="w-2 h-2 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full animate-pulse" />
-              <span className="text-amber-500 font-black text-[10px] uppercase tracking-[0.3em]">Newsletter</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-              Stay in the Loop
-            </h2>
-            <p className="text-xl text-white/80 mb-10 font-medium">
-              Get expert insights delivered to your inbox. No spam, just value.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
-              <input
-                type="email"
-                value={newsletterEmail}
-                onChange={e => setNewsletterEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white placeholder-white/50 focus:ring-2 focus:ring-amber-500 focus:outline-none font-bold"
-                disabled={isSending}
-              />
-              <button
-                className={`bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 px-8 py-4 rounded-xl font-black text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center shadow-lg shadow-yellow-200/20 ${isSending ? "opacity-60 cursor-not-allowed" : "hover:brightness-110"}`}
-                onClick={handleNewsletterSubscribe}
-                type="button"
-                disabled={isSending}
-              >
-                {isSending ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5 mr-2 text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-                    </svg>
-                    Sending...
-                  </>
-                ) : (
-                  "Subscribe"
-                )}
-              </button>
-            </div>
-            <p className="text-sm text-white/50 mt-6 font-bold uppercase tracking-wider">
-              Join 1,000+ subscribers • Unsubscribe anytime
-            </p>
-          </AnimatedSection>
-        </div>
-        {toast && (
-          <Toast
-            message={toast.message}
-            type={toast.type}
-            onClose={() => setToast(null)}
-          />
-        )}
-      </section>
-      */}
 
       {/* Popular Topics */}
       <section className="py-24 bg-slate-50">

@@ -18,6 +18,77 @@ import {
 import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCounter from '../components/AnimatedCounter';
 
+// Animated Counter Component for Case Studies
+const StatCardCaseStudies = ({ end, suffix = '', prefix = '', label }) => {
+  const [count, setCount] = React.useState(0);
+  const [isVisible, setIsVisible] = React.useState(false);
+  const cardRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  React.useEffect(() => {
+    if (!isVisible) return;
+
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const increment = end / steps;
+    const stepDuration = duration / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(current);
+      }
+    }, stepDuration);
+
+    return () => clearInterval(timer);
+  }, [isVisible, end]);
+
+  return (
+    <div
+      ref={cardRef}
+      className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-500 border-2 border-amber-500/30 hover:border-amber-500 text-center overflow-hidden"
+    >
+      {/* Subtle background gradient on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-50/0 to-orange-50/0 group-hover:from-amber-50/50 group-hover:to-orange-50/50 transition-all duration-500" />
+      
+      <div className="relative z-10">
+        <div className="text-4xl md:text-5xl font-black text-slate-900 mb-3">
+          {prefix}
+          {Math.floor(count).toLocaleString()}
+          <span className="text-amber-500">{suffix}</span>
+        </div>
+        <div className="text-xs md:text-sm text-slate-600 font-bold uppercase tracking-wider">
+          {label}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const CaseStudies = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -338,38 +409,41 @@ const CaseStudies = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Success Metrics
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Numbers that demonstrate our commitment to delivering exceptional results.
-            </p>
-          </div>
+      {/* Stats Section - Creative Design with Animated Counters */}
+      <section className="relative py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-10 w-72 h-72 bg-amber-100/40 rounded-full blur-[120px]" />
+          <div className="absolute bottom-20 left-10 w-72 h-72 bg-orange-100/40 rounded-full blur-[120px]" />
+        </div>
 
-          <div className="grid grid-cols-4 gap-4 md:gap-8">
-            <div className="text-center">
-              <AnimatedCounter target={150} suffix="+" className="text-2xl sm:text-4xl md:text-5xl font-black text-amber-600 mb-2 transition-transform hover:scale-105" />
-              <div className="text-xs sm:text-sm md:text-base font-bold text-gray-500 uppercase tracking-tight">Happy Clients</div>
-            </div>
-            <div className="text-center">
-              <AnimatedCounter target={300} suffix="+" className="text-2xl sm:text-4xl md:text-5xl font-black text-orange-600 mb-2 transition-transform hover:scale-105" />
-              <div className="text-xs sm:text-sm md:text-base font-bold text-gray-500 uppercase tracking-tight">Projects</div>
-            </div>
-            <div className="text-center">
-              <AnimatedCounter target={85} suffix="%" className="text-2xl sm:text-4xl md:text-5xl font-black text-amber-700 mb-2 transition-transform hover:scale-105" />
-              <div className="text-xs sm:text-sm md:text-base font-bold text-gray-500 uppercase tracking-tight">Growth</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-4xl md:text-5xl font-black text-orange-700 mb-2 transition-transform hover:scale-105">
-                ₹<AnimatedCounter target={50} />Cr+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <AnimatedSection animation="fadeInUp" delay={0.1}>
+            <div className="text-center mb-16">
+              <div className="inline-block mb-6">
+                <span className="px-4 py-2 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-full text-xs font-black uppercase tracking-wider shadow-lg">
+                  Our Impact
+                </span>
               </div>
-              <div className="text-xs sm:text-sm md:text-base font-bold text-gray-500 uppercase tracking-tight">Revenue</div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+                Our Success Metrics
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
+                Numbers that demonstrate our commitment to delivering exceptional results.
+              </p>
             </div>
-          </div>
+          </AnimatedSection>
+
+          {/* Stats Grid */}
+          <AnimatedSection animation="fadeInUp" delay={0.2}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <StatCardCaseStudies end={150} suffix="+" label="Happy Clients" />
+              <StatCardCaseStudies end={300} suffix="+" label="Projects" />
+              <StatCardCaseStudies end={85} suffix="%" label="Growth" />
+              <StatCardCaseStudies end={50} prefix="₹" suffix="Cr+" label="Revenue" />
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -528,41 +602,29 @@ const CaseStudies = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
-        {/* Background Image with Blur */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
-            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?q=80&w=2070&auto=format&fit=crop")' }}
-          />
-          <div className="absolute inset-0 bg-slate-900/85" />
-        </div>
-
+      <section className="relative py-24 bg-white overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 font-sans leading-tight">
-            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Success Story</span> Together
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 font-sans leading-tight">
+            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Success Story</span> Together
           </h2>
-          <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl mb-10 text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="px-8 py-4 bg-amber-500 text-white rounded-xl font-black uppercase tracking-widest shadow-lg shadow-amber-500/20 transition-all duration-300"
+              className="px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white rounded-xl font-black uppercase tracking-widest shadow-lg transition-all duration-300"
             >
               Get Consultation
             </a>
             <a
               href="tel:+919253625099"
-              className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-white/20 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 shadow-lg"
+              className="bg-slate-100 text-slate-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-200 hover:border-slate-300 transition-all duration-300"
             >
               Talk to Expert
             </a>
           </div>
         </div>
-
-        {/* Bottom Accent Bar for Visual Separation */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400"></div>
       </section>
     </div>
   );

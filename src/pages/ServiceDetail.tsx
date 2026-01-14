@@ -23,8 +23,8 @@ const servicesData = {
         icon: <Globe className="w-10 h-10" />,
         title: "Web & App Development",
         subtitle: "Custom Digital Solutions",
-        description: "Custom websites and mobile applications that drive conversions and user engagement. We build responsive, high-performance digital products tailored to your business needs.",
-        longDescription: "Our web and app development team specializes in creating custom digital solutions that help businesses establish a powerful online presence. From sleek corporate websites to complex e-commerce platforms and mobile applications, we leverage cutting-edge technologies to deliver products that not only look great but perform exceptionally.",
+        description: "Transform your vision into reality with custom-built websites and mobile applications. We create scalable, high-performance digital solutions that deliver exceptional user experiences and drive measurable business results.",
+        longDescription: "Our web and app development team specializes in creating custom digital solutions that help businesses establish a powerful online presence and achieve their digital transformation goals. From sleek corporate websites and complex e-commerce platforms to native mobile applications and progressive web apps, we leverage cutting-edge technologies like React, Node.js, React Native, and cloud infrastructure to deliver products that not only look stunning but perform exceptionally. We follow agile development methodologies, ensuring transparency, flexibility, and timely delivery. Our solutions are built with scalability in mind, allowing your digital products to grow seamlessly with your business. Whether you need a simple landing page or a complex enterprise application, we have the expertise to bring your vision to life.",
         features: [
             "Responsive design for all devices",
             "Custom CMS development",
@@ -56,8 +56,8 @@ const servicesData = {
         icon: <Search className="w-10 h-10" />,
         title: "SEO & Content Marketing",
         subtitle: "Rank Higher, Convert Better",
-        description: "Data-driven SEO strategies and compelling content that ranks and converts. We help you dominate search results and attract qualified leads.",
-        longDescription: "Our SEO and content marketing services are designed to improve your website's visibility in search engines and drive targeted traffic that converts. We combine technical SEO expertise with creative content strategies to build a sustainable online presence that delivers long-term results.",
+        description: "Dominate search rankings and captivate your audience with data-driven SEO strategies and compelling content. We help you build authority, increase organic traffic, and convert visitors into loyal customers.",
+        longDescription: "Our SEO and content marketing services are designed to improve your website's visibility in search engines and drive targeted traffic that converts into paying customers. We combine technical SEO expertise with creative content strategies to build a sustainable online presence that delivers long-term results. Our approach includes comprehensive keyword research, on-page and off-page optimization, technical SEO audits, content creation that resonates with your audience, and strategic link building campaigns. We don't just focus on rankings; we focus on driving qualified traffic that converts. Our content marketing strategies include blog posts, infographics, videos, and social media content that establishes your brand as an industry authority. With regular performance tracking and optimization, we ensure your SEO investment delivers measurable ROI.",
         features: [
             "Technical SEO audit & optimization",
             "Keyword research & strategy",
@@ -82,8 +82,8 @@ const servicesData = {
         icon: <Share2 className="w-10 h-10" />,
         title: "Social Media Marketing",
         subtitle: "Build Your Brand Presence",
-        description: "Strategic SMM campaigns that build brand awareness and drive engagement across all major platforms.",
-        longDescription: "Our social media marketing services help businesses build meaningful connections with their audience. We create and execute comprehensive social media strategies that increase brand awareness, foster community engagement, and drive measurable business results across platforms like Instagram, Facebook, LinkedIn, and more.",
+        description: "Build a powerful brand presence across social platforms. Our strategic campaigns create meaningful connections with your audience, boost engagement, and turn followers into brand advocates.",
+        longDescription: "Our social media marketing services help businesses build meaningful connections with their audience and create lasting brand loyalty. We create and execute comprehensive social media strategies that increase brand awareness, foster community engagement, and drive measurable business results across platforms like Instagram, Facebook, LinkedIn, Twitter, and more. Our team develops platform-specific content strategies, manages your social media presence, runs targeted paid campaigns, and engages with your community to build authentic relationships. We use advanced analytics to track performance, understand audience behavior, and continuously optimize campaigns for better results. From content creation and scheduling to influencer partnerships and crisis management, we handle every aspect of your social media presence. Our goal is to transform your social media channels into powerful marketing assets that drive traffic, generate leads, and increase sales.",
         features: [
             "Platform-specific strategies",
             "Content calendar creation",
@@ -108,25 +108,46 @@ const servicesData = {
         icon: <Brain className="w-10 h-10" />,
         title: "AI Solutions",
         subtitle: "Intelligent Automation",
-        description: "Cutting-edge AI integration for automation and intelligent decision-making to transform your business operations.",
-        longDescription: "Our AI solutions help businesses leverage the power of artificial intelligence to automate processes, gain insights from data, and make smarter decisions. From chatbots to predictive analytics, we implement AI technologies that drive efficiency and competitive advantage.",
+        description: "Cutting-edge AI integration for automation and intelligent decision-making to transform your business operations. From lead management automation to WhatsApp text automation, we integrate cutting-edge AI technology tailored to your unique needs.",
+        longDescription: "Our AI solutions help businesses leverage the power of artificial intelligence to automate processes, gain insights from data, and make smarter decisions. We specialize in implementing intelligent automation systems that streamline your operations, enhance customer engagement, and drive measurable business growth. From chatbots and predictive analytics to custom AI-powered tools, we deliver solutions that give you a competitive edge in today's digital landscape. Our expertise spans across lead management automation, WhatsApp business automation, intelligent chatbots, and data-driven decision-making systems that transform how you operate.",
         features: [
-            "Chatbot development",
-            "Predictive analytics",
-            "Process automation",
-            "Data analysis & insights",
-            "Machine learning models",
-            "AI-powered tools",
-            "Natural language processing",
-            "Computer vision solutions"
+            "Lead management automation systems",
+            "WhatsApp text automation & business API integration",
+            "Intelligent chatbot development",
+            "Predictive analytics & forecasting",
+            "Process automation & workflow optimization",
+            "Data analysis & actionable insights",
+            "Machine learning models & AI training",
+            "Natural language processing (NLP)",
+            "Computer vision solutions",
+            "AI-powered customer service tools",
+            "Automated email & SMS campaigns",
+            "Smart CRM integration"
         ],
         benefits: [
-            "Automate repetitive tasks",
+            "Automate repetitive tasks and save time",
             "Gain actionable insights from data",
-            "Improve customer experience",
-            "Reduce operational costs"
+            "Improve customer experience with instant responses",
+            "Reduce operational costs by up to 70%",
+            "Scale your business without scaling headcount",
+            "Make data-driven decisions faster"
         ],
-        relatedProjects: [],
+        relatedProjects: [
+            { 
+                name: "Lead Management Automation", 
+                link: "/projects/lead-management-automation", 
+                description: "Automated lead capture, scoring, and nurturing system that increased conversion rates by 45%. Intelligent lead distribution and follow-up automation.",
+                logo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=400&fit=crop&q=90",
+                video: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop&q=90"
+            },
+            { 
+                name: "WhatsApp Text Automation", 
+                link: "/projects/whatsapp-automation", 
+                description: "WhatsApp Business API integration for automated customer support, marketing campaigns, and instant notifications. Handle unlimited conversations efficiently.",
+                logo: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=400&h=400&fit=crop&q=90",
+                video: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1920&h=1080&fit=crop&q=90"
+            }
+        ],
         image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
         color: "from-orange-500 to-amber-500"
     },
@@ -134,8 +155,8 @@ const servicesData = {
         icon: <Mic className="w-10 h-10" />,
         title: "Podcast Production",
         subtitle: "Amplify Your Voice",
-        description: "Professional podcast creation and distribution to amplify your brand voice and reach new audiences.",
-        longDescription: "Our podcast production services help businesses and individuals create professional audio content that engages audiences and builds thought leadership. From concept to distribution, we handle every aspect of podcast production to ensure your message reaches the right ears.",
+        description: "Amplify your brand voice with professional podcast production. From concept to distribution, we handle everything to help you reach and engage your target audience through compelling audio content.",
+        longDescription: "Our podcast production services help businesses and individuals create professional audio content that engages audiences, builds thought leadership, and establishes brand authority in their industry. From initial concept development and scriptwriting to professional recording, editing, and distribution across all major platforms, we handle every aspect of podcast production to ensure your message reaches the right ears. We provide state-of-the-art recording facilities, experienced audio engineers, and creative producers who understand how to craft compelling narratives that resonate with listeners. Our services include guest booking assistance, show notes creation, transcription services, promotional graphics, and strategic distribution to maximize your podcast's reach. Whether you're launching a new podcast or looking to improve an existing show, we have the expertise and resources to help you succeed in the growing world of audio content.",
         features: [
             "Podcast strategy & planning",
             "Professional recording",
@@ -160,8 +181,8 @@ const servicesData = {
         icon: <Calculator className="w-10 h-10" />,
         title: "Financial Consulting",
         subtitle: "Strategic Financial Guidance",
-        description: "Strategic financial planning and investment guidance for sustainable business growth.",
-        longDescription: "Our financial consulting services provide businesses with expert guidance on financial planning, investment strategies, and risk management. We help you make informed decisions that drive growth and ensure long-term financial health.",
+        description: "Navigate complex financial decisions with confidence. Our expert consultants provide strategic planning, investment guidance, and financial optimization strategies to accelerate your business growth.",
+        longDescription: "Our financial consulting services provide businesses with expert guidance on financial planning, investment strategies, risk management, and financial optimization. We help you make informed decisions that drive growth and ensure long-term financial health and sustainability. Our experienced financial consultants work closely with your leadership team to analyze your current financial position, identify opportunities for improvement, and develop comprehensive strategies that align with your business goals. We provide services including financial forecasting, budgeting, cash flow management, tax optimization, funding strategies, and performance analysis. Whether you're a startup seeking seed funding, a growing business looking to optimize operations, or an established enterprise planning expansion, our consultants bring deep industry knowledge and proven methodologies to help you achieve your financial objectives. We don't just provide advice; we partner with you to implement strategies and monitor results.",
         features: [
             "Financial planning",
             "Investment strategies",
@@ -186,8 +207,8 @@ const servicesData = {
         icon: <Briefcase className="w-10 h-10" />,
         title: "Business Consultation",
         subtitle: "Expert Strategic Guidance",
-        description: "Expert guidance to optimize your business operations, strategy, and growth potential for long-term success.",
-        longDescription: "Our business consultation services provide strategic guidance to help businesses optimize operations, identify growth opportunities, and overcome challenges. We work closely with leadership teams to develop actionable strategies that drive sustainable success.",
+        description: "Unlock your business's full potential with expert strategic guidance. We analyze your operations, identify growth opportunities, and provide actionable insights to optimize performance and achieve sustainable success.",
+        longDescription: "Our business consultation services provide strategic guidance to help businesses optimize operations, identify growth opportunities, overcome challenges, and achieve their long-term vision. We work closely with leadership teams to develop actionable strategies that drive sustainable success and competitive advantage. Our consultants bring years of cross-industry experience and proven methodologies to analyze your business from multiple angles - operations, marketing, sales, finance, and technology. We conduct comprehensive assessments, identify bottlenecks and inefficiencies, and develop customized roadmaps for improvement. Our services include strategic business planning, market analysis and research, competitive positioning, operational process optimization, change management, performance improvement initiatives, and business model innovation. We don't just deliver reports; we work alongside your team to implement strategies, measure progress, and adjust course as needed. Whether you're facing specific challenges or looking to take your business to the next level, our consultants provide the expertise and support you need to succeed.",
         features: [
             "Strategic business planning",
             "Operational process optimization",
@@ -212,8 +233,8 @@ const servicesData = {
         icon: <Landmark className="w-10 h-10" />,
         title: "Business Loans",
         subtitle: "Flexible Financing Solutions",
-        description: "Fast and flexible financing solutions tailored to fuel your business expansion.",
-        longDescription: "Our business loan services connect you with the right financing options to fuel your growth. Whether you need working capital, equipment financing, or expansion funds, we help you secure competitive rates with minimal documentation.",
+        description: "Fuel your growth with flexible financing solutions. Access term loans, working capital, equipment financing, and more with competitive rates and terms designed to support your business expansion.",
+        longDescription: "Our business loan services connect you with the right financing options to fuel your growth and help you seize opportunities without cash flow constraints. Whether you need working capital to manage day-to-day operations, equipment financing to upgrade your infrastructure, or expansion funds to enter new markets, we help you secure competitive rates with minimal documentation and fast approval processes. We work with a network of trusted financial institutions and lenders to find the best financing solutions tailored to your specific needs and business situation. Our team guides you through the entire loan application process, from documentation preparation to approval and disbursement. We understand that every business has unique financing needs, which is why we offer a range of loan products including unsecured business loans, secured loans, machinery and equipment loans, invoice financing, and business lines of credit. With flexible repayment terms and dedicated support throughout the loan tenure, we make business financing simple and accessible.",
         features: [
             "Unsecured business loans",
             "Working capital finance",
@@ -238,8 +259,8 @@ const servicesData = {
         icon: <ShieldCheck className="w-10 h-10" />,
         title: "Business Insurance",
         subtitle: "Comprehensive Protection",
-        description: "Comprehensive coverage options to protect your business assets and liabilities.",
-        longDescription: "Our business insurance services help you protect your business from unforeseen risks. We offer a range of coverage options tailored to your industry and specific needs, ensuring you can operate with confidence.",
+        description: "Protect what you've built with comprehensive insurance coverage. Safeguard your assets, mitigate risks, and ensure business continuity with tailored insurance plans that give you peace of mind.",
+        longDescription: "Our business insurance services help you protect your business from unforeseen risks and ensure continuity in the face of unexpected events. We offer a comprehensive range of coverage options tailored to your industry, business size, and specific risk profile, ensuring you can operate with confidence and peace of mind. Our insurance experts conduct thorough risk assessments to identify potential vulnerabilities in your business and recommend appropriate coverage solutions. We work with leading insurance providers to offer competitive premiums and comprehensive protection. Our services include general liability insurance to protect against third-party claims, property insurance to safeguard your physical assets, workers' compensation to cover employee injuries, professional liability insurance for service-based businesses, cyber insurance to protect against data breaches, keyman insurance to protect against loss of key personnel, and business interruption coverage to maintain cash flow during disruptions. We also provide ongoing policy management, claims assistance, and regular reviews to ensure your coverage evolves with your business needs.",
         features: [
             "General liability insurance",
             "Property insurance",
@@ -469,42 +490,31 @@ const ServiceDetail = () => {
             )}
 
             {/* CTA Section */}
-            <section className="relative py-24 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
-                {/* Background Image with Blur */}
-                <div className="absolute inset-0 z-0 pointer-events-none">
-                    <div
-                        className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-110"
-                        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?q=80&w=2070&auto=format&fit=crop")' }}
-                    />
-                    <div className="absolute inset-0 bg-slate-900/85" />
-                </div>
-
+            <section className="relative py-24 bg-white overflow-hidden">
                 <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <AnimatedSection animation="fadeInUp" delay={0.2}>
-                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 font-sans leading-tight">
-                            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Success Story</span> Together
+                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 font-sans leading-tight">
+                            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Success Story</span> Together
                         </h2>
-                        <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-xl mb-10 text-gray-600 max-w-2xl mx-auto leading-relaxed">
                             Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 to="/get-consultation"
-                                className="px-8 py-4 bg-amber-500 text-white rounded-xl font-black uppercase tracking-widest shadow-lg shadow-amber-500/20 transition-all duration-300"
+                                className="px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white rounded-xl font-black uppercase tracking-widest shadow-lg transition-all duration-300"
                             >
                                 Get Consultation
                             </Link>
                             <a
                                 href="tel:+919253625099"
-                                className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-white/20 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 shadow-lg"
+                                className="bg-slate-100 text-slate-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-200 hover:border-slate-300 transition-all duration-300"
                             >
                                 Talk to Expert
                             </a>
                         </div>
                     </AnimatedSection>
                 </div>
-
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400"></div>
             </section>
         </div>
     );

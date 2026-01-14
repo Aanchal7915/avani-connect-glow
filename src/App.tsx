@@ -129,6 +129,8 @@ import HiTechHomesProject from "./pages/HiTechHomesProject";
 import SanjeevniHospitalProject from "./pages/SanjeevniHospitalProject";
 import RohtakShoeProject from "./pages/RohtakShoeProject";
 import ServiceDetail from "./pages/ServiceDetail";
+import LeadManagementProject from "./pages/LeadManagementProject";
+import WhatsAppAutomationProject from "./pages/WhatsAppAutomationProject";
 
 // नई लाइन: ThankYou page import
 import ThankYou from "./pages/ThankYou";
@@ -195,6 +197,8 @@ const AppLayout = () => {
           <Route path="/projects/hitech-homes" element={<HiTechHomesProject />} />
           <Route path="/projects/sanjeevni-hospital" element={<SanjeevniHospitalProject />} />
           <Route path="/projects/rohtak-shoe" element={<RohtakShoeProject />} />
+          <Route path="/projects/lead-management-automation" element={<LeadManagementProject />} />
+          <Route path="/projects/whatsapp-automation" element={<WhatsAppAutomationProject />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/careers/:id" element={<CareerDetail />} />
           <Route path="/admin" element={<AdminRedirect />} />

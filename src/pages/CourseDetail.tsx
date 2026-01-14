@@ -1006,10 +1006,10 @@ const CourseDetail = () => {
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Start Your Journey?
+            Let's Build Your Success Story Together
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Join thousands of students who have transformed their careers with our premium courses.
+Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
