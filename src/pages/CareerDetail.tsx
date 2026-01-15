@@ -126,10 +126,13 @@ const CareerDetail = () => {
 
       setIsSubmitted(true);
       setShowForm(false);
-      // Wait for a few seconds before navigating back
+      // Wait for the DOM to update then scroll to success message
       setTimeout(() => {
-        navigate("/careers");
-      }, 3000);
+        const successElem = document.getElementById('application-success');
+        if (successElem) {
+          successElem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
     } catch (err: any) {
       console.error("Failed to submit application", err);
       alert(err.response?.data?.message || "Failed to submit application. Please try again.");
@@ -246,19 +249,7 @@ const CareerDetail = () => {
               </div>
             </div>
 
-            {isSubmitted && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="mt-6 p-6 bg-emerald-50 text-emerald-700 rounded-2xl font-bold text-center border border-emerald-100 uppercase tracking-widest shadow-lg"
-              >
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <CheckCircle className="w-6 h-6" />
-                  <span className="text-lg">Application Submitted Successfully!</span>
-                </div>
-                <p className="text-sm font-medium opacity-80">We'll review your profile and contact you soon.</p>
-              </motion.div>
-            )}
+
 
             {!showForm && !isSubmitted && (
               <button
@@ -896,6 +887,24 @@ const CareerDetail = () => {
                   </button>
                 </div>
               </form>
+            </motion.div>
+          )}
+
+          {isSubmitted && (
+            <motion.div
+              id="application-success"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-6 p-8 bg-emerald-50 text-emerald-700 rounded-3xl font-bold text-center border border-emerald-100 uppercase tracking-widest shadow-2xl"
+            >
+              <div className="flex items-center justify-center gap-3 mb-3">
+                <CheckCircle className="w-8 h-8 md:w-10 md:h-10" />
+                <span className="text-xl md:text-2xl font-black">Application Submitted!</span>
+              </div>
+              <p className="text-sm md:text-lg font-bold opacity-90 max-w-2xl mx-auto normal-case">
+                Thank you for applying. We have received your application and will review it meticulously.
+                Our team will reach out to you if your profile matches our requirements.
+              </p>
             </motion.div>
           )}
         </main>
