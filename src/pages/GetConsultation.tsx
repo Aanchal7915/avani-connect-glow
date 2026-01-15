@@ -98,9 +98,9 @@ const GetConsultation = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center py-20 overflow-hidden bg-[#fefaf6]">
+      <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
         {/* Curved Background Split */}
         <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none hidden lg:block">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-100/40 via-orange-50/30 to-transparent rounded-l-[20rem] transform scale-x-110 translate-x-20" />
@@ -151,7 +151,7 @@ const GetConsultation = () => {
       </section>
 
       {/* Main Content Section */}
-      <section id="consultation-form" className="relative -mt-24 z-20 pb-24 bg-gradient-to-b from-transparent via-slate-50 to-white">
+      <section id="consultation-form" className="relative -mt-24 z-20 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
@@ -229,7 +229,7 @@ const GetConsultation = () => {
 
               {/* Consultation Benefits */}
               <AnimatedSection animation="fadeInUp" delay={0.4}>
-                <div className="bg-slate-100 p-8 rounded-3xl border border-slate-200">
+                <div className="bg-amber-50/50 p-8 rounded-3xl border border-amber-100/50">
                   <h4 className="text-slate-900 font-black text-lg mb-4">What You Get</h4>
                   <ul className="space-y-3">
                     {['60-Min Strategy Session', '1:1 Expert Consultation', 'Custom Growth Roadmap', 'Actionable Insights'].map((text, i) => (
@@ -258,7 +258,7 @@ const GetConsultation = () => {
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 transition-colors group-focus-within:text-amber-500">Full Name *</label>
                         <input
                           type="text" name="name" required value={formData.name} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-amber-50/20 border-b border-amber-100 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="Your Name"
                         />
                       </div>
@@ -266,7 +266,7 @@ const GetConsultation = () => {
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Work Email *</label>
                         <input
                           type="email" name="email" required value={formData.email} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-amber-50/20 border-b border-amber-100 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="Email Address"
                         />
                       </div>
@@ -277,7 +277,7 @@ const GetConsultation = () => {
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Mobile Phone *</label>
                         <input
                           type="tel" name="phone" required value={formData.phone} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-amber-50/20 border-b border-amber-100 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="+91"
                         />
                       </div>
@@ -285,7 +285,7 @@ const GetConsultation = () => {
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Organization</label>
                         <input
                           type="text" name="company" value={formData.company} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-amber-50/20 border-b border-amber-100 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="Company Name"
                         />
                       </div>
@@ -296,7 +296,7 @@ const GetConsultation = () => {
                       <div className="relative">
                         <button
                           type="button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 text-left flex justify-between items-center outline-none transition-all focus:border-amber-500"
+                          className="w-full px-4 py-3 bg-amber-50/20 border-b border-amber-100 text-left flex justify-between items-center outline-none transition-all focus:border-amber-500"
                         >
                           <span className={`font-bold text-sm ${formData.service.length === 0 ? 'text-slate-400' : 'text-slate-900'}`}>
                             {formData.service.length === 0 ? "Select Services" : `${formData.service.length} Selected`}
@@ -306,7 +306,7 @@ const GetConsultation = () => {
                         {isDropdownOpen && (
                           <div className="absolute z-50 mt-2 w-full bg-white shadow-2xl rounded-xl py-2 border border-slate-100 max-h-48 overflow-auto">
                             {services.map((service) => (
-                              <div key={service} onClick={() => handleServiceToggle(service)} className="px-4 py-2 hover:bg-slate-50 cursor-pointer flex items-center gap-3">
+                              <div key={service} onClick={() => handleServiceToggle(service)} className="px-4 py-2 hover:bg-amber-50 cursor-pointer flex items-center gap-3">
                                 <input type="checkbox" checked={formData.service.includes(service)} readOnly className="w-3.5 h-3.5 text-amber-500 focus:ring-amber-500 border-slate-300 rounded" />
                                 <span className="text-xs font-bold text-slate-700">{service}</span>
                               </div>
@@ -321,7 +321,7 @@ const GetConsultation = () => {
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Please Specify Other Service</label>
                         <input
                           type="text" name="otherService" value={formData.otherService} onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
+                          className="w-full px-4 py-3 bg-amber-50/20 border-b border-amber-100 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none text-sm"
                           placeholder="Describe your service need"
                         />
                       </div>
@@ -331,7 +331,7 @@ const GetConsultation = () => {
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block mb-1 group-focus-within:text-amber-500">Message</label>
                       <textarea
                         name="message" value={formData.message} onChange={handleInputChange} rows={2}
-                        className="w-full px-4 py-3 bg-slate-50 border-b border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none resize-none text-sm"
+                        className="w-full px-4 py-3 bg-amber-50/20 border-b border-amber-100 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none resize-none text-sm"
                         placeholder="Brief description of your needs..."
                       />
                     </div>
