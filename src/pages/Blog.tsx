@@ -111,12 +111,12 @@ const Blog = () => {
                     className="w-full pl-12 pr-4 py-4 bg-slate-50 border-b-2 border-slate-200 focus:border-amber-500 text-slate-900 font-bold transition-all outline-none rounded-lg"
                   />
                 </div>
-                <div className="flex flex-wrap gap-3 justify-center">
+                <div className="flex flex-wrap gap-2 justify-center lg:justify-end w-full lg:w-auto">
                   {categories.map((category) => (
                     <button
                       key={category.id}
                       onClick={() => setActiveCategory(category.id)}
-                      className={`px-5 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-wider transition-all duration-200 ${activeCategory === category.id
+                      className={`px-3 py-2 md:px-5 md:py-2.5 rounded-xl font-black text-[9px] md:text-[10px] uppercase tracking-wider transition-all duration-200 whitespace-nowrap ${activeCategory === category.id
                         ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 shadow-lg shadow-yellow-200/50'
                         : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                         }`}
@@ -254,7 +254,7 @@ const Blog = () => {
 
 
       {/* Popular Topics */}
-      <section className="py-24 bg-slate-50">
+      <section className="pt-12 pb-24 md:py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.1}>
             <div className="text-center mb-16">
