@@ -271,54 +271,33 @@ const Blog = () => {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
-            <AnimatedSection animation="fadeInUp" delay={0.1}>
-              <div className="group bg-white p-4 md:p-8 rounded-[1.2rem] md:rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500 h-full flex flex-col">
-                <div className="w-10 h-10 md:w-16 md:h-16 bg-slate-900 rounded-lg md:rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Search className="w-5 h-5 md:w-8 md:h-8" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 max-w-7xl mx-auto">
+            {[
+              { title: "SEO", description: "15+ articles on search engine optimization and ranking strategies.", icon: <Search className="w-5 h-5 md:w-6 h-6 text-white" />, delay: 0.1 },
+              { title: "Social Media", description: "12+ articles on social media marketing and engagement strategies.", icon: <Share2 className="w-5 h-5 md:w-6 h-6 text-white" />, delay: 0.15 },
+              { title: "Content", description: "10+ articles on content strategy and creation best practices.", icon: <Tag className="w-5 h-5 md:w-6 h-6 text-white" />, delay: 0.2 },
+              { title: "Digital", description: "8+ articles on digital transformation and business strategy.", icon: <TrendingUp className="w-5 h-5 md:w-6 h-6 text-white" />, delay: 0.25 }
+            ].map((topic, index) => (
+              <AnimatedSection
+                key={index}
+                animation="fadeInUp"
+                delay={topic.delay}
+              >
+                <div className="bg-white rounded-[1.5rem] md:rounded-[2.5rem] p-4 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-slate-100 hover:border-amber-200 h-full group flex flex-col">
+                  <div className="flex flex-col md:flex-row items-center md:items-center gap-3 md:gap-5 mb-3 md:mb-5 text-center md:text-left">
+                    <div className="w-10 h-10 md:w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg shadow-amber-200 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                      {topic.icon}
+                    </div>
+                    <h3 className="text-base md:text-2xl font-bold text-slate-900 tracking-tight leading-tight">
+                      {topic.title}
+                    </h3>
+                  </div>
+                  <p className="text-slate-600 leading-relaxed text-xs md:text-lg font-medium text-center md:text-left">
+                    {topic.description}
+                  </p>
                 </div>
-                <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-3 text-center tracking-tight uppercase">SEO</h3>
-                <p className="text-slate-600 text-[10px] md:text-sm text-center font-medium leading-relaxed">
-                  15+ articles on search engine optimization and ranking strategies.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection animation="fadeInUp" delay={0.15}>
-              <div className="group bg-white p-4 md:p-8 rounded-[1.2rem] md:rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500 h-full flex flex-col">
-                <div className="w-10 h-10 md:w-16 md:h-16 bg-slate-900 rounded-lg md:rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Share2 className="w-5 h-5 md:w-8 md:h-8" />
-                </div>
-                <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-3 text-center tracking-tight uppercase">Social Media</h3>
-                <p className="text-slate-600 text-[10px] md:text-sm text-center font-medium leading-relaxed">
-                  12+ articles on social media marketing and engagement strategies.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection animation="fadeInUp" delay={0.2}>
-              <div className="group bg-white p-4 md:p-8 rounded-[1.2rem] md:rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500 h-full flex flex-col">
-                <div className="w-10 h-10 md:w-16 md:h-16 bg-slate-900 rounded-lg md:rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Tag className="w-5 h-5 md:w-8 md:h-8" />
-                </div>
-                <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-3 text-center tracking-tight uppercase">Content</h3>
-                <p className="text-slate-600 text-[10px] md:text-sm text-center font-medium leading-relaxed">
-                  10+ articles on content strategy and creation best practices.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection animation="fadeInUp" delay={0.25}>
-              <div className="group bg-white p-4 md:p-8 rounded-[1.2rem] md:rounded-[1.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-amber-500 h-full flex flex-col">
-                <div className="w-10 h-10 md:w-16 md:h-16 bg-slate-900 rounded-lg md:rounded-xl flex items-center justify-center text-amber-500 mx-auto mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <TrendingUp className="w-5 h-5 md:w-8 md:h-8" />
-                </div>
-                <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-3 text-center tracking-tight uppercase text-wrap">Digital</h3>
-                <p className="text-slate-600 text-[10px] md:text-sm text-center font-medium leading-relaxed">
-                  8+ articles on digital transformation and business strategy.
-                </p>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
