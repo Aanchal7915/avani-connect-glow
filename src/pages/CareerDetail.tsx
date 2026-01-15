@@ -75,18 +75,18 @@ const CareerDetail = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.fullName || !formData.email || !formData.phone || 
-        !formData.experience || !formData.noticePeriod || !formData.highestQualification) {
+
+    if (!formData.fullName || !formData.email || !formData.phone ||
+      !formData.experience || !formData.noticePeriod || !formData.highestQualification) {
       alert("Please fill in all required fields");
       return;
     }
-    
+
     if (!formData.resume) {
       alert("Please upload your resume");
       return;
     }
-    
+
     setSubmitting(true);
 
     try {
@@ -134,7 +134,7 @@ const CareerDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0b1220] flex items-center justify-center pt-20">
+      <div className="min-h-screen bg-[#fefaf6] flex items-center justify-center pt-20">
         <div className="animate-spin rounded-full h-12 w-12 border-2 border-amber-500 border-t-transparent" />
       </div>
     );
@@ -142,12 +142,12 @@ const CareerDetail = () => {
 
   if (!job) {
     return (
-      <div className="min-h-screen bg-[#0b1220] flex items-center justify-center pt-20">
+      <div className="min-h-screen bg-[#fefaf6] flex items-center justify-center pt-20">
         <div className="text-center">
-          <p className="text-slate-400 mb-4">Job not found</p>
+          <p className="text-slate-600 mb-4">Job not found</p>
           <button
             onClick={() => navigate("/careers")}
-            className="text-amber-400 hover:text-amber-300 transition-colors"
+            className="text-amber-600 hover:text-amber-700 transition-colors font-bold"
           >
             Back to Careers
           </button>
@@ -166,12 +166,13 @@ const CareerDetail = () => {
         <meta name="description" content={job.description} />
       </Helmet>
 
-      <div className="min-h-screen bg-[#0b1220] pt-20">
+      <div className="min-h-screen bg-[#fefaf6] pt-20 relative">
         {/* Background Effects */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0b1220] via-[#0f172a] to-[#0b1220]" />
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] animate-pulse-slow" />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[100px] animate-pulse-slow delay-700" />
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 via-orange-50/40 to-transparent" />
+          <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/30 to-orange-200/30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-br from-orange-200/30 to-amber-200/30 blur-[120px] rounded-full" />
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
         </div>
 
         <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
@@ -180,7 +181,7 @@ const CareerDetail = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => navigate("/careers")}
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-slate-600 hover:text-amber-600 transition-colors font-bold"
           >
             <ArrowLeft size={20} />
             Back to Careers
@@ -191,46 +192,48 @@ const CareerDetail = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 shadow-3xl p-6 md:p-10"
+            className="bg-white rounded-3xl border border-slate-100 shadow-2xl p-6 md:p-10"
           >
-            <div className="flex items-start gap-6 mb-8">
-              <div className="p-5 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-2xl">
-                <Briefcase size={40} className="text-amber-400" />
+            <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6 mb-8">
+              <div className="p-4 md:p-5 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-2xl shrink-0">
+                <Briefcase className="w-8 h-8 md:w-10 md:h-10 text-amber-500" />
               </div>
 
-              <div className="flex-1">
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <h1 className="text-3xl md:text-4xl font-bold text-white">
+              <div className="flex-1 w-full">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+                  <h1 className="text-2xl md:text-4xl font-bold text-slate-900 leading-tight">
                     {job.title}
                   </h1>
-                  {isActive ? (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 whitespace-nowrap">
-                      <CheckCircle size={14} />
-                      Active
-                    </span>
-                  ) : (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-white/5 text-slate-500 border border-white/10 whitespace-nowrap">
-                      {isFilled ? "Position Filled" : "Closed"}
-                    </span>
-                  )}
+                  <div className="flex shrink-0">
+                    {isActive ? (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 whitespace-nowrap">
+                        <CheckCircle size={14} />
+                        Active
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200 whitespace-nowrap">
+                        {isFilled ? "Position Filled" : "Closed"}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
-                  <span className="flex items-center gap-1.5">
-                    <Building2 size={18} />
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs md:text-sm text-slate-600 font-medium">
+                  <span className="flex items-center gap-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+                    <Building2 className="w-4 h-4 text-amber-500" />
                     {job.department}
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <MapPin size={18} />
+                  <span className="flex items-center gap-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+                    <MapPin className="w-4 h-4 text-amber-500" />
                     {job.location}
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <Clock size={18} />
+                  <span className="flex items-center gap-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+                    <Clock className="w-4 h-4 text-amber-500" />
                     {job.type}
                   </span>
                   {job.experience && (
-                    <span className="flex items-center gap-1.5">
-                      <Calendar size={18} />
+                    <span className="flex items-center gap-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+                      <Calendar className="w-4 h-4 text-amber-500" />
                       {job.experience}
                     </span>
                   )}
@@ -264,12 +267,12 @@ const CareerDetail = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 shadow-xl p-6 md:p-8"
+                  className="bg-white rounded-3xl border border-slate-100 shadow-xl p-6 md:p-8"
                 >
-                  <h2 className="text-2xl font-bold text-white mb-4">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-4">
                     Job Description
                   </h2>
-                  <p className="text-slate-300 whitespace-pre-wrap leading-relaxed">
+                  <p className="text-slate-600 whitespace-pre-wrap leading-relaxed font-medium">
                     {job.description}
                   </p>
                 </motion.div>
@@ -280,18 +283,18 @@ const CareerDetail = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 shadow-xl p-6 md:p-8"
+                  className="bg-white rounded-3xl border border-slate-100 shadow-xl p-6 md:p-8"
                 >
-                  <h2 className="text-2xl font-bold text-white mb-4">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-4">
                     Responsibilities
                   </h2>
-                  <ul className="space-y-3 text-slate-300">
-                    {(Array.isArray(job.responsibilities) 
-                      ? job.responsibilities 
+                  <ul className="space-y-3 text-slate-600 font-medium">
+                    {(Array.isArray(job.responsibilities)
+                      ? job.responsibilities
                       : job.responsibilities.split("\n")
                     ).map((item: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <span className="text-amber-400 mt-1 text-lg">•</span>
+                        <span className="text-amber-500 mt-1 text-lg">•</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -304,18 +307,18 @@ const CareerDetail = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 shadow-xl p-6 md:p-8"
+                  className="bg-white rounded-3xl border border-slate-100 shadow-xl p-6 md:p-8"
                 >
-                  <h2 className="text-2xl font-bold text-white mb-4">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-4">
                     Qualifications
                   </h2>
-                  <ul className="space-y-3 text-slate-300">
+                  <ul className="space-y-3 text-slate-600 font-medium">
                     {(Array.isArray(job.qualifications)
                       ? job.qualifications
                       : job.qualifications.split("\n")
                     ).map((item: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <span className="text-amber-400 mt-1 text-lg">•</span>
+                        <span className="text-amber-500 mt-1 text-lg">•</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -328,9 +331,9 @@ const CareerDetail = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 shadow-xl p-6 md:p-8"
+                  className="bg-white rounded-3xl border border-slate-100 shadow-xl p-6 md:p-8"
                 >
-                  <h2 className="text-2xl font-bold text-white mb-4">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-4">
                     Skills Required
                   </h2>
                   <div className="flex flex-wrap gap-3">
@@ -340,7 +343,7 @@ const CareerDetail = () => {
                     ).map((skill: string, idx: number) => (
                       <span
                         key={idx}
-                        className="px-4 py-2 bg-amber-500/10 text-amber-400 text-sm font-medium rounded-full border border-amber-500/30"
+                        className="px-4 py-2 bg-amber-500/10 text-amber-500 text-sm font-medium rounded-full border border-amber-500/30"
                       >
                         {typeof skill === 'string' ? skill.trim() : skill}
                       </span>
@@ -354,18 +357,18 @@ const CareerDetail = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 shadow-xl p-6 md:p-8"
+                  className="bg-white rounded-3xl border border-slate-100 shadow-xl p-6 md:p-8"
                 >
-                  <h2 className="text-2xl font-bold text-white mb-4">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-4">
                     Benefits
                   </h2>
-                  <ul className="space-y-3 text-slate-300">
+                  <ul className="space-y-3 text-slate-600 font-medium">
                     {(Array.isArray(job.benefits)
                       ? job.benefits
                       : job.benefits.split("\n")
                     ).map((item: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <span className="text-emerald-400 mt-1 text-lg">✓</span>
+                        <span className="text-emerald-500 mt-1 text-lg">✓</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -381,13 +384,13 @@ const CareerDetail = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 shadow-3xl p-6 md:p-10"
+              className="bg-white rounded-3xl border border-slate-100 shadow-3xl p-6 md:p-10"
             >
               <div className="mb-8">
-                <h2 className="text-3xl font-bold text-white mb-2">
+                <h2 className="text-3xl font-bold text-slate-900 mb-2">
                   Apply for {job.title}
                 </h2>
-                <p className="text-sm text-slate-400">
+                <p className="text-sm text-slate-500 font-medium">
                   Fill out the form below to submit your application
                 </p>
               </div>
@@ -395,12 +398,12 @@ const CareerDetail = () => {
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Personal Information */}
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-6 pb-3 border-b border-white/10">
+                  <h3 className="text-xl font-bold text-slate-900 mb-6 pb-3 border-b border-slate-200">
                     Personal Information
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Full Name *
                       </label>
                       <input
@@ -410,15 +413,15 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, fullName: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all"
                         placeholder="Enter your full name"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Email Address *
                       </label>
                       <input
@@ -428,15 +431,15 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all"
                         placeholder="your.email@example.com"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -446,15 +449,15 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all"
                         placeholder="+91 1234567890"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Current Location (City, State)
                       </label>
                       <input
@@ -463,15 +466,15 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, currentLocation: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all"
                         placeholder="e.g., Mumbai, Maharashtra"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         LinkedIn Profile URL
                       </label>
                       <input
@@ -480,15 +483,15 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, linkedinProfile: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all"
                         placeholder="https://linkedin.com/in/yourprofile"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Portfolio/Website
                       </label>
                       <input
@@ -497,9 +500,9 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, portfolioWebsite: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all"
                         placeholder="https://yourportfolio.com"
                       />
                     </div>
@@ -508,12 +511,12 @@ const CareerDetail = () => {
 
                 {/* Professional Information */}
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-6 pb-3 border-b border-white/10">
+                  <h3 className="text-xl font-bold text-slate-900 mb-6 pb-3 border-b border-slate-200">
                     Professional Information
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Position Applied For *
                       </label>
                       <input
@@ -521,12 +524,12 @@ const CareerDetail = () => {
                         required
                         value={job?.title || ""}
                         disabled
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-slate-400"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-500"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Total Years of Experience *
                       </label>
                       <select
@@ -535,21 +538,21 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, experience: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white appearance-none cursor-pointer"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 appearance-none cursor-pointer"
                       >
-                        <option value="" className="bg-[#0f172a]">Select experience</option>
-                        <option value="0-1 years" className="bg-[#0f172a]">0-1 years</option>
-                        <option value="1-3 years" className="bg-[#0f172a]">1-3 years</option>
-                        <option value="3-5 years" className="bg-[#0f172a]">3-5 years</option>
-                        <option value="5-10 years" className="bg-[#0f172a]">5-10 years</option>
-                        <option value="10+ years" className="bg-[#0f172a]">10+ years</option>
+                        <option value="" className="bg-white">Select experience</option>
+                        <option value="0-1 years" className="bg-white">0-1 years</option>
+                        <option value="1-3 years" className="bg-white">1-3 years</option>
+                        <option value="3-5 years" className="bg-white">3-5 years</option>
+                        <option value="5-10 years" className="bg-white">5-10 years</option>
+                        <option value="10+ years" className="bg-white">10+ years</option>
                       </select>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Highest Qualification *
                       </label>
                       <select
@@ -558,17 +561,17 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, highestQualification: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white appearance-none cursor-pointer"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 appearance-none cursor-pointer"
                       >
-                        <option value="" className="bg-[#0f172a]">Select qualification</option>
-                        <option value="High School" className="bg-[#0f172a]">High School</option>
-                        <option value="Diploma" className="bg-[#0f172a]">Diploma</option>
-                        <option value="Bachelor's Degree" className="bg-[#0f172a]">Bachelor's Degree</option>
-                        <option value="Master's Degree" className="bg-[#0f172a]">Master's Degree</option>
-                        <option value="PhD" className="bg-[#0f172a]">PhD</option>
-                        <option value="Other" className="bg-[#0f172a]">Other</option>
+                        <option value="" className="bg-white">Select qualification</option>
+                        <option value="High School" className="bg-white">High School</option>
+                        <option value="Diploma" className="bg-white">Diploma</option>
+                        <option value="Bachelor's Degree" className="bg-white">Bachelor's Degree</option>
+                        <option value="Master's Degree" className="bg-white">Master's Degree</option>
+                        <option value="PhD" className="bg-white">PhD</option>
+                        <option value="Other" className="bg-white">Other</option>
                       </select>
                     </div>
 
@@ -585,15 +588,15 @@ const CareerDetail = () => {
                             setFormData({ ...formData, otherQualification: e.target.value })
                           }
                           className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                            focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                            text-white placeholder-slate-500 transition-all"
+                            focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                            text-slate-900 placeholder-slate-400 transition-all"
                           placeholder="e.g., Professional Certification, Trade School, etc."
                         />
                       </div>
                     )}
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Current/Last Company
                       </label>
                       <input
@@ -610,7 +613,7 @@ const CareerDetail = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Current/Last Designation
                       </label>
                       <input
@@ -619,15 +622,15 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, currentDesignation: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all"
                         placeholder="Your job title"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Current CTC (Annual)
                       </label>
                       <input
@@ -636,15 +639,15 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, currentCTC: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all"
                         placeholder="e.g., 5 LPA"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Expected CTC (Annual)
                       </label>
                       <input
@@ -653,15 +656,15 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, expectedCTC: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all"
                         placeholder="e.g., 7 LPA"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Notice Period *
                       </label>
                       <select
@@ -670,16 +673,16 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, noticePeriod: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white appearance-none cursor-pointer"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 appearance-none cursor-pointer"
                       >
-                        <option value="" className="bg-[#0f172a]">Select notice period</option>
-                        <option value="Immediate" className="bg-[#0f172a]">Immediate</option>
-                        <option value="15 days" className="bg-[#0f172a]">15 days</option>
-                        <option value="1 month" className="bg-[#0f172a]">1 month</option>
-                        <option value="2 months" className="bg-[#0f172a]">2 months</option>
-                        <option value="3 months" className="bg-[#0f172a]">3 months</option>
+                        <option value="" className="bg-white">Select notice period</option>
+                        <option value="Immediate" className="bg-white">Immediate</option>
+                        <option value="15 days" className="bg-white">15 days</option>
+                        <option value="1 month" className="bg-white">1 month</option>
+                        <option value="2 months" className="bg-white">2 months</option>
+                        <option value="3 months" className="bg-white">3 months</option>
                       </select>
                     </div>
                   </div>
@@ -687,12 +690,12 @@ const CareerDetail = () => {
 
                 {/* Documents */}
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-6 pb-3 border-b border-white/10">
+                  <h3 className="text-xl font-bold text-slate-900 mb-6 pb-3 border-b border-slate-200">
                     Documents
                   </h3>
                   <div className="space-y-5">
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Upload Resume * (PDF/DOC, max 5MB)
                       </label>
                       <div className="relative">
@@ -706,10 +709,10 @@ const CareerDetail = () => {
                         />
                         <label
                           htmlFor="resume-upload"
-                          className="flex items-center justify-center gap-3 w-full px-6 py-4 border-2 border-dashed border-white/20 rounded-xl hover:border-amber-500/50 transition-all cursor-pointer bg-white/5 hover:bg-white/10"
+                          className="flex items-center justify-center gap-3 w-full px-6 py-4 border-2 border-dashed border-slate-200 rounded-xl hover:border-amber-500/50 transition-all cursor-pointer bg-slate-50 hover:bg-slate-100"
                         >
                           <Upload size={20} className="text-slate-400" />
-                          <span className="text-sm text-slate-300">
+                          <span className="text-sm text-slate-600 font-medium">
                             {formData.resume
                               ? formData.resume.name
                               : "Click to upload resume"}
@@ -719,7 +722,7 @@ const CareerDetail = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Upload Cover Letter (Optional)
                       </label>
                       <div className="relative">
@@ -732,10 +735,10 @@ const CareerDetail = () => {
                         />
                         <label
                           htmlFor="cover-letter-upload"
-                          className="flex items-center justify-center gap-3 w-full px-6 py-4 border-2 border-dashed border-white/20 rounded-xl hover:border-amber-500/50 transition-all cursor-pointer bg-white/5 hover:bg-white/10"
+                          className="flex items-center justify-center gap-3 w-full px-6 py-4 border-2 border-dashed border-slate-200 rounded-xl hover:border-amber-500/50 transition-all cursor-pointer bg-slate-50 hover:bg-slate-100"
                         >
                           <Upload size={20} className="text-slate-400" />
-                          <span className="text-sm text-slate-300">
+                          <span className="text-sm text-slate-600 font-medium">
                             {formData.coverLetter
                               ? formData.coverLetter.name
                               : "Click to upload cover letter"}
@@ -745,7 +748,7 @@ const CareerDetail = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Or Write Cover Letter (Optional)
                       </label>
                       <textarea
@@ -754,9 +757,9 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, coverLetterText: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all resize-none"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all resize-none"
                         placeholder="Write your cover letter here..."
                       />
                     </div>
@@ -765,12 +768,12 @@ const CareerDetail = () => {
 
                 {/* Additional Information */}
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-6 pb-3 border-b border-white/10">
+                  <h3 className="text-xl font-bold text-slate-900 mb-6 pb-3 border-b border-slate-200">
                     Additional Information
                   </h3>
                   <div className="space-y-5">
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         How did you hear about us?
                       </label>
                       <select
@@ -778,22 +781,22 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, howDidYouHear: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white appearance-none cursor-pointer"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 appearance-none cursor-pointer"
                       >
-                        <option value="" className="bg-[#0f172a]">Select an option</option>
-                        <option value="LinkedIn" className="bg-[#0f172a]">LinkedIn</option>
-                        <option value="Job Portal" className="bg-[#0f172a]">Job Portal (Naukri, Indeed, etc.)</option>
-                        <option value="Company Website" className="bg-[#0f172a]">Company Website</option>
-                        <option value="Referral" className="bg-[#0f172a]">Referral</option>
-                        <option value="Social Media" className="bg-[#0f172a]">Social Media</option>
-                        <option value="Other" className="bg-[#0f172a]">Other</option>
+                        <option value="" className="bg-white">Select an option</option>
+                        <option value="LinkedIn" className="bg-white">LinkedIn</option>
+                        <option value="Job Portal" className="bg-white">Job Portal (Naukri, Indeed, etc.)</option>
+                        <option value="Company Website" className="bg-white">Company Website</option>
+                        <option value="Referral" className="bg-white">Referral</option>
+                        <option value="Social Media" className="bg-white">Social Media</option>
+                        <option value="Other" className="bg-white">Other</option>
                       </select>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Are you willing to relocate?
                       </label>
                       <div className="flex gap-6">
@@ -808,7 +811,7 @@ const CareerDetail = () => {
                             }
                             className="w-4 h-4 text-amber-500 focus:ring-amber-500"
                           />
-                          <span className="text-sm text-slate-300">Yes</span>
+                          <span className="text-sm text-slate-600 font-medium">Yes</span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
                           <input
@@ -821,13 +824,13 @@ const CareerDetail = () => {
                             }
                             className="w-4 h-4 text-amber-500 focus:ring-amber-500"
                           />
-                          <span className="text-sm text-slate-300">No</span>
+                          <span className="text-sm text-slate-600 font-medium">No</span>
                         </label>
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
                         Additional Comments/Message
                       </label>
                       <textarea
@@ -836,9 +839,9 @@ const CareerDetail = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, additionalComments: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl 
-                          focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50
-                          text-white placeholder-slate-500 transition-all resize-none"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl 
+                          focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500
+                          text-slate-900 placeholder-slate-400 transition-all resize-none"
                         placeholder="Any additional information you'd like to share..."
                       />
                     </div>
@@ -867,8 +870,8 @@ const CareerDetail = () => {
                     type="button"
                     onClick={() => setShowForm(false)}
                     disabled={submitting}
-                    className="px-8 py-4 border border-white/20 rounded-2xl hover:bg-white/5 
-                      transition-all disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium"
+                    className="px-8 py-4 border border-slate-200 rounded-2xl hover:bg-slate-50 
+                      transition-all disabled:opacity-50 disabled:cursor-not-allowed text-slate-600 font-medium"
                   >
                     Cancel
                   </button>
