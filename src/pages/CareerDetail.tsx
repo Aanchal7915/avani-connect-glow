@@ -126,16 +126,13 @@ const CareerDetail = () => {
 
       setIsSubmitted(true);
       setShowForm(false);
-      // Wait for the DOM to update then scroll to success message
+      // Use instant scroll for a "no-scroll" feel
       setTimeout(() => {
         const successElem = document.getElementById('application-success');
         if (successElem) {
-          // scrollIntoView works better across devices, 'start' ensures it's at the top
-          successElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // A small additional scroll to account for the navbar
-          window.scrollBy(0, -100);
+          successElem.scrollIntoView({ behavior: 'auto', block: 'start' });
         }
-      }, 150);
+      }, 50);
     } catch (err: any) {
       console.error("Failed to submit application", err);
       alert(err.response?.data?.message || "Failed to submit application. Please try again.");
@@ -896,9 +893,9 @@ const CareerDetail = () => {
           {isSubmitted && (
             <motion.div
               id="application-success"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-6 p-8 bg-emerald-50 text-emerald-700 rounded-3xl font-bold text-center border border-emerald-100 uppercase tracking-widest shadow-2xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="scroll-mt-32 mt-6 p-10 md:p-16 bg-emerald-50 text-emerald-700 rounded-3xl font-bold text-center border-2 border-emerald-200 uppercase tracking-widest shadow-2xl min-h-[300px] flex flex-col items-center justify-center"
             >
               <div className="flex items-center justify-center gap-3 mb-3">
                 <CheckCircle className="w-8 h-8 md:w-10 md:h-10" />
