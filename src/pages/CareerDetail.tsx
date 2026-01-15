@@ -24,6 +24,7 @@ const CareerDetail = () => {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -123,8 +124,12 @@ const CareerDetail = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      alert(response.data.message || "Application submitted successfully! We'll contact you soon.");
-      navigate("/careers");
+      setIsSubmitted(true);
+      setShowForm(false);
+      // Wait for a few seconds before navigating back
+      setTimeout(() => {
+        navigate("/careers");
+      }, 3000);
     } catch (err: any) {
       console.error("Failed to submit application", err);
       alert(err.response?.data?.message || "Failed to submit application. Please try again.");
@@ -241,7 +246,21 @@ const CareerDetail = () => {
               </div>
             </div>
 
-            {!showForm && (
+            {isSubmitted && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="mt-6 p-6 bg-emerald-50 text-emerald-700 rounded-2xl font-bold text-center border border-emerald-100 uppercase tracking-widest shadow-lg"
+              >
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <CheckCircle className="w-6 h-6" />
+                  <span className="text-lg">Application Submitted Successfully!</span>
+                </div>
+                <p className="text-sm font-medium opacity-80">We'll review your profile and contact you soon.</p>
+              </motion.div>
+            )}
+
+            {!showForm && !isSubmitted && (
               <button
                 onClick={() => setShowForm(true)}
                 className="w-full bg-gradient-to-r from-amber-400 to-orange-500 text-white px-8 py-4 
@@ -252,7 +271,7 @@ const CareerDetail = () => {
               </button>
             )}
 
-            {!isActive && (
+            {!isActive && !isSubmitted && (
               <div className="mt-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 text-center text-sm text-amber-400">
                 {isFilled ? "This position has been filled, but you can still apply for future opportunities" : "This position is closed, but you can still submit your application"}
               </div>
