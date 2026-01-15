@@ -435,13 +435,13 @@ const Contact = () => {
           </div>
 
           {/* Floating Location Card - Responsive */}
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-end justify-end md:items-center md:justify-start pb-8 md:pb-0 pointer-events-none">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-end justify-end md:items-center md:justify-start pb-2 md:pb-0 pointer-events-none">
             <AnimatedSection animation="fadeInUp" className="pointer-events-auto w-auto">
-              <div className="bg-white/95 backdrop-blur-md p-4 md:p-10 rounded-xl md:rounded-[2rem] shadow-2xl border border-white/50 max-w-[240px] md:max-w-sm">
-                <div className="w-8 h-8 md:w-12 h-12 bg-slate-900 text-amber-500 rounded-lg md:rounded-xl flex items-center justify-center mb-3 md:mb-6">
+              <div className="bg-white/95 backdrop-blur-md p-3 md:p-10 rounded-xl md:rounded-[2rem] shadow-2xl border border-white/50 max-w-[190px] md:max-w-sm">
+                <div className="w-6 h-6 md:w-12 md:h-12 bg-slate-900 text-amber-500 rounded-lg md:rounded-xl flex items-center justify-center mb-2 md:mb-6">
                   <MapPin className="w-4 h-4 md:w-6 h-6" />
                 </div>
-                <h3 className="text-base md:text-2xl font-black text-slate-900 mb-1 md:mb-4 tracking-tight">Visit our Office</h3>
+                <h3 className="text-sm md:text-2xl font-black text-slate-900 mb-1 md:mb-4 tracking-tight">Visit our Office</h3>
                 <p className="text-slate-600 font-bold text-[10px] md:text-sm leading-relaxed mb-3 md:mb-8">
                   Unitech Cyber Park, Tower B, <br />
                   Sector 39, Gurugram, Haryana 122002
