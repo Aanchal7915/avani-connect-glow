@@ -121,7 +121,7 @@ const About = () => {
           </motion.div>
         </div>
       </section>
-      <section className="relative py-24 bg-white overflow-hidden">
+      <section className="relative pt-12 pb-24 md:py-24 bg-white overflow-hidden">
         {/* Dreamy Background Accents */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-amber-50/50 blur-[100px] rounded-full -translate-x-1/2" />
@@ -236,37 +236,41 @@ const About = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="pt-12 pb-24 md:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-3 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
 
             {/* Mission Card */}
             <AnimatedSection animation="fadeInUp" delay={0.2}>
-              <div className="relative h-full min-h-[180px] md:min-h-[450px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-center p-4 md:p-12 group">
+              <div className="relative h-full min-h-[250px] md:min-h-[500px] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl group flex flex-col justify-end p-5 md:p-12 border border-slate-200/50">
                 <div className="absolute inset-0 z-0">
                   <img
-                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
                     alt="Our Mission"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover blur-[2px] transition-transform duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[2px]" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-600/60 via-orange-500/40 to-transparent" />
+                  {/* Neutral Warm Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 </div>
-                <div className="relative z-10 text-white text-center">
-                  <div className="w-10 h-10 md:w-20 md:h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center mb-3 md:mb-8 border border-white/20 mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    <Target className="w-5 h-5 md:w-10 md:h-10 text-white" />
+
+                <div className="relative z-10">
+                  <div className="inline-flex items-center justify-center w-12 h-12 md:w-20 md:h-20 rounded-2xl md:rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 mb-4 md:mb-8 shadow-2xl group-hover:-translate-y-2 transition-transform duration-500">
+                    <Target className="w-6 h-6 md:w-10 md:h-10 text-amber-500" />
                   </div>
-                  <h2 className="text-sm sm:text-3xl md:text-5xl font-black mb-1 md:mb-6 tracking-tight drop-shadow-lg uppercase">
-                    Mission
+
+                  <h2 className="text-2xl md:text-5xl font-black text-white mb-3 md:mb-6 tracking-tight uppercase">
+                    Our <span className="text-amber-500">Mission</span>
                   </h2>
-                  <div className="max-w-md mx-auto">
-                    <p className="text-[9px] sm:text-lg text-amber-50 mb-2 md:mb-6 leading-relaxed font-medium">
+
+                  <div className="max-w-md">
+                    <p className="text-sm md:text-lg text-slate-200 mb-4 md:mb-8 leading-relaxed font-medium">
                       To empower businesses with cutting-edge digital solutions that drive growth,
                       enhance brand presence, and deliver measurable ROI.
                     </p>
-                    <div className="w-8 h-0.5 md:w-12 md:h-1 bg-amber-400/50 mx-auto mb-2 md:mb-6 rounded-full" />
-                    <p className="text-[8px] sm:text-base text-amber-100/80 leading-tight italic">
-                      "Building long-term partnerships through trust, innovation, and results."
+                    <div className="h-1 w-12 md:w-20 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 opacity-70" />
+                    <p className="text-[10px] md:text-sm text-amber-500/80 font-bold uppercase tracking-widest italic">
+                      "Innovation through Trust & Results"
                     </p>
                   </div>
                 </div>
@@ -275,39 +279,40 @@ const About = () => {
 
             {/* Vision Card */}
             <AnimatedSection animation="fadeInUp" delay={0.4}>
-              <div className="relative h-full min-h-[180px] md:min-h-[450px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-center p-3 md:p-12 group">
+              <div className="relative h-full min-h-[250px] md:min-h-[500px] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl group flex flex-col justify-end p-5 md:p-12 border border-slate-200/50">
                 <div className="absolute inset-0 z-0">
                   <img
-                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop"
                     alt="Our Vision"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover blur-[2px] transition-transform duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[2px]" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-600/60 via-amber-500/40 to-transparent" />
+                  {/* Neutral Warm Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 </div>
-                <div className="relative z-10 text-white text-center">
-                  <div className="w-10 h-10 md:w-20 md:h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center mb-2 md:mb-8 border border-white/20 mx-auto shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    <Globe className="w-5 h-5 md:w-10 md:h-10 text-white" />
+
+                <div className="relative z-10">
+                  <div className="inline-flex items-center justify-center w-12 h-12 md:w-20 md:h-20 rounded-2xl md:rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 mb-4 md:mb-8 shadow-2xl group-hover:-translate-y-2 transition-transform duration-500">
+                    <Globe className="w-6 h-6 md:w-10 md:h-10 text-orange-500" />
                   </div>
-                  <h3 className="text-sm sm:text-3xl md:text-5xl font-black mb-1 md:mb-6 tracking-tight drop-shadow-lg uppercase">Vision</h3>
-                  <div className="max-w-md mx-auto">
-                    <p className="text-[9px] sm:text-lg text-orange-50 mb-2 md:mb-8 leading-relaxed font-medium">
+
+                  <h3 className="text-2xl md:text-5xl font-black text-white mb-3 md:mb-6 tracking-tight uppercase">
+                    Our <span className="text-orange-500">Vision</span>
+                  </h3>
+
+                  <div className="max-w-md">
+                    <p className="text-sm md:text-lg text-slate-200 mb-4 md:mb-8 leading-relaxed font-medium">
                       To be the leading digital transformation partner for businesses across India,
                       known for our innovative solutions and exceptional service.
                     </p>
-                    <div className="flex flex-wrap justify-center gap-1 md:gap-3">
-                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-amber-400/30 text-[7px] md:text-sm font-semibold">
-                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-amber-300" />
-                        Data-Driven
-                      </div>
-                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-amber-400/30 text-[7px] md:text-sm font-semibold">
-                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-amber-300" />
-                        Innovation
-                      </div>
-                      <div className="flex items-center bg-white/10 backdrop-blur-md px-1.5 py-0.5 md:px-4 md:py-2 rounded-full border border-amber-400/30 text-[7px] md:text-sm font-semibold">
-                        <CheckCircle className="w-2 h-2 md:w-4 md:h-4 mr-1 text-amber-300" />
-                        Success
-                      </div>
+
+                    <div className="flex flex-wrap gap-2 md:gap-3">
+                      {['Data-Driven', 'Innovation', 'Success'].map((tag) => (
+                        <div key={tag} className="flex items-center bg-white/5 backdrop-blur-md px-3 py-1 md:px-4 md:py-2 rounded-xl border border-white/10 text-[8px] md:text-xs font-bold text-orange-400 uppercase tracking-widest">
+                          <CheckCircle className="w-2 h-2 md:w-3 md:h-3 mr-1 md:mr-2" />
+                          {tag}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -318,7 +323,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="relative py-24 overflow-hidden bg-white">
+      <section className="relative pt-12 pb-24 md:py-24 overflow-hidden bg-white">
         {/* Creative Background Design */}
         <div className="absolute inset-0 z-0">
           {/* Gradient Base */}
@@ -404,7 +409,7 @@ const About = () => {
 
 
       {/* Achievements Section */}
-      <section className="relative py-24 bg-white overflow-hidden">
+      <section className="relative pt-12 pb-24 md:py-24 bg-white overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <motion.div
@@ -491,7 +496,7 @@ const About = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="relative py-24 overflow-hidden bg-slate-50">
+      <section className="relative pt-12 pb-24 md:py-24 overflow-hidden bg-slate-50">
         {/* Advanced Background Design */}
         <div className="absolute inset-0 z-0">
           {/* Subtle Mesh Gradient */}
@@ -615,7 +620,7 @@ const About = () => {
               Let's Build Your
             </h2>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 md:mb-8 font-sans tracking-tight">
-               <RotatingText
+              <RotatingText
                 words={["Success Story", "Digital Future", "Growth Engine", "Next Big Move"]}
                 interval={3000}
                 className="text-orange-600 inline-block min-w-[280px] md:min-w-[400px]"

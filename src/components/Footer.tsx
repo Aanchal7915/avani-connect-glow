@@ -39,108 +39,110 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-base font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
-                  Digital Marketing
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
-                  Web Development
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
-                  SEO & Content
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
-                  Social Media
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
-                  AI Solutions
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/business-consultation" className="text-gray-300 hover:text-white transition-colors">
-                  Business Consultation
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/business-loans" className="text-gray-300 hover:text-white transition-colors">
-                  Business Loans
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/business-insurance" className="text-gray-300 hover:text-white transition-colors">
-                  Business Insurance
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
-                  Financial Consulting
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-2 gap-8 md:col-span-1 lg:col-span-2">
+            {/* Services */}
+            <div>
+              <h3 className="text-base font-semibold mb-4">Services</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
+                    Digital Marketing
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
+                    Web Development
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
+                    SEO & Content
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
+                    Social Media
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
+                    AI Solutions
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/business-consultation" className="text-gray-300 hover:text-white transition-colors">
+                    Business Consultation
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/business-loans" className="text-gray-300 hover:text-white transition-colors">
+                    Business Loans
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/business-insurance" className="text-gray-300 hover:text-white transition-colors">
+                    Business Insurance
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
+                    Financial Consulting
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Company */}
-          <div>
-            <h3 className="text-base font-semibold mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-gray-300 hover:text-white transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link to="/careers" className="text-gray-300 hover:text-white transition-colors">
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link to="/courses" className="text-gray-300 hover:text-white transition-colors">
-                  Courses
-                </Link>
-              </li>
-              <li>
-                <Link to="/case-studies" className="text-gray-300 hover:text-white transition-colors">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms-and-conditions" className="text-gray-300 hover:text-white transition-colors">
-                  Terms & Conditions
-                </Link>
-              </li>
-            </ul>
+            {/* Company */}
+            <div>
+              <h3 className="text-base font-semibold mb-4">Company</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/blog" className="text-gray-300 hover:text-white transition-colors">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/careers" className="text-gray-300 hover:text-white transition-colors">
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/courses" className="text-gray-300 hover:text-white transition-colors">
+                    Courses
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/case-studies" className="text-gray-300 hover:text-white transition-colors">
+                    Case Studies
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/terms-and-conditions" className="text-gray-300 hover:text-white transition-colors">
+                    Terms & Conditions
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Contact Info */}
