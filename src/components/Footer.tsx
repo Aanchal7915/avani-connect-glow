@@ -101,15 +101,30 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-gray-300 hover:text-white transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link to="/careers" className="text-gray-300 hover:text-white transition-colors">
+                  Careers
+                </Link>
+              </li>
+              <li>
+                <Link to="/courses" className="text-gray-300 hover:text-white transition-colors">
+                  Courses
+                </Link>
+              </li>
+              <li>
                 <Link to="/case-studies" className="text-gray-300 hover:text-white transition-colors">
                   Case Studies
                 </Link>
               </li>
-              {/* <li>
-                <Link to="/blog" className="text-gray-300 hover:text-white transition-colors">
-                  Blog
-                </Link>
-              </li> */}
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
                   Contact
@@ -125,16 +140,6 @@ const Footer = () => {
                   Terms & Conditions
                 </Link>
               </li>
-              {/* <li>
-    <a 
-      href="https://avani-enterprises-admin-frontend.vercel.app/" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="text-gray-300 hover:text-white transition-colors"
-    >
-      Admin Login
-    </a>
-  </li> */}
             </ul>
           </div>
 

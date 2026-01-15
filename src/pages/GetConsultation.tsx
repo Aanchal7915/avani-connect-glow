@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import {
   Mail,
   Phone,
@@ -6,6 +7,7 @@ import {
   Send,
   ChevronUp
 } from 'lucide-react';
+import { motion } from "framer-motion";
 import AnimatedSection from '../components/AnimatedSection';
 
 const GetConsultation = () => {
@@ -100,7 +102,7 @@ const GetConsultation = () => {
   return (
     <div className="pt-20 bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
+      <section className="relative pt-10 pb-40 overflow-hidden">
         {/* Curved Background Split */}
         <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none hidden lg:block">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-100/40 via-orange-50/30 to-transparent rounded-l-[20rem] transform scale-x-110 translate-x-20" />
@@ -109,13 +111,52 @@ const GetConsultation = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             {/* Content - Centered */}
-            <span className="text-amber-600 font-bold text-sm tracking-wide mb-4 block">
+            <span className="text-amber-600 font-bold text-sm tracking-wide mb-2 md:mb-4 block">
               Expert Guidance for Your Business
             </span>
 
-            <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-              Book Expert <span className="text-amber-500">Consultation.</span>
-            </h1>
+            <motion.h1
+              className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-4 md:mb-8 tracking-tight"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.08,
+                    delayChildren: 0.3
+                  }
+                }
+              }}
+            >
+              {"Book Your ".split("").map((char, index) => (
+                <motion.span
+                  key={`char-1-${index}`}
+                  style={{ display: "inline-block" }}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+              <span className="text-amber-500 inline-block">
+                {"Consultation.".split("").map((char, index) => (
+                  <motion.span
+                    key={`char-2-${index}`}
+                    style={{ display: "inline-block" }}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0 }
+                    }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </span>
+            </motion.h1>
 
             <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed font-medium max-w-2xl mx-auto">
               Unlock business growth with a 1:1 session with our senior consultants. Get strategic guidance tailored for your business needs and goals.
@@ -129,12 +170,12 @@ const GetConsultation = () => {
                 >
                   Book Now
                 </a>
-                <a
-                  href="tel:+919253625099"
+                <Link
+                  to="/contact"
                   className="flex-1 sm:flex-none px-4 py-3 sm:px-10 sm:py-5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl sm:rounded-2xl font-black text-[11px] sm:text-sm uppercase tracking-widest shadow-lg active:scale-95 transition-all duration-300 text-center"
                 >
-                  Call Now
-                </a>
+                  Contact Us
+                </Link>
               </div>
 
               <div className="flex items-center justify-center gap-3">
@@ -218,9 +259,9 @@ const GetConsultation = () => {
                         <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex-1 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-white transition-all">
                           WhatsApp
                         </a>
-                        <a href="tel:+919253625099" className="flex-1 py-4 border border-slate-700 text-white rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-slate-800 transition-all">
-                          Call Expert
-                        </a>
+                        <Link to="/contact" className="flex-1 py-4 border border-slate-700 text-white rounded-xl font-black text-[10px] uppercase tracking-widest text-center hover:bg-slate-800 transition-all">
+                          Contact Expert
+                        </Link>
                       </div>
                     </div>
                   </div>

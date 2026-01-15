@@ -618,7 +618,7 @@ const Home = () => {
       {/* <StatsSection /> */}
 
       {/* Services Section - ADKO-Style Hover Expand */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="pt-12 pb-24 md:py-24 bg-white relative overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -731,7 +731,7 @@ const Home = () => {
 
 
       {/* 6-D Process Section - Dynamic Flowchart */}
-      <section className="py-32 bg-white relative overflow-hidden">
+      <section className="pt-12 pb-32 bg-white relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03]">
           <div className="absolute inset-0" style={{
@@ -824,7 +824,7 @@ const Home = () => {
 
       {/* Testimonials Section */}
       {/* Testimonials Section */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative pt-12 pb-24 overflow-hidden">
         {/* Background Image with Blur */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div
@@ -1291,7 +1291,7 @@ const Home = () => {
 
       {/* CTA Section */}
       {/* CTA Section - Custom Design */}
-      <section className="relative py-8 md:py-16 bg-[#FBF9F4] overflow-hidden">
+      <section className="relative pt-2 pb-8 md:pt-16 md:pb-16 bg-[#FBF9F4] overflow-hidden">
 
         <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-0 md:pt-4 pb-12 md:pb-20">
           <motion.div

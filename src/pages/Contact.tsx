@@ -8,6 +8,7 @@ import {
   MessageSquare,
   ChevronUp
 } from 'lucide-react';
+import { motion } from "framer-motion";
 import AnimatedSection from '../components/AnimatedSection';
 
 const Contact = () => {
@@ -123,7 +124,7 @@ const Contact = () => {
     <div className="pt-20">
       <div className="bg-white">
         {/* Hero Section - Full Page */}
-        <section className="relative pt-10 pb-40 overflow-hidden">
+        <section className="relative pt-10 pb-24 md:pb-40 overflow-hidden">
           {/* Curved Background Split */}
           <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none hidden lg:block">
             <div className="absolute inset-0 bg-gradient-to-br from-amber-100/40 via-orange-50/30 to-transparent rounded-l-[20rem] transform scale-x-110 translate-x-20" />
@@ -136,9 +137,48 @@ const Contact = () => {
                 We're Here to Help
               </span>
 
-              <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-                Let's Start a <span className="text-amber-500">Project.</span>
-              </h1>
+              <motion.h1
+                className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.08,
+                      delayChildren: 0.3
+                    }
+                  }
+                }}
+              >
+                {"Let's Start a ".split("").map((char, index) => (
+                  <motion.span
+                    key={`char-1-${index}`}
+                    style={{ display: "inline-block" }}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0 }
+                    }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+                <span className="text-amber-500 inline-block">
+                  {"Project.".split("").map((char, index) => (
+                    <motion.span
+                      key={`char-2-${index}`}
+                      style={{ display: "inline-block" }}
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))}
+                </span>
+              </motion.h1>
 
               <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed font-medium max-w-2xl mx-auto">
                 We combine strategic business understanding with technical excellence to deliver solutions that don't just work—they win.
@@ -176,7 +216,7 @@ const Contact = () => {
         </section>
 
         {/* Main Content Section */}
-        <section id="contact-form" className="relative -mt-24 z-20 pb-24">
+        <section id="contact-form" className="relative -mt-20 md:-mt-24 z-20 pb-12 md:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
@@ -416,7 +456,7 @@ const Contact = () => {
         </section>
 
         {/* FAQ Section - Refined Light Grid Accordion */}
-        <section className="py-32 bg-white relative overflow-hidden">
+        <section className="pt-12 pb-20 md:py-32 bg-white relative overflow-hidden">
           {/* Subtle Light Background Pattern */}
           <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
 
@@ -468,7 +508,7 @@ const Contact = () => {
             </div>
 
             {/* FAQ Footer CTA */}
-            <div className="mt-20 text-center">
+            <div className="mt-12 md:mt-20 text-center">
               <p className="text-slate-400 font-bold mb-6">Still have questions?</p>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
