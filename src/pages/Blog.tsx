@@ -163,12 +163,8 @@ const Blog = () => {
                     </div>
                     <div className="p-8">
                       <div className="flex items-center text-xs text-slate-500 mb-4 font-bold uppercase tracking-wider">
-                        <Calendar className="w-4 h-4 mr-2" />
-                        {new Date(post.date).toLocaleDateString()}
-                        <Clock className="w-4 h-4 ml-4 mr-2" />
-                        {post.readTime}
-                        <Eye className="w-4 h-4 ml-4 mr-2" />
-                        {post.views}
+                        {new Date(post.publishedAt || post.createdAt).toLocaleDateString()}
+                        {post.readTime && <span className="ml-4">{post.readTime}</span>}
                       </div>
                       <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-amber-500 transition-colors">
                         {post.title}
@@ -176,13 +172,7 @@ const Blog = () => {
                       <p className="text-slate-600 mb-6 leading-relaxed font-medium">
                         {post.excerpt}
                       </p>
-                      <div className="flex items-center justify-between pt-6 border-t border-slate-100">
-                        <div className="flex items-center">
-                          <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-amber-500 mr-3">
-                            <User className="w-5 h-5" />
-                          </div>
-                          <span className="text-sm text-slate-700 font-bold">{post.author}</span>
-                        </div>
+                      <div className="flex items-center justify-end pt-6 border-t border-slate-100">
                         <Link to={`/blog/${post.slug}`} className="text-slate-900 hover:text-amber-500 font-black text-xs uppercase tracking-wider flex items-center transition-colors">
                           Read More <ArrowRight className="ml-2 w-4 h-4" />
                         </Link>
@@ -197,91 +187,69 @@ const Blog = () => {
       )}
 
       {/* Regular Posts */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fadeInUp" delay={0.1}>
-            <div className="flex items-center gap-3 mb-12">
-              <TrendingUp className="w-8 h-8 text-amber-500" />
-              <h2 className="text-4xl font-black text-slate-900 tracking-tight">Latest Articles</h2>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularPosts.map((post, index) => (
-              <AnimatedSection key={post.id} animation="fadeInUp" delay={index * 0.05}>
-                <article className="group bg-slate-50 rounded-[1.5rem] shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-amber-500">
-                  <div className="relative overflow-hidden">
-                    <Link to={`/blog/${post.slug}`}>
-                      <img
-                        src={post.featuredImage || post.image}
-                        alt={post.title}
-                        className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </Link>
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-slate-900 text-amber-500 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider shadow-lg">
-                        {categories.find(cat => cat.id === post.category)?.name}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center text-[10px] text-slate-500 mb-4 font-bold uppercase tracking-wider">
-                      <Calendar className="w-3.5 h-3.5 mr-1.5" />
-                      {new Date(post.date).toLocaleDateString()}
-                      <Clock className="w-3.5 h-3.5 ml-3 mr-1.5" />
-                      {post.readTime}
-                    </div>
-                    <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tight group-hover:text-amber-500 transition-colors line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-slate-600 mb-4 leading-relaxed text-sm font-medium line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between mb-4 pt-4 border-t border-slate-200">
-                      <div className="flex items-center">
-                        <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-amber-500 mr-2">
-                          <User className="w-4 h-4" />
-                        </div>
-                        <span className="text-xs text-slate-700 font-bold">{post.author}</span>
-                      </div>
-                      <div className="flex items-center text-slate-500">
-                        <Eye className="w-3.5 h-3.5 mr-1" />
-                        <span className="text-xs font-bold">{post.views}</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex flex-wrap gap-2">
-                        {(post.tags || []).slice(0, 2).map((tag) => (
-                          <span
-                            key={tag}
-                            className="bg-white text-slate-600 px-2 py-1 rounded-lg text-[10px] font-bold border border-slate-200"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <Link to={`/blog/${post.slug}`} className="text-slate-900 hover:text-amber-500 font-black text-[10px] uppercase tracking-wider flex items-center transition-colors">
-                        Read <ArrowRight className="ml-1 w-3.5 h-3.5" />
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              </AnimatedSection>
-            ))}
-          </div>
-
-          {regularPosts.length === 0 && (
-            <div className="text-center py-20">
-              <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Search className="w-10 h-10 text-slate-400" />
+      {regularPosts.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection animation="fadeInUp" delay={0.1}>
+              <div className="flex items-center gap-3 mb-12">
+                <TrendingUp className="w-8 h-8 text-amber-500" />
+                <h2 className="text-4xl font-black text-slate-900 tracking-tight">Latest Articles</h2>
               </div>
-              <p className="text-slate-600 text-lg font-bold">
-                No articles found matching your criteria.
-              </p>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {regularPosts.map((post, index) => (
+                <AnimatedSection key={post.id} animation="fadeInUp" delay={index * 0.05}>
+                  <article className="group bg-slate-50 rounded-[1.5rem] shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-amber-500">
+                    <div className="relative overflow-hidden">
+                      <Link to={`/blog/${post.slug}`}>
+                        <img
+                          src={post.featuredImage || post.image}
+                          alt={post.title}
+                          className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </Link>
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-slate-900 text-amber-500 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider shadow-lg">
+                          {categories.find(cat => cat.id === post.category)?.name}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center text-[10px] text-slate-500 mb-4 font-bold uppercase tracking-wider">
+                        {new Date(post.publishedAt || post.createdAt).toLocaleDateString()}
+                        {post.readTime && <span className="ml-3">{post.readTime}</span>}
+                      </div>
+                      <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tight group-hover:text-amber-500 transition-colors line-clamp-2">
+                        {post.title}
+                      </h3>
+                      <p className="text-slate-600 mb-4 leading-relaxed text-sm font-medium line-clamp-3">
+                        {post.excerpt}
+                      </p>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex flex-wrap gap-2">
+                          {(post.tags || []).slice(0, 2).map((tag) => (
+                            <span
+                              key={tag}
+                              className="bg-white text-slate-600 px-2 py-1 rounded-lg text-[10px] font-bold border border-slate-200"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <Link to={`/blog/${post.slug}`} className="text-slate-900 hover:text-amber-500 font-black text-[10px] uppercase tracking-wider flex items-center transition-colors">
+                          Read <ArrowRight className="ml-1 w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                </AnimatedSection>
+              ))}
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
 
 
