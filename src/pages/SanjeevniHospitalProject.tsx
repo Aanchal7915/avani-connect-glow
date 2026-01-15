@@ -15,7 +15,7 @@ const SanjeevniHospitalProject = () => {
           <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-br from-orange-200/30 to-amber-200/30 blur-[120px] rounded-full" />
           <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <Link
@@ -102,7 +102,7 @@ const SanjeevniHospitalProject = () => {
       </section>
 
       {/* Key Features */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#FBF9F4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center mb-12">
@@ -120,31 +120,31 @@ const SanjeevniHospitalProject = () => {
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Key Features</h3>
                 <ul className="space-y-4">
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>AI Chatbot integration</strong> for instant support and efficient appointment booking
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Secure online OPD and test booking</strong> with integrated payment gateway
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Admin analytics dashboard</strong> for comprehensive data insights
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Patient portals</strong> for managing orders and accessing invoices
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Easy navigation</strong> for users to explore services and book appointments
                     </span>

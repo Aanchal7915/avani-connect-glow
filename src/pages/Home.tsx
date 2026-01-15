@@ -1129,7 +1129,7 @@ const Home = () => {
       </section>
 
       {/* Blog Section */}
-      <section className="relative py-24 bg-white overflow-hidden">
+      <section className="relative pt-24 pb-6 md:pb-12 bg-white overflow-hidden">
         {/* Geometric Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Hexagon Pattern */}
@@ -1233,12 +1233,7 @@ const Home = () => {
                             <Calendar className="w-3.5 h-3.5 text-amber-500" />
                             <span>{new Date(blog.publishedAt || blog.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                           </div>
-                          {blog.author && (
-                            <div className="flex items-center gap-1.5">
-                              <Users className="w-3.5 h-3.5 text-amber-500" />
-                              <span>{blog.author}</span>
-                            </div>
-                          )}
+
                         </div>
 
                         {/* Title */}
@@ -1295,28 +1290,61 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 bg-white overflow-hidden">
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 font-sans leading-tight">
-            Let's Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Success Story</span> Together
-          </h2>
-          <p className="text-xl mb-10 text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      {/* CTA Section - Custom Design */}
+      <section className="relative py-8 md:py-16 bg-[#FBF9F4] overflow-hidden">
+
+        <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-0 md:pt-4 pb-12 md:pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-2 md:mb-3 font-sans tracking-tight">
+              Let's Build Your
+            </h2>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 md:mb-8 font-sans tracking-tight">
+              <RotatingText
+                words={["Success Story", "Digital Future", "Growth Engine", "Next Big Move"]}
+                interval={3000}
+                className="text-orange-600 inline-block min-w-[280px] md:min-w-[400px]"
+              /> <span className="text-slate-900">Together</span>
+            </h2>
+
+            <div className="w-full max-w-xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent mb-6 md:mb-8"></div>
+
+            <p className="text-base md:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed mb-6 md:mb-12 px-2">
+              Partner with us to unlock growth opportunities, streamline operations, and achieve your business vision with expert guidance every step of the way.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-row gap-3 md:gap-6 justify-center items-center w-full sm:w-auto"
+          >
             <Link
               to="/get-consultation"
-              className="px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white rounded-xl font-black uppercase tracking-widest shadow-lg transition-all duration-300"
+              className="flex-1 sm:flex-none px-4 py-3 md:px-10 md:py-4 bg-gradient-to-b from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white rounded-lg font-bold uppercase tracking-widest shadow-[0_4px_0_rgb(154,52,18)] active:shadow-none active:translate-y-1 transition-all duration-200 text-[10px] sm:text-xs md:text-sm whitespace-nowrap"
             >
               Get Consultation
             </Link>
-            <a
-              href="tel:+919253625099"
-              className="bg-slate-100 text-slate-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-200 hover:border-slate-300 transition-all duration-300"
+            <Link
+              to="/contact"
+              className="flex-1 sm:flex-none px-4 py-3 md:px-10 md:py-4 bg-gradient-to-b from-slate-800 to-black hover:from-slate-700 hover:to-slate-900 text-white rounded-lg font-bold uppercase tracking-widest shadow-[0_4px_0_rgb(0,0,0)] active:shadow-none active:translate-y-1 transition-all duration-200 text-[10px] sm:text-xs md:text-sm border-t border-slate-700 whitespace-nowrap"
             >
               Talk to Expert
-            </a>
-          </div>
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Bottom Curved Shapes */}
+        <div className="absolute bottom-0 left-0 w-full z-10 leading-none">
+          <svg viewBox="0 0 1440 60" className="w-full h-8 md:h-20 block" preserveAspectRatio="none">
+            <path d="M0,0 C480,80 960,80 1440,0 V60 H0 V0 Z" fill="#f97316"></path>
+          </svg>
         </div>
       </section>
     </div >

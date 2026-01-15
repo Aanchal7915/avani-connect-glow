@@ -187,7 +187,7 @@ const BusinessProcessOptimizationProject = () => {
             </section>
 
             {/* Key Features */}
-            <section className="py-16 bg-white">
+            <section className="py-16 bg-[#FBF9F4]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <AnimatedSection animation="fadeInUp" delay={0.2}>
                         <div className="text-center mb-12">
@@ -204,49 +204,49 @@ const BusinessProcessOptimizationProject = () => {
                             <div className="bg-slate-50 rounded-xl p-8 shadow-lg">
                                 <ul className="space-y-4">
                                     <li className="flex items-start">
-                                        <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                                        <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                                         <span className="text-lg text-gray-700">
                                             <strong>Email Analysis & Auto-Response:</strong> AI reads incoming emails, categorizes them, drafts responses, and handles routine inquiries automatically
                                         </span>
                                     </li>
                                     <li className="flex items-start">
-                                        <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                                        <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                                         <span className="text-lg text-gray-700">
                                             <strong>Support Ticket Automation:</strong> Automatically triage, categorize, and route support tickets; provide instant responses to common issues
                                         </span>
                                     </li>
                                     <li className="flex items-start">
-                                        <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                                        <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                                         <span className="text-lg text-gray-700">
                                             <strong>Spreadsheet Data Processing:</strong> AI monitors spreadsheets for updates, performs calculations, generates reports, and syncs data across systems
                                         </span>
                                     </li>
                                     <li className="flex items-start">
-                                        <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                                        <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                                         <span className="text-lg text-gray-700">
                                             <strong>Workflow Pattern Recognition:</strong> Identifies recurring task patterns and suggests automation rules based on observed behavior
                                         </span>
                                     </li>
                                     <li className="flex items-start">
-                                        <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                                        <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                                         <span className="text-lg text-gray-700">
                                             <strong>Task Scheduling & Reminders:</strong> Automatically schedules follow-ups, sends reminders, and ensures nothing falls through the cracks
                                         </span>
                                     </li>
                                     <li className="flex items-start">
-                                        <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                                        <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                                         <span className="text-lg text-gray-700">
                                             <strong>Document Generation:</strong> Auto-generate reports, invoices, proposals, and other documents based on templates and data
                                         </span>
                                     </li>
                                     <li className="flex items-start">
-                                        <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                                        <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                                         <span className="text-lg text-gray-700">
                                             <strong>Cross-Platform Integration:</strong> Connects with Gmail, Outlook, Slack, Google Sheets, Excel, Notion, Trello, and other business tools
                                         </span>
                                     </li>
                                     <li className="flex items-start">
-                                        <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                                        <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                                         <span className="text-lg text-gray-700">
                                             <strong>Performance Analytics:</strong> Dashboard showing time saved, tasks automated, and ROI metrics to measure the impact
                                         </span>

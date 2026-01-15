@@ -120,7 +120,7 @@ const LeadManagementProject = () => {
       </section>
 
       {/* Key Features */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#FBF9F4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center mb-12">
@@ -137,49 +137,49 @@ const LeadManagementProject = () => {
               <div className="bg-white rounded-xl p-8 shadow-lg">
                 <ul className="space-y-4">
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Multi-Channel Lead Capture:</strong> Automatically collect leads from websites, landing pages, social media, email campaigns, and third-party platforms
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>AI Lead Scoring:</strong> Machine learning algorithms analyze behavior, demographics, and engagement to prioritize high-value leads
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Intelligent Distribution:</strong> Automatically assign leads to the right sales rep based on territory, expertise, and workload
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Automated Nurturing:</strong> Personalized email and SMS sequences triggered by lead behavior and engagement
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Real-Time Notifications:</strong> Instant alerts to sales team when high-priority leads take action
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>CRM Integration:</strong> Seamless sync with Salesforce, HubSpot, Zoho, and other popular CRM platforms
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Analytics Dashboard:</strong> Comprehensive reporting on lead sources, conversion rates, and sales team performance
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-orange-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Lead Deduplication:</strong> Automatically identify and merge duplicate leads to maintain clean data
                     </span>

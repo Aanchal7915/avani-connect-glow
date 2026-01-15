@@ -18,7 +18,7 @@ const WhatsAppAutomationProject = () => {
             backgroundSize: '40px 40px'
           }} />
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <Link
@@ -119,7 +119,7 @@ const WhatsAppAutomationProject = () => {
       </section>
 
       {/* Key Features */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#FBF9F4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeInUp" delay={0.2}>
             <div className="text-center mb-12">
@@ -136,61 +136,61 @@ const WhatsAppAutomationProject = () => {
               <div className="bg-white rounded-xl p-8 shadow-lg">
                 <ul className="space-y-4">
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>WhatsApp Business API Integration:</strong> Official API access for reliable, scalable messaging
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>AI-Powered Chatbot:</strong> Intelligent bot handles customer queries, FAQs, and support tickets automatically
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Broadcast Campaigns:</strong> Send promotional messages, updates, and announcements to unlimited contacts
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Automated Notifications:</strong> Order confirmations, shipping updates, appointment reminders, and payment alerts
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Rich Media Support:</strong> Send images, videos, documents, location, and interactive buttons
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Contact Management:</strong> Organize contacts with tags, segments, and custom fields
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Multi-Agent Dashboard:</strong> Team inbox for managing customer conversations efficiently
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Analytics & Reporting:</strong> Track message delivery, open rates, response times, and campaign performance
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>CRM Integration:</strong> Sync with Salesforce, HubSpot, Zoho, and custom systems
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       <strong>Template Management:</strong> Create and manage pre-approved message templates for compliance
                     </span>
