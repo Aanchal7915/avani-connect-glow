@@ -130,9 +130,12 @@ const CareerDetail = () => {
       setTimeout(() => {
         const successElem = document.getElementById('application-success');
         if (successElem) {
-          successElem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // scrollIntoView works better across devices, 'start' ensures it's at the top
+          successElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // A small additional scroll to account for the navbar
+          window.scrollBy(0, -100);
         }
-      }, 100);
+      }, 150);
     } catch (err: any) {
       console.error("Failed to submit application", err);
       alert(err.response?.data?.message || "Failed to submit application. Please try again.");
