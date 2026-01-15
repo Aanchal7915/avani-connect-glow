@@ -102,7 +102,7 @@ const GetConsultation = () => {
   return (
     <div className="pt-20 bg-white">
       {/* Hero Section */}
-      <section className="relative pt-10 pb-40 overflow-hidden">
+      <section className="relative pt-10 pb-28 md:pb-40 overflow-hidden">
         {/* Curved Background Split */}
         <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none hidden lg:block">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-100/40 via-orange-50/30 to-transparent rounded-l-[20rem] transform scale-x-110 translate-x-20" />
@@ -162,7 +162,7 @@ const GetConsultation = () => {
               Unlock business growth with a 1:1 session with our senior consultants. Get strategic guidance tailored for your business needs and goals.
             </p>
 
-            <div className="flex flex-col gap-8 mb-16">
+            <div className="flex flex-col gap-8 mb-8 md:mb-16">
               <div className="flex flex-row items-center justify-center gap-3 sm:gap-6">
                 <a
                   href="#consultation-form"
